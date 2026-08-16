@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   ...(staticExport ? { output: "export" as const } : {}),
   ...(basePath ? { basePath, assetPrefix: basePath } : {}),
+  // Exposed so `asset()` can prefix /public paths in the browser too.
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
   images: {
     unoptimized: staticExport,
     // Küchenheld's photography still lives on the Webflow CDN. Once the assets

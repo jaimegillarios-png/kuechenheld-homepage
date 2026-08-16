@@ -4,6 +4,8 @@
  * payload we would expect back.
  */
 
+import { asset } from "./site";
+
 const WF = "https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c";
 const WF2 = "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71";
 
@@ -50,19 +52,19 @@ export const heroSlides: HeroSlide[] = [
     city: "Hamburg",
   },
   {
-    src: "/images/hero-wohnkueche-salbei.webp",
+    src: asset("/images/hero-wohnkueche-salbei.webp"),
     alt: "Wohnküche in Salbeigrün",
     model: "Modell Wohnküche — Salbei",
     city: "Berlin",
   },
   {
-    src: "/images/hero-insel-kaschmir.jpg",
+    src: asset("/images/hero-insel-kaschmir.jpg"),
     alt: "Offene Küche mit Insel",
     model: "Modell Insel — Kaschmir",
     city: "München",
   },
   {
-    src: "/images/hero-vegas-urban-brown.jpg",
+    src: asset("/images/hero-vegas-urban-brown.jpg"),
     alt: "Küche Vegas Urban Brown Metallic",
     model: "Modell Vegas — Urban Brown",
     city: "Köln",
@@ -78,10 +80,18 @@ export const trustStrip = [
 export type KitchenForm = { id: string; label: string; icon: string };
 
 export const kitchenForms: KitchenForm[] = [
-  { id: "zeile", label: "Küchenzeile", icon: "/shapes/shape-kitchenette.svg" },
-  { id: "l", label: "L-Form", icon: "/shapes/shape-l-form.svg" },
-  { id: "u", label: "U-Form", icon: "/shapes/shape-u.svg" },
-  { id: "insel", label: "Kücheninsel", icon: "/shapes/shape-island.svg" },
+  {
+    id: "zeile",
+    label: "Küchenzeile",
+    icon: asset("/shapes/shape-kitchenette.svg"),
+  },
+  { id: "l", label: "L-Form", icon: asset("/shapes/shape-l-form.svg") },
+  { id: "u", label: "U-Form", icon: asset("/shapes/shape-u.svg") },
+  {
+    id: "insel",
+    label: "Kücheninsel",
+    icon: asset("/shapes/shape-island.svg"),
+  },
 ];
 
 export type Step = { num: string; title: string; body: string };
@@ -213,12 +223,12 @@ export type StorySlide = { src: string; alt: string; caption: string };
 
 export const storySlides: StorySlide[] = [
   {
-    src: "/images/story-lichterfelde.jpg",
+    src: asset("/images/story-lichterfelde.jpg"),
     alt: "Familie in ihrer neuen Küche in Lichterfelde",
     caption: "Küche Lichterfelde",
   },
   {
-    src: "/images/story-anthrazit.jpg",
+    src: asset("/images/story-anthrazit.jpg"),
     alt: "Paar in seiner neuen dunkelblauen Küche",
     caption: "Küche in Anthrazit",
   },

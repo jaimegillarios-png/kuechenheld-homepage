@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { steps } from "@/lib/content";
+import { asset } from "@/lib/site";
 import shared from "@/styles/shared.module.css";
 import styles from "./HowItWorks.module.css";
 
@@ -8,7 +9,7 @@ export default function HowItWorks() {
     <section id="planung" className={styles.section}>
       <div className={styles.media}>
         <Image
-          src="/images/planung-eiche-insel.png"
+          src={asset("/images/planung-eiche-insel.png")}
           alt="Küche mit Eiche-Insel und hellen Fronten"
           fill
           sizes="(max-width: 900px) 100vw, 50vw"
