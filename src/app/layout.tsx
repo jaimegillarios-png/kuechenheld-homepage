@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree } from "next/font/google";
+import { isIndexable } from "@/lib/site";
 import "./globals.css";
 
 // Self-hosted by next/font — no CDN request, no layout shift on load.
@@ -14,6 +15,12 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.kuechenheld.de"),
+  // Review deploys must stay out of search results — an indexable copy of the
+  // homepage would compete with the real kuechenheld.de. Set SITE_INDEXABLE=true
+  // only on the deployment that actually serves the site.
+  robots: isIndexable
+    ? undefined
+    : { index: false, follow: false, nocache: true },
   title: "Küchenheld — Küche kaufen von zuhause aus",
   description:
     "Küche online kaufen vom Sofa aus oder vor Ort in einem unserer 8 Showrooms deutschlandweit. Kostenloses, unverbindliches Angebot mit Preisindikation.",
