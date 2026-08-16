@@ -1,0 +1,177 @@
+/* Vertical padding holds at every width here — only the gutter narrows. */
+.head {
+  padding: 120px var(--gutter) 0;
+}
+
+.headInner {
+  composes: container from "../styles/shared.module.css";
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  composes: eyebrow from "../styles/shared.module.css";
+  margin-bottom: 24px;
+}
+
+.heading {
+  composes: h2 from "../styles/shared.module.css";
+  max-width: 28ch;
+}
+
+.lead {
+  composes: body from "../styles/shared.module.css";
+  max-width: 46ch;
+}
+
+.body {
+  padding: 64px var(--gutter) 128px;
+}
+
+.bodyInner {
+  composes: container from "../styles/shared.module.css";
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 80px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .bodyInner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* --- featured post ------------------------------------------------------- */
+
+.featured {
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.featured:hover {
+  opacity: 0.86;
+}
+
+.featuredFrame {
+  margin-bottom: 32px;
+}
+
+.featuredPhoto {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.meta {
+  composes: eyebrow from "../styles/shared.module.css";
+  margin-bottom: 16px;
+}
+
+.featuredTitle {
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.15;
+  max-width: 24ch;
+  margin-bottom: 16px;
+}
+@media (max-width: 900px) {
+  .featuredTitle {
+    font-size: 32px;
+    max-width: none;
+  }
+}
+
+.featuredExcerpt {
+  composes: body from "../styles/shared.module.css";
+  max-width: 44ch;
+}
+
+/* --- index rows ---------------------------------------------------------- */
+
+.row {
+  display: grid;
+  grid-template-columns: clamp(96px, 14vw, 176px) minmax(0, 1fr);
+  gap: clamp(16px, 2vw, 32px);
+  align-items: start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--ink-12);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.row:hover {
+  opacity: 0.6;
+}
+
+.rowFirst {
+  composes: row;
+  padding-top: 0;
+}
+
+.thumbFrame {
+  align-self: start;
+}
+
+.thumb {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.rowTitle {
+  composes: cardTitle from "../styles/shared.module.css";
+  margin-bottom: 12px;
+}
+
+.rowExcerpt {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink-60);
+  max-width: 52ch;
+}
+
+.rowMeta {
+  composes: eyebrow from "../styles/shared.module.css";
+  color: var(--ink-40);
+  margin-top: 12px;
+}
+
+.allPosts {
+  padding-top: 40px;
+}
+
+.allPostsLink {
+  composes: label from "../styles/shared.module.css";
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .thumb {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* Drop the heading measure once the column narrows. */
+@media (max-width: 900px) {
+  .heading {
+    max-width: none;
+  }
+}

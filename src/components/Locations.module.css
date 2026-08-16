@@ -1,0 +1,106 @@
+.rule {
+  height: 1px;
+  background: var(--ink-18);
+}
+
+.section {
+  padding: 120px var(--gutter) 128px;
+}
+@media (max-width: 900px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+}
+
+.inner {
+  composes: container from "../styles/shared.module.css";
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 96px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.eyebrow {
+  composes: eyebrow from "../styles/shared.module.css";
+  color: var(--ink-40);
+  margin-bottom: 32px;
+}
+
+.heading {
+  composes: h2 from "../styles/shared.module.css";
+  max-width: 20ch;
+  margin-bottom: 24px;
+}
+
+.lead {
+  composes: body from "../styles/shared.module.css";
+  max-width: 36ch;
+  margin-bottom: 40px;
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 64px;
+}
+
+.statNum {
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.statLabel {
+  composes: eyebrow from "../styles/shared.module.css";
+  margin-top: 8px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ink-16);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 8px;
+  border-bottom: 1px solid var(--ink-16);
+  cursor: pointer;
+  transition:
+    padding-left 0.25s ease,
+    background 0.25s ease;
+}
+.row:hover {
+  background: var(--ink-04);
+  padding-left: 16px;
+}
+
+.rowNum {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--ink-40);
+}
+
+.rowArrow {
+  font-size: 16px;
+  color: var(--ink-35);
+  text-align: right;
+}
+
+/* Drop the heading measure once the column narrows. */
+@media (max-width: 900px) {
+  .heading {
+    max-width: none;
+  }
+}

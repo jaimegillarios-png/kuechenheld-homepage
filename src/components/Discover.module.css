@@ -1,0 +1,101 @@
+/* Vertical padding holds at every width here — only the gutter narrows. */
+.head {
+  padding: 120px var(--gutter) 0;
+}
+
+.heading {
+  composes: h2 from "../styles/shared.module.css";
+  margin-bottom: 16px;
+}
+
+.lead {
+  composes: body from "../styles/shared.module.css";
+  max-width: 60ch;
+}
+
+.railSection {
+  padding: 56px var(--gutter) 128px;
+}
+
+.railWrap {
+  position: relative;
+}
+
+.rail {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.card {
+  flex: none;
+  width: calc((100% - 64px) / 3);
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+.frame {
+  margin-bottom: 24px;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.cardTitle {
+  composes: cardTitle from "../styles/shared.module.css";
+  margin-bottom: 12px;
+}
+
+.cardBody {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 44ch;
+  color: var(--ink-60);
+}
+
+/* Overlay that positions the arrows against the image, not the whole card. */
+.arrows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.arrowSpacer {
+  width: calc((100% - 64px) / 3);
+  aspect-ratio: 3 / 4;
+}
+
+.arrowPrev {
+  composes: arrow from "../styles/shared.module.css";
+  left: 16px;
+  font-size: 14px;
+  pointer-events: auto;
+}
+
+.arrowNext {
+  composes: arrow from "../styles/shared.module.css";
+  right: 16px;
+  font-size: 14px;
+  pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 82%;
+  }
+}
+@media (max-width: 560px) {
+  .card {
+    width: 100%;
+  }
+}

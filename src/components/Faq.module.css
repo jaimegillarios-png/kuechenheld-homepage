@@ -1,0 +1,127 @@
+.rule {
+  height: 1px;
+  background: var(--ink-18);
+}
+
+.section {
+  padding: 120px var(--gutter) 128px;
+}
+
+.inner {
+  composes: container from "../styles/shared.module.css";
+}
+@media (max-width: 900px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+}
+
+.eyebrow {
+  composes: eyebrow from "../styles/shared.module.css";
+  color: var(--ink-40);
+  margin-bottom: 32px;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  padding-bottom: 64px;
+}
+@media (max-width: 900px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.heading {
+  composes: h2 from "../styles/shared.module.css";
+  max-width: 20ch;
+}
+
+.lead {
+  composes: body from "../styles/shared.module.css";
+  max-width: 52ch;
+  margin-bottom: 32px;
+}
+
+.list {
+  border-top: 1px solid var(--ink-20);
+}
+
+.item {
+  border-bottom: 1px solid var(--ink-20);
+}
+
+.row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 32px;
+  align-items: baseline;
+  gap: 24px;
+  padding: 32px 8px;
+  transition: background 0.25s ease;
+}
+.row:hover {
+  background: var(--ink-03);
+}
+
+.num {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: var(--ink-40);
+}
+
+.sign {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--ink-45);
+  text-align: right;
+  display: block;
+  transition:
+    transform 0.45s var(--ease-out),
+    color 0.25s ease;
+}
+
+/* Opening animates the row track from 0fr to 1fr; collapsing unmounts. */
+.panel {
+  display: grid;
+  grid-template-rows: 1fr;
+  animation: khAcc 0.55s var(--ease-out);
+}
+
+.panelClip {
+  overflow: hidden;
+}
+
+.answerRow {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 32px;
+  gap: 24px;
+  padding: 0 8px 40px;
+}
+
+.answer {
+  composes: body from "../styles/shared.module.css";
+  max-width: 72ch;
+  animation: khAccText 0.6s ease 0.12s both;
+}
+
+@media (max-width: 900px) {
+  .row,
+  .answerRow {
+    grid-template-columns: 32px minmax(0, 1fr) 24px;
+    gap: 12px;
+  }
+}
+
+/* Drop the heading measure once the column narrows. */
+@media (max-width: 900px) {
+  .heading {
+    max-width: none;
+  }
+}

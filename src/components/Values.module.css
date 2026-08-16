@@ -1,0 +1,56 @@
+.section {
+  background: var(--ink);
+  color: var(--paper-cream);
+  padding: 120px var(--gutter) 128px;
+}
+@media (max-width: 900px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+}
+
+.eyebrow {
+  composes: eyebrow from "../styles/shared.module.css";
+  color: var(--cream-50);
+  margin-bottom: 24px;
+}
+
+.heading {
+  composes: h2 from "../styles/shared.module.css";
+  margin-bottom: 72px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 56px;
+}
+
+.card {
+  border-top: 1px solid var(--cream-28);
+  padding-top: 24px;
+}
+
+.stat {
+  composes: stat from "../styles/shared.module.css";
+  margin-bottom: 16px;
+}
+
+.cardTitle {
+  composes: cardTitle from "../styles/shared.module.css";
+  margin-bottom: 16px;
+}
+
+.cardBody {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--cream-65);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

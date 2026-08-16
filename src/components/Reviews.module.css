@@ -1,0 +1,145 @@
+.section {
+  background: var(--paper-warm);
+  padding: 128px var(--gutter);
+}
+@media (max-width: 900px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+}
+
+.eyebrow {
+  composes: eyebrow from "../styles/shared.module.css";
+  color: var(--ink-40);
+  margin-bottom: 32px;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 80px;
+  align-items: end;
+  padding-bottom: 64px;
+}
+
+.heading {
+  composes: h2 from "../styles/shared.module.css";
+  max-width: 24ch;
+  margin-bottom: 24px;
+}
+
+.lead {
+  composes: body from "../styles/shared.module.css";
+  max-width: 56ch;
+}
+
+.stats {
+  display: flex;
+  gap: 56px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.statLabel {
+  composes: eyebrow from "../styles/shared.module.css";
+  margin-top: 8px;
+}
+
+.bareArrows {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+  padding-bottom: 4px;
+}
+.bareArrows button {
+  font-size: 20px;
+  line-height: 1;
+  color: var(--ink-45);
+  transition: color 0.3s ease;
+}
+.bareArrows button:hover {
+  color: var(--ink);
+}
+
+.rail {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  align-items: stretch;
+}
+
+.quote {
+  flex: none;
+  width: 33.3333%;
+  scroll-snap-align: start;
+  margin: 0;
+  padding: 32px 40px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-top: 1px solid var(--ink-20);
+}
+
+.quoteTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.stars {
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  flex: 1;
+}
+
+.date {
+  composes: eyebrow from "../styles/shared.module.css";
+  color: var(--ink-40);
+}
+
+.quoteText {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.author {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+  line-height: 1.6;
+  margin-top: auto;
+  padding-bottom: 32px;
+  /* 32px of text box + the 32px pad below it — a one- and a two-line author
+     name must leave the card the same height. */
+  min-height: 64px;
+}
+
+@media (max-width: 900px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .quote {
+    width: 88%;
+    padding-right: 24px;
+  }
+}
+@media (max-width: 560px) {
+  .quote {
+    width: 100%;
+  }
+}
+
+/* Drop the heading measure once the column narrows. */
+@media (max-width: 900px) {
+  .heading {
+    max-width: none;
+  }
+}

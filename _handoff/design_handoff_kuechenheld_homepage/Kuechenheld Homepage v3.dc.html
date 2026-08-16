@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'Gotham Real';src:url('uploads/Gotham-Light.otf') format('opentype');font-weight:300}
+@font-face{font-family:'Gotham Real';src:url('uploads/Gotham-Book.otf') format('opentype');font-weight:400}
+@font-face{font-family:'Gotham Real';src:url('uploads/Gotham-Medium.otf') format('opentype');font-weight:500}
+@font-face{font-family:'Gotham Real';src:url('uploads/Gotham-Bold.otf') format('opentype');font-weight:700}
+#kh-rail::-webkit-scrollbar,#kh-rail2::-webkit-scrollbar,#kh-rail3::-webkit-scrollbar{display:none}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:#141312;font-family:'Figtree','Helvetica Neue',Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:300 900;font-display:swap;src:url('https://cdn.jsdelivr.net/fontsource/fonts/figtree:vf@latest/latin-wght-normal.woff2') format('woff2-variations')}
+@font-face{font-family:'Figtree';font-style:italic;font-weight:300 900;font-display:swap;src:url('https://cdn.jsdelivr.net/fontsource/fonts/figtree:vf@latest/latin-wght-italic.woff2') format('woff2-variations')}
+@keyframes khRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes khLineUp{from{transform:translateY(110%)}to{transform:translateY(0)}}
+@keyframes khFade{from{opacity:0}to{opacity:1}}
+@keyframes khRule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes khHeroDrift{from{transform:scale(1.1)}to{transform:scale(1)}}
+@keyframes khImgIn{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
+@keyframes khSlideLag{from{transform:translateX(9%)}to{transform:translateX(0)}}
+@keyframes khNavIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@keyframes khEdge{0%{left:100%;opacity:0}8%{opacity:1}88%{opacity:1}100%{left:0;opacity:0}}
+[data-ul]{position:relative;display:inline-block}
+[data-ul]::after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+[data-ul]:hover::after{transform:scaleX(1);transform-origin:left}
+[data-ul2]{position:relative;display:inline-block;border-bottom-color:transparent !important}
+[data-ul2]::before,[data-ul2]::after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:1px;background:currentColor}
+[data-ul2]::before{transform-origin:right;transition:transform .24s cubic-bezier(.3,0,.7,1) 0s}
+[data-ul2]::after{transform:scaleX(0);transform-origin:left;opacity:0;transition:opacity .18s ease 0s,transform 0s linear .18s}
+[data-ul2]:hover::before{transform:scaleX(0);transition:transform .4s cubic-bezier(.4,0,1,1) 0s}
+[data-ul2]:hover::after{transform:scaleX(1);opacity:.45;transition:transform .5s cubic-bezier(0,0,.3,1) .08s,opacity .2s ease .08s}
+@media (prefers-reduced-motion:reduce){[data-ul]::after,[data-ul2]::after{transition:none}}
+@keyframes khAcc{from{grid-template-rows:0fr;opacity:0}to{grid-template-rows:1fr;opacity:1}}
+@keyframes khAccText{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes khDrop{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+[data-zoom]{overflow:hidden}
+[data-zoom] > img{transition:transform .7s cubic-bezier(.22,1,.36,1);will-change:transform}
+[data-zoom]:hover > img,[data-zoomparent]:hover [data-zoom] > img{transform:scale(1.045) !important;transition:transform .7s cubic-bezier(.22,1,.36,1) !important}
+@media (prefers-reduced-motion:reduce){[data-zoom]:hover > img,[data-zoomparent]:hover [data-zoom] > img{transform:none !important}}
+@media (max-width:900px){
+  [data-m~="pad"]{padding-left:24px !important;padding-right:24px !important}
+  [data-m~="vpad"]{padding-top:72px !important;padding-bottom:80px !important}
+  [data-m~="one"]{grid-template-columns:1fr !important}
+  [data-m~="two"]{grid-template-columns:1fr 1fr !important}
+  [data-m~="gap32"]{gap:32px !important}
+  [data-m~="hero"]{grid-template-columns:32px 1fr !important;min-height:0 !important}
+  [data-m~="herotext"]{padding:56px 24px 48px 24px !important}
+  [data-m~="heroimg"]{grid-column:2 !important;min-height:340px !important}
+  [data-m~="h2"]{font-size:32px !important;max-width:none !important}
+  [data-m~="stat"]{font-size:40px !important}
+  [data-m~="strip"] > div{border-left:0 !important;border-top:1px solid rgba(20,19,18,.14)}
+  [data-m~="strip"] > div:first-child{border-top:0}
+  [data-m~="card"]{width:82% !important}
+  [data-m~="quote"]{width:88% !important;padding-right:24px !important}
+  [data-m~="imgblock"]{min-height:360px !important}
+  [data-m~="inpad"]{padding:64px 24px 72px !important}
+  [data-m~="railpad"]{padding-left:24px !important;padding-right:24px !important}
+  [data-m~="hidearrow"]{display:none !important}
+  [data-m~="blogthumb"]{grid-template-columns:88px minmax(0,1fr) !important;gap:16px !important}
+  [data-m~="faqrow"]{grid-template-columns:32px minmax(0,1fr) 24px !important;gap:12px !important}
+  [data-m~="foot"]{grid-template-columns:1fr 1fr !important;gap:40px 24px !important}
+  [data-m~="step"]{grid-template-columns:40px minmax(0,1fr) !important;gap:16px !important}
+  [data-m~="navdesk"]{display:none !important}
+  [data-m~="burger"]{display:flex !important}
+  [data-m~="cta"]{grid-template-columns:1fr !important}
+  [data-m~="cta"] > div:first-child{min-height:320px !important}
+  [data-m~="ctapad"]{padding:64px 24px 72px !important}
+}
+@media (max-width:560px){
+  [data-m~="two"],[data-m~="foot"]{grid-template-columns:1fr !important}
+  [data-m~="card"],[data-m~="quote"]{width:100% !important}
+  [data-m~="blogthumb"]{grid-template-columns:1fr !important}
+  [data-m~="blogthumb"] img{aspect-ratio:16/10 !important}
+  [data-m~="hero"]{grid-template-columns:1fr !important}
+  [data-m~="hero"] > div:first-child{display:none !important}
+  [data-m~="heroimg"]{grid-column:1 !important}
+  [data-m~="herotext"]{padding:40px 24px 40px !important}
+}
+</style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</helmet>
+<div style="background:#fff;color:#141312">
+
+  <header data-m="pad" style="display:flex;align-items:center;gap:32px;padding:24px 40px;flex-wrap:wrap;background:#fff;position:sticky;top:0;z-index:20">
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:20px;letter-spacing:.32em;text-transform:uppercase;font-weight:400">Küchenheld</div>
+    <nav data-m="navdesk" style="display:flex;gap:16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;flex:1;min-width:0;flex-wrap:wrap"><a data-ul href="#kuechendesign" onClick="{{ navGo }}" style="cursor:pointer">Küchendesign</a><a data-ul href="#planung" onClick="{{ navGo }}" style="cursor:pointer">Planung</a><a data-ul href="#blog" onClick="{{ navGo }}" style="cursor:pointer">Blog</a><a data-ul href="#standorte" onClick="{{ navGo }}" style="cursor:pointer">Standorte</a></nav>
+    <div data-m="navdesk" style="display:flex;gap:24px;justify-content:flex-end;font-size:12px;letter-spacing:.12em;text-transform:uppercase;flex:none"><span data-ul style="cursor:pointer;white-space:nowrap">Einloggen</span><a data-ul2 href="#fragebogen" onClick="{{ toForm }}" style="border-bottom:1px solid #141312;padding-bottom:2px;cursor:pointer;white-space:nowrap">Termin buchen</a></div>
+    <span data-m="burger" onClick="{{ navToggle }}" style="display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;align-items:flex-end;margin-left:auto;flex:none">
+      <span style="display:block;width:24px;height:1px;background:#141312"></span>
+      <span style="display:block;width:16px;height:1px;background:#141312"></span>
+    </span>
+  </header>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:200;background:#f4f2ed;display:flex;flex-direction:column;padding:24px;box-sizing:border-box;overflow-y:auto;animation:khNavIn .5s cubic-bezier(.16,1,.3,1) both">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;letter-spacing:.32em;text-transform:uppercase">Küchenheld</div>
+        <span onClick="{{ navToggle }}" style="font-size:24px;font-weight:200;line-height:1;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer">×</span>
+      </div>
+      <nav style="display:flex;flex-direction:column;margin-top:48px">
+        <a href="#kuechendesign" onClick="{{ navGo }}" style="font-size:32px;font-weight:200;padding:20px 0;border-top:1px solid rgba(20,19,18,.14)">Küchendesign</a>
+        <a href="#planung" onClick="{{ navGo }}" style="font-size:32px;font-weight:200;padding:20px 0;border-top:1px solid rgba(20,19,18,.14)">Planung</a>
+        <a href="#blog" onClick="{{ navGo }}" style="font-size:32px;font-weight:200;padding:20px 0;border-top:1px solid rgba(20,19,18,.14)">Blog</a>
+        <a href="#standorte" onClick="{{ navGo }}" style="font-size:32px;font-weight:200;padding:20px 0;border-top:1px solid rgba(20,19,18,.14);border-bottom:1px solid rgba(20,19,18,.14)">Standorte</a>
+      </nav>
+      <div style="margin-top:auto;display:flex;flex-direction:column;gap:16px">
+        <a href="#fragebogen" onClick="{{ navGo }}" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;background:#141312;color:#fff;padding:18px 32px;text-align:center">Termin buchen</a>
+        <span onClick="{{ navToggle }}" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,19,18,.55);text-align:center;cursor:pointer">Einloggen</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="min-height:100vh;display:flex;flex-direction:column">
+  <section data-m="hero" style="position:relative;flex:1;min-height:824px;background:#fff;display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,1.02fr);align-items:stretch;overflow:hidden">
+    <div style="border-right:1px solid rgba(20,19,18,.12);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:32px 0 32px">
+      <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(20,19,18,.4)">01</span>
+      <span style="writing-mode:vertical-rl;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:rgba(20,19,18,.4);animation:khFade 1.4s ease .9s both">Küchenheld — seit 2019</span>
+      <span style="width:1px;height:64px;background:rgba(20,19,18,.2);display:block;transform-origin:top;animation:khDrop 1.2s cubic-bezier(.16,1,.3,1) 1s both"></span>
+    </div>
+
+    <div data-m="herotext" style="display:flex;flex-direction:column;justify-content:center;padding:96px 64px 64px 56px;box-sizing:border-box">
+      <div style="font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:rgba(20,19,18,.42);margin-bottom:48px;animation:khFade 1s ease .05s both">Küchen, individuell geplant</div>
+      <h1 style="margin:0;font-weight:200;font-size:clamp(40px,4.8vw,80px);line-height:.98">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span style="display:block;animation:khLineUp 1.1s cubic-bezier(.16,1,.3,1) .1s both">Küche kaufen</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span style="display:block;padding-left:1.1em;font-style:italic;font-weight:200;animation:khLineUp 1.1s cubic-bezier(.16,1,.3,1) .24s both">von zuhause</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span style="display:block;padding-left:2.6em;animation:khLineUp 1.1s cubic-bezier(.16,1,.3,1) .38s both">aus</span></span>
+      </h1>
+      <div style="width:100%;height:1px;background:rgba(20,19,18,.14);margin:56px 0 32px;transform-origin:left;animation:khRule 1.2s cubic-bezier(.16,1,.3,1) .6s both"></div>
+      <p style="font-size:16px;line-height:1.8;margin:0;max-width:46ch;color:rgba(20,19,18,.7);animation:khRise 1s ease .72s both">Küche online kaufen vom Sofa aus oder bei uns vor Ort in einem unserer 8 Showrooms deutschlandweit. Kein Risiko: Preisgarantie bis Ende 2026.</p>
+      <div style="display:flex;align-items:center;gap:32px;margin-top:48px;flex-wrap:wrap;animation:khRise 1s ease .86s both">
+        <a href="#fragebogen" onClick="{{ toForm }}" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;background:#141312;color:#fff;padding:16px 40px;cursor:pointer;transition:opacity .2s" style-hover="opacity:.82">Küchenwünsche angeben</a>
+        <span data-ul2 style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,19,18,.6);border-bottom:1px solid rgba(20,19,18,.3);padding-bottom:4px;cursor:pointer">Showrooms ansehen</span>
+      </div>
+    </div>
+
+    <div data-m="heroimg" style="position:relative;overflow:hidden;background:#e9e6e0">
+      <div data-hero-slide style="position:absolute;inset:0;overflow:hidden;z-index:1;animation:khImgIn 1.7s cubic-bezier(.62,.02,.24,1) both">
+        <div data-hero-lag style="position:absolute;inset:0;animation:khSlideLag 1.7s cubic-bezier(.62,.02,.24,1) both">
+          <img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/6391b8b8063c746bf99d6365_bali_nussbaum.avif" alt="Bali Nussbaum Küche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:khHeroDrift 9s linear both">
+        <div style="position:absolute;left:32px;bottom:32px;right:32px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;color:#fff;animation:khFade 1.2s ease 1.2s both">
+          <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.9">Modell Bali — Nussbaum</span>
+          <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.9">Hamburg</span>
+        </div>
+      </div>
+      </div>
+      <div data-hero-slide style="position:absolute;inset:0;overflow:hidden;z-index:2;clip-path:inset(0 0 0 100%)">
+        <div data-hero-lag style="position:absolute;inset:0">
+          <img src="uploads/csm_Schueller_wohnkueche_8b26b4edbd.webp" alt="Wohnküche in Salbeigrün" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:khHeroDrift 9s linear both">
+        <div style="position:absolute;left:32px;bottom:32px;right:32px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;color:#fff;animation:khFade 1.2s ease .5s both">
+          <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.9">Modell Wohnküche — Salbei</span>
+          <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.9">Berlin</span>
+        </div>
+      </div>
+      </div>
+      <div data-hero-slide style="position:absolute;inset:0;overflow:hidden;z-index:3;clip-path:inset(0 0 0 100%)">
+        <div data-hero-lag style="position:absolute;inset:0">
+          <img src="uploads/100_JEK_Haecker_Kueche_1700x1200.jpg" alt="Offene Küche mit Insel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:khHeroDrift 9s linear both">
+        <div style="position:absolute;left:32px;bottom:32px;right:32px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;color:#fff;animation:khFade 1.2s ease .5s both">
+          <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.9">Modell Insel — Kaschmir</span>
+          <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.9">München</span>
+        </div>
+      </div>
+      </div>
+      <div data-hero-slide style="position:absolute;inset:0;overflow:hidden;z-index:4;clip-path:inset(0 0 0 100%)">
+        <div data-hero-lag style="position:absolute;inset:0">
+          <img src="uploads/csm_Vegas_Urban_Brown_Metallic_Header_2560x1250_b7a6423bef.jpg" alt="Küche Vegas Urban Brown Metallic" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:khHeroDrift 9s linear both">
+        <div style="position:absolute;left:32px;bottom:32px;right:32px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;color:#fff;animation:khFade 1.2s ease .5s both">
+          <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.9">Modell Vegas — Urban Brown</span>
+          <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.9">Köln</span>
+        </div>
+      </div>
+      </div>
+      <div data-hero-edge style="position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.9);z-index:15;left:100%;opacity:0;pointer-events:none;animation:khEdge 1.7s cubic-bezier(.62,.02,.24,1) both"></div>
+      <div style="position:absolute;right:32px;top:32px;z-index:20;display:flex;gap:8px">
+        <span data-hero-dot style="width:24px;height:2px;background:#fff;display:block;opacity:1;transition:opacity .5s ease"></span>
+        <span data-hero-dot style="width:24px;height:2px;background:#fff;display:block;opacity:.35;transition:opacity .5s ease"></span>
+        <span data-hero-dot style="width:24px;height:2px;background:#fff;display:block;opacity:.35;transition:opacity .5s ease"></span>
+        <span data-hero-dot style="width:24px;height:2px;background:#fff;display:block;opacity:.35;transition:opacity .5s ease"></span>
+      </div>
+    </div>
+  </section>
+
+  <div data-m="one strip" style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(20,19,18,.14);border-bottom:1px solid rgba(20,19,18,.14)">
+    <div style="padding:24px 40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(20,19,18,.62);animation:khRise .9s ease 1.10s both">1.500+ Küchen pro Jahr</div>
+    <div style="padding:24px 40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(20,19,18,.62);animation:khRise .9s ease 1.20s both;border-left:1px solid rgba(20,19,18,.14)">★ 4.7 Reviews.io</div>
+    <div style="padding:24px 40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(20,19,18,.62);animation:khRise .9s ease 1.30s both;border-left:1px solid rgba(20,19,18,.14)">8 Showrooms</div>
+  </div>
+
+  <section id="fragebogen" data-m="pad vpad" style="background:#faf9f6;flex:none;padding:120px 40px 128px">
+    <div style="max-width:1240px;margin:0 auto">
+    <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-bottom:16px">Schritt 1 von 4 — Küchenform</div>
+    <h2 data-m="h2" style="font-size:48px;font-weight:300;line-height:1.1;margin:0 0 16px;max-width:34ch">Jetzt Ihre Küchenwünsche angeben und ein kostenloses Angebot erhalten</h2>
+    <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-bottom:48px">Kostenlos · 2 Minuten · Unverbindlich</div>
+    <div data-m="two" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <div onClick="{{ pickZeile }}" style="position:relative;background:#fff;border:1px solid rgba(20,19,18,.14);padding:64px 0 56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#141312;box-shadow:0 8px 24px rgba(20,19,18,.09)">
+        <sc-if value="{{ selZeile }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute;inset:-1px;border:1.5px solid #141312;pointer-events:none"></span>
+          <span style="position:absolute;top:12px;right:12px;font-size:12px">✓</span>
+        </sc-if>
+        <img src="uploads/shape-kitchenette.svg" alt="Küchenzeile" style="width:104px;height:80px;display:block">
+        <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">Küchenzeile</span>
+      </div>
+      <div onClick="{{ pickL }}" style="position:relative;background:#fff;border:1px solid rgba(20,19,18,.14);padding:64px 0 56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#141312;box-shadow:0 8px 24px rgba(20,19,18,.09)">
+        <sc-if value="{{ selL }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute;inset:-1px;border:1.5px solid #141312;pointer-events:none"></span>
+          <span style="position:absolute;top:12px;right:12px;font-size:12px">✓</span>
+        </sc-if>
+        <img src="uploads/shape-l-form.svg" alt="L-Form" style="width:104px;height:80px;display:block">
+        <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">L-Form</span>
+      </div>
+      <div onClick="{{ pickU }}" style="position:relative;background:#fff;border:1px solid rgba(20,19,18,.14);padding:64px 0 56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#141312;box-shadow:0 8px 24px rgba(20,19,18,.09)">
+        <sc-if value="{{ selU }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute;inset:-1px;border:1.5px solid #141312;pointer-events:none"></span>
+          <span style="position:absolute;top:12px;right:12px;font-size:12px">✓</span>
+        </sc-if>
+        <img src="uploads/shape-u.svg" alt="U-Form" style="width:104px;height:80px;display:block">
+        <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">U-Form</span>
+      </div>
+      <div onClick="{{ pickInsel }}" style="position:relative;background:#fff;border:1px solid rgba(20,19,18,.14);padding:64px 0 56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;transition:border-color .18s,box-shadow .18s" style-hover="border-color:#141312;box-shadow:0 8px 24px rgba(20,19,18,.09)">
+        <sc-if value="{{ selInsel }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute;inset:-1px;border:1.5px solid #141312;pointer-events:none"></span>
+          <span style="position:absolute;top:12px;right:12px;font-size:12px">✓</span>
+        </sc-if>
+        <img src="uploads/shape-island.svg" alt="Kücheninsel" style="width:104px;height:80px;display:block">
+        <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">Kücheninsel</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:24px;margin-top:40px">
+      <span style="font-size:12px;color:#141312;border-bottom:1px solid rgba(20,19,18,.5);padding-bottom:4px;cursor:pointer">Andere Küchenform / steht noch nicht fest</span>
+      <sc-if value="{{ hasPick }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:24px">
+          <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,19,18,.55)">{{ pickedNote }}</span>
+          <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;background:#141312;color:#faf9f6;padding:16px 32px;cursor:pointer;white-space:nowrap">Weiter</span>
+        </div>
+      </sc-if>
+    </div>
+    </div>
+  </section>
+
+  <section id="planung" data-m="one" style="display:grid;grid-template-columns:1fr 1fr;align-items:stretch">
+    <div data-m="imgblock" style="position:relative;min-height:640px;overflow:hidden">
+      <img data-parallax src="uploads/pasted-1786635089801-0.png" alt="Küche mit Eiche-Insel und hellen Fronten" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    <div data-m="inpad" style="padding:104px 56px 112px">
+      <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-bottom:24px">Küchenwunsch, Planung, fertig</div>
+      <div style="margin-bottom:64px">
+        <h2 data-m="h2" style="font-size:48px;font-weight:300;margin:0 0 24px;line-height:1.1">So funktioniert der Küchenkauf mit Küchenheld</h2>
+        <p style="font-size:16px;line-height:1.8;margin:0;color:rgba(20,19,18,.7)">Drei Schritte, ein festes Planungsteam: Sie geben Ihre Küchenwünsche an, wir planen Ihre Küche gemeinsam mit Ihnen und liefern sie fertig montiert — mit 100 % transparentem Angebot ohne versteckte Kosten.</p>
+      </div>
+      <div>
+        <div data-m="step" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:24px;align-items:start;padding:40px 0;border-top:1px solid rgba(20,19,18,.18)">
+          <div style="font-size:40px;font-weight:300;line-height:1;color:rgba(20,19,18,.3)">01</div>
+          <div><div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:16px">Küchenwünsche angeben</div>
+          <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(20,19,18,.72)">Holz, Beton oder Stein? Mit oder ohne Kücheninsel? Füllen Sie unseren Fragebogen aus, wir rufen Sie an und vereinbaren ein erstes telefonisches Beratungsgespräch. Nach 45 Minuten erhalten Sie von unserem Planungsteam eine konkrete Preisindikation.</p></div>
+        </div>
+        <div data-m="step" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:24px;align-items:start;padding:40px 0;border-top:1px solid rgba(20,19,18,.18)">
+          <div style="font-size:40px;font-weight:300;line-height:1;color:rgba(20,19,18,.3)">02</div>
+          <div><div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:16px">Wir planen Ihre neue Küche</div>
+          <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(20,19,18,.72)">Wir planen Ihre Küche anhand Ihrer Angaben und beraten Sie zu jedem Schritt persönlich. Nach dem ersten Beratungsgespräch begrüßen wir Sie exklusiv in unserem Showroom, wo Sie Ihre zukünftige Küche via VR erleben können.</p></div>
+        </div>
+        <div data-m="step" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:24px;align-items:start;padding:40px 0;border-top:1px solid rgba(20,19,18,.18);border-bottom:1px solid rgba(20,19,18,.18)">
+          <div style="font-size:40px;font-weight:300;line-height:1;color:rgba(20,19,18,.3)">03</div>
+          <div><div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:16px">Ihre Traumküche ist fertig</div>
+          <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(20,19,18,.72)">Schon nach ca. 8-9 Wochen (ab Aufmaß) liefern wir Ihre maßgeschneiderte Küche und montieren sie fachgerecht. Im Vorfeld wird unser Expertenteam bei Ihnen ein präzises Maß (Laseraufmaß) nehmen, um sicherzustellen, dass Ihre Küche perfekt passt.</p></div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <section data-m="pad vpad" style="background:#141312;color:#f4f2ed;padding:120px 40px 128px">
+    <div style="max-width:1240px;margin:0 auto">
+      <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,242,237,.5);margin-bottom:24px">Unsere Werte</div>
+      <h2 data-m="h2" style="font-size:48px;font-weight:300;line-height:1.1;margin:0 0 72px">Ihre Vorteile auf einen Blick</h2>
+      <div data-m="one gap32" style="display:grid;grid-template-columns:repeat(3,1fr);gap:56px">
+      <div style="border-top:1px solid rgba(244,242,237,.28);padding-top:24px">
+        <div data-m="stat" style="font-size:56px;font-weight:300;line-height:1;margin-bottom:16px">100 %</div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:16px">Schnell &amp; transparent</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(244,242,237,.65)">Küchenzeilen, Küchenblöcke, Materialien, Farben – kein Grund zur Verzweiflung: Sie erhalten schnell ein Angebot, das Ihren Wünschen und Ihrem Budget entspricht – mit 100 % Transparenz und ohne versteckte Rabatte.</p>
+      </div>
+      <div style="border-top:1px solid rgba(244,242,237,.28);padding-top:24px">
+        <div data-m="stat" style="font-size:56px;font-weight:300;line-height:1;margin-bottom:16px">1.500+</div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:16px">Höchste Qualität</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(244,242,237,.65)">Wir liefern die hochwertigsten Küchen mit erstklassiger Handwerkskunst. Mit über 1.500 installierten Luxusküchen pro Jahr sorgen wir dafür, dass jedes Detail Ihren Raum in ein atemberaubendes und funktionales Meisterwerk verwandelt.</p>
+      </div>
+      <div style="border-top:1px solid rgba(244,242,237,.28);padding-top:24px">
+        <div data-m="stat" style="font-size:56px;font-weight:300;line-height:1;margin-bottom:16px">1 Team</div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:16px">Alles aus einer Hand</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(244,242,237,.65)">Wir leben für den besten Service! Von der Planung bis zur Montage lassen wir gemeinsam mit Ihrem ganz persönlichen, festen Planungsteam Ihren Küchentraum Wirklichkeit werden.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kuechendesign" data-m="pad" style="padding:120px 40px 0;max-width:1240px;margin:0 auto">
+    <h2 data-m="h2" style="font-size:48px;font-weight:300;margin:0 0 16px;line-height:1.1">Küchenplanung entdecken</h2>
+    <p style="font-size:16px;line-height:1.8;margin:0;max-width:60ch;color:rgba(20,19,18,.7)">Erleben Sie individuelle Küchenplanung – Transparent, digital und auf Sie zugeschnitten.</p>
+  </section>
+  <section data-m="railpad" style="padding:56px 40px 128px">
+    <div style="position:relative" onMouseEnter="{{ hover1On }}" onMouseLeave="{{ hover1Off }}">
+    <div id="kh-rail" ref="{{ railRef }}" style="display:flex;gap:32px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none">
+      <div data-m="card" style="cursor:pointer;flex:none;width:calc((100% - 64px) / 3);scroll-snap-align:start">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/6392140b779bba3ec4a6586a_AV_2040_Feiniche-schwarz_M1.avif" alt="Küchenfronten" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;margin-bottom:24px"></div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Küchenfronten</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;max-width:44ch;color:rgba(20,19,18,.6)">Finden Sie die perfekten Fronten für Ihre Küche. Ob matt, glänzend oder strukturiert – unsere Auswahl bietet für jeden Stil das Richtige.</p>
+      </div>
+      <div data-m="card" style="cursor:pointer;flex:none;width:calc((100% - 64px) / 3);scroll-snap-align:start">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/65df79f468b3c45ab4615173_63c0080f92c610d426bbfb15_next125_nx510-L417M-L262M_GS-3_2022.avif" alt="Arbeitsplatten" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;margin-bottom:24px"></div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Arbeitsplatten</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;max-width:44ch;color:rgba(20,19,18,.6)">Die Arbeitsfläche ist das Herz jeder Küche. Wählen Sie aus langlebigen Materialien und Oberflächen, die sowohl funktional als auch ästhetisch ansprechend sind.</p>
+      </div>
+      <div data-m="card" style="cursor:pointer;flex:none;width:calc((100% - 64px) / 3);scroll-snap-align:start">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/6391b8b8063c746bf99d6365_bali_nussbaum.avif" alt="Küchengriffe" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;margin-bottom:24px"></div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Küchengriffe</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;max-width:44ch;color:rgba(20,19,18,.6)">Verleihen Sie Ihrer Küche den letzten Schliff: Mit einer großen Auswahl an Griffen in verschiedenen Designs und Materialien können Sie den Stil Ihrer Küche optimal abrunden.</p>
+      </div>
+      <div data-m="card" style="cursor:pointer;flex:none;width:calc((100% - 64px) / 3);scroll-snap-align:start">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/671931899f866ce54fccd2c0_63e23e35fddb58fa58db14c7_kueche_planen_kuechenheld_erfahrungsbericht_weissekueche02-p-1080.avif" alt="Küchenformen" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;margin-bottom:24px"></div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Küchenformen</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;max-width:44ch;color:rgba(20,19,18,.6)">Jede Küche ist einzigartig – und so auch ihre Form. Finden Sie die Küchenform, die sich optimal in Ihren Raum einfügt und Ihre Arbeitsabläufe unterstützt.</p>
+      </div>
+      <div data-m="card" style="cursor:pointer;flex:none;width:calc((100% - 64px) / 3);scroll-snap-align:start">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/6719318a8d24c510c2ae6e29_6492ef72324d1593d81352dc_kuechenheld-erfahrungen-fredericks-gruene-landhauskueche-01.avif" alt="Erfahrungsberichte" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;margin-bottom:24px"></div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Erfahrungsberichte</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;max-width:44ch;color:rgba(20,19,18,.6)">Lesen Sie, wie andere KundInnen ihre Küche mit Küchenheld geplant haben – von der ersten Idee bis zur fertigen Montage.</p>
+      </div>
+      <div data-m="card" style="cursor:pointer;flex:none;width:calc((100% - 64px) / 3);scroll-snap-align:start">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/66913e8e61d76e134d138369_offer%20comparison.avif" alt="Küchenangebot vergleichen" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;margin-bottom:24px"></div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Küchenangebot vergleichen</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;max-width:44ch;color:rgba(20,19,18,.6)">Mit Küchenheld können Sie Ihr vorhandenes Angebot vergleichen und die beste Wahl für Ihre maßgeschneiderte Küche treffen.</p>
+      </div>
+      <div data-m="card" style="cursor:pointer;flex:none;width:calc((100% - 64px) / 3);scroll-snap-align:start">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/67619848a1d1494b74d61a52_673b5f99f9ff92f735ef301f_GS8A8222.jpg" alt="Küchenideen" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;margin-bottom:24px"></div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Küchenideen</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;max-width:44ch;color:rgba(20,19,18,.6)">Entdecken Sie unsere kreativen Küchenideen und finden Sie die perfekte Inspiration, um Ihre Küche nach Ihren individuellen Vorstellungen zu planen.</p>
+      </div>
+      <div data-m="card" style="cursor:pointer;flex:none;width:calc((100% - 64px) / 3);scroll-snap-align:start">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/6719318918827f73ac6c1645_640760c63763b9306a21153c_kueche-planen-kundenkueche-schwarze-landhausku%CC%88che-diana-01.avif" alt="Küchenstile" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;margin-bottom:24px"></div>
+        <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Küchenstile</div>
+        <p style="font-size:14px;line-height:1.8;margin:0;max-width:44ch;color:rgba(20,19,18,.6)">Entdecken Sie eine Vielfalt an Küchenstilen – von modern bis klassisch – und lassen Sie sich inspirieren, um Ihre Küche nach Ihrem Geschmack zu gestalten.</p>
+      </div>
+    </div>
+    <div style="position:absolute;top:0;left:0;right:0;display:flex;align-items:center;pointer-events:none">
+      <div style="width:calc((100% - 64px) / 3);aspect-ratio:3/4"></div>
+      <span onClick="{{ railPrev }}" style="pointer-events:auto;position:absolute;top:50%;margin-top:-20px;left:16px;width:40px;height:40px;background:rgba(255,255,255,.92);border:1px solid rgba(20,19,18,.12);display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;opacity:{{ arrows1 }};transition:opacity .3s ease,background .18s,color .18s" style-hover="background:#141312;color:#fff">←</span>
+      <span onClick="{{ railNext }}" style="pointer-events:auto;position:absolute;top:50%;margin-top:-20px;right:16px;width:40px;height:40px;background:rgba(255,255,255,.92);border:1px solid rgba(20,19,18,.12);display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;opacity:{{ arrows1 }};transition:opacity .3s ease,background .18s,color .18s" style-hover="background:#141312;color:#fff">→</span>
+    </div>
+    </div>
+  </section>
+
+  <section data-m="pad vpad" style="background:#faf9f6;padding:128px 40px 128px">
+    <div style="max-width:1240px;margin:0 auto">
+      <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4);margin-bottom:32px">Bewertungen</div>
+      <div data-m="one gap32" style="display:grid;grid-template-columns:1fr auto;gap:80px;align-items:end;padding-bottom:64px">
+        <div>
+          <h2 data-m="h2" style="font-size:48px;font-weight:300;margin:0 0 24px;line-height:1.1;max-width:24ch">Über 1.500 gekaufte Küchen im Jahr</h2>
+          <p style="font-size:16px;line-height:1.8;margin:0;max-width:56ch;color:rgba(20,19,18,.7)">Jedes Jahr dürfen wir mehr als 1.500 KundInnen bei ihrer Küchenrenovierung unterstützen! Unsere KundInnen sind von der Küchenplanung mit Küchenheld begeistert und mehr als 85% empfehlen uns weiter:</p>
+        </div>
+        <div style="display:flex;gap:56px;align-items:flex-end;flex-wrap:wrap">
+          <div>
+            <div data-m="stat" style="font-size:56px;font-weight:300;line-height:1">4,7</div>
+            <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-top:8px">★★★★★ Reviews.io</div>
+          </div>
+          <div>
+            <div data-m="stat" style="font-size:56px;font-weight:300;line-height:1">85 %</div>
+            <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-top:8px">Empfehlungen</div>
+          </div>
+          <div style="display:flex;gap:24px;margin-left:auto;padding-bottom:4px">
+            <span onClick="{{ rail2Prev }}" style="font-size:20px;line-height:1;color:rgba(20,19,18,.45);cursor:pointer;transition:color .3s ease" style-hover="color:#141312">←</span>
+            <span onClick="{{ rail2Next }}" style="font-size:20px;line-height:1;color:rgba(20,19,18,.45);cursor:pointer;transition:color .3s ease" style-hover="color:#141312">→</span>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative" onMouseEnter="{{ hover2On }}" onMouseLeave="{{ hover2Off }}">
+        <div id="kh-rail2" ref="{{ rail2Ref }}" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;align-items:stretch">
+        <div data-m="quote" style="flex:none;width:33.3333%;scroll-snap-align:start;box-sizing:border-box;padding:32px 40px 0 0;display:flex;flex-direction:column;gap:24px;border-top:1px solid rgba(20,19,18,.2)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+            <span style="font-size:16px;letter-spacing:.2em;color:#141312;flex:1">★★★★★</span>
+            <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4)">14.11.2024</span>
+          </div>
+          <p style="font-size:24px;font-weight:300;line-height:1.5;margin:0;color:#141312">„Alles hat super geklappt! Der ganze Prozess war wirklich super. Unsere Küche sieht fantastisch aus, wir haben eine tolle Beratung von Reiner bekommen. Wir sind wirklich dankbar für das Endergebnis.“</p>
+          <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,19,18,.45);line-height:1.6;min-height:32px;margin-top:auto;padding-bottom:32px">Ariadna · Verified customer</div>
+        </div>
+        <div data-m="quote" style="flex:none;width:33.3333%;scroll-snap-align:start;box-sizing:border-box;padding:32px 40px 0 0;display:flex;flex-direction:column;gap:24px;border-top:1px solid rgba(20,19,18,.2)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+            <span style="font-size:16px;letter-spacing:.2em;color:#141312;flex:1">★★★★★</span>
+            <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4)">09.10.2024</span>
+          </div>
+          <p style="font-size:24px;font-weight:300;line-height:1.5;margin:0;color:#141312">„Wie hier alle schon schreiben: Die Planung war mega! Aber auch zur Montage möchte ich mich äußern: Es hat wunderbar alles funktioniert, die Monteure waren super auf Zack und auch beanstanden musste ich nichts.“</p>
+          <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,19,18,.45);line-height:1.6;min-height:32px;margin-top:auto;padding-bottom:32px">Sebastian · Verified customer</div>
+        </div>
+        <div data-m="quote" style="flex:none;width:33.3333%;scroll-snap-align:start;box-sizing:border-box;padding:32px 40px 0 0;display:flex;flex-direction:column;gap:24px;border-top:1px solid rgba(20,19,18,.2)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+            <span style="font-size:16px;letter-spacing:.2em;color:#141312;flex:1">★★★★★</span>
+            <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4)">20.09.2024</span>
+          </div>
+          <p style="font-size:24px;font-weight:300;line-height:1.5;margin:0;color:#141312">„Digital, einfach und Klasse!“</p>
+          <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,19,18,.45);line-height:1.6;min-height:32px;margin-top:auto;padding-bottom:32px">Georg Hauer · Verified customer</div>
+        </div>
+        <div data-m="quote" style="flex:none;width:33.3333%;scroll-snap-align:start;box-sizing:border-box;padding:32px 40px 0 0;display:flex;flex-direction:column;gap:24px;border-top:1px solid rgba(20,19,18,.2)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+            <span style="font-size:16px;letter-spacing:.2em;color:#141312;flex:1">★★★★★</span>
+            <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4)">13.09.2024</span>
+          </div>
+          <p style="font-size:24px;font-weight:300;line-height:1.5;margin:0;color:#141312">„Ich bin begeistert! Der gesamte Prozess war perfekt, vom ersten online Beantworten bis zur Lieferung der Küche, das Münchner Team Herr Klewitz, Frau Tobias und Frau Rabus waren ebenfalls top! Es hat rundum – Kundenservice, Preis, Lieferung alles gepasst!“</p>
+          <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,19,18,.45);line-height:1.6;min-height:32px;margin-top:auto;padding-bottom:32px">Barbara M · Verified customer</div>
+        </div>
+        <div data-m="quote" style="flex:none;width:33.3333%;scroll-snap-align:start;box-sizing:border-box;padding:32px 40px 0 0;display:flex;flex-direction:column;gap:24px;border-top:1px solid rgba(20,19,18,.2)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+            <span style="font-size:16px;letter-spacing:.2em;color:#141312;flex:1">★★★★★</span>
+            <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4)">12.09.2024</span>
+          </div>
+          <p style="font-size:24px;font-weight:300;line-height:1.5;margin:0;color:#141312">„Wir sind sehr glücklich mit unserer Küche und deswegen geben wir hier auch gerne eine positive Bewertung ab!“</p>
+          <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,19,18,.45);line-height:1.6;min-height:32px;margin-top:auto;padding-bottom:32px">Karl Theodor · Verified customer</div>
+        </div>
+        <div data-m="quote" style="flex:none;width:33.3333%;scroll-snap-align:start;box-sizing:border-box;padding:32px 40px 0 0;display:flex;flex-direction:column;gap:24px;border-top:1px solid rgba(20,19,18,.2)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+            <span style="font-size:16px;letter-spacing:.2em;color:#141312;flex:1">★★★★★</span>
+            <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4)">11.09.2024</span>
+          </div>
+          <p style="font-size:24px;font-weight:300;line-height:1.5;margin:0;color:#141312">„Der gesamte Prozess wurde sehr gut betreut! Die Planung war schon super und Lieferung und Montage sind auch gut über die Bühne gegangen. Die Küche sieht top aus!“</p>
+          <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,19,18,.45);line-height:1.6;min-height:32px;margin-top:auto;padding-bottom:32px">Susanne · Verified customer</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-m="one" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch">
+    <div data-m="imgblock" style="position:relative;min-height:800px" onMouseEnter="{{ hover3On }}" onMouseLeave="{{ hover3Off }}">
+      <div id="kh-rail3" ref="{{ rail3Ref }}" style="position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none">
+        <div style="position:relative;flex:none;width:100%;height:100%;scroll-snap-align:start;overflow:hidden;background:#e9e6e0">
+          <img src="uploads/Kuechenheld Lichterfelde -HEJM-4499.jpg" alt="Familie in ihrer neuen Küche in Lichterfelde" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          <span style="position:absolute;left:24px;bottom:24px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#fff;opacity:.92">Küche Lichterfelde</span>
+        </div>
+        <div style="position:relative;flex:none;width:100%;height:100%;scroll-snap-align:start;overflow:hidden;background:#e9e6e0">
+          <img src="uploads/GS8A83612.jpg" alt="Paar in seiner neuen dunkelblauen Küche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          <span style="position:absolute;left:24px;bottom:24px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#fff;opacity:.92">Küche in Anthrazit</span>
+        </div>
+        <div style="position:relative;flex:none;width:100%;height:100%;scroll-snap-align:start;overflow:hidden;background:#e9e6e0">
+          <img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/6719318964b7901f8cf5d09d_6540c5f0adb7734a17bebaac_kuechenheld_schwarze_trendkueche-p-1080.avif" alt="Schwarze Trendküche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          <span style="position:absolute;left:24px;bottom:24px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#fff;opacity:.92">Schwarze Trendküche</span>
+        </div>
+        <div style="position:relative;flex:none;width:100%;height:100%;scroll-snap-align:start;overflow:hidden;background:#e9e6e0">
+          <img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/671931899f866ce54fccd2c0_63e23e35fddb58fa58db14c7_kueche_planen_kuechenheld_erfahrungsbericht_weissekueche02-p-1080.avif" alt="Weiße Küche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          <span style="position:absolute;left:24px;bottom:24px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#fff;opacity:.92">Weiße Küche</span>
+        </div>
+      </div>
+      <span onClick="{{ rail3Prev }}" style="position:absolute;top:50%;left:16px;margin-top:-20px;width:40px;height:40px;background:rgba(255,255,255,.92);border:1px solid rgba(20,19,18,.12);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;opacity:{{ arrows3 }};transition:opacity .3s ease,background .18s,color .18s" style-hover="background:#141312;color:#fff">←</span>
+      <span onClick="{{ rail3Next }}" style="position:absolute;top:50%;right:16px;margin-top:-20px;width:40px;height:40px;background:rgba(255,255,255,.92);border:1px solid rgba(20,19,18,.12);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;opacity:{{ arrows3 }};transition:opacity .3s ease,background .18s,color .18s" style-hover="background:#141312;color:#fff">→</span>
+    </div>
+    <div data-m="inpad" style="padding:104px 56px 112px;display:flex;flex-direction:column;justify-content:center">
+      <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-bottom:24px">Erfahrungsberichte</div>
+      <h2 style="font-size:clamp(32px,3.4vw,48px);font-weight:300;margin:0 0 24px;max-width:24ch;line-height:1.1;overflow-wrap:break-word;hyphens:auto">Kundenerfahrungen: Gemeinsam Erfolge schaffen</h2>
+      <p style="font-size:16px;line-height:1.8;margin:0 0 48px;max-width:44ch;color:rgba(20,19,18,.7)">Sehen Sie, wie die Zusammenarbeit mit unserem Team zu transformierenden Ergebnissen für unsere KundInnen geführt hat.</p>
+      <span data-ul2 style="align-self:flex-start;font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #141312;padding-bottom:4px;cursor:pointer">Erfahrungsberichte ansehen</span>
+    </div>
+  </section>
+
+  <div data-rule style="height:1px;background:rgba(20,19,18,.18)"></div>
+  <section id="standorte" data-m="pad vpad one gap32" style="padding:120px 40px 128px;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:.85fr 1fr;gap:96px;align-items:start">
+    <div>
+      <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4);margin-bottom:32px">Standorte</div>
+      <h2 data-m="h2" style="font-size:48px;font-weight:300;line-height:1.1;margin:0 0 24px;max-width:20ch">Küche kaufen leicht gemacht: Online planen, vor Ort erleben</h2>
+      <p style="font-size:16px;line-height:1.8;margin:0 0 40px;max-width:36ch;color:rgba(20,19,18,.7)">Buchen Sie Ihre Küchenberatung exklusiv in einem unserer 8 Showrooms!</p>
+      <a href="#fragebogen" onClick="{{ toForm }}" style="display:inline-block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;border:1px solid #141312;padding:16px 32px;cursor:pointer;transition:background .18s,color .18s" style-hover="background:#141312;color:#faf9f6">Termin buchen</a>
+      <div style="display:flex;gap:40px;margin-top:64px">
+        <div><div style="font-size:40px;font-weight:300;line-height:1">8</div><div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-top:8px">Showrooms</div></div>
+        <div><div style="font-size:40px;font-weight:300;line-height:1">1</div><div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-top:8px">Planungsteam</div></div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(20,19,18,.16)">
+      <div style="display:grid;grid-template-columns:40px minmax(0,1fr) 24px;align-items:center;gap:24px;padding:20px 8px;border-bottom:1px solid rgba(20,19,18,.16);cursor:pointer;transition:padding-left .25s ease,background .25s ease" style-hover="background:rgba(20,19,18,.04);padding-left:16px">
+        <span style="font-size:10px;letter-spacing:.28em;color:rgba(20,19,18,.4)">01</span>
+        <span style="font-size:24px;font-weight:400;line-height:1.4">Berlin-Charlottenburg</span>
+        <span style="font-size:16px;color:rgba(20,19,18,.35);text-align:right">→</span>
+      </div>
+      <div style="display:grid;grid-template-columns:40px minmax(0,1fr) 24px;align-items:center;gap:24px;padding:20px 8px;border-bottom:1px solid rgba(20,19,18,.16);cursor:pointer;transition:padding-left .25s ease,background .25s ease" style-hover="background:rgba(20,19,18,.04);padding-left:16px">
+        <span style="font-size:10px;letter-spacing:.28em;color:rgba(20,19,18,.4)">02</span>
+        <span style="font-size:24px;font-weight:400;line-height:1.4">Berlin-Mitte</span>
+        <span style="font-size:16px;color:rgba(20,19,18,.35);text-align:right">→</span>
+      </div>
+      <div style="display:grid;grid-template-columns:40px minmax(0,1fr) 24px;align-items:center;gap:24px;padding:20px 8px;border-bottom:1px solid rgba(20,19,18,.16);cursor:pointer;transition:padding-left .25s ease,background .25s ease" style-hover="background:rgba(20,19,18,.04);padding-left:16px">
+        <span style="font-size:10px;letter-spacing:.28em;color:rgba(20,19,18,.4)">03</span>
+        <span style="font-size:24px;font-weight:400;line-height:1.4">Düsseldorf</span>
+        <span style="font-size:16px;color:rgba(20,19,18,.35);text-align:right">→</span>
+      </div>
+      <div style="display:grid;grid-template-columns:40px minmax(0,1fr) 24px;align-items:center;gap:24px;padding:20px 8px;border-bottom:1px solid rgba(20,19,18,.16);cursor:pointer;transition:padding-left .25s ease,background .25s ease" style-hover="background:rgba(20,19,18,.04);padding-left:16px">
+        <span style="font-size:10px;letter-spacing:.28em;color:rgba(20,19,18,.4)">04</span>
+        <span style="font-size:24px;font-weight:400;line-height:1.4">Frankfurt am Main</span>
+        <span style="font-size:16px;color:rgba(20,19,18,.35);text-align:right">→</span>
+      </div>
+      <div style="display:grid;grid-template-columns:40px minmax(0,1fr) 24px;align-items:center;gap:24px;padding:20px 8px;border-bottom:1px solid rgba(20,19,18,.16);cursor:pointer;transition:padding-left .25s ease,background .25s ease" style-hover="background:rgba(20,19,18,.04);padding-left:16px">
+        <span style="font-size:10px;letter-spacing:.28em;color:rgba(20,19,18,.4)">05</span>
+        <span style="font-size:24px;font-weight:400;line-height:1.4">Freiburg</span>
+        <span style="font-size:16px;color:rgba(20,19,18,.35);text-align:right">→</span>
+      </div>
+      <div style="display:grid;grid-template-columns:40px minmax(0,1fr) 24px;align-items:center;gap:24px;padding:20px 8px;border-bottom:1px solid rgba(20,19,18,.16);cursor:pointer;transition:padding-left .25s ease,background .25s ease" style-hover="background:rgba(20,19,18,.04);padding-left:16px">
+        <span style="font-size:10px;letter-spacing:.28em;color:rgba(20,19,18,.4)">06</span>
+        <span style="font-size:24px;font-weight:400;line-height:1.4">Hamburg</span>
+        <span style="font-size:16px;color:rgba(20,19,18,.35);text-align:right">→</span>
+      </div>
+      <div style="display:grid;grid-template-columns:40px minmax(0,1fr) 24px;align-items:center;gap:24px;padding:20px 8px;border-bottom:1px solid rgba(20,19,18,.16);cursor:pointer;transition:padding-left .25s ease,background .25s ease" style-hover="background:rgba(20,19,18,.04);padding-left:16px">
+        <span style="font-size:10px;letter-spacing:.28em;color:rgba(20,19,18,.4)">07</span>
+        <span style="font-size:24px;font-weight:400;line-height:1.4">Köln</span>
+        <span style="font-size:16px;color:rgba(20,19,18,.35);text-align:right">→</span>
+      </div>
+      <div style="display:grid;grid-template-columns:40px minmax(0,1fr) 24px;align-items:center;gap:24px;padding:20px 8px;border-bottom:1px solid rgba(20,19,18,.16);cursor:pointer;transition:padding-left .25s ease,background .25s ease" style-hover="background:rgba(20,19,18,.04);padding-left:16px">
+        <span style="font-size:10px;letter-spacing:.28em;color:rgba(20,19,18,.4)">08</span>
+        <span style="font-size:24px;font-weight:400;line-height:1.4">München</span>
+        <span style="font-size:16px;color:rgba(20,19,18,.35);text-align:right">→</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-m="pad vpad" style="background:#f4f2ed;padding:112px 40px"><div style="max-width:1240px;margin:0 auto">
+    <h2 data-m="h2" style="font-size:48px;font-weight:300;margin:0 0 24px;max-width:34ch;line-height:1.1">Haben Sie schon ein Angebot? Vergleichen lohnt sich!</h2>
+    <p style="font-size:16px;line-height:1.8;margin:0 0 32px;max-width:50ch;color:rgba(20,19,18,.7)">Nutzen Sie unseren Angebotsvergleich-Service und sichern Sie sich das bestmögliche Angebot für Ihre Traumküche!</p>
+    <a href="#fragebogen" onClick="{{ toForm }}" style="display:inline-block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;border:1px solid #141312;padding:16px 32px;cursor:pointer;transition:background .18s,color .18s" style-hover="background:#141312;color:#f4f2ed">Jetzt Angebot vergleichen</a>
+    </div>
+  </section>
+
+  <section id="blog" data-m="pad" style="padding:120px 40px 0;max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:start;gap:40px;flex-wrap:wrap">
+    <div>
+      <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-bottom:24px">Blog</div>
+      <h2 data-m="h2" style="font-size:48px;font-weight:300;margin:0;max-width:28ch;line-height:1.1">Tipps &amp; Inspiration rund um den Küchenkauf</h2>
+    </div>
+    <p style="font-size:16px;line-height:1.8;margin:0;max-width:46ch;color:rgba(20,19,18,.7)">Entdecken Sie nützliche Tipps, innovative Gestaltungsideen und wertvolle Empfehlungen, um Ihren Küchenkauf zu einem erfolgreichen und inspirierenden Erlebnis zu machen.</p>
+  </section>
+  <section data-m="pad one gap32" style="max-width:1240px;margin:0 auto;padding:64px 40px 128px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:80px;align-items:start">
+    <div data-rv data-zoomparent style="cursor:pointer;transition:opacity .3s ease" style-hover="opacity:.86">
+      <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/6960daf608d5b257a807fd1d_BL5255011_SGM-A127_LAR-K653_HA.webp" alt="Küchentrends 2026" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;margin-bottom:32px"></div>
+      <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.45);margin-bottom:16px">Nathalie · 01.01.2026 · 8 Min. Lesedauer</div>
+      <h3 data-m="h2" style="font-size:40px;font-weight:300;line-height:1.15;margin:0 0 16px;max-width:24ch">Küchentrends 2026: Farben, Materialien &amp; Design der modernen Küche</h3>
+      <p style="font-size:16px;line-height:1.8;margin:0;color:rgba(20,19,18,.7);max-width:44ch">Die Küchentrends 2026 setzen auf warme Farben, natürliche Materialien, organische Formen und wohnliche Küchenlayouts.</p>
+    </div>
+    <div>
+      <div data-rv data-zoomparent data-m="blogthumb" style="display:grid;grid-template-columns:clamp(96px,14vw,176px) minmax(0,1fr);gap:clamp(16px,2vw,32px);align-items:start;padding:0 0 24px;border-bottom:1px solid rgba(20,19,18,.12);cursor:pointer;transition:opacity .3s ease" style-hover="opacity:.6">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/66c845713882a7d2ee0672b5_Theresa%20Casey%20Organic%20Loft_Silestone_1.webp" alt="Offene Küche" style="width:100%;aspect-ratio:1;object-fit:cover;display:block"></div>
+        <div>
+          <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Offene Küche: Mit diesen 10 Tipps gelingt die Planung</div>
+          <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(20,19,18,.6);max-width:52ch">Planen Sie Ihre offene Küche erfolgreich mit diesen 10 Tipps. So vereinen Sie Design und Funktionalität perfekt in einem Raum.</p>
+          <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4);margin-top:12px">Reiner · 23.08.2024 · 6 Min.</div>
+        </div>
+      </div>
+      <div data-rv data-zoomparent data-m="blogthumb" style="display:grid;grid-template-columns:clamp(96px,14vw,176px) minmax(0,1fr);gap:clamp(16px,2vw,32px);align-items:start;padding:24px 0;border-bottom:1px solid rgba(20,19,18,.12);cursor:pointer;transition:opacity .3s ease" style-hover="opacity:.6">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/66b0f879be992e1ad5d58a91_Wohnku%CC%88che_Ku%CC%88chenheld.jpg" alt="Wohnküche" style="width:100%;aspect-ratio:1;object-fit:cover;display:block"></div>
+        <div>
+          <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Wohnküche: Inspiration &amp; Einrichtungsideen für Ihre Traumküche</div>
+          <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(20,19,18,.6);max-width:52ch">Entdecken Sie alles über Wohnküchen, von nützlichen Tipps zur Planung bis hin zu inspirierenden Einrichtungsideen.</p>
+          <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4);margin-top:12px">Yannick · 05.08.2024 · 5 Min.</div>
+        </div>
+      </div>
+      <div data-rv data-zoomparent data-m="blogthumb" style="display:grid;grid-template-columns:clamp(96px,14vw,176px) minmax(0,1fr);gap:clamp(16px,2vw,32px);align-items:start;padding:24px 0;border-bottom:1px solid rgba(20,19,18,.12);cursor:pointer;transition:opacity .3s ease" style-hover="opacity:.6">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/6790f001e0bcfa2794538e0a_AV_%206023GL_Nussbaum_elegant_M1.jpg" alt="Küche mit Holz" style="width:100%;aspect-ratio:1;object-fit:cover;display:block"></div>
+        <div>
+          <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Küche mit Holz: Zeitloses Design trifft auf Nachhaltigkeit</div>
+          <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(20,19,18,.6);max-width:52ch">Entdecken Sie, wie Holz in der Küche zeitlose Eleganz mit Nachhaltigkeit vereint.</p>
+          <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4);margin-top:12px">Yannick · 22.01.2025 · 4 Min.</div>
+        </div>
+      </div>
+      <div data-rv data-zoomparent data-m="blogthumb" style="display:grid;grid-template-columns:clamp(96px,14vw,176px) minmax(0,1fr);gap:clamp(16px,2vw,32px);align-items:start;padding:24px 0;border-bottom:1px solid rgba(20,19,18,.12);cursor:pointer;transition:opacity .3s ease" style-hover="opacity:.6">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/66c88fe8d055005cfa9d2a8d_Design%20ohne%20Titel%20(1).png" alt="Lieferzeit Küche" style="width:100%;aspect-ratio:1;object-fit:cover;display:block"></div>
+        <div>
+          <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Lieferzeit Küche: So lange dauert es bis zur fertigen Küche</div>
+          <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(20,19,18,.6);max-width:52ch">Erfahren Sie, wie Sie Verzögerungen vermeiden und den Prozess optimieren können.</p>
+          <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4);margin-top:12px">Yannick · 23.08.2024 · 5 Min.</div>
+        </div>
+      </div>
+      <div data-rv data-zoomparent data-m="blogthumb" style="display:grid;grid-template-columns:clamp(96px,14vw,176px) minmax(0,1fr);gap:clamp(16px,2vw,32px);align-items:start;padding:24px 0;border-bottom:1px solid rgba(20,19,18,.12);cursor:pointer;transition:opacity .3s ease" style-hover="opacity:.6">
+        <div data-zoom><img src="https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/664748fd7049432c0697f8b2_next125_nx510-L097M_GS-2_2022.webp" alt="Grifflose Küchen" style="width:100%;aspect-ratio:1;object-fit:cover;display:block"></div>
+        <div>
+          <div style="font-size:24px;font-weight:400;line-height:1.4;margin-bottom:12px">Grifflose Küchen: Der Küchentrend ohne Griffe</div>
+          <p style="font-size:14px;line-height:1.8;margin:0;color:rgba(20,19,18,.6);max-width:52ch">Erfahren Sie, ob eine grifflose Küche Ihren Anforderungen entspricht.</p>
+          <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4);margin-top:12px">Anna · 22.05.2024 · 5 Min.</div>
+        </div>
+      </div>
+      <div data-rv style="padding-top:40px"><span data-ul2 style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #141312;padding-bottom:8px;cursor:pointer">Alle Beiträge ansehen</span></div>
+    </div>
+  </section>
+
+  <div data-rule style="height:1px;background:rgba(20,19,18,.18)"></div>
+  <section data-m="pad vpad" style="max-width:1240px;margin:0 auto;padding:120px 40px 128px">
+    <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(20,19,18,.4);margin-bottom:32px">Fragen &amp; Antworten</div>
+    <div data-m="one gap32" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;padding-bottom:64px">
+      <h2 data-m="h2" style="font-size:48px;font-weight:300;margin:0;max-width:20ch;line-height:1.1">Häufige Fragen zum Thema Küche kaufen</h2>
+      <div>
+        <p style="font-size:16px;line-height:1.8;margin:0 0 32px;max-width:52ch;color:rgba(20,19,18,.7)">Hier finden Sie Antworten auf die wichtigsten Fragen rund um den Küchenkauf. Von der Planung über die Auswahl der Materialien bis hin zur Lieferung – wir helfen Ihnen, Ihre Traumküche mit Leichtigkeit zu realisieren.</p>
+        <a data-ul2 href="#fragebogen" onClick="{{ toForm }}" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #141312;padding-bottom:4px;cursor:pointer">Kostenlose Beratung</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(20,19,18,.2)">
+      <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="7">
+        <div style="border-bottom:1px solid rgba(20,19,18,.2)">
+          <div onClick="{{ faq.toggle }}" data-m="faqrow" style="display:grid;grid-template-columns:56px minmax(0,1fr) 32px;align-items:baseline;gap:24px;padding:32px 8px;cursor:pointer;transition:background .25s ease" style-hover="background:rgba(20,19,18,.03)">
+            <span style="font-size:10px;letter-spacing:.28em;color:rgba(20,19,18,.4)">{{ faq.num }}</span>
+            <span style="font-size:24px;font-weight:400;line-height:1.4">{{ faq.q }}</span>
+            <span style="font-size:24px;font-weight:300;color:rgba(20,19,18,.45);text-align:right;line-height:1.4;display:block;transition:transform .45s cubic-bezier(.16,1,.3,1),color .25s ease;transform:rotate({{ faq.rot }})">{{ faq.sign }}</span>
+          </div>
+          <sc-if value="{{ faq.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-rows:1fr;animation:khAcc .55s cubic-bezier(.16,1,.3,1)">
+              <div style="overflow:hidden">
+                <div data-m="faqrow" style="display:grid;grid-template-columns:56px minmax(0,1fr) 32px;gap:24px;padding:0 8px 40px">
+                  <span></span>
+                  <p style="font-size:16px;line-height:1.8;margin:0;max-width:72ch;color:rgba(20,19,18,.7);animation:khAccText .6s ease .12s both">{{ faq.a }}</p>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-m="cta" style="background:#1f1d1b;color:#f4f2ed;display:grid;grid-template-columns:1fr 1fr;align-items:stretch">
+    <div style="position:relative;overflow:hidden;min-height:560px">
+      <img src="https://cdn.prod.website-files.com/6391b8b8063c7487769d5e4c/6392140b779bba3ec4a6586a_AV_2040_Feiniche-schwarz_M1.avif" alt="Dunkle Designküche" data-parallax style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    <div data-m="ctapad" style="padding:120px 80px;display:flex;flex-direction:column;justify-content:center">
+      <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:24px;color:rgba(244,242,237,.55)">Küchenkauf starten</div>
+      <h2 data-m="h2" style="font-size:48px;font-weight:300;margin:0 0 24px;max-width:20ch;line-height:1.1">Angebot mit Preisindikation für Ihre Traumküche</h2>
+      <p style="font-size:16px;line-height:1.8;margin:0 0 48px;max-width:44ch;color:rgba(244,242,237,.7)">Einfach Ihre Vorstellungen einer Traumküche angeben und wir erstellen individuell für Sie Ihr unverbindliches, kostenloses Angebot.</p>
+      <a href="#fragebogen" onClick="{{ toForm }}" style="align-self:flex-start;font-size:12px;letter-spacing:.2em;text-transform:uppercase;background:#f4f2ed;color:#141312;padding:16px 40px;cursor:pointer;transition:background .25s ease,color .25s ease" style-hover="background:transparent;color:#f4f2ed;box-shadow:inset 0 0 0 1px rgba(244,242,237,.5)">Kostenloses Angebot erhalten</a>
+      <div style="display:flex;gap:40px;margin-top:56px;padding-top:32px;border-top:1px solid rgba(244,242,237,.16);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,242,237,.5);flex-wrap:wrap">
+        <span>Unverbindlich</span>
+        <span>Kostenlos</span>
+        <span>In 24 Stunden</span>
+      </div>
+    </div>
+  </section>
+
+  <footer data-m="pad" style="background:#141312;color:#f4f2ed;padding:80px 40px 40px">
+    <div data-m="foot" style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:48px;padding-bottom:64px">
+      <div>
+        <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;letter-spacing:.32em;text-transform:uppercase;margin-bottom:24px">Küchenheld</div>
+        <div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:16px;color:rgba(244,242,237,.65)">Newsletter abonnieren</div>
+        <p style="font-size:12px;line-height:1.8;margin:0 0 24px;max-width:34ch;color:rgba(244,242,237,.5)">Mit unserem Newsletter erhalten Sie regelmäßig spannende Infos rund um moderne Küchenplanung und erfahren alles über die neusten Küchentrends.</p>
+        <div style="display:flex;width:100%;gap:24px;border-bottom:1px solid rgba(244,242,237,.35);max-width:280px;padding-bottom:8px;justify-content:space-between"><span style="font-size:12px;color:rgba(244,242,237,.4)">E-Mail-Adresse</span><span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;cursor:pointer">Anmelden</span></div>
+      </div>
+      <div><div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,242,237,.4);margin-bottom:24px">Über Küchenheld</div><div style="display:flex;flex-direction:column;gap:12px;font-size:12px;color:rgba(244,242,237,.78)"><span>Über uns</span><span>Unsere Küchen</span><span>Karriere</span><span>Kontakt</span><span>Presse</span><span>Banigo – Badmöbel</span></div></div>
+      <div><div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,242,237,.4);margin-bottom:24px">Service</div><div style="display:flex;flex-direction:column;gap:12px;font-size:12px;color:rgba(244,242,237,.78)"><span>Küche kaufen</span><span>Küche nach Maß</span><span>Küchenplaner</span><span>Küchen Ideen</span><span>Ausstellungsküchen Abverkauf</span><span>FAQ</span><span>Montage</span></div></div>
+      <div><div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,242,237,.4);margin-bottom:24px">Ratgeber</div><div style="display:flex;flex-direction:column;gap:12px;font-size:12px;color:rgba(244,242,237,.78)"><span>Unser Planungsservice</span><span>Videoberatung</span><span>Virtual Reality</span><span>Küchentrends 2026</span></div></div>
+      <div><div style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,242,237,.4);margin-bottom:24px">Showrooms</div><div style="display:flex;flex-direction:column;gap:12px;font-size:12px;color:rgba(244,242,237,.78)"><span>Berlin-Charlottenburg</span><span>Berlin-Mitte</span><span>Düsseldorf</span><span>Frankfurt</span><span>Freiburg</span><span>Hamburg</span><span>Köln</span><span>München</span></div></div>
+    </div>
+    <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,242,237,.18);padding-top:32px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,242,237,.4)">
+      <span>© Küchenheld GmbH 2026</span>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center"><a href="https://www.facebook.com/kuechenheld.de" aria-label="Facebook" style="display:flex;color:rgba(244,242,237,.7);transition:color .3s ease" style-hover="color:#f4f2ed"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"></path></svg></a><a href="https://www.instagram.com/kuechenheld_official/" aria-label="Instagram" style="display:flex;color:rgba(244,242,237,.7);transition:color .3s ease" style-hover="color:#f4f2ed"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"></circle></svg></a><a href="https://www.pinterest.de/kuechenheld/" aria-label="Pinterest" style="display:flex;color:rgba(244,242,237,.7);transition:color .3s ease" style-hover="color:#f4f2ed"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.65 19.31c-.09-.75-.17-1.9.04-2.72.19-.74 1.21-4.71 1.21-4.71s-.31-.62-.31-1.53c0-1.44.83-2.51 1.87-2.51.88 0 1.31.66 1.31 1.46 0 .89-.57 2.22-.86 3.45-.24 1.04.52 1.89 1.55 1.89 1.86 0 3.29-1.96 3.29-4.79 0-2.5-1.8-4.25-4.37-4.25-2.97 0-4.72 2.23-4.72 4.53 0 .9.35 1.86.78 2.38.09.1.1.19.07.3-.08.32-.25.99-.28 1.13-.05.19-.16.23-.36.14-1.35-.63-2.19-2.6-2.19-4.18 0-3.41 2.48-6.54 7.14-6.54 3.75 0 6.66 2.67 6.66 6.24 0 3.73-2.35 6.73-5.61 6.73-1.1 0-2.13-.57-2.48-1.25l-.68 2.58c-.24.94-.9 2.12-1.34 2.84A10 10 0 1 0 12 2Z"></path></svg></a><a href="https://www.linkedin.com/company/kuechenheld/" aria-label="LinkedIn" style="display:flex;color:rgba(244,242,237,.7);transition:color .3s ease" style-hover="color:#f4f2ed"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9.5h4v11.5H3V9.5Zm6.5 0h3.83v1.57h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.5 4.77 5.75V21h-4v-5.2c0-1.24-.02-2.84-1.77-2.84-1.78 0-2.05 1.35-2.05 2.75V21h-4V9.5Z"></path></svg></a></div>
+      <div style="display:flex;flex-wrap:wrap;gap:24px"><span>Impressum</span><span>Datenschutzerklärung</span><span>AGB</span><span>Barrierefreiheit</span></div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  navToggle = () => this.setState(st => ({ navOpen: !st.navOpen }));
+  navGo = (e) => {
+    const href = e && e.currentTarget && e.currentTarget.getAttribute("href");
+    this.setState({ navOpen: false });
+    this.scrollTo(href || "#fragebogen", e);
+  };
+  scrollTo = (hash, e) => {
+    if (e) e.preventDefault();
+    const el = document.getElementById(String(hash).replace("#", ""));
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.pageYOffset - 8;
+    const reduced = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+    window.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" });
+  };
+  toForm = (e) => this.scrollTo("#fragebogen", e);
+  startHero() {
+    const slides = [...document.querySelectorAll("[data-hero-slide]")];
+    const dots = [...document.querySelectorAll("[data-hero-dot]")];
+    if (slides.length < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+    let i = 0;
+    this._heroTimer = setInterval(() => {
+      i = (i + 1) % slides.length;
+      const el = slides[i];
+      const prev = slides[(i + slides.length - 1) % slides.length];
+      slides.forEach(sl => { if (sl !== el && sl !== prev) { sl.style.zIndex = 0; sl.style.animation = "none"; sl.style.clipPath = "inset(0 0 0 100%)"; } });
+      prev.style.zIndex = 1;
+      el.style.zIndex = 2;
+      el.style.animation = "none";
+      void el.offsetWidth;
+      el.style.clipPath = "";
+      const ease = "cubic-bezier(.62,.02,.24,1)";
+      el.style.animation = "khImgIn 1.7s " + ease + " both";
+      const lag = el.querySelector("[data-hero-lag]");
+      if (lag) { lag.style.animation = "none"; void lag.offsetWidth; lag.style.animation = "khSlideLag 1.7s " + ease + " both"; }
+      const img = el.querySelector("img");
+      if (img) { img.style.animation = "none"; void img.offsetWidth; img.style.animation = "khHeroDrift 9s linear both"; }
+      const edge = document.querySelector("[data-hero-edge]");
+      if (edge) { edge.style.animation = "none"; void edge.offsetWidth; edge.style.animation = "khEdge 1.7s " + ease + " both"; }
+      dots.forEach((d, n) => d.style.opacity = n === i ? "1" : ".35");
+    }, 8600);
+  }
+  componentWillUnmount() { clearInterval(this._heroTimer); }
+  state = { navOpen: false, openIdx: -1, picked: null, hov1: false, hov2: false, hov3: false };
+  componentDidMount() {
+    this.startHero();
+    this.paintIcons();
+    this.setupReveal();
+    this.setupHeader();
+    this.setupCounters();
+    this.setupRules();
+    this.setupParallax();
+  }
+  componentDidUpdate() { this.paintIcons(); }
+  paintIcons(tries = 0) {
+    if (window.lucide) {
+      window.lucide.createIcons({ attrs: { width:38, height: 38, "stroke-width": 0.75 } });
+    } else if (tries < 40) {
+      setTimeout(() => this.paintIcons(tries + 1), 150);
+    }
+  }
+  setupParallax() {
+    if (this.reduced) return;
+    const els = [...document.querySelectorAll("[data-parallax]")];
+    if (!els.length) return;
+    els.forEach(el => {
+      el.style.height = "118%";
+      el.style.top = "-9%";
+      el.style.willChange = "transform";
+    });
+    let raf = 0;
+    const frame = () => {
+      raf = 0;
+      const vh = window.innerHeight;
+      els.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const p = (r.top + r.height / 2 - vh / 2) / vh;
+        el.style.transform = "translateY(" + (p * -46).toFixed(2) + "px)";
+      });
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+  }
+  get reduced() {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+  setupHeader() {
+    const el = document.querySelector("header");
+    if (!el) return;
+    el.style.willChange = "transform";
+    el.style.transition = "transform .45s cubic-bezier(.16,1,.3,1), border-color .4s ease, box-shadow .4s ease";
+    let last = window.scrollY, hidden = false;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const past = y > 120;
+      if (this.reduced) { last = y; return; }
+      if (past && y > last + 6 && !hidden) { hidden = true; el.style.transform = "translateY(-100%)"; }
+      else if ((!past || y < last - 6) && hidden) { hidden = false; el.style.transform = "none"; }
+      el.style.borderBottom = "1px solid " + (y > 24 ? "rgba(20,19,18,.14)" : "rgba(20,19,18,0)");
+      el.style.boxShadow = y > 24 && !hidden ? "0 1px 20px rgba(20,19,18,.05)" : "none";
+      last = y;
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+  setupReveal() {
+    if (this._revealed) return;
+    this._revealed = true;
+    const E = "cubic-bezier(.16,1,.3,1)";
+    const fold = window.innerHeight * 0.92;
+    const below = e => e.getBoundingClientRect().top > fold;
+    const plan = [];
+    const inRail = el => !!el.closest("[id^='kh-rail']");
+    const add = (el, kind, delay) => {
+      if (!el) return;
+      const rr = el.getBoundingClientRect();
+      const pos = getComputedStyle(el).position;
+      if (rr.height > window.innerHeight * 1.3 || pos === "sticky" || pos === "fixed") return;
+      if (el.__rv || !below(el) || inRail(el)) return;
+      el.__rv = 1;
+      plan.push({ el, kind, delay: delay || 0 });
+    };
+
+    // section headings mask up, their lead paragraph and eyebrow follow
+    document.querySelectorAll("h2").forEach(h => {
+      add(h, "mask", 0);
+      const prev = h.previousElementSibling;
+      if (prev && prev.textContent.length < 40 && prev.tagName === "DIV") add(prev, "letter", 0);
+      const next = h.nextElementSibling;
+      if (next && (next.tagName === "P" || next.tagName === "SPAN")) add(next, "rise", 140);
+      const after = next && next.nextElementSibling;
+      if (after && after.tagName === "SPAN") add(after, "rise", 240);
+    });
+
+    // photographs wipe in
+    document.querySelectorAll("section img").forEach(img => add(img, "wipe", 0));
+
+    // grids and lists stagger
+    document.querySelectorAll("section div, footer > div").forEach(grid => {
+      if (grid.children.length < 2 || grid.children.length > 9) return;
+      const cs = getComputedStyle(grid);
+      if (cs.display !== "grid" || cs.gridTemplateColumns.split(" ").length < 2) return;
+      [...grid.children].forEach((c, i) => add(c, "rise", i * 90));
+    });
+    document.querySelectorAll("[data-rv]").forEach(e => add(e, "rise", 0));
+
+    // horizontal rails: stagger the cards that are in view on arrival
+    document.querySelectorAll("[id^='kh-rail']").forEach(rail => {
+      [...rail.children].slice(0, 4).forEach((c, i) => {
+        if (c.__rv || !below(c)) return;
+        c.__rv = 1;
+        plan.push({ el: c, kind: "rise", delay: i * 110 });
+      });
+    });
+
+    const set = (o) => {
+      const { el, kind, delay } = o;
+      const t = (p) => p + " 1s " + E + " " + delay + "ms";
+      if (kind === "wipe") {
+        el.style.clipPath = "inset(0 0 0 100%)";
+        el.style.transform = "scale(1.06)";
+        el.style.transition = [t("clip-path"), "transform 1.6s " + E + " " + delay + "ms"].join(", ");
+      } else if (kind === "mask") {
+        el.style.clipPath = "inset(0 0 108% 0)";
+        el.style.transform = "translateY(14px)";
+        el.style.transition = [t("clip-path"), t("transform")].join(", ");
+      } else if (kind === "letter") {
+        el.style.opacity = "0";
+        el.style.transition = ["opacity .9s ease " + delay + "ms", "letter-spacing 1.2s " + E + " " + delay + "ms"].join(", ");
+        el.__ls = getComputedStyle(el).letterSpacing;
+        el.style.letterSpacing = "0.6em";
+      } else {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(20px)";
+        el.style.transition = ["opacity .9s ease " + delay + "ms", t("transform")].join(", ");
+      }
+    };
+    const show = (o) => {
+      const { el, kind } = o;
+      if (kind === "wipe") {
+        el.style.clipPath = "inset(0 0 0 0)";
+        el.style.transform = "none";
+      } else if (kind === "mask") {
+        el.style.clipPath = "inset(-10% 0 -10% 0)";
+        el.style.transform = "none";
+      } else if (kind === "letter") {
+        el.style.opacity = "1";
+        el.style.letterSpacing = el.__ls || ".28em";
+      } else {
+        el.style.opacity = "1";
+        el.style.transform = "none";
+      }
+    };
+    if (this.reduced) return;
+    plan.forEach(set);
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      const vh = window.innerHeight;
+      let left = 0;
+      plan.forEach(o => {
+        if (o.done) return;
+        const r = o.el.getBoundingClientRect();
+        if (r.top < vh * 0.92) { o.done = 1; show(o); } else left++;
+      });
+      if (!left) {
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+      }
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(check); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    requestAnimationFrame(check);
+    // safety net: nothing stays invisible if a measurement was wrong
+    setTimeout(() => plan.forEach(o => {
+      if (o.done) return;
+      const r = o.el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 1.1) { o.done = 1; show(o); }
+    }), 2500);
+  }
+  setupCounters() {
+    if (this.reduced) return;
+    const fmt = new Intl.NumberFormat("de-DE");
+    const targets = [...document.querySelectorAll("div")].filter(el => {
+      const fs = parseFloat(getComputedStyle(el).fontSize);
+      if (fs < 38 || el.children.length) return false;
+      return /^\d[\d.,]*(\s*[%+]|\s+\w+)?$/.test(el.textContent.trim()) && !/^0/.test(el.textContent.trim());
+    });
+    const run = (el) => {
+      const raw = el.textContent.trim();
+      const m = raw.match(/^([\d.,]+)(.*)$/);
+      if (!m) return;
+      const suffix = m[2];
+      const dec = m[1].includes(",") ? (m[1].split(",")[1] || "").length : 0;
+      const target = parseFloat(m[1].replace(/\./g, "").replace(",", "."));
+      if (!isFinite(target)) return;
+      const dur = 1100, t0 = performance.now();
+      el.style.fontVariantNumeric = "tabular-nums";
+      const step = (now) => {
+        const p = Math.min(1, (now - t0) / dur);
+        const e = 1 - Math.pow(1 - p, 3);
+        const v = target * e;
+        el.textContent = (dec ? v.toFixed(dec).replace(".", ",") : fmt.format(Math.round(v))) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = raw;
+      };
+      requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        run(en.target);
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.6 });
+    targets.forEach(el => io.observe(el));
+  }
+  setupRules() {
+    if (this.reduced) return;
+    const rules = [...document.querySelectorAll("[data-rule]")];
+    rules.forEach(r => {
+      r.style.transformOrigin = "left";
+      r.style.transform = "scaleX(0)";
+      r.style.transition = "transform 1.4s cubic-bezier(.16,1,.3,1)";
+    });
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        en.target.style.transform = "none";
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.5 });
+    rules.forEach(r => io.observe(r));
+  }
+  componentDidUpdate() { this.paintIcons(); }
+  paintIcons(tries = 0) {
+    if (window.lucide) {
+      window.lucide.createIcons({ attrs: { width:38, height: 38, "stroke-width": 0.75 } });
+    } else if (tries < 40) {
+      setTimeout(() => this.paintIcons(tries + 1), 150);
+    }
+  }
+  renderVals() {
+    const faqData = [
+      ["Welche Vorteile habe ich, wenn ich WhatsApp für die Beratung nutze?", "Die Vorteile liegen vor allem in der Schnelligkeit und Flexibilität. Sie erhalten Terminbestätigungen und Erinnerungen, können unkompliziert Fragen stellen, Dokumente oder Fotos schicken und bleiben jederzeit über den aktuellen Stand Ihrer Küchenplanung informiert – ohne lange Wartezeiten."],
+      ["Kann ich mit Küchenheld auch meinen Hauswirtschaftsraum planen?", "Ja, bei Küchenheld können Sie nicht nur Ihre Küche, sondern auch Ihren Hauswirtschaftsraum planen lassen. Wir bieten Ihnen eine maßgeschneiderte Planung, die perfekt auf Ihre individuellen Bedürfnisse abgestimmt ist. Sprechen Sie uns einfach darauf an, wir integrieren den Hauswirtschaftsraum gerne in die Planung Ihrer Traumküche!"],
+      ["Wo liefert und montiert Küchenheld meine Küche?", "Küchenheld liefert und montiert Küchen auf dem deutschen Festland. Für Montagen an Adressen mehr als 100km von unseren Smartrooms entfernt, können Zusatzkosten für die Lieferung und Montage erhoben werden."],
+      ["Welche Küchenarbeitsplatte ist unempfindlich?", "Arbeitsplatten aus Granit, Stein, Neolith oder Dekton gelten als besonders unempfindlich. So bietet beispielsweise vor allem Dekton viele Vorteile, da die Oberfläche jegliches Eindringen von Flüssigkeit vermeidet sowie äußerst bruchfest und robust ist. Zudem ist Stein unempfindlich gegen Hitze und Flecken."],
+      ["Wie lange dauert die Lieferung?", "Die Lieferzeit der verschiedenen Küchenkomponenten beträgt ca. 6-12 Wochen, abhängig von Ihrer Bestellung. Eine Lieferung innerhalb weniger Werktage ist nicht zu bewerkstelligen."],
+      ["Warum muss ich einen Fragebogen ausfüllen?", "Der Online-Fragebogen stellt den ersten Schritt auf dem Weg zu Ihrer neuen Traumküche dar. Anhand des Fragebogens ist es möglich, uns Ihre ersten Vorstellungen und Präferenzen für die Küchenform, die gewünschten Küchenmaterialien und dem gewünschten Planungszeitraum mitzuteilen. Die im Fragebogen angegebenen Präferenzen können während der Planung jederzeit kostenlos und unverbindlich verändert werden."],
+      ["Wie läuft die Planung bei Küchenheld ab?", "Der Planungsprozess bei Küchenheld verläuft einfach, transparent und unkompliziert: ein kurzer Fragebogen, ein telefonisches Beratungsgespräch mit konkreter Preisindikation, detaillierte Planung mit Ihrem festen Team, ein VR-Erlebnis im Showroom, dann Laseraufmaß, Lieferung und Montage."]
+    ];
+    const unusedExplore = [
+      ["Küchenangebot vergleichen", "66913e8e61d76e134d138369_offer%20comparison.avif", "Mit Küchenheld können Sie Ihr vorhandenes Angebot vergleichen und die beste Wahl für Ihre maßgeschneiderte Küche treffen."],
+      ["Küchenideen", "67619848a1d1494b74d61a52_673b5f99f9ff92f735ef301f_GS8A8222.jpg", "Entdecken Sie unsere kreativen Küchenideen und finden Sie die perfekte Inspiration, um Ihre Küche nach Ihren individuellen Vorstellungen zu planen."],
+      ["Küchenstile", "6719318918827f73ac6c1645_640760c63763b9306a21153c_kueche-planen-kundenkueche-schwarze-landhausku%CC%88che-diana-01.avif", "Entdecken Sie eine Vielfalt an Küchenstilen – von modern bis klassisch – und lassen Sie sich inspirieren, um Ihre Küche nach Ihrem Geschmack zu gestalten."],
+      ["Küchenfronten", "6392140b779bba3ec4a6586a_AV_2040_Feiniche-schwarz_M1.avif", "Finden Sie die perfekten Fronten für Ihre Küche. Ob matt, glänzend oder strukturiert – unsere Auswahl bietet für jeden Stil das Richtige."],
+      ["Arbeitsplatten", "65df79f468b3c45ab4615173_63c0080f92c610d426bbfb15_next125_nx510-L417M-L262M_GS-3_2022.avif", "Die Arbeitsfläche ist das Herz jeder Küche. Wählen Sie aus langlebigen Materialien und Oberflächen, die sowohl funktional als auch ästhetisch ansprechend sind."],
+      ["Küchengriffe", "6391b8b8063c746bf99d6365_bali_nussbaum.avif", "Verleihen Sie Ihrer Küche den letzten Schliff: Mit einer großen Auswahl an Griffen in verschiedenen Designs und Materialien können Sie den Stil Ihrer Küche optimal abrunden."],
+      ["Küchenformen", "671931899f866ce54fccd2c0_63e23e35fddb58fa58db14c7_kueche_planen_kuechenheld_erfahrungsbericht_weissekueche02-p-1080.avif", "Jede Küche ist einzigartig – und so auch ihre Form. Finden Sie die Küchenform, die sich optimal in Ihren Raum einfügt und Ihre Arbeitsabläufe unterstützt."],
+      ["Erfahrungsberichte", "6719318a8d24c510c2ae6e29_6492ef72324d1593d81352dc_kuechenheld-erfahrungen-fredericks-gruene-landhauskueche-01.avif", "Lesen Sie, wie andere KundInnen ihre Küche mit Küchenheld geplant haben – von der ersten Idee bis zur fertigen Montage."]
+    ];
+    const pick = label => () => this.setState({ picked: label });
+    if (!this._rail) this._rail = React.createRef();
+    if (!this._rail2) this._rail2 = React.createRef();
+    if (!this._rail3) this._rail3 = React.createRef();
+    const slide = (ref, dir) => () => {
+      const el = ref.current;
+      if (!el) return;
+      const card = el.firstElementChild;
+      const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+      const step = card ? card.getBoundingClientRect().width + gap:el.clientWidth / 4;
+      el.scrollBy({ left:dir * step, behavior: "smooth" });
+    };
+    return {
+      toForm: this.toForm,
+      navOpen: this.state.navOpen,
+      navToggle: this.navToggle,
+      navGo: this.navGo,
+      hover1On: () => this.setState({ hov1: true }),
+      hover1Off: () => this.setState({ hov1: false }),
+      hover2On: () => this.setState({ hov2: true }),
+      hover2Off: () => this.setState({ hov2: false }),
+      arrows1: this.state.hov1 ? 1 : 0,
+      arrows2: this.state.hov2 ? 1 : 0,
+      hover3On: () => this.setState({ hov3: true }),
+      hover3Off: () => this.setState({ hov3: false }),
+      arrows3: this.state.hov3 ? 1 : 0,
+      railRef: this._rail,
+      railPrev: slide(this._rail, -1),
+      railNext: slide(this._rail, 1),
+      rail2Ref: this._rail2,
+      rail2Prev: slide(this._rail2, -1),
+      rail2Next: slide(this._rail2, 1),
+      rail3Ref: this._rail3,
+      rail3Prev: slide(this._rail3, -1),
+      rail3Next: slide(this._rail3, 1),
+      pickZeile: pick("Küchenzeile"),
+      pickL: pick("L-Form"),
+      pickU: pick("U-Form"),
+      pickInsel: pick("Kücheninsel"),
+      pickedNote: this.state.picked ? this.state.picked + " ausgewählt" : "",
+      hasPick: !!this.state.picked,
+      selZeile: this.state.picked === "Küchenzeile",
+      selL: this.state.picked === "L-Form",
+      selU: this.state.picked === "U-Form",
+      selInsel: this.state.picked === "Kücheninsel",
+      faqs: faqData.map(([q, a], i) => ({
+        q, a,
+        num: String(i + 1).padStart(2, "0"),
+        open: this.state.openIdx === i,
+        sign: "+",
+        rot: this.state.openIdx === i ? "45deg" : "0deg",
+        toggle: () => this.setState(s => ({ openIdx: s.openIdx === i ? -1 : i }))
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

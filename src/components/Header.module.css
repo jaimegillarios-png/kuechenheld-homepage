@@ -1,0 +1,171 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 24px var(--gutter);
+  background: var(--paper);
+  border-bottom: 1px solid transparent;
+  will-change: transform;
+  transition:
+    transform 0.45s var(--ease-out),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.wordmark {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-end;
+  flex: none;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.action {
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.actionRuled {
+  white-space: nowrap;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  flex: none;
+}
+.burger > span {
+  display: block;
+  height: 1px;
+  background: var(--ink);
+}
+.burger > span:first-child {
+  width: 24px;
+}
+.burger > span:last-child {
+  width: 16px;
+}
+
+@media (max-width: 900px) {
+  .nav,
+  .actions {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+}
+
+/* --- full-screen mobile overlay ------------------------------------------ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--paper-cream);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow-y: auto;
+  animation: khNavIn 0.5s var(--ease-out) both;
+}
+
+.overlayTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overlayWordmark {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.close {
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlayNav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
+}
+
+.overlayItem {
+  font-size: 32px;
+  font-weight: 200;
+  padding: 20px 0;
+  border-top: 1px solid var(--ink-14);
+}
+.overlayItem:last-child {
+  border-bottom: 1px solid var(--ink-14);
+}
+
+.overlayFoot {
+  margin-top: auto;
+  padding-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.overlayCta {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: #fff;
+  padding: 18px 32px;
+  text-align: center;
+}
+
+.overlayLogin {
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  text-align: center;
+}

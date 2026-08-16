@@ -1,0 +1,145 @@
+.section {
+  background: var(--paper-warm);
+  padding: 120px var(--gutter) 128px;
+}
+@media (max-width: 900px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+}
+
+.stepEyebrow {
+  composes: eyebrow from "../styles/shared.module.css";
+  margin-bottom: 16px;
+}
+
+.heading {
+  composes: h2 from "../styles/shared.module.css";
+  max-width: 34ch;
+  margin-bottom: 16px;
+}
+
+.meta {
+  composes: eyebrow from "../styles/shared.module.css";
+  margin-bottom: 48px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.card {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--ink-14);
+  padding: 64px 0 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s;
+}
+.card:hover {
+  border-color: var(--ink);
+  box-shadow: 0 8px 24px rgba(20, 19, 18, 0.09);
+}
+
+/* A 1.5px ring pulled 1px outward so it sits exactly over the resting border. */
+.cardRing {
+  position: absolute;
+  inset: -1px;
+  border: 1.5px solid var(--ink);
+  pointer-events: none;
+}
+
+.cardCheck {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 12px;
+}
+
+.icon {
+  display: block;
+  width: 104px;
+  height: 80px;
+}
+
+.foot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.otherForm {
+  font-size: 12px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-50);
+  padding-bottom: 4px;
+}
+
+.continue {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  animation: khRise 0.6s var(--ease-out) both;
+}
+
+.pickedNote {
+  composes: label from "../styles/shared.module.css";
+  color: var(--ink-55);
+}
+
+.continueBtn {
+  composes: label from "../styles/shared.module.css";
+  background: var(--ink);
+  color: var(--paper-warm);
+  padding: 16px 32px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.continueBtn:hover {
+  opacity: 0.82;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Drop the heading measure once the column narrows. */
+@media (max-width: 900px) {
+  .heading {
+    max-width: none;
+  }
+}

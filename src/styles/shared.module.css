@@ -1,0 +1,176 @@
+/* Type roles and button shapes shared across sections. Sections `compose` from
+   here rather than redeclaring the scale. */
+
+.section {
+  padding: 120px var(--gutter) 128px;
+}
+@media (max-width: 900px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+}
+
+/* Every section is padded by the gutter and holds its content to 1240px. Keep
+   the two on separate elements — putting `max-width` and padding on the same
+   border-box element would eat the gutter out of the content width. */
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+/* --- type ---------------------------------------------------------------- */
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+.eyebrowOnDark {
+  composes: eyebrow;
+  color: var(--cream-55);
+}
+
+.h2 {
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+/* Note: a heading's `max-width` measure is dropped below 900px, but that has to
+   be done by the component's own class. `composes` gives both classes equal
+   specificity, so a `max-width: none` declared here would lose to the local
+   `max-width: 34ch` depending only on emit order. */
+@media (max-width: 900px) {
+  .h2 {
+    font-size: 32px;
+  }
+}
+
+.body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--ink-70);
+}
+
+.bodySmall {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--ink-72);
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.stat {
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1;
+}
+@media (max-width: 900px) {
+  .stat {
+    font-size: 40px;
+  }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* --- buttons ------------------------------------------------------------- */
+
+.btnPrimary {
+  composes: label;
+  display: inline-block;
+  background: var(--ink);
+  color: #fff;
+  padding: 16px 40px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btnPrimary:hover {
+  opacity: 0.82;
+}
+
+.btnOutline {
+  composes: label;
+  display: inline-block;
+  border: 1px solid var(--ink);
+  padding: 16px 32px;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    color 0.18s;
+}
+.btnOutline:hover {
+  background: var(--ink);
+  color: var(--paper-cream);
+}
+
+.btnCream {
+  composes: label;
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--paper-cream);
+  color: var(--ink);
+  padding: 16px 40px;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.btnCream:hover {
+  background: transparent;
+  color: var(--paper-cream);
+  box-shadow: inset 0 0 0 1px var(--cream-50);
+}
+
+/* Underlined uppercase link — the drawn-rule hover lives in globals.css. */
+.linkUnderline {
+  composes: label;
+  align-self: flex-start;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 4px;
+  cursor: pointer;
+}
+
+/* --- rail arrows --------------------------------------------------------- */
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--ink-12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    background 0.18s,
+    color 0.18s;
+}
+.arrow:hover {
+  background: var(--ink);
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .arrow {
+    display: none;
+  }
+}

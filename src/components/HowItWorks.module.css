@@ -1,0 +1,80 @@
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.media {
+  position: relative;
+  min-height: 640px;
+  overflow: hidden;
+  background: var(--img-placeholder);
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.content {
+  padding: 104px 56px 112px;
+}
+
+.eyebrow {
+  composes: eyebrow from "../styles/shared.module.css";
+  margin-bottom: 24px;
+}
+
+.intro {
+  margin-bottom: 64px;
+}
+
+.heading {
+  composes: h2 from "../styles/shared.module.css";
+  margin-bottom: 24px;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 40px 0;
+  border-top: 1px solid var(--ink-18);
+}
+.step:last-child {
+  border-bottom: 1px solid var(--ink-18);
+}
+
+.stepNum {
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ink-30);
+}
+
+/* space between the step title and its paragraph */
+.step > div > div:first-child {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+  }
+  .media {
+    min-height: 360px;
+  }
+  .content {
+    padding: 64px 24px 72px;
+  }
+  .step {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 16px;
+  }
+}

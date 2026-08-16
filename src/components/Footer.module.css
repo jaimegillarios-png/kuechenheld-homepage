@@ -1,0 +1,164 @@
+.footer {
+  background: var(--ink);
+  color: var(--paper-cream);
+  padding: 80px var(--gutter) 40px;
+}
+
+.top {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 64px;
+}
+
+.wordmark {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* --- newsletter ---------------------------------------------------------- */
+
+.newsletterEyebrow {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cream-65);
+  margin-bottom: 16px;
+}
+
+.newsletterBody {
+  font-size: 12px;
+  line-height: 1.8;
+  max-width: 34ch;
+  color: var(--cream-50);
+  margin-bottom: 24px;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--cream-35);
+}
+
+.newsletterInput {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--paper-cream);
+  font: inherit;
+  font-size: 12px;
+}
+.newsletterInput::placeholder {
+  color: var(--cream-40);
+}
+.newsletterInput:focus {
+  outline: none;
+}
+
+.newsletterSubmit {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* --- link columns -------------------------------------------------------- */
+
+.columnHeading {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+  margin-bottom: 24px;
+}
+
+.columnLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--cream-78);
+}
+.columnLinks > * {
+  cursor: pointer;
+}
+
+/* --- bottom bar ---------------------------------------------------------- */
+
+.bottom {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--cream-18);
+  padding-top: 32px;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cream-40);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.social {
+  display: flex;
+  color: var(--cream-70);
+  transition: color 0.3s ease;
+}
+.social:hover {
+  color: var(--paper-cream);
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.legal > * {
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 24px;
+  }
+}
+@media (max-width: 560px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+}

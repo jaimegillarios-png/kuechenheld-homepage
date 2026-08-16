@@ -1,0 +1,31 @@
+.strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink-14);
+  border-bottom: 1px solid var(--ink-14);
+}
+
+.cell {
+  padding: 24px var(--gutter);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-62);
+  border-left: 1px solid var(--ink-14);
+}
+.cell:first-child {
+  border-left: 0;
+}
+
+@media (max-width: 900px) {
+  .strip {
+    grid-template-columns: 1fr;
+  }
+  .cell {
+    border-left: 0;
+    border-top: 1px solid var(--ink-14);
+  }
+  .cell:first-child {
+    border-top: 0;
+  }
+}

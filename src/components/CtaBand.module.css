@@ -1,0 +1,78 @@
+/* Deliberately one step lighter than --ink so the band lifts off the footer. */
+.section {
+  background: var(--ink-cta);
+  color: var(--paper-cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.media {
+  position: relative;
+  overflow: hidden;
+  min-height: 560px;
+  background: var(--img-placeholder);
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.content {
+  padding: 120px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  composes: eyebrow from "../styles/shared.module.css";
+  color: var(--cream-55);
+  margin-bottom: 24px;
+}
+
+.heading {
+  composes: h2 from "../styles/shared.module.css";
+  max-width: 20ch;
+  margin-bottom: 24px;
+}
+
+.lead {
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 44ch;
+  color: var(--cream-70);
+  margin-bottom: 48px;
+}
+
+.reassurance {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--cream-16);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream-50);
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+  }
+  .media {
+    min-height: 320px;
+  }
+  .content {
+    padding: 64px 24px 72px;
+  }
+}
+
+/* Drop the heading measure once the column narrows. */
+@media (max-width: 900px) {
+  .heading {
+    max-width: none;
+  }
+}
