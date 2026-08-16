@@ -91,7 +91,7 @@
 .panel {
   display: grid;
   grid-template-rows: 1fr;
-  animation: khAcc 0.55s var(--ease-out);
+  animation: var(--kf-acc) 0.55s var(--ease-out);
 }
 
 .panelClip {
@@ -108,7 +108,7 @@
 .answer {
   composes: body from "../styles/shared.module.css";
   max-width: 72ch;
-  animation: khAccText 0.6s ease 0.12s both;
+  animation: var(--kf-acc-text) 0.6s ease 0.12s both;
 }
 
 @media (max-width: 900px) {

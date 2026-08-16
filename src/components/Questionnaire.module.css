@@ -106,7 +106,7 @@
   align-items: center;
   gap: 24px;
   flex-wrap: wrap;
-  animation: khRise 0.6s var(--ease-out) both;
+  animation: var(--kf-rise) 0.6s var(--ease-out) both;
 }
 
 .pickedNote {

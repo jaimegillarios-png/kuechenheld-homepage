@@ -47,6 +47,23 @@
   --ease-curtain: cubic-bezier(0.62, 0.02, 0.24, 1);
   --ease-zoom: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* Keyframe names, referenced through custom properties. CSS Modules rewrites
+     a bare `animation: khFade` to a file-scoped name that has no definition —
+     the animation then silently never runs. A var() reference is passed
+     through untouched, so modules resolve to these global keyframes. */
+  --kf-rise: khRise;
+  --kf-line-up: khLineUp;
+  --kf-fade: khFade;
+  --kf-rule: khRule;
+  --kf-drop: khDrop;
+  --kf-hero-drift: khHeroDrift;
+  --kf-img-in: khImgIn;
+  --kf-slide-lag: khSlideLag;
+  --kf-edge: khEdge;
+  --kf-nav-in: khNavIn;
+  --kf-acc: khAcc;
+  --kf-acc-text: khAccText;
+
   /* layout */
   --content-max: 1240px;
   --gutter: 40px;

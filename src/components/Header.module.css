@@ -100,7 +100,7 @@
   flex-direction: column;
   padding: 24px;
   overflow-y: auto;
-  animation: khNavIn 0.5s var(--ease-out) both;
+  animation: var(--kf-nav-in) 0.5s var(--ease-out) both;
 }
 
 .overlayTop {
