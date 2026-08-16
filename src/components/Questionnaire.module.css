@@ -80,10 +80,12 @@
   font-size: 12px;
 }
 
+/* Handoff specifies a 104x80 box; nudged up on request. 4:3 matches the
+   artwork's own 80x60 viewBox, so the glyph fills the box without letterboxing. */
 .icon {
   display: block;
-  width: 104px;
-  height: 80px;
+  width: 120px;
+  height: 90px;
 }
 
 .foot {

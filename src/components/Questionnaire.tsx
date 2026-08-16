@@ -49,8 +49,8 @@ export default function Questionnaire() {
                 <Image
                   src={form.icon}
                   alt=""
-                  width={104}
-                  height={80}
+                  width={120}
+                  height={90}
                   data-reveal="wipe"
                   className={styles.icon}
                 />
