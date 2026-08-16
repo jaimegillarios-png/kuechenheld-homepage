@@ -51,6 +51,7 @@ export default function Questionnaire() {
                   alt=""
                   width={104}
                   height={80}
+                  data-reveal="wipe"
                   className={styles.icon}
                 />
                 <span className={shared.label}>{form.label}</span>

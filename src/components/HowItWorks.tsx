@@ -14,6 +14,7 @@ export default function HowItWorks() {
           fill
           sizes="(max-width: 900px) 100vw, 50vw"
           data-parallax
+          data-reveal="wipe"
           className={styles.photo}
         />
       </div>

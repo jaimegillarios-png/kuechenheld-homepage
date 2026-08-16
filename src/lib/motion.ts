@@ -46,11 +46,14 @@ function collectRevealTargets(root: ParentNode): RevealTarget[] {
 
   const add = (el: HTMLElement, kind: RevealKind, delay: number) => {
     if (seen.has(el) || !isBelowFold(el)) return;
-    // Anything taller than the viewport would reveal awkwardly, and sticky or
-    // fixed elements must not be transformed at all.
+    // A vertical reveal on something taller than the viewport looks broken —
+    // it is still moving when it already fills the screen. The curtain wipes
+    // horizontally, so height does not matter to it and full-bleed photography
+    // is exactly where it reads best.
     const { height } = el.getBoundingClientRect();
+    if (kind !== "wipe" && height > window.innerHeight * 1.3) return;
+    // Sticky and fixed elements must not be transformed at all.
     const position = getComputedStyle(el).position;
-    if (height > window.innerHeight * 1.3) return;
     if (position === "sticky" || position === "fixed") return;
     seen.add(el);
     plan.push({ el, kind, delay });
@@ -75,14 +78,32 @@ function collectRevealTargets(root: ParentNode): RevealTarget[] {
   return plan;
 }
 
+/**
+ * Whether the reveal may animate this element's `transform`.
+ *
+ * A parallax photo has its transform rewritten every scroll frame, and a photo
+ * inside a `[data-zoom]` frame hands its transform to the hover zoom. Writing a
+ * reveal transform (or a transition for it) onto either would stutter the drift
+ * or retime the zoom, so those get a clip-path-only curtain.
+ */
+function ownsTransform(el: HTMLElement): boolean {
+  return !el.hasAttribute("data-parallax") && !el.closest("[data-zoom]");
+}
+
 function hideForReveal(t: RevealTarget) {
   const { el, kind, delay } = t;
   const at = (prop: string) => `${prop} 1s ${EASE} ${delay}ms`;
 
   if (kind === "wipe") {
     el.style.clipPath = "inset(0 0 0 100%)";
-    el.style.transform = "scale(1.06)";
-    el.style.transition = `${at("clip-path")}, transform 1.6s ${EASE} ${delay}ms`;
+    if (ownsTransform(el)) {
+      el.style.transform = "scale(1.06)";
+      el.style.transition = `${at("clip-path")}, transform 1.6s ${EASE} ${delay}ms`;
+    } else {
+      // Something else drives this element's transform — animate the curtain
+      // alone, and leave `transform` (and its transition) untouched.
+      el.style.transition = at("clip-path");
+    }
   } else if (kind === "mask") {
     el.style.clipPath = "inset(0 0 108% 0)";
     el.style.transform = "translateY(14px)";
@@ -103,7 +124,19 @@ function showRevealed(t: RevealTarget) {
   const { el, kind } = t;
   if (kind === "wipe") {
     el.style.clipPath = "inset(0 0 0 0)";
-    el.style.transform = "none";
+    if (ownsTransform(el)) {
+      el.style.transform = "none";
+    } else {
+      // Drop the inline styles once the curtain lands, so the hover zoom gets
+      // its own transition timing back instead of inheriting the reveal's.
+      const cleanup = (e: TransitionEvent) => {
+        if (e.propertyName !== "clip-path") return;
+        el.removeEventListener("transitionend", cleanup);
+        el.style.transition = "";
+        el.style.clipPath = "";
+      };
+      el.addEventListener("transitionend", cleanup);
+    }
   } else if (kind === "mask") {
     // Slight vertical overshoot so descenders are not clipped once open.
     el.style.clipPath = "inset(-10% 0 -10% 0)";
