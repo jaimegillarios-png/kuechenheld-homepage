@@ -109,7 +109,13 @@ function hideForReveal(t: RevealTarget) {
     el.style.transform = "translateY(14px)";
     el.style.transition = `${at("clip-path")}, ${at("transform")}`;
   } else if (kind === "letter") {
-    t.restoreLetterSpacing = getComputedStyle(el).letterSpacing;
+    // Remember the designed tracking on the node: if this runs twice (React
+    // re-invokes effects in development) a second read would capture the
+    // widened 0.6em and the eyebrow would never tighten back.
+    if (!el.dataset.trackingOriginal) {
+      el.dataset.trackingOriginal = getComputedStyle(el).letterSpacing;
+    }
+    t.restoreLetterSpacing = el.dataset.trackingOriginal;
     el.style.opacity = "0";
     el.style.letterSpacing = "0.6em";
     el.style.transition = `opacity .9s ease ${delay}ms, letter-spacing 1.2s ${EASE} ${delay}ms`;
@@ -120,33 +126,51 @@ function hideForReveal(t: RevealTarget) {
   }
 }
 
+/**
+ * Hands the element back to the stylesheet once its reveal has landed.
+ *
+ * A reveal's inline `transition` would otherwise outlive it and retime every
+ * later interaction on that element — the FAQ "+" would rotate over the
+ * reveal's 1s instead of its own .45s, and a zoomable photo would inherit the
+ * curtain's timing on hover.
+ */
+function releaseAfterReveal(
+  el: HTMLElement,
+  property: string,
+  alsoClearClip = false,
+) {
+  const cleanup = (e: TransitionEvent) => {
+    if (e.propertyName !== property) return;
+    el.removeEventListener("transitionend", cleanup);
+    el.style.transition = "";
+    if (alsoClearClip) el.style.clipPath = "";
+  };
+  el.addEventListener("transitionend", cleanup);
+}
+
 function showRevealed(t: RevealTarget) {
   const { el, kind } = t;
   if (kind === "wipe") {
     el.style.clipPath = "inset(0 0 0 0)";
     if (ownsTransform(el)) {
       el.style.transform = "none";
+      releaseAfterReveal(el, "transform");
     } else {
-      // Drop the inline styles once the curtain lands, so the hover zoom gets
-      // its own transition timing back instead of inheriting the reveal's.
-      const cleanup = (e: TransitionEvent) => {
-        if (e.propertyName !== "clip-path") return;
-        el.removeEventListener("transitionend", cleanup);
-        el.style.transition = "";
-        el.style.clipPath = "";
-      };
-      el.addEventListener("transitionend", cleanup);
+      releaseAfterReveal(el, "clip-path", true);
     }
   } else if (kind === "mask") {
     // Slight vertical overshoot so descenders are not clipped once open.
     el.style.clipPath = "inset(-10% 0 -10% 0)";
     el.style.transform = "none";
+    releaseAfterReveal(el, "transform");
   } else if (kind === "letter") {
     el.style.opacity = "1";
     el.style.letterSpacing = t.restoreLetterSpacing || ".28em";
+    releaseAfterReveal(el, "letter-spacing");
   } else {
     el.style.opacity = "1";
     el.style.transform = "none";
+    releaseAfterReveal(el, "transform");
   }
 }
 
@@ -190,7 +214,11 @@ export function initScrollReveals(root: ParentNode = document): () => void {
 
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
-  raf = requestAnimationFrame(check);
+  // Run the first pass synchronously. Scheduling it with rAF would leave `raf`
+  // holding a frame id that never resolves in a background tab — where rAF does
+  // not run at all — and `onScroll` would then short-circuit on that stale id
+  // forever, so the page could never reveal anything.
+  check();
 
   // Safety net: nothing stays invisible if a first measurement was wrong.
   safety = window.setTimeout(() => {

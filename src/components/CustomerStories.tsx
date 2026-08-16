@@ -15,7 +15,13 @@ export default function CustomerStories() {
   return (
     <section className={styles.section}>
       <div className={styles.media} {...rail.hoverProps}>
-        <div ref={railRef} className={styles.rail} data-rail>
+        <div
+          ref={railRef}
+          className={styles.rail}
+          data-rail
+          data-reveal-stagger
+          data-reveal-stagger-step="110"
+        >
           {storySlides.map((slide) => (
             <div key={slide.src} className={styles.slide}>
               <Image

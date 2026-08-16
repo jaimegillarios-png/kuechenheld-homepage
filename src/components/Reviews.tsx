@@ -17,7 +17,7 @@ export default function Reviews() {
           Bewertungen
         </div>
 
-        <div className={styles.head}>
+        <div className={styles.head} data-reveal-stagger>
           <div>
             <h2 className={styles.heading} data-reveal="mask">
               Über 1.500 gekaufte Küchen im Jahr
@@ -67,7 +67,13 @@ export default function Reviews() {
         </div>
 
         <div {...rail.hoverProps}>
-          <div ref={railRef} className={styles.rail} data-rail>
+          <div
+            ref={railRef}
+            className={styles.rail}
+            data-rail
+            data-reveal-stagger
+            data-reveal-stagger-step="110"
+          >
             {reviews.map((review) => (
               <figure key={review.author} className={styles.quote}>
                 <div className={styles.quoteTop}>

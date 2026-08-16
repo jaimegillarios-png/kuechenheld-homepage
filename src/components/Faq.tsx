@@ -58,6 +58,7 @@ export default function Faq() {
                     type="button"
                     id={buttonId}
                     className={styles.row}
+                    data-reveal-stagger
                     aria-expanded={open}
                     aria-controls={panelId}
                     onClick={() => setOpenIdx(open ? -1 : i)}

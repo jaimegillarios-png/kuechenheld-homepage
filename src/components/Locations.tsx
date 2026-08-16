@@ -54,7 +54,11 @@ export default function Locations() {
           <ul className={styles.list}>
             {showrooms.map((city, i) => (
               <li key={city}>
-                <MaybeLink href={routes.showrooms} className={styles.row}>
+                <MaybeLink
+                  href={routes.showrooms}
+                  className={styles.row}
+                  data-reveal-stagger
+                >
                   <span className={styles.rowNum}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
