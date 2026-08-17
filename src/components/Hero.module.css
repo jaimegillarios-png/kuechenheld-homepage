@@ -5,6 +5,21 @@
   flex-direction: column;
 }
 
+/* …but only while the viewport is wider than it is tall. On a desktop display
+   in portrait, or a window dragged taller than it is wide, pinning the hero to
+   the full height only stretches whitespace and pushes the photography off the
+   first screen — so let the content set the height instead. `.hero`'s own
+   824px min-height still applies, so it never collapses.
+
+   Scoped to the desktop layout on purpose: below 900px the hero is already
+   stacked and content exceeds the viewport anyway, so the phone and tablet
+   layouts are untouched. */
+@media (orientation: portrait) and (min-width: 901px) {
+  .wrap {
+    min-height: 0;
+  }
+}
+
 .hero {
   position: relative;
   flex: 1;
