@@ -5,16 +5,20 @@
   flex-direction: column;
 }
 
-/* …but only while the viewport is wider than it is tall. On a desktop display
-   in portrait, or a window dragged taller than it is wide, pinning the hero to
-   the full height only stretches whitespace and pushes the photography off the
-   first screen — so let the content set the height instead. `.hero`'s own
-   824px min-height still applies, so it never collapses.
+/* …but only while the viewport is meaningfully wider than it is tall. Once it
+   approaches square — a portrait display, or a window dragged down to roughly
+   4:3 — pinning the hero to the full height only stretches whitespace and
+   pushes the photography off the first screen, so let the content set the
+   height instead. `.hero`'s own 824px min-height still applies, so it never
+   collapses.
+
+   The 4/3 threshold keeps every normal widescreen desktop full-height (16:9 is
+   1.78, 16:10 is 1.6) and releases the squarer ones.
 
    Scoped to the desktop layout on purpose: below 900px the hero is already
    stacked and content exceeds the viewport anyway, so the phone and tablet
    layouts are untouched. */
-@media (orientation: portrait) and (min-width: 901px) {
+@media (max-aspect-ratio: 4/3) and (min-width: 901px) {
   .wrap {
     min-height: 0;
   }
