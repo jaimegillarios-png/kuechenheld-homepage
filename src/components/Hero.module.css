@@ -235,10 +235,36 @@
   .rail {
     display: none;
   }
-  .text {
-    padding: 40px 24px;
-  }
   .media {
     grid-column: 1;
+  }
+
+  /* The desktop rhythm (48px under the eyebrow, 56px above the rule) leaves the
+     phone screen mostly empty, so the type sits in a narrow band. Tighten it. */
+  .text {
+    padding: 24px 24px 32px;
+  }
+  .eyebrow {
+    margin-bottom: 20px;
+  }
+  .rule {
+    margin: 28px 0 24px;
+  }
+  .ctas {
+    margin-top: 32px;
+    gap: 20px;
+  }
+
+  /* The headline holds at its 40px floor from 833px all the way down, so on a
+     phone it stops well short of the column. Scale it with the viewport and
+     pull the stagger in — at full indent the second line would overflow. */
+  .h1 {
+    font-size: clamp(40px, 13.5vw, 60px);
+  }
+  .line2 {
+    padding-left: 0.5em;
+  }
+  .line3 {
+    padding-left: 1.3em;
   }
 }
