@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree } from "next/font/google";
 import { isIndexable } from "@/lib/site";
+import "@/styles/tokens.css";
 import "./globals.css";
 
 // Self-hosted by next/font — no CDN request, no layout shift on load.

@@ -4,44 +4,44 @@
   z-index: 20;
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: var(--space-32);
   flex-wrap: wrap;
-  padding: 24px var(--gutter);
-  background: var(--paper);
+  padding: var(--space-24) var(--gutter);
+  background: var(--color-surface);
   border-bottom: 1px solid transparent;
   will-change: transform;
   transition:
-    transform 0.45s var(--ease-out),
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
+    transform var(--duration-accordion-sign) var(--ease-out),
+    border-color var(--duration-control) ease,
+    box-shadow var(--duration-control) ease;
 }
 
 .wordmark {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 0.32em;
+  font-size: var(--font-size-wordmark);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-wordmark);
   text-transform: uppercase;
 }
 
 .nav {
   display: flex;
-  gap: 16px;
+  gap: var(--space-16);
   flex: 1;
   min-width: 0;
   flex-wrap: wrap;
-  font-size: 12px;
-  letter-spacing: 0.12em;
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-nav);
   text-transform: uppercase;
 }
 
 .actions {
   display: flex;
-  gap: 24px;
+  gap: var(--space-24);
   justify-content: flex-end;
   flex: none;
-  font-size: 12px;
-  letter-spacing: 0.12em;
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-nav);
   text-transform: uppercase;
 }
 
@@ -52,8 +52,8 @@
 
 .actionRuled {
   white-space: nowrap;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 2px;
+  border-bottom: 1px solid var(--color-rule-strong);
+  padding-bottom: var(--space-2);
 }
 
 .burger {
@@ -61,7 +61,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  gap: 5px;
+  gap: var(--space-5);
   width: 40px;
   height: 40px;
   margin-left: auto;
@@ -70,7 +70,7 @@
 .burger > span {
   display: block;
   height: 1px;
-  background: var(--ink);
+  background: var(--color-action);
 }
 .burger > span:first-child {
   width: 24px;
@@ -95,12 +95,12 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: var(--paper-cream);
+  background: var(--color-surface-cream);
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: var(--space-24);
   overflow-y: auto;
-  animation: var(--kf-nav-in) 0.5s var(--ease-out) both;
+  animation: var(--kf-nav-in) var(--duration-underline) var(--ease-out) both;
 }
 
 .overlayTop {
@@ -111,15 +111,15 @@
 
 .overlayWordmark {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  letter-spacing: 0.32em;
+  font-size: var(--font-size-body);
+  letter-spacing: var(--tracking-wordmark);
   text-transform: uppercase;
 }
 
 .close {
-  font-size: 24px;
-  font-weight: 200;
-  line-height: 1;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-hairline);
+  line-height: var(--leading-flat);
   width: 40px;
   height: 40px;
   display: flex;
@@ -130,42 +130,42 @@
 .overlayNav {
   display: flex;
   flex-direction: column;
-  margin-top: 48px;
+  margin-top: var(--space-48);
 }
 
 .overlayItem {
-  font-size: 32px;
-  font-weight: 200;
-  padding: 20px 0;
-  border-top: 1px solid var(--ink-14);
+  font-size: var(--font-size-nav-mobile);
+  font-weight: var(--font-weight-hairline);
+  padding: var(--space-20) 0;
+  border-top: 1px solid var(--color-rule-14);
 }
 .overlayItem:last-child {
-  border-bottom: 1px solid var(--ink-14);
+  border-bottom: 1px solid var(--color-rule-14);
 }
 
 .overlayFoot {
   margin-top: auto;
-  padding-top: 48px;
+  padding-top: var(--space-48);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-16);
 }
 
 .overlayCta {
-  font-size: 12px;
-  letter-spacing: 0.2em;
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  background: var(--ink);
-  color: #fff;
-  padding: 18px 32px;
+  background: var(--color-action);
+  color: var(--color-action-text);
+  padding: var(--space-18) var(--space-32);
   text-align: center;
 }
 
 .overlayLogin {
   cursor: pointer;
-  font-size: 12px;
-  letter-spacing: 0.2em;
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--ink-55);
+  color: var(--color-text-muted-55);
   text-align: center;
 }

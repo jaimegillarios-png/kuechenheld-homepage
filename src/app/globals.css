@@ -1,79 +1,7 @@
 /* ---------------------------------------------------------------------------
-   Design tokens
+   Global base, keyframes and the shared hover language.
+   Design tokens live in src/styles/tokens.css, imported ahead of this file.
    --------------------------------------------------------------------------- */
-:root {
-  --ink: #141312;
-  --ink-cta: #1f1d1b;
-  --paper: #ffffff;
-  --paper-warm: #faf9f6;
-  --paper-cream: #f4f2ed;
-  --img-placeholder: #e9e6e0;
-
-  /* ink alphas */
-  --ink-72: rgba(20, 19, 18, 0.72);
-  --ink-70: rgba(20, 19, 18, 0.7);
-  --ink-62: rgba(20, 19, 18, 0.62);
-  --ink-60: rgba(20, 19, 18, 0.6);
-  --ink-55: rgba(20, 19, 18, 0.55);
-  --ink-50: rgba(20, 19, 18, 0.5);
-  --ink-45: rgba(20, 19, 18, 0.45);
-  --ink-42: rgba(20, 19, 18, 0.42);
-  --ink-40: rgba(20, 19, 18, 0.4);
-  --ink-35: rgba(20, 19, 18, 0.35);
-  --ink-30: rgba(20, 19, 18, 0.3);
-  --ink-28: rgba(20, 19, 18, 0.28);
-  --ink-20: rgba(20, 19, 18, 0.2);
-  --ink-18: rgba(20, 19, 18, 0.18);
-  --ink-16: rgba(20, 19, 18, 0.16);
-  --ink-14: rgba(20, 19, 18, 0.14);
-  --ink-12: rgba(20, 19, 18, 0.12);
-  --ink-04: rgba(20, 19, 18, 0.04);
-  --ink-03: rgba(20, 19, 18, 0.03);
-
-  /* cream alphas, used on dark ground */
-  --cream-78: rgba(244, 242, 237, 0.78);
-  --cream-70: rgba(244, 242, 237, 0.7);
-  --cream-65: rgba(244, 242, 237, 0.65);
-  --cream-55: rgba(244, 242, 237, 0.55);
-  --cream-50: rgba(244, 242, 237, 0.5);
-  --cream-40: rgba(244, 242, 237, 0.4);
-  --cream-35: rgba(244, 242, 237, 0.35);
-  --cream-28: rgba(244, 242, 237, 0.28);
-  --cream-18: rgba(244, 242, 237, 0.18);
-  --cream-16: rgba(244, 242, 237, 0.16);
-
-  /* easings */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-curtain: cubic-bezier(0.62, 0.02, 0.24, 1);
-  --ease-zoom: cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* Keyframe names, referenced through custom properties. CSS Modules rewrites
-     a bare `animation: khFade` to a file-scoped name that has no definition —
-     the animation then silently never runs. A var() reference is passed
-     through untouched, so modules resolve to these global keyframes. */
-  --kf-rise: khRise;
-  --kf-line-up: khLineUp;
-  --kf-fade: khFade;
-  --kf-rule: khRule;
-  --kf-drop: khDrop;
-  --kf-hero-drift: khHeroDrift;
-  --kf-img-in: khImgIn;
-  --kf-slide-lag: khSlideLag;
-  --kf-edge: khEdge;
-  --kf-nav-in: khNavIn;
-  --kf-acc: khAcc;
-  --kf-acc-text: khAccText;
-
-  /* layout */
-  --content-max: 1240px;
-  --gutter: 40px;
-}
-
-@media (max-width: 900px) {
-  :root {
-    --gutter: 24px;
-  }
-}
 
 /* ---------------------------------------------------------------------------
    Base
@@ -96,8 +24,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--color-surface);
+  color: var(--color-text);
   font-family: var(--font-figtree), "Helvetica Neue", Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -266,7 +194,7 @@ p {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.5s var(--ease-out);
+  transition: transform var(--duration-underline) var(--ease-out);
 }
 [data-ul]:hover::after {
   transform: scaleX(1);
@@ -292,26 +220,28 @@ p {
 }
 [data-ul2]::before {
   transform-origin: right;
-  transition: transform 0.24s cubic-bezier(0.3, 0, 0.7, 1) 0s;
+  transition: transform var(--time-240) var(--easing-rule-retract)
+    var(--duration-none);
 }
 [data-ul2]::after {
   transform: scaleX(0);
   transform-origin: left;
   opacity: 0;
   transition:
-    opacity 0.18s ease 0s,
-    transform 0s linear 0.18s;
+    opacity var(--duration-hover-fast) ease var(--duration-none),
+    transform var(--duration-none) linear var(--duration-hover-fast);
 }
 [data-ul2]:hover::before {
   transform: scaleX(0);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 1, 1) 0s;
+  transition: transform var(--duration-control) var(--easing-rule-out)
+    var(--duration-none);
 }
 [data-ul2]:hover::after {
   transform: scaleX(1);
   opacity: 0.45;
   transition:
-    transform 0.5s cubic-bezier(0, 0, 0.3, 1) 0.08s,
-    opacity 0.2s ease 0.08s;
+    transform var(--duration-underline) var(--easing-rule-in) var(--time-80),
+    opacity var(--duration-hover) ease var(--time-80);
 }
 
 /* Clickable images: the frame holds its size, the photo grows inside it. */
@@ -319,7 +249,7 @@ p {
   overflow: hidden;
 }
 [data-zoom] > img {
-  transition: transform 0.7s var(--ease-zoom);
+  transition: transform var(--duration-zoom) var(--ease-zoom);
   will-change: transform;
 }
 [data-zoom]:hover > img,
@@ -339,7 +269,7 @@ p {
   *,
   *::before,
   *::after {
-    animation-duration: 0.001ms !important;
+    animation-duration: var(--duration-instant) !important;
     animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
   }
@@ -360,11 +290,11 @@ p {
   left: -9999px;
   top: 0;
   z-index: 300;
-  background: var(--ink);
-  color: #fff;
-  padding: 16px 24px;
-  font-size: 12px;
-  letter-spacing: 0.2em;
+  background: var(--color-action);
+  color: var(--color-action-text);
+  padding: var(--space-16) var(--space-24);
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
 }
 .skipLink:focus {

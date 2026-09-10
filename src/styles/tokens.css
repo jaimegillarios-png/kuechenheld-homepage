@@ -1,0 +1,388 @@
+/* ===========================================================================
+   DESIGN TOKENS
+   ---------------------------------------------------------------------------
+   Two layers:
+
+     PRIMITIVES  raw values, named after the value itself. No meaning attached.
+                 Named by value (--space-24, --text-16) rather than by step
+                 (--space-4, --text-md) on purpose: pass A preserves the current
+                 values exactly, including near-duplicates, so a step-based name
+                 would imply a scale that does not exist yet. Pass B renames
+                 these to steps once the values are actually normalised.
+
+     SEMANTIC    role names that reference primitives only. Derived from how
+                 each value is used in the codebase, not from what it is.
+
+   Several primitives currently serve the SAME role at slightly different
+   values. Those are kept apart and suffixed with their alpha (--color-rule-14
+   vs --color-rule-16) so the collision is visible at every call site. They are
+   listed in the pass B report as merge candidates. Nothing is merged here —
+   pass A must not change a single rendered pixel.
+   =========================================================================== */
+
+:root {
+  /* =========================================================================
+     PRIMITIVES — COLOUR
+     ========================================================================= */
+
+  /* Solid ground */
+  --ink: #141312;
+  --ink-cta: #1f1d1b;
+  --paper: #ffffff;
+  --paper-warm: #faf9f6;
+  --paper-cream: #f4f2ed;
+  --img-placeholder: #e9e6e0;
+
+  /* Ink alphas, heaviest to lightest */
+  --ink-72: rgba(20, 19, 18, 0.72);
+  --ink-70: rgba(20, 19, 18, 0.7);
+  --ink-62: rgba(20, 19, 18, 0.62);
+  --ink-60: rgba(20, 19, 18, 0.6);
+  --ink-55: rgba(20, 19, 18, 0.55);
+  --ink-50: rgba(20, 19, 18, 0.5);
+  --ink-45: rgba(20, 19, 18, 0.45);
+  --ink-42: rgba(20, 19, 18, 0.42);
+  --ink-40: rgba(20, 19, 18, 0.4);
+  --ink-35: rgba(20, 19, 18, 0.35);
+  --ink-30: rgba(20, 19, 18, 0.3);
+  --ink-20: rgba(20, 19, 18, 0.2);
+  --ink-18: rgba(20, 19, 18, 0.18);
+  --ink-16: rgba(20, 19, 18, 0.16);
+  --ink-14: rgba(20, 19, 18, 0.14);
+  --ink-12: rgba(20, 19, 18, 0.12);
+  --ink-09: rgba(20, 19, 18, 0.09);
+  --ink-05: rgba(20, 19, 18, 0.05);
+  --ink-04: rgba(20, 19, 18, 0.04);
+  --ink-03: rgba(20, 19, 18, 0.03);
+
+  /* Cream alphas, used on dark ground */
+  --cream-78: rgba(244, 242, 237, 0.78);
+  --cream-70: rgba(244, 242, 237, 0.7);
+  --cream-65: rgba(244, 242, 237, 0.65);
+  --cream-55: rgba(244, 242, 237, 0.55);
+  --cream-50: rgba(244, 242, 237, 0.5);
+  --cream-40: rgba(244, 242, 237, 0.4);
+  --cream-35: rgba(244, 242, 237, 0.35);
+  --cream-28: rgba(244, 242, 237, 0.28);
+  --cream-18: rgba(244, 242, 237, 0.18);
+  --cream-16: rgba(244, 242, 237, 0.16);
+
+  /* White alphas — overlays that sit on photography */
+  --white-92: rgba(255, 255, 255, 0.92);
+  --white-90: rgba(255, 255, 255, 0.9);
+
+  /* =========================================================================
+     PRIMITIVES — TYPE
+     ========================================================================= */
+  --text-10: 10px;
+  --text-12: 12px;
+  --text-14: 14px;
+  --text-16: 16px;
+  --text-20: 20px;
+  --text-24: 24px;
+  --text-32: 32px;
+  --text-40: 40px;
+  --text-48: 48px;
+  --text-56: 56px;
+  /* Fluid steps. Kept whole — the clamp is the value. */
+  --text-fluid-hero: clamp(40px, 4.8vw, 80px);
+  --text-fluid-hero-narrow: clamp(40px, 13.5vw, 60px);
+  --text-fluid-heading: clamp(32px, 3.4vw, 48px);
+
+  --weight-200: 200;
+  --weight-300: 300;
+  --weight-400: 400;
+
+  --leading-098: 0.98;
+  --leading-100: 1;
+  --leading-110: 1.1;
+  --leading-115: 1.15;
+  --leading-140: 1.4;
+  --leading-150: 1.5;
+  --leading-160: 1.6;
+  --leading-180: 1.8;
+
+  --tracking-012: 0.12em;
+  --tracking-014: 0.14em;
+  --tracking-020: 0.2em;
+  --tracking-022: 0.22em;
+  --tracking-028: 0.28em;
+  --tracking-030: 0.3em;
+  --tracking-032: 0.32em;
+  --tracking-034: 0.34em;
+
+  /* =========================================================================
+     PRIMITIVES — SPACE
+     ========================================================================= */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-80: 80px;
+  --space-96: 96px;
+  --space-104: 104px;
+  --space-112: 112px;
+  --space-120: 120px;
+  --space-128: 128px;
+  --space-fluid-16-32: clamp(16px, 2vw, 32px);
+  /* Negative offsets — pull an overlay back over its own border. */
+  --space-neg-1: -1px;
+  --space-neg-20: -20px;
+  /* Em-relative indents on the hero headline; scale with the type, not the grid. */
+  --indent-004: 0.04em;
+  --indent-050: 0.5em;
+  --indent-110: 1.1em;
+  --indent-130: 1.3em;
+  --indent-260: 2.6em;
+
+  /* =========================================================================
+     PRIMITIVES — MOTION
+     ========================================================================= */
+  --time-0: 0s;
+  --time-50: 0.05s;
+  --time-80: 0.08s;
+  --time-100: 0.1s;
+  --time-120: 0.12s;
+  --time-180: 0.18s;
+  --time-200: 0.2s;
+  --time-240: 0.24s;
+  --time-250: 0.25s;
+  --time-300: 0.3s;
+  --time-380: 0.38s;
+  --time-400: 0.4s;
+  --time-450: 0.45s;
+  --time-500: 0.5s;
+  --time-550: 0.55s;
+  --time-600: 0.6s;
+  --time-700: 0.7s;
+  --time-720: 0.72s;
+  --time-860: 0.86s;
+  --time-900: 0.9s;
+  --time-1000: 1s;
+  --time-1100: 1.1s;
+  --time-1200: 1.2s;
+  --time-1400: 1.4s;
+  --time-1700: 1.7s;
+  --time-9000: 9s;
+  --time-instant: 0.001ms;
+
+  /* Keyframe names, referenced through custom properties. CSS Modules rewrites
+     a bare `animation: khFade` to a file-scoped name that has no definition —
+     the animation then silently never runs. A var() reference is passed
+     through untouched, so modules resolve to these global keyframes.
+     The @keyframes themselves live in globals.css. */
+  --kf-rise: khRise;
+  --kf-line-up: khLineUp;
+  --kf-fade: khFade;
+  --kf-rule: khRule;
+  --kf-drop: khDrop;
+  --kf-hero-drift: khHeroDrift;
+  --kf-img-in: khImgIn;
+  --kf-slide-lag: khSlideLag;
+  --kf-edge: khEdge;
+  --kf-nav-in: khNavIn;
+  --kf-acc: khAcc;
+  --kf-acc-text: khAccText;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-curtain: cubic-bezier(0.62, 0.02, 0.24, 1);
+  --ease-zoom: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-rule-retract: cubic-bezier(0.3, 0, 0.7, 1);
+  --ease-rule-out: cubic-bezier(0.4, 0, 1, 1);
+  --ease-rule-in: cubic-bezier(0, 0, 0.3, 1);
+
+  /* =========================================================================
+     PRIMITIVES — ELEVATION
+     ========================================================================= */
+  --shadow-card: 0 8px 24px var(--ink-09);
+  --shadow-header: 0 1px 20px var(--ink-05);
+  --shadow-ring-cream: inset 0 0 0 1px var(--cream-50);
+
+  /* =========================================================================
+     PRIMITIVES — LAYOUT
+     ========================================================================= */
+  --content-max: 1240px;
+  --gutter: 40px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --gutter: 24px;
+  }
+}
+
+/* ===========================================================================
+   SEMANTIC LAYER — roles only, referencing primitives.
+
+   Read the `-NN` suffix as "this role, at this alpha". Every suffixed group is
+   a set of primitives doing one job at values a few percent apart; they are a
+   merge candidate for pass B, not a deliberate scale.
+   =========================================================================== */
+:root {
+  /* --- surfaces --------------------------------------------------------- */
+  --color-surface: var(--paper); /* page ground */
+  --color-surface-warm: var(--paper-warm); /* questionnaire, reviews */
+  --color-surface-cream: var(--paper-cream); /* light band, mobile nav */
+  --color-surface-inverse: var(--ink); /* dark sections, footer */
+  --color-surface-inverse-raised: var(
+    --ink-cta
+  ); /* CTA band, one step lighter */
+  --color-surface-media: var(--img-placeholder); /* behind a loading photo */
+
+  /* ROLE: row hover wash. 2 primitives collide. */
+  --color-surface-hover-04: var(--ink-04); /* showroom rows */
+  --color-surface-hover-03: var(--ink-03); /* FAQ rows */
+
+  /* --- text on light ---------------------------------------------------- */
+  --color-text: var(--ink); /* headings, primary */
+
+  /* ROLE: body copy. 2 primitives collide. */
+  --color-text-body-70: var(--ink-70); /* 16px body */
+  --color-text-body-72: var(--ink-72); /* 14px body */
+
+  /* ROLE: secondary / muted copy. 3 primitives collide. */
+  --color-text-muted-62: var(--ink-62); /* trust strip */
+  --color-text-muted-60: var(--ink-60); /* card and row copy */
+  --color-text-muted-55: var(--ink-55); /* picked note, overlay login */
+
+  /* ROLE: eyebrow, meta, timestamps. 3 primitives collide. */
+  --color-text-meta-45: var(--ink-45);
+  --color-text-meta-42: var(--ink-42); /* hero eyebrow only */
+  --color-text-meta-40: var(--ink-40);
+
+  /* ROLE: faint marks — arrows, oversized numerals. 2 primitives collide. */
+  --color-text-faint-35: var(--ink-35); /* row arrows */
+  --color-text-faint-30: var(--ink-30); /* step numerals */
+
+  /* --- text on dark ----------------------------------------------------- */
+  --color-text-inverse: var(--paper-cream); /* primary on dark */
+  --color-text-inverse-link: var(--cream-78); /* footer links */
+
+  /* ROLE: body copy on dark. 2 primitives collide. */
+  --color-text-inverse-body-70: var(--cream-70);
+  --color-text-inverse-body-65: var(--cream-65);
+
+  /* ROLE: meta on dark. 3 primitives collide. */
+  --color-text-inverse-meta-55: var(--cream-55);
+  --color-text-inverse-meta-50: var(--cream-50);
+  --color-text-inverse-meta-40: var(--cream-40);
+
+  /* --- rules ------------------------------------------------------------ */
+  /* ROLE: hairline rule on light. 5 primitives collide — the widest group. */
+  --color-rule-20: var(--ink-20);
+  --color-rule-18: var(--ink-18);
+  --color-rule-16: var(--ink-16);
+  --color-rule-14: var(--ink-14);
+  --color-rule-12: var(--ink-12);
+
+  --color-rule-strong: var(
+    --ink
+  ); /* full-strength rule: outlined control, link underline, burger stroke */
+
+  /* ROLE: the resting rule under a text link. 2 primitives collide. */
+  --color-rule-link-50: var(--ink-50);
+  --color-rule-link-30: var(--ink-30);
+
+  /* ROLE: hairline rule on dark. 4 primitives collide. */
+  --color-rule-inverse-35: var(--cream-35);
+  --color-rule-inverse-28: var(--cream-28);
+  --color-rule-inverse-18: var(--cream-18);
+  --color-rule-inverse-16: var(--cream-16);
+
+  /* --- overlays on photography ------------------------------------------ */
+  --color-overlay-control: var(--white-92); /* rail arrow ground */
+  --color-overlay-edge: var(--white-90); /* travelling curtain edge */
+  --color-text-on-photo: var(--paper); /* captions, dots */
+
+  /* --- controls --------------------------------------------------------- */
+  --color-action: var(--ink); /* primary button ground */
+  --color-action-text: var(--paper); /* on primary button */
+  --color-action-inverse: var(--paper-cream); /* cream button ground */
+  --color-action-inverse-text: var(--ink);
+  --color-action-text-warm: var(
+    --paper-warm
+  ); /* label on ink, tinted to the warm section */
+  --color-selected: var(--ink); /* chosen questionnaire card */
+
+  /* --- elevation -------------------------------------------------------- */
+  --elevation-card-hover: var(--shadow-card);
+  --elevation-header: var(--shadow-header);
+  --elevation-ring-inverse: var(--shadow-ring-cream);
+
+  /* --- type roles ------------------------------------------------------- */
+  --font-size-eyebrow: var(--text-10);
+  --font-size-label: var(--text-12);
+  --font-size-body-sm: var(--text-14);
+  --font-size-body: var(--text-16);
+  --font-size-wordmark: var(--text-20);
+  --font-size-card-title: var(--text-24);
+  --font-size-nav-mobile: var(--text-32);
+  --font-size-numeral: var(--text-40);
+  --font-size-heading: var(--text-48);
+  --font-size-stat: var(--text-56);
+  --font-size-hero: var(--text-fluid-hero);
+  --font-size-hero-narrow: var(--text-fluid-hero-narrow);
+  --font-size-heading-fluid: var(--text-fluid-heading);
+
+  --font-weight-hairline: var(--weight-200);
+  --font-weight-light: var(--weight-300);
+  --font-weight-regular: var(--weight-400);
+
+  --leading-hero: var(--leading-098);
+  --leading-flat: var(--leading-100);
+  --leading-heading: var(--leading-110);
+  --leading-heading-loose: var(--leading-115);
+  --leading-title: var(--leading-140);
+  --leading-quote: var(--leading-150);
+  --leading-meta: var(--leading-160);
+  --leading-body: var(--leading-180);
+
+  --tracking-nav: var(--tracking-012);
+  --tracking-reassurance: var(--tracking-014);
+  --tracking-label: var(--tracking-020);
+  --tracking-strip: var(--tracking-022);
+  --tracking-eyebrow: var(--tracking-028);
+  --tracking-rail: var(--tracking-030);
+  --tracking-wordmark: var(--tracking-032);
+  --tracking-hero-eyebrow: var(--tracking-034);
+
+  /* --- motion roles ----------------------------------------------------- */
+  --duration-instant: var(--time-instant);
+  --duration-none: var(--time-0);
+  --duration-hover-fast: var(--time-180);
+  --duration-hover: var(--time-200);
+  --duration-hover-slow: var(--time-250);
+  --duration-fade: var(--time-300);
+  --duration-control: var(--time-400);
+  --duration-accordion-sign: var(--time-450);
+  --duration-underline: var(--time-500);
+  --duration-accordion: var(--time-550);
+  --duration-zoom: var(--time-700);
+
+  --duration-reveal: var(--time-1000);
+  --duration-reveal-slow: var(--time-1200);
+  --duration-curtain: var(--time-1700);
+  --duration-drift: var(--time-9000);
+
+  --easing-standard: var(--ease-out);
+  --easing-curtain: var(--ease-curtain);
+  --easing-zoom: var(--ease-zoom);
+  --easing-rule-retract: var(--ease-rule-retract);
+  --easing-rule-out: var(--ease-rule-out);
+  --easing-rule-in: var(--ease-rule-in);
+
+  /* Layout: --content-max and --gutter are referenced directly by name, kept
+     as-is per decision. --gutter is responsive (40px -> 24px at 900px). */
+}

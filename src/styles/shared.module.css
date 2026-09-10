@@ -2,12 +2,12 @@
    here rather than redeclaring the scale. */
 
 .section {
-  padding: 120px var(--gutter) 128px;
+  padding: var(--space-120) var(--gutter) var(--space-128);
 }
 @media (max-width: 900px) {
   .section {
-    padding-top: 72px;
-    padding-bottom: 80px;
+    padding-top: var(--space-72);
+    padding-bottom: var(--space-80);
   }
 }
 
@@ -22,22 +22,22 @@
 /* --- type ---------------------------------------------------------------- */
 
 .eyebrow {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.28em;
+  font-size: var(--font-size-eyebrow);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--ink-45);
+  color: var(--color-text-meta-45);
 }
 
 .eyebrowOnDark {
   composes: eyebrow;
-  color: var(--cream-55);
+  color: var(--color-text-inverse-meta-55);
 }
 
 .h2 {
-  font-size: 48px;
-  font-weight: 300;
-  line-height: 1.1;
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-heading);
 }
 /* Note: a heading's `max-width` measure is dropped below 900px, but that has to
    be done by the component's own class. `composes` gives both classes equal
@@ -45,45 +45,45 @@
    `max-width: 34ch` depending only on emit order. */
 @media (max-width: 900px) {
   .h2 {
-    font-size: 32px;
+    font-size: var(--font-size-nav-mobile);
   }
 }
 
 .body {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.8;
-  color: var(--ink-70);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-text-body-70);
 }
 
 .bodySmall {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.8;
-  color: var(--ink-72);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-text-body-72);
 }
 
 .cardTitle {
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.4;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-title);
 }
 
 .stat {
-  font-size: 56px;
-  font-weight: 300;
-  line-height: 1;
+  font-size: var(--font-size-stat);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-flat);
 }
 @media (max-width: 900px) {
   .stat {
-    font-size: 40px;
+    font-size: var(--font-size-numeral);
   }
 }
 
 .label {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.2em;
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
 }
 
@@ -92,11 +92,11 @@
 .btnPrimary {
   composes: label;
   display: inline-block;
-  background: var(--ink);
-  color: #fff;
-  padding: 16px 40px;
+  background: var(--color-action);
+  color: var(--color-action-text);
+  padding: var(--space-16) var(--space-40);
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: opacity var(--duration-hover);
 }
 .btnPrimary:hover {
   opacity: 0.82;
@@ -105,43 +105,43 @@
 .btnOutline {
   composes: label;
   display: inline-block;
-  border: 1px solid var(--ink);
-  padding: 16px 32px;
+  border: 1px solid var(--color-rule-strong);
+  padding: var(--space-16) var(--space-32);
   cursor: pointer;
   transition:
-    background 0.18s,
-    color 0.18s;
+    background var(--duration-hover-fast),
+    color var(--duration-hover-fast);
 }
 .btnOutline:hover {
-  background: var(--ink);
-  color: var(--paper-cream);
+  background: var(--color-action);
+  color: var(--color-text-inverse);
 }
 
 .btnCream {
   composes: label;
   display: inline-block;
   align-self: flex-start;
-  background: var(--paper-cream);
-  color: var(--ink);
-  padding: 16px 40px;
+  background: var(--color-action-inverse);
+  color: var(--color-action-inverse-text);
+  padding: var(--space-16) var(--space-40);
   cursor: pointer;
   transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
+    background var(--duration-hover-slow) ease,
+    color var(--duration-hover-slow) ease,
+    box-shadow var(--duration-hover-slow) ease;
 }
 .btnCream:hover {
   background: transparent;
-  color: var(--paper-cream);
-  box-shadow: inset 0 0 0 1px var(--cream-50);
+  color: var(--color-text-inverse);
+  box-shadow: var(--elevation-ring-inverse);
 }
 
 /* Underlined uppercase link — the drawn-rule hover lives in globals.css. */
 .linkUnderline {
   composes: label;
   align-self: flex-start;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-rule-strong);
+  padding-bottom: var(--space-4);
   cursor: pointer;
 }
 
@@ -150,24 +150,24 @@
 .arrow {
   position: absolute;
   top: 50%;
-  margin-top: -20px;
+  margin-top: var(--space-neg-20);
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid var(--ink-12);
+  background: var(--color-overlay-control);
+  border: 1px solid var(--color-rule-12);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: var(--font-size-body);
   cursor: pointer;
   transition:
-    opacity 0.3s ease,
-    background 0.18s,
-    color 0.18s;
+    opacity var(--duration-fade) ease,
+    background var(--duration-hover-fast),
+    color var(--duration-hover-fast);
 }
 .arrow:hover {
-  background: var(--ink);
-  color: #fff;
+  background: var(--color-action);
+  color: var(--color-action-text);
 }
 @media (max-width: 900px) {
   .arrow {

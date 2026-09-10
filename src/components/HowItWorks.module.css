@@ -8,7 +8,7 @@
   position: relative;
   min-height: 640px;
   overflow: hidden;
-  background: var(--img-placeholder);
+  background: var(--color-surface-media);
 }
 
 .photo {
@@ -16,21 +16,21 @@
 }
 
 .content {
-  padding: 104px 56px 112px;
+  padding: var(--space-104) var(--space-56) var(--space-112);
 }
 
 .eyebrow {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-bottom: 24px;
+  margin-bottom: var(--space-24);
 }
 
 .intro {
-  margin-bottom: 64px;
+  margin-bottom: var(--space-64);
 }
 
 .heading {
   composes: h2 from "../styles/shared.module.css";
-  margin-bottom: 24px;
+  margin-bottom: var(--space-24);
 }
 
 .steps {
@@ -42,25 +42,25 @@
 .step {
   display: grid;
   grid-template-columns: 56px minmax(0, 1fr);
-  gap: 24px;
+  gap: var(--space-24);
   align-items: start;
-  padding: 40px 0;
-  border-top: 1px solid var(--ink-18);
+  padding: var(--space-40) 0;
+  border-top: 1px solid var(--color-rule-18);
 }
 .step:last-child {
-  border-bottom: 1px solid var(--ink-18);
+  border-bottom: 1px solid var(--color-rule-18);
 }
 
 .stepNum {
-  font-size: 40px;
-  font-weight: 300;
-  line-height: 1;
-  color: var(--ink-30);
+  font-size: var(--font-size-numeral);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-flat);
+  color: var(--color-text-faint-30);
 }
 
 /* space between the step title and its paragraph */
 .step > div > div:first-child {
-  margin-bottom: 16px;
+  margin-bottom: var(--space-16);
 }
 
 @media (max-width: 900px) {
@@ -71,10 +71,10 @@
     min-height: 360px;
   }
   .content {
-    padding: 64px 24px 72px;
+    padding: var(--space-64) var(--space-24) var(--space-72);
   }
   .step {
     grid-template-columns: 40px minmax(0, 1fr);
-    gap: 16px;
+    gap: var(--space-16);
   }
 }

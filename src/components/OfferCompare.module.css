@@ -1,24 +1,24 @@
 .section {
-  background: var(--paper-cream);
-  padding: 112px var(--gutter);
+  background: var(--color-surface-cream);
+  padding: var(--space-112) var(--gutter);
 }
 @media (max-width: 900px) {
   .section {
-    padding-top: 72px;
-    padding-bottom: 80px;
+    padding-top: var(--space-72);
+    padding-bottom: var(--space-80);
   }
 }
 
 .heading {
   composes: h2 from "../styles/shared.module.css";
   max-width: 34ch;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-24);
 }
 
 .lead {
   composes: body from "../styles/shared.module.css";
   max-width: 50ch;
-  margin-bottom: 32px;
+  margin-bottom: var(--space-32);
 }
 
 /* Drop the heading measure once the column narrows. */

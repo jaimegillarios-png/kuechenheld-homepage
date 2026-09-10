@@ -1,7 +1,7 @@
 .footer {
-  background: var(--ink);
-  color: var(--paper-cream);
-  padding: 80px var(--gutter) 40px;
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+  padding: var(--space-80) var(--gutter) var(--space-40);
 }
 
 .top {
@@ -9,46 +9,46 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 64px;
+  gap: var(--space-48);
+  padding-bottom: var(--space-64);
 }
 
 .wordmark {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.32em;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-wordmark);
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-24);
 }
 
 /* --- newsletter ---------------------------------------------------------- */
 
 .newsletterEyebrow {
-  font-size: 10px;
-  letter-spacing: 0.28em;
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--cream-65);
-  margin-bottom: 16px;
+  color: var(--color-text-inverse-body-65);
+  margin-bottom: var(--space-16);
 }
 
 .newsletterBody {
-  font-size: 12px;
-  line-height: 1.8;
+  font-size: var(--font-size-label);
+  line-height: var(--leading-body);
   max-width: 34ch;
-  color: var(--cream-50);
-  margin-bottom: 24px;
+  color: var(--color-text-inverse-meta-50);
+  margin-bottom: var(--space-24);
 }
 
 .newsletterForm {
   display: flex;
-  gap: 24px;
+  gap: var(--space-24);
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 280px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--cream-35);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-rule-inverse-35);
 }
 
 .newsletterInput {
@@ -57,20 +57,20 @@
   background: none;
   border: 0;
   padding: 0;
-  color: var(--paper-cream);
+  color: var(--color-text-inverse);
   font: inherit;
-  font-size: 12px;
+  font-size: var(--font-size-label);
 }
 .newsletterInput::placeholder {
-  color: var(--cream-40);
+  color: var(--color-text-inverse-meta-40);
 }
 .newsletterInput:focus {
   outline: none;
 }
 
 .newsletterSubmit {
-  font-size: 10px;
-  letter-spacing: 0.28em;
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -80,7 +80,7 @@
   width: 1px;
   height: 1px;
   padding: 0;
-  margin: -1px;
+  margin: var(--space-neg-1);
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
@@ -89,20 +89,20 @@
 /* --- link columns -------------------------------------------------------- */
 
 .columnHeading {
-  font-size: 10px;
-  letter-spacing: 0.28em;
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--cream-40);
-  margin-bottom: 24px;
+  color: var(--color-text-inverse-meta-40);
+  margin-bottom: var(--space-24);
 }
 
 .columnLinks {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
-  font-size: 12px;
-  color: var(--cream-78);
+  gap: var(--space-12);
+  font-size: var(--font-size-label);
+  color: var(--color-text-inverse-link);
 }
 .columnLinks > * {
   cursor: pointer;
@@ -115,37 +115,37 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px 32px;
+  gap: var(--space-16) var(--space-32);
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--cream-18);
-  padding-top: 32px;
-  font-size: 10px;
-  letter-spacing: 0.28em;
+  border-top: 1px solid var(--color-rule-inverse-18);
+  padding-top: var(--space-32);
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--cream-40);
+  color: var(--color-text-inverse-meta-40);
 }
 
 .socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: var(--space-20);
   align-items: center;
 }
 
 .social {
   display: flex;
-  color: var(--cream-70);
-  transition: color 0.3s ease;
+  color: var(--color-text-inverse-body-70);
+  transition: color var(--duration-fade) ease;
 }
 .social:hover {
-  color: var(--paper-cream);
+  color: var(--color-text-inverse);
 }
 
 .legal {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: var(--space-24);
 }
 .legal > * {
   cursor: pointer;
@@ -154,7 +154,7 @@
 @media (max-width: 900px) {
   .top {
     grid-template-columns: 1fr 1fr;
-    gap: 40px 24px;
+    gap: var(--space-40) var(--space-24);
   }
 }
 @media (max-width: 560px) {

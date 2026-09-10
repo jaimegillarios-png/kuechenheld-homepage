@@ -28,7 +28,7 @@
   position: relative;
   flex: 1;
   min-height: 824px;
-  background: var(--paper);
+  background: var(--color-surface);
   display: grid;
   grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.02fr);
   align-items: stretch;
@@ -38,37 +38,38 @@
 /* --- left rail ----------------------------------------------------------- */
 
 .rail {
-  border-right: 1px solid var(--ink-12);
+  border-right: 1px solid var(--color-rule-12);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 32px 0;
+  padding: var(--space-32) 0;
 }
 
 .railNum {
-  font-size: 10px;
-  letter-spacing: 0.3em;
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-rail);
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--color-text-meta-40);
 }
 
 .railVertical {
   writing-mode: vertical-rl;
-  font-size: 10px;
-  letter-spacing: 0.34em;
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-hero-eyebrow);
   text-transform: uppercase;
-  color: var(--ink-40);
-  animation: var(--kf-fade) 1.4s ease 0.9s both;
+  color: var(--color-text-meta-40);
+  animation: var(--kf-fade) var(--time-1400) ease var(--time-900) both;
 }
 
 .railTick {
   display: block;
   width: 1px;
   height: 64px;
-  background: var(--ink-20);
+  background: var(--color-rule-20);
   transform-origin: top;
-  animation: var(--kf-drop) 1.2s var(--ease-out) 1s both;
+  animation: var(--kf-drop) var(--duration-reveal-slow) var(--ease-out)
+    var(--duration-reveal) both;
 }
 
 /* --- text column --------------------------------------------------------- */
@@ -77,83 +78,84 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 96px 64px 64px 56px;
+  padding: var(--space-96) var(--space-64) var(--space-64) var(--space-56);
 }
 
 .eyebrow {
-  font-size: 10px;
-  letter-spacing: 0.34em;
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-hero-eyebrow);
   text-transform: uppercase;
-  color: var(--ink-42);
-  margin-bottom: 48px;
-  animation: var(--kf-fade) 1s ease 0.05s both;
+  color: var(--color-text-meta-42);
+  margin-bottom: var(--space-48);
+  animation: var(--kf-fade) var(--duration-reveal) ease var(--time-50) both;
 }
 
 .h1 {
-  font-size: clamp(40px, 4.8vw, 80px);
-  font-weight: 200;
-  line-height: 0.98;
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-hairline);
+  line-height: var(--leading-hero);
 }
 
 .clip {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.04em;
+  padding-bottom: var(--indent-004);
 }
 
 .line1,
 .line2,
 .line3 {
   display: block;
-  animation: var(--kf-line-up) 1.1s var(--ease-out) both;
+  animation: var(--kf-line-up) var(--time-1100) var(--ease-out) both;
 }
 .line1 {
-  animation-delay: 0.1s;
+  animation-delay: var(--time-100);
 }
 .line2 {
-  padding-left: 1.1em;
+  padding-left: var(--indent-110);
   font-style: italic;
-  font-weight: 200;
-  animation-delay: 0.24s;
+  font-weight: var(--font-weight-hairline);
+  animation-delay: var(--time-240);
 }
 .line3 {
-  padding-left: 2.6em;
-  animation-delay: 0.38s;
+  padding-left: var(--indent-260);
+  animation-delay: var(--time-380);
 }
 
 .rule {
   width: 100%;
   height: 1px;
-  background: var(--ink-14);
-  margin: 56px 0 32px;
+  background: var(--color-rule-14);
+  margin: var(--space-56) 0 var(--space-32);
   transform-origin: left;
-  animation: var(--kf-rule) 1.2s var(--ease-out) 0.6s both;
+  animation: var(--kf-rule) var(--duration-reveal-slow) var(--ease-out)
+    var(--time-600) both;
 }
 
 .lead {
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
   max-width: 46ch;
-  color: var(--ink-70);
-  animation: var(--kf-rise) 1s ease 0.72s both;
+  color: var(--color-text-body-70);
+  animation: var(--kf-rise) var(--duration-reveal) ease var(--time-720) both;
 }
 
 .ctas {
   display: flex;
   align-items: center;
-  gap: 32px;
-  margin-top: 48px;
+  gap: var(--space-32);
+  margin-top: var(--space-48);
   flex-wrap: wrap;
-  animation: var(--kf-rise) 1s ease 0.86s both;
+  animation: var(--kf-rise) var(--duration-reveal) ease var(--time-860) both;
 }
 
 .secondary {
-  font-size: 12px;
-  letter-spacing: 0.2em;
+  font-size: var(--font-size-label);
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--ink-60);
-  border-bottom: 1px solid var(--ink-30);
-  padding-bottom: 4px;
+  color: var(--color-text-muted-60);
+  border-bottom: 1px solid var(--color-rule-link-30);
+  padding-bottom: var(--space-4);
   cursor: pointer;
 }
 
@@ -162,7 +164,7 @@
 .media {
   position: relative;
   overflow: hidden;
-  background: var(--img-placeholder);
+  background: var(--color-surface-media);
 }
 
 .slide {
@@ -178,7 +180,7 @@
 
 .photo {
   object-fit: cover;
-  animation: var(--kf-hero-drift) 9s linear both;
+  animation: var(--kf-hero-drift) var(--duration-drift) linear both;
 }
 
 .caption {
@@ -189,10 +191,10 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 24px;
-  color: #fff;
-  font-size: 10px;
-  letter-spacing: 0.28em;
+  gap: var(--space-24);
+  color: var(--color-action-text);
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   z-index: 1;
 }
@@ -207,11 +209,11 @@
   bottom: 0;
   left: 100%;
   width: 1px;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--color-overlay-edge);
   opacity: 0;
   z-index: 15;
   pointer-events: none;
-  animation: var(--kf-edge) 1.7s var(--ease-curtain) both;
+  animation: var(--kf-edge) var(--duration-curtain) var(--ease-curtain) both;
 }
 
 .dots {
@@ -220,15 +222,15 @@
   top: 32px;
   z-index: 20;
   display: flex;
-  gap: 8px;
+  gap: var(--space-8);
 }
 
 .dot {
   display: block;
   width: 24px;
   height: 2px;
-  background: #fff;
-  transition: opacity 0.5s ease;
+  background: var(--color-text-on-photo);
+  transition: opacity var(--duration-underline) ease;
 }
 
 /* --- responsive ---------------------------------------------------------- */
@@ -239,7 +241,7 @@
     min-height: 0;
   }
   .text {
-    padding: 56px 24px 48px;
+    padding: var(--space-56) var(--space-24) var(--space-48);
   }
   .media {
     grid-column: 2;
@@ -261,29 +263,29 @@
   /* The desktop rhythm (48px under the eyebrow, 56px above the rule) leaves the
      phone screen mostly empty, so the type sits in a narrow band. Tighten it. */
   .text {
-    padding: 24px 24px 32px;
+    padding: var(--space-24) var(--space-24) var(--space-32);
   }
   .eyebrow {
-    margin-bottom: 20px;
+    margin-bottom: var(--space-20);
   }
   .rule {
-    margin: 28px 0 24px;
+    margin: var(--space-28) 0 var(--space-24);
   }
   .ctas {
-    margin-top: 32px;
-    gap: 20px;
+    margin-top: var(--space-32);
+    gap: var(--space-20);
   }
 
   /* The headline holds at its 40px floor from 833px all the way down, so on a
      phone it stops well short of the column. Scale it with the viewport and
      pull the stagger in — at full indent the second line would overflow. */
   .h1 {
-    font-size: clamp(40px, 13.5vw, 60px);
+    font-size: var(--font-size-hero-narrow);
   }
   .line2 {
-    padding-left: 0.5em;
+    padding-left: var(--indent-050);
   }
   .line3 {
-    padding-left: 1.3em;
+    padding-left: var(--indent-130);
   }
 }

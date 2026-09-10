@@ -1,6 +1,6 @@
 /* Vertical padding holds at every width here — only the gutter narrows. */
 .head {
-  padding: 120px var(--gutter) 0;
+  padding: var(--space-120) var(--gutter) 0;
 }
 
 .headInner {
@@ -8,13 +8,13 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
-  gap: 40px;
+  gap: var(--space-40);
   flex-wrap: wrap;
 }
 
 .eyebrow {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-bottom: 24px;
+  margin-bottom: var(--space-24);
 }
 
 .heading {
@@ -28,20 +28,20 @@
 }
 
 .body {
-  padding: 64px var(--gutter) 128px;
+  padding: var(--space-64) var(--gutter) var(--space-128);
 }
 
 .bodyInner {
   composes: container from "../styles/shared.module.css";
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 80px;
+  gap: var(--space-80);
   align-items: start;
 }
 @media (max-width: 900px) {
   .bodyInner {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: var(--space-32);
   }
 }
 
@@ -50,14 +50,14 @@
 .featured {
   display: block;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--duration-fade) ease;
 }
 .featured:hover {
   opacity: 0.86;
 }
 
 .featuredFrame {
-  margin-bottom: 32px;
+  margin-bottom: var(--space-32);
 }
 
 .featuredPhoto {
@@ -70,19 +70,19 @@
 
 .meta {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-bottom: 16px;
+  margin-bottom: var(--space-16);
 }
 
 .featuredTitle {
-  font-size: 40px;
-  font-weight: 300;
-  line-height: 1.15;
+  font-size: var(--font-size-numeral);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-heading-loose);
   max-width: 24ch;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-16);
 }
 @media (max-width: 900px) {
   .featuredTitle {
-    font-size: 32px;
+    font-size: var(--font-size-nav-mobile);
     max-width: none;
   }
 }
@@ -97,12 +97,12 @@
 .row {
   display: grid;
   grid-template-columns: clamp(96px, 14vw, 176px) minmax(0, 1fr);
-  gap: clamp(16px, 2vw, 32px);
+  gap: var(--space-fluid-16-32);
   align-items: start;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--ink-12);
+  padding: var(--space-24) 0;
+  border-bottom: 1px solid var(--color-rule-12);
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--duration-fade) ease;
 }
 .row:hover {
   opacity: 0.6;
@@ -127,37 +127,37 @@
 
 .rowTitle {
   composes: cardTitle from "../styles/shared.module.css";
-  margin-bottom: 12px;
+  margin-bottom: var(--space-12);
 }
 
 .rowExcerpt {
-  font-size: 14px;
-  line-height: 1.8;
-  color: var(--ink-60);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted-60);
   max-width: 52ch;
 }
 
 .rowMeta {
   composes: eyebrow from "../styles/shared.module.css";
-  color: var(--ink-40);
-  margin-top: 12px;
+  color: var(--color-text-meta-40);
+  margin-top: var(--space-12);
 }
 
 .allPosts {
-  padding-top: 40px;
+  padding-top: var(--space-40);
 }
 
 .allPostsLink {
   composes: label from "../styles/shared.module.css";
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-rule-strong);
+  padding-bottom: var(--space-8);
   cursor: pointer;
 }
 
 @media (max-width: 900px) {
   .row {
     grid-template-columns: 88px minmax(0, 1fr);
-    gap: 16px;
+    gap: var(--space-16);
   }
 }
 @media (max-width: 560px) {

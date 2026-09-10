@@ -1,15 +1,15 @@
 .rule {
   height: 1px;
-  background: var(--ink-18);
+  background: var(--color-rule-18);
 }
 
 .section {
-  padding: 120px var(--gutter) 128px;
+  padding: var(--space-120) var(--gutter) var(--space-128);
 }
 @media (max-width: 900px) {
   .section {
-    padding-top: 72px;
-    padding-bottom: 80px;
+    padding-top: var(--space-72);
+    padding-bottom: var(--space-80);
   }
 }
 
@@ -17,84 +17,84 @@
   composes: container from "../styles/shared.module.css";
   display: grid;
   grid-template-columns: 0.85fr 1fr;
-  gap: 96px;
+  gap: var(--space-96);
   align-items: start;
 }
 @media (max-width: 900px) {
   .inner {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: var(--space-32);
   }
 }
 
 .eyebrow {
   composes: eyebrow from "../styles/shared.module.css";
-  color: var(--ink-40);
-  margin-bottom: 32px;
+  color: var(--color-text-meta-40);
+  margin-bottom: var(--space-32);
 }
 
 .heading {
   composes: h2 from "../styles/shared.module.css";
   max-width: 20ch;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-24);
 }
 
 .lead {
   composes: body from "../styles/shared.module.css";
   max-width: 36ch;
-  margin-bottom: 40px;
+  margin-bottom: var(--space-40);
 }
 
 .stats {
   display: flex;
-  gap: 40px;
-  margin-top: 64px;
+  gap: var(--space-40);
+  margin-top: var(--space-64);
 }
 
 .statNum {
-  font-size: 40px;
-  font-weight: 300;
-  line-height: 1;
+  font-size: var(--font-size-numeral);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-flat);
 }
 
 .statLabel {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-top: 8px;
+  margin-top: var(--space-8);
 }
 
 .list {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--ink-16);
+  border-top: 1px solid var(--color-rule-16);
 }
 
 .row {
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr) 24px;
   align-items: center;
-  gap: 24px;
-  padding: 20px 8px;
-  border-bottom: 1px solid var(--ink-16);
+  gap: var(--space-24);
+  padding: var(--space-20) var(--space-8);
+  border-bottom: 1px solid var(--color-rule-16);
   cursor: pointer;
   transition:
-    padding-left 0.25s ease,
-    background 0.25s ease;
+    padding-left var(--duration-hover-slow) ease,
+    background var(--duration-hover-slow) ease;
 }
 .row:hover {
-  background: var(--ink-04);
-  padding-left: 16px;
+  background: var(--color-surface-hover-04);
+  padding-left: var(--space-16);
 }
 
 .rowNum {
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  color: var(--ink-40);
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-text-meta-40);
 }
 
 .rowArrow {
-  font-size: 16px;
-  color: var(--ink-35);
+  font-size: var(--font-size-body);
+  color: var(--color-text-faint-35);
   text-align: right;
 }
 

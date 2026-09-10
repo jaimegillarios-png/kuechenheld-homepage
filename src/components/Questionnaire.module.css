@@ -1,34 +1,34 @@
 .section {
-  background: var(--paper-warm);
-  padding: 120px var(--gutter) 128px;
+  background: var(--color-surface-warm);
+  padding: var(--space-120) var(--gutter) var(--space-128);
 }
 @media (max-width: 900px) {
   .section {
-    padding-top: 72px;
-    padding-bottom: 80px;
+    padding-top: var(--space-72);
+    padding-bottom: var(--space-80);
   }
 }
 
 .stepEyebrow {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-bottom: 16px;
+  margin-bottom: var(--space-16);
 }
 
 .heading {
   composes: h2 from "../styles/shared.module.css";
   max-width: 34ch;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-16);
 }
 
 .meta {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-bottom: 48px;
+  margin-bottom: var(--space-48);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: var(--space-16);
   border: 0;
   padding: 0;
   margin: 0;
@@ -40,7 +40,7 @@
   width: 1px;
   height: 1px;
   padding: 0;
-  margin: -1px;
+  margin: var(--space-neg-1);
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
@@ -48,28 +48,28 @@
 
 .card {
   position: relative;
-  background: var(--paper);
-  border: 1px solid var(--ink-14);
-  padding: 64px 0 56px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-14);
+  padding: var(--space-64) 0 var(--space-56);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: var(--space-16);
   transition:
-    border-color 0.18s,
-    box-shadow 0.18s;
+    border-color var(--duration-hover-fast),
+    box-shadow var(--duration-hover-fast);
 }
 .card:hover {
-  border-color: var(--ink);
-  box-shadow: 0 8px 24px rgba(20, 19, 18, 0.09);
+  border-color: var(--color-rule-strong);
+  box-shadow: var(--elevation-card-hover);
 }
 
 /* A 1.5px ring pulled 1px outward so it sits exactly over the resting border. */
 .cardRing {
   position: absolute;
   inset: -1px;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--color-selected);
   pointer-events: none;
 }
 
@@ -77,7 +77,7 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  font-size: 12px;
+  font-size: var(--font-size-label);
 }
 
 /* Handoff specifies a 104x80 box; nudged up on request. 4:3 matches the
@@ -92,37 +92,37 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
-  margin-top: 40px;
+  gap: var(--space-24);
+  margin-top: var(--space-40);
 }
 
 .otherForm {
-  font-size: 12px;
-  color: var(--ink);
-  border-bottom: 1px solid var(--ink-50);
-  padding-bottom: 4px;
+  font-size: var(--font-size-label);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-rule-link-50);
+  padding-bottom: var(--space-4);
 }
 
 .continue {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: var(--space-24);
   flex-wrap: wrap;
-  animation: var(--kf-rise) 0.6s var(--ease-out) both;
+  animation: var(--kf-rise) var(--time-600) var(--ease-out) both;
 }
 
 .pickedNote {
   composes: label from "../styles/shared.module.css";
-  color: var(--ink-55);
+  color: var(--color-text-muted-55);
 }
 
 .continueBtn {
   composes: label from "../styles/shared.module.css";
-  background: var(--ink);
-  color: var(--paper-warm);
-  padding: 16px 32px;
+  background: var(--color-action);
+  color: var(--color-action-text-warm);
+  padding: var(--space-16) var(--space-32);
   white-space: nowrap;
-  transition: opacity 0.2s;
+  transition: opacity var(--duration-hover);
 }
 .continueBtn:hover {
   opacity: 0.82;
@@ -138,8 +138,8 @@
    glyph touching the borders or the label wrapping. */
 @media (max-width: 560px) {
   .card {
-    padding: 32px 4px 28px;
-    gap: 12px;
+    padding: var(--space-32) var(--space-4) var(--space-28);
+    gap: var(--space-12);
   }
   .icon {
     width: 100%;
