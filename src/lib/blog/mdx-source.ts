@@ -39,7 +39,10 @@ function estimateReadingTime(body: string): number {
   return Math.max(1, Math.round(words / 200));
 }
 
-function resolveAuthor(id: string): Author {
+/** An absent reference is a gap in the source; an unknown one is a broken
+ *  reference and still throws. */
+function resolveAuthor(id: string | null): Author | null {
+  if (!id) return null;
   const found = authorsById.get(id);
   if (!found) throw new Error(`Unknown author reference: "${id}"`);
   const author: Author = { name: found.name, role: found.role };
@@ -78,7 +81,9 @@ function toSummary(source: PostSource): PostSummary {
       ...source.thumbnailImage,
       src: asset(source.thumbnailImage.src),
     },
-    date: source.date,
+    // 24 imported posts have no date in the CMS at all; the template shows a
+    // byline without one rather than inventing a date.
+    date: source.date ?? null,
     dateUpdated: source.dateUpdated,
     readingTime: source.readingTime ?? estimateReadingTime(source.body),
     breadcrumbs: source.breadcrumbs ?? [
@@ -93,7 +98,9 @@ function toSummary(source: PostSource): PostSummary {
 
 async function listSources(): Promise<PostSource[]> {
   const files = await readdir(POSTS_DIR);
-  const slugs = files.filter((f) => f.endsWith(".mdx")).map((f) => f.slice(0, -4));
+  const slugs = files
+    .filter((f) => f.endsWith(".mdx"))
+    .map((f) => f.slice(0, -4));
   const sources = await Promise.all(slugs.map(readSource));
   return sources.filter((s): s is PostSource => s !== null);
 }
@@ -117,9 +124,10 @@ export const mdxSource: BlogSource = {
 
   async getAllPosts() {
     const sources = await listSources();
+    // Undated posts sort last rather than throwing off the order.
     return sources
       .map(toSummary)
-      .sort((a, b) => b.date.localeCompare(a.date));
+      .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
   },
 
   async getRelatedPosts(slug, limit = 3) {

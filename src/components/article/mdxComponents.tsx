@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 import Stat from "../ui/Stat";
+import CtaButton from "./CtaButton";
 import prose from "@/styles/prose.module.css";
 
 /**
@@ -16,6 +17,8 @@ export const mdxComponents = {
       <table {...props} />
     </div>
   ),
+  /** The in-article call to action, imported from Webflow custom code. */
+  CtaButton,
   /** Available to a post that wants a figure callout mid-article. */
   Stat,
 };

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       locale: "de_DE",
       title: post.seo.title,
       description: post.seo.description,
-      publishedTime: post.date,
+      publishedTime: post.date ?? undefined,
       modifiedTime: post.dateUpdated,
       images: [{ url: post.mainImage.src, alt: post.mainImage.alt }],
     },

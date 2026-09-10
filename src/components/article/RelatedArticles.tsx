@@ -31,7 +31,13 @@ export default function RelatedArticles({
             href={`/blog/${post.slug}`}
             title={post.title}
             excerpt={post.summary}
-            meta={`${post.author.name} · ${dateFormat.format(new Date(post.date))} · ${post.readingTime} Min.`}
+            meta={[
+              post.author?.name,
+              post.date && dateFormat.format(new Date(post.date)),
+              `${post.readingTime} Min.`,
+            ]
+              .filter(Boolean)
+              .join(" · ")}
             src={post.thumbnailImage.src}
             alt={post.thumbnailImage.alt}
             first={i === 0}

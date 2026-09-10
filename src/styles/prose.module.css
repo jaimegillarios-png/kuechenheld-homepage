@@ -46,7 +46,8 @@
 
 .prose h2,
 .prose h3,
-.prose h4 {
+.prose h4,
+.prose h5 {
   font-weight: var(--font-weight-light);
   line-height: var(--leading-title);
   color: var(--color-text);
@@ -65,6 +66,12 @@
   font-weight: var(--font-weight-regular);
 }
 
+/* At body size, weight is the only thing left to distinguish it. */
+.prose h5 {
+  font-size: var(--font-size-prose-h5);
+  font-weight: var(--font-weight-strong);
+}
+
 .prose > h2 {
   margin-top: var(--gap-prose-h2-above);
 }
@@ -79,7 +86,8 @@
    in a row therefore sit close together without a rule of their own. */
 .prose > h2 + *,
 .prose > h3 + *,
-.prose > h4 + * {
+.prose > h4 + *,
+.prose > h5 + * {
   margin-top: var(--gap-prose-heading-lead);
 }
 
@@ -94,14 +102,17 @@
   font-style: italic;
 }
 
-.prose a {
+/* `:not([class])` keeps this to links the rich text itself produced. A link a
+   component rendered — the in-article CTA — carries a class and owns its own
+   colour, which this rule would otherwise beat on specificity. */
+.prose a:not([class]) {
   color: var(--color-text);
   text-decoration: underline;
   text-decoration-color: var(--color-rule-link);
   text-underline-offset: var(--gap-link-rule);
   transition: text-decoration-color var(--duration-fast);
 }
-.prose a:hover {
+.prose a:not([class]):hover {
   text-decoration-color: var(--color-rule-strong);
 }
 

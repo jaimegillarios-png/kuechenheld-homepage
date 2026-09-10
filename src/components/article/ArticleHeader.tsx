@@ -62,8 +62,10 @@ export default function ArticleHeader({ post }: { post: PostSummary }) {
       {/* The author's avatar and role are part of the type and deliberately not
           rendered — the design's byline is a single line of meta. */}
       <div className={styles.byline}>
-        <span className={styles.author}>{post.author.name}</span>
-        <time dateTime={post.date}>{formatDate(post.date)}</time>
+        {post.author && (
+          <span className={styles.author}>{post.author.name}</span>
+        )}
+        {post.date && <time dateTime={post.date}>{formatDate(post.date)}</time>}
         <span>{post.readingTime} Min. Lesedauer</span>
         {post.dateUpdated && (
           <time dateTime={post.dateUpdated}>

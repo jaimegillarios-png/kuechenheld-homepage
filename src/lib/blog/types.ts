@@ -41,11 +41,11 @@ export type PostSource = {
   summary: string;
   /** Raw rich text, in whatever the source speaks. MDX here. */
   body: string;
-  author: string;
+  author: string | null;
   categories: string[];
   mainImage: Image;
   thumbnailImage: Image;
-  date: string;
+  date: string | null;
   dateUpdated?: string;
   /** Minutes. Computed from the body when the source omits it. */
   readingTime?: number;
@@ -60,7 +60,7 @@ export type Post = Omit<
   "body" | "author" | "categories" | "readingTime" | "breadcrumbs"
 > & {
   body: ReactNode;
-  author: Author;
+  author: Author | null;
   categories: Category[];
   readingTime: number;
   breadcrumbs: Breadcrumb[];

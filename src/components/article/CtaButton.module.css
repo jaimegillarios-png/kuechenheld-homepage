@@ -1,0 +1,22 @@
+/* The in-article call to action. 223 of these were pasted into Webflow's rich
+   text as custom code, each carrying its own markup, its own arrow image and
+   two authoring comments. The component owns all of it now. */
+.wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--gap-prose-rule);
+}
+
+.button {
+  composes: base from "../ui/Button.module.css";
+  composes: primary from "../ui/Button.module.css";
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Optical: the glyph sits slightly high against uppercase letterforms. */
+.arrow {
+  display: block;
+  transform: translateY(1px);
+}

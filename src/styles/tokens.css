@@ -325,8 +325,12 @@
   --pad-prose-cell-x: var(--space-4);
 
   /* An h4 is the fourth heading step and no existing role names it. Pointing
-     it at --font-size-quote would make the pull-quote role mean two things. */
+     it at --font-size-quote would make the pull-quote role mean two things.
+     h5 is rare — eight instances in two imported posts — but a rich-text field
+     can emit it, so it gets the body size and leans on weight to read as a
+     heading rather than shrinking below the surrounding prose. */
   --font-size-prose-h4: var(--text-lg-plus);
+  --font-size-prose-h5: var(--text-md);
 }
 
 @media (max-width: 900px) {

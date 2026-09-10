@@ -1,19 +1,61 @@
 [
   {
-    "id": "nathalie",
-    "name": "Nathalie Brandt",
-    "role": "Küchenplanerin",
-    "avatar": "/images/authors/nathalie.jpg"
-  },
-  {
     "id": "reiner",
-    "name": "Reiner Voss",
-    "role": "Leiter Planung",
-    "avatar": "/images/authors/reiner.jpg"
+    "name": "Reiner",
+    "role": "Verkäufer",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/63b6aacfc5405ee00c42fe5c_Reiner.webp"
   },
   {
     "id": "yannick",
-    "name": "Yannick Sommer",
-    "role": "Redaktion"
+    "name": "Yannick",
+    "role": "Head of Product & Technology",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/657aab09583630481962db1e_192-3-2.webp"
+  },
+  {
+    "id": "wilhelmine",
+    "name": "Wilhelmine",
+    "role": "Redakteurin",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/63beb90521d6e68a4eb6b5cf_WilhelmineGoetz.webp"
+  },
+  {
+    "id": "lennart",
+    "name": "Lennart",
+    "role": "Verkaufsleiter",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/63b6aafbca7fd03d40380f06_Lennart.webp"
+  },
+  {
+    "id": "anna",
+    "name": "Anna",
+    "role": "Recruiterin",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/63b6aadccefd1467e04c6212_Anna.webp"
+  },
+  {
+    "id": "jaime",
+    "name": "Jaime",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/66841ae3909d2b92dc5c1375_TEH06D4M8-U02G3ME9T9A-37a23853d089-512.jpg"
+  },
+  {
+    "id": "viktoria",
+    "name": "Viktoria",
+    "role": "Fotografin",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/63b6ac787d05b503b8e494a6_Viktoria.webp"
+  },
+  {
+    "id": "nathalie",
+    "name": "Nathalie",
+    "role": "Marketing Lead",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/66841bc033f4f9f0d025e161_TEH06D4M8-U05JFPD2JTG-5871561e7fb1-512.jpg"
+  },
+  {
+    "id": "ana",
+    "name": "Ana",
+    "role": "Product Lead Customer Solutions",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/657aab68e89977343b5f6884_304-0-2-_1_.webp"
+  },
+  {
+    "id": "corinna",
+    "name": "Corinna",
+    "role": "Marketing Lead",
+    "avatar": "https://cdn.prod.website-files.com/6391b8b8063c74b54a9d5e71/6a4f73ab89377f526927d735_bearbeitet%20Kopie.JPG"
   }
 ]

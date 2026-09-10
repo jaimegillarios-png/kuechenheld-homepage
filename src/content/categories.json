@@ -1,6 +1,17 @@
 [
-  { "id": "trends", "name": "Trends", "slug": "trends" },
-  { "id": "planung", "name": "Planung", "slug": "planung" },
-  { "id": "materialien", "name": "Materialien", "slug": "materialien" },
-  { "id": "inspiration", "name": "Inspiration", "slug": "inspiration" }
+  {
+    "id": "ratgeber",
+    "name": "Ratgeber & Tipps",
+    "slug": "ratgeber"
+  },
+  {
+    "id": "trend",
+    "name": "Design & Trends",
+    "slug": "trend"
+  },
+  {
+    "id": "technik-funktion",
+    "name": "Technik & Funktion",
+    "slug": "technik-funktion"
+  }
 ]
