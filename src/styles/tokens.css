@@ -269,9 +269,13 @@
   --measure-heading-column: 20ch;
   --measure-heading-wide: 28ch;
   --measure-heading-full: 34ch;
-  --measure-lede-tight: 36ch;
-  --measure-lede-default: 44ch;
-  --measure-lede-wide: 56ch;
+  --measure-prose-tight: 36ch;
+  --measure-prose: 44ch;
+  --measure-prose-wide: 56ch;
+  /* A disclosure answer is body copy in a wide track, so it runs longer. */
+  --measure-prose-long: 72ch;
+  /* A card title carries fewer words per line than body copy at the same width. */
+  --measure-title-card: 24ch;
 }
 
 @media (max-width: 900px) {

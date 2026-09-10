@@ -1,17 +1,11 @@
-"use client";
-
-import { useId, useState } from "react";
 import { faqs } from "@/lib/content";
+import Accordion from "./ui/Accordion";
 import Section from "./ui/Section";
 import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
 import TextLink from "./ui/TextLink";
-import shared from "@/styles/shared.module.css";
 import styles from "./Faq.module.css";
 
 export default function Faq() {
-  const [openIdx, setOpenIdx] = useState(-1);
-  const baseId = useId();
-
   return (
     <>
       <div data-rule className={styles.rule} />
@@ -40,54 +34,7 @@ export default function Faq() {
           </div>
         </div>
 
-        <div className={styles.list}>
-          {faqs.map((faq, i) => {
-            const open = openIdx === i;
-            const panelId = `${baseId}-panel-${i}`;
-            const buttonId = `${baseId}-button-${i}`;
-            return (
-              <div key={faq.q} className={styles.item}>
-                <button
-                  type="button"
-                  id={buttonId}
-                  className={styles.row}
-                  data-reveal-stagger
-                  aria-expanded={open}
-                  aria-controls={panelId}
-                  onClick={() => setOpenIdx(open ? -1 : i)}
-                >
-                  <span className={styles.num}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className={shared.cardTitle}>{faq.q}</span>
-                  <span
-                    className={styles.sign}
-                    style={{ transform: `rotate(${open ? 45 : 0}deg)` }}
-                    aria-hidden="true"
-                  >
-                    +
-                  </span>
-                </button>
-
-                {open && (
-                  <div
-                    id={panelId}
-                    role="region"
-                    aria-labelledby={buttonId}
-                    className={styles.panel}
-                  >
-                    <div className={styles.panelClip}>
-                      <div className={styles.answerRow}>
-                        <span />
-                        <p className={styles.answer}>{faq.a}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <Accordion items={faqs} />
       </Section>
     </>
   );

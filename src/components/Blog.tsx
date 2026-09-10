@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { blogPosts, featuredPost, routes } from "@/lib/content";
-import MaybeLink from "./MaybeLink";
+import ArticleRow from "./ui/ArticleRow";
+import FeaturedArticle from "./ui/FeaturedArticle";
 import Section from "./ui/Section";
 import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
 import TextLink from "./ui/TextLink";
@@ -27,54 +27,27 @@ export default function Blog() {
 
       <Section rhythm="trail" contained={false}>
         <div className={styles.bodyInner}>
-          <MaybeLink
+          <FeaturedArticle
             href={featuredPost.href ?? routes.blog}
-            data-zoomparent
-            data-reveal
-            className={styles.featured}
-          >
-            <div data-zoom className={styles.featuredFrame}>
-              <Image
-                src={featuredPost.src}
-                alt={featuredPost.alt}
-                width={1200}
-                height={900}
-                sizes="(max-width: 900px) 100vw, 50vw"
-                data-reveal="wipe"
-                className={styles.featuredPhoto}
-              />
-            </div>
-            <div className={styles.meta}>{featuredPost.meta}</div>
-            <h3 className={styles.featuredTitle}>{featuredPost.title}</h3>
-            <p className={styles.featuredExcerpt}>{featuredPost.excerpt}</p>
-          </MaybeLink>
+            title={featuredPost.title}
+            excerpt={featuredPost.excerpt}
+            meta={featuredPost.meta}
+            src={featuredPost.src}
+            alt={featuredPost.alt}
+          />
 
           <div>
             {blogPosts.map((post, i) => (
-              <MaybeLink
+              <ArticleRow
                 key={post.title}
                 href={post.href ?? routes.blog}
-                data-zoomparent
-                data-reveal
-                className={i === 0 ? styles.rowFirst : styles.row}
-              >
-                <div data-zoom className={styles.thumbFrame}>
-                  <Image
-                    src={post.src}
-                    alt={post.alt}
-                    width={352}
-                    height={352}
-                    sizes="(max-width: 560px) 100vw, 176px"
-                    data-reveal="wipe"
-                    className={styles.thumb}
-                  />
-                </div>
-                <div>
-                  <div className={styles.rowTitle}>{post.title}</div>
-                  <p className={styles.rowExcerpt}>{post.excerpt}</p>
-                  <div className={styles.rowMeta}>{post.meta}</div>
-                </div>
-              </MaybeLink>
+                title={post.title}
+                excerpt={post.excerpt}
+                meta={post.meta}
+                src={post.src}
+                alt={post.alt}
+                first={i === 0}
+              />
             ))}
 
             <div data-reveal className={styles.allPosts}>

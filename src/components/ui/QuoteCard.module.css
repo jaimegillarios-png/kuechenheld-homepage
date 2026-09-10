@@ -1,0 +1,63 @@
+.card {
+  flex: none;
+  width: 33.3333%;
+  scroll-snap-align: start;
+  margin: 0;
+  padding: var(--space-5) var(--space-6) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  border-top: 1px solid var(--color-rule);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.stars {
+  font-size: var(--font-size-body);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-text);
+  flex: 1;
+}
+
+.date {
+  composes: eyebrow from "../../styles/shared.module.css";
+  color: var(--color-text-meta);
+}
+
+.quote {
+  margin: 0;
+  font-size: var(--font-size-quote);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-title);
+  color: var(--color-text);
+}
+
+.author {
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-meta);
+  line-height: var(--leading-body);
+  margin-top: auto;
+  padding-bottom: var(--space-5);
+  /* 32px of text box plus the 32px pad below it — a one- and a two-line author
+     name must leave the card the same height. */
+  min-height: 64px;
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 88%;
+    padding-right: var(--space-4);
+  }
+}
+@media (max-width: 560px) {
+  .card {
+    width: 100%;
+  }
+}

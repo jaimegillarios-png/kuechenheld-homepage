@@ -54,15 +54,15 @@
 }
 
 .ledeTight {
-  max-width: var(--measure-lede-tight);
+  max-width: var(--measure-prose-tight);
 }
 
 .ledeDefault {
-  max-width: var(--measure-lede-default);
+  max-width: var(--measure-prose);
 }
 
 .ledeWide {
-  max-width: var(--measure-lede-wide);
+  max-width: var(--measure-prose-wide);
 }
 
 /* CustomerStories' heading is long enough to overflow its column at the

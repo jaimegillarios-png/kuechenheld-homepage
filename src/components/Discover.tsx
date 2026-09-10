@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { discoverCards } from "@/lib/content";
 import { useRail } from "@/lib/useRail";
+import MediaCard, { MediaCardSpacer } from "./ui/MediaCard";
 import OverlayArrows from "./ui/OverlayArrows";
 import Rail from "./ui/Rail";
 import Section from "./ui/Section";
@@ -30,20 +30,15 @@ export default function Discover() {
         <div className={styles.railWrap} {...rail.hoverProps}>
           <Rail railRef={railRef} gapped>
             {discoverCards.map((card) => (
-              <article key={card.title} className={styles.card}>
-                <div data-zoom className={styles.frame}>
-                  <Image
-                    src={card.src}
-                    alt={card.title}
-                    width={800}
-                    height={1067}
-                    sizes="(max-width: 560px) 100vw, (max-width: 900px) 82vw, 33vw"
-                    className={styles.photo}
-                  />
-                </div>
-                <h3 className={styles.cardTitle}>{card.title}</h3>
-                <p className={styles.cardBody}>{card.body}</p>
-              </article>
+              <MediaCard
+                key={card.title}
+                title={card.title}
+                body={card.body}
+                src={card.src}
+                width={800}
+                height={1067}
+                sizes="(max-width: 560px) 100vw, (max-width: 900px) 82vw, 33vw"
+              />
             ))}
           </Rail>
 
@@ -53,7 +48,7 @@ export default function Discover() {
             onNext={rail.next}
             opacity={rail.arrowOpacity}
             labels={{ prev: "Vorherige Karte", next: "Nächste Karte" }}
-            spacer={<div className={styles.arrowSpacer} />}
+            spacer={<MediaCardSpacer />}
           />
         </div>
       </Section>

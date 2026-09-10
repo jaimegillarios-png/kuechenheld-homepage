@@ -1,0 +1,50 @@
+/* A portrait card in a horizontal rail: image, title, body. Deliberately not
+   the same component as ArticleRow — that one is a landscape row with a square
+   thumbnail in a bordered grid, which is a different layout axis, not a variant. */
+.card {
+  flex: none;
+  width: calc((100% - 64px) / 3);
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+.frame {
+  margin-bottom: var(--space-4);
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.title {
+  composes: cardTitle from "../../styles/shared.module.css";
+  margin-bottom: var(--space-3);
+}
+
+.body {
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  max-width: var(--measure-prose);
+  color: var(--color-text-muted);
+}
+
+/* Matches the card so the rail arrows centre on the image, not the whole card. */
+.spacer {
+  width: calc((100% - 64px) / 3);
+  aspect-ratio: 3 / 4;
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 82%;
+  }
+}
+@media (max-width: 560px) {
+  .card {
+    width: 100%;
+  }
+}

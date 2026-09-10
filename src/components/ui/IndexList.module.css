@@ -1,0 +1,42 @@
+/* A numbered index of links: 01 — name — arrow. Deliberately its own grid
+   rather than a shared one with the FAQ row and the how-it-works step: those
+   are a disclosure button and a static list item, and only the track is alike. */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-2);
+  border-bottom: 1px solid var(--color-rule);
+  cursor: pointer;
+  transition:
+    padding-left var(--duration-base) ease,
+    background var(--duration-base) ease;
+}
+.row:hover {
+  background: var(--color-surface-hover);
+  padding-left: var(--space-3);
+}
+
+.num {
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-text-decorative);
+}
+
+.label {
+  composes: cardTitle from "../../styles/shared.module.css";
+}
+
+.arrow {
+  font-size: var(--font-size-body);
+  color: var(--color-text-faint);
+  text-align: right;
+}

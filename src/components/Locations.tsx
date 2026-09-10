@@ -1,10 +1,9 @@
 import { routes, showrooms } from "@/lib/content";
-import MaybeLink from "./MaybeLink";
 import Button from "./ui/Button";
+import IndexList from "./ui/IndexList";
 import Section from "./ui/Section";
 import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
 import Stat from "./ui/Stat";
-import shared from "@/styles/shared.module.css";
 import styles from "./Locations.module.css";
 
 export default function Locations() {
@@ -38,25 +37,7 @@ export default function Locations() {
             </div>
           </div>
 
-          <ul className={styles.list}>
-            {showrooms.map((city, i) => (
-              <li key={city}>
-                <MaybeLink
-                  href={routes.showrooms}
-                  className={styles.row}
-                  data-reveal-stagger
-                >
-                  <span className={styles.rowNum}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className={shared.cardTitle}>{city}</span>
-                  <span className={styles.rowArrow} aria-hidden="true">
-                    →
-                  </span>
-                </MaybeLink>
-              </li>
-            ))}
-          </ul>
+          <IndexList items={showrooms} href={routes.showrooms} />
         </div>
       </Section>
     </>

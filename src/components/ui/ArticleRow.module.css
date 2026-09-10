@@ -1,0 +1,64 @@
+/* A landscape index row: square thumbnail, title, excerpt, meta. */
+.row {
+  display: grid;
+  grid-template-columns: clamp(96px, 14vw, 176px) minmax(0, 1fr);
+  gap: var(--space-fluid-16-32);
+  align-items: start;
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-rule);
+  cursor: pointer;
+  transition: opacity var(--duration-base) ease;
+}
+.row:hover {
+  opacity: 0.6;
+}
+
+.first {
+  composes: row;
+  padding-top: 0;
+}
+
+.thumbFrame {
+  align-self: start;
+}
+
+.thumb {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.title {
+  composes: cardTitle from "../../styles/shared.module.css";
+  margin-bottom: var(--space-3);
+}
+
+.excerpt {
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+  max-width: var(--measure-prose);
+}
+
+.meta {
+  composes: eyebrow from "../../styles/shared.module.css";
+  color: var(--color-text-meta);
+  margin-top: var(--space-3);
+}
+
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+}
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .thumb {
+    aspect-ratio: 16 / 10;
+  }
+}

@@ -1,0 +1,44 @@
+/* The lead item of an article index: a wide image over title and excerpt. */
+.featured {
+  display: block;
+  cursor: pointer;
+  transition: opacity var(--duration-base) ease;
+}
+.featured:hover {
+  opacity: 0.86;
+}
+
+.frame {
+  margin-bottom: var(--space-5);
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.meta {
+  composes: eyebrow from "../../styles/shared.module.css";
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-size: var(--font-size-subheading);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-tight);
+  max-width: var(--measure-title-card);
+  margin-bottom: var(--space-3);
+}
+@media (max-width: 900px) {
+  .title {
+    max-width: none;
+  }
+}
+
+.excerpt {
+  composes: body from "../../styles/shared.module.css";
+  max-width: var(--measure-prose);
+}

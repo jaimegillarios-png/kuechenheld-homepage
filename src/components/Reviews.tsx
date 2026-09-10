@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { reviews } from "@/lib/content";
 import { useRail } from "@/lib/useRail";
+import QuoteCard from "./ui/QuoteCard";
 import Rail from "./ui/Rail";
 import Section from "./ui/Section";
 import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
@@ -55,16 +56,12 @@ export default function Reviews() {
       <div {...rail.hoverProps}>
         <Rail railRef={railRef} stretch>
           {reviews.map((review) => (
-            <figure key={review.author} className={styles.quote}>
-              <div className={styles.quoteTop}>
-                <span className={styles.stars}>★★★★★</span>
-                <span className={styles.date}>{review.date}</span>
-              </div>
-              <blockquote className={styles.quoteText}>
-                {review.quote}
-              </blockquote>
-              <figcaption className={styles.author}>{review.author}</figcaption>
-            </figure>
+            <QuoteCard
+              key={review.author}
+              quote={review.quote}
+              author={review.author}
+              date={review.date}
+            />
           ))}
         </Rail>
       </div>
