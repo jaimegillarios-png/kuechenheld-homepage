@@ -9,7 +9,7 @@ import shared from "@/styles/shared.module.css";
 import styles from "./Hero.module.css";
 
 const SLIDE_MS = 8600;
-const CURTAIN = "1.7s cubic-bezier(.62,.02,.24,1) both";
+const CURTAIN = "var(--duration-curtain) var(--ease-curtain) both";
 
 /** `children` is the trust strip — hero and strip together fill the first screen. */
 export default function Hero({ children }: { children?: React.ReactNode }) {
@@ -49,19 +49,20 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
         el.style.animation = "none";
         void el.offsetWidth; // force a reflow so the animation restarts
         el.style.clipPath = "";
-        el.style.animation = `khImgIn ${CURTAIN}`;
+        el.style.animation = `var(--kf-img-in) ${CURTAIN}`;
 
         const lag = el.querySelector<HTMLElement>("[data-hero-lag]");
         if (lag) {
           lag.style.animation = "none";
           void lag.offsetWidth;
-          lag.style.animation = `khSlideLag ${CURTAIN}`;
+          lag.style.animation = `var(--kf-slide-lag) ${CURTAIN}`;
         }
         const img = el.querySelector("img");
         if (img) {
           img.style.animation = "none";
           void img.offsetWidth;
-          img.style.animation = "khHeroDrift 9s linear both";
+          img.style.animation =
+            "var(--kf-hero-drift) var(--duration-drift) linear both";
         }
       }
 
@@ -69,7 +70,7 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
       if (edge) {
         edge.style.animation = "none";
         void edge.offsetWidth;
-        edge.style.animation = `khEdge ${CURTAIN}`;
+        edge.style.animation = `var(--kf-edge) ${CURTAIN}`;
       }
 
       setActive(index);
@@ -149,7 +150,7 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
               className={styles.slide}
               style={
                 i === 0
-                  ? { zIndex: 1, animation: `khImgIn ${CURTAIN}` }
+                  ? { zIndex: 1, animation: `var(--kf-img-in) ${CURTAIN}` }
                   : { zIndex: 2, clipPath: "inset(0 0 0 100%)" }
               }
               aria-hidden={i === active ? undefined : true}
@@ -158,7 +159,9 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
                 data-hero-lag
                 className={styles.lag}
                 style={
-                  i === 0 ? { animation: `khSlideLag ${CURTAIN}` } : undefined
+                  i === 0
+                    ? { animation: `var(--kf-slide-lag) ${CURTAIN}` }
+                    : undefined
                 }
               >
                 <Image
@@ -172,7 +175,11 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
                 <div
                   className={styles.caption}
                   style={{
-                    animation: `khFade 1.2s ease ${i === 0 ? "1.2s" : ".5s"} both`,
+                    animation: `var(--kf-fade) var(--duration-reveal-slow) ease ${
+                      i === 0
+                        ? "var(--duration-reveal-slow)"
+                        : "var(--time-500)"
+                    } both`,
                   }}
                 >
                   <span>{slide.model}</span>

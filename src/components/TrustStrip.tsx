@@ -8,7 +8,10 @@ export default function TrustStrip() {
         <div
           key={item}
           className={styles.cell}
-          style={{ animation: `khRise .9s ease ${1.1 + i * 0.1}s both` }}
+          style={{
+            // Delay is computed per cell, so it stays a literal.
+            animation: `var(--kf-rise) var(--time-900) ease ${1.1 + i * 0.1}s both`,
+          }}
         >
           {item}
         </div>

@@ -36,9 +36,10 @@ export default function Header() {
         }
       }
 
-      el.style.borderBottomColor = y > 24 ? "var(--ink-14)" : "transparent";
+      el.style.borderBottomColor =
+        y > 24 ? "var(--color-rule-14)" : "transparent";
       el.style.boxShadow =
-        y > 24 && !hidden ? "0 1px 20px rgba(20,19,18,.05)" : "none";
+        y > 24 && !hidden ? "var(--elevation-header)" : "none";
       last = y;
     };
 
