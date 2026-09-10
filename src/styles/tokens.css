@@ -213,7 +213,9 @@
   --font-size-wordmark: var(--text-lg); /* off-scale: brand lockup */
   --font-size-card-title: var(--text-xl);
   --font-size-quote: var(--text-lg-plus);
-  --font-size-nav-mobile: var(--text-2xl);
+  /* One step below --font-size-heading: the mobile h2, the mobile nav
+     items, and the blog featured title. */
+  --font-size-subheading: var(--text-2xl);
   --font-size-numeral: var(--text-3xl);
   --font-size-heading: var(--text-3xl); /* 40 and 48 merged onto 44 */
   --font-size-hero: var(--text-display-hero);

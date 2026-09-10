@@ -39,7 +39,7 @@
    `max-width: 34ch` depending only on emit order. */
 @media (max-width: 900px) {
   .h2 {
-    font-size: var(--font-size-nav-mobile);
+    font-size: var(--font-size-subheading);
   }
 }
 

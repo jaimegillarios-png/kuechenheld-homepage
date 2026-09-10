@@ -74,7 +74,7 @@
 }
 
 .featuredTitle {
-  font-size: var(--font-size-numeral);
+  font-size: var(--font-size-subheading);
   font-weight: var(--font-weight-light);
   line-height: var(--leading-tight);
   max-width: 24ch;
@@ -82,7 +82,7 @@
 }
 @media (max-width: 900px) {
   .featuredTitle {
-    font-size: var(--font-size-nav-mobile);
+    font-size: var(--font-size-subheading);
     max-width: none;
   }
 }
