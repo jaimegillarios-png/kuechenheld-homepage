@@ -10,7 +10,13 @@ export type SectionTone =
  * reads as a single section, so the seam between them carries no padding.
  * `flush` is for sections that lay out edge to edge and pad their own columns.
  */
-export type SectionRhythm = "section" | "tight" | "lead" | "trail" | "flush";
+export type SectionRhythm =
+  | "section"
+  | "tight"
+  | "masthead"
+  | "lead"
+  | "trail"
+  | "flush";
 
 type Props = {
   id?: string;
@@ -33,6 +39,7 @@ const TONE = {
 const RHYTHM = {
   section: styles.section,
   tight: styles.tight,
+  masthead: styles.masthead,
   lead: styles.lead,
   trail: styles.trail,
   flush: styles.flush,

@@ -119,8 +119,20 @@
   color: var(--color-text-faint);
 }
 
-.mainImage {
-  margin-top: var(--gap-head-body);
+
+/* The band behind the hero image. Flat, not a gradient: the two stops are the
+   same colour on each side of one line, so the ground changes once, partway
+   down the photograph, instead of drifting. */
+.heroBand {
+  padding: 0 var(--layout-gutter);
+  background: linear-gradient(
+    var(--color-surface-warm) var(--hero-band-stop),
+    var(--color-surface) var(--hero-band-stop)
+  );
+}
+
+.heroInner {
+  composes: container from "../../styles/shared.module.css";
 }
 
 .photo {

@@ -107,11 +107,28 @@ export default function ArticleHeader({ post }: { post: PostSummary }) {
 
         <ShareLinks url={`${siteUrl}/blog/${post.slug}`} title={post.title} />
       </div>
+    </header>
+  );
+}
 
-      <div className={styles.mainImage}>
+/**
+ * The hero image, on a band that carries the masthead's ground partway down
+ * the photograph before giving way to paper. It is a sibling of the masthead
+ * section rather than part of it, because the ground has to change *inside*
+ * the image — a background that stops where a section stops would just draw a
+ * line above it.
+ */
+export function ArticleHeroImage({
+  image,
+}: {
+  image: PostSummary["mainImage"];
+}) {
+  return (
+    <div className={styles.heroBand}>
+      <div className={styles.heroInner}>
         <Image
-          src={post.mainImage.src}
-          alt={post.mainImage.alt}
+          src={image.src}
+          alt={image.alt}
           width={1600}
           height={900}
           sizes="(max-width: 900px) 100vw, 1240px"
@@ -120,6 +137,6 @@ export default function ArticleHeader({ post }: { post: PostSummary }) {
           className={styles.photo}
         />
       </div>
-    </header>
+    </div>
   );
 }

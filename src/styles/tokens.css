@@ -267,6 +267,11 @@
 
   /* Shared minimum control dimension: rail arrow, burger, overlay close. */
   --size-control: 40px;
+  /* How far down the hero image the masthead's ground carries before it gives
+     way to paper. A share of the image's own height, so the photograph
+     straddles the change at any width rather than sitting above or below it. */
+  --hero-band-stop: 40%;
+
   /* An author portrait in a byline, and the share icons beside it. */
   --size-avatar: 56px;
   --size-icon: 24px;

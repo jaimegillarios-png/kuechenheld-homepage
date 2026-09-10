@@ -19,6 +19,12 @@
   padding: var(--space-10) var(--layout-gutter) 0;
 }
 
+/* Like `lead`, but keeps room under itself for whatever the band continues
+   into — an article masthead whose hero image sits below it on the same tone. */
+.masthead {
+  padding: var(--space-10) var(--layout-gutter) var(--gap-head-body);
+}
+
 .trail {
   padding: var(--space-8) var(--layout-gutter) var(--space-10);
 }

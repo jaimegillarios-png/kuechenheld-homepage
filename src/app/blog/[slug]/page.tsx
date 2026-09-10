@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ArticleBody from "@/components/article/ArticleBody";
-import ArticleHeader from "@/components/article/ArticleHeader";
+import ArticleHeader, {
+  ArticleHeroImage,
+} from "@/components/article/ArticleHeader";
 import RelatedArticles from "@/components/article/RelatedArticles";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -59,9 +61,10 @@ export default async function BlogPostPage({ params }: Params) {
           {/* The masthead sits on a tone so the article opens against
               something, and the lead rhythm leaves no padding under it — the
               main image forms the band's own bottom edge. */}
-          <Section rhythm="lead" tone="warm">
+          <Section rhythm="masthead" tone="warm">
             <ArticleHeader post={post} />
           </Section>
+          <ArticleHeroImage image={post.mainImage} />
           <Section rhythm="trail">
             <ArticleBody>{post.body}</ArticleBody>
           </Section>
