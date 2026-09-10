@@ -1,7 +1,7 @@
 .footer {
   background: var(--color-surface-inverse);
   color: var(--color-text-inverse);
-  padding: var(--space-80) var(--gutter) var(--space-40);
+  padding: var(--space-64) var(--gutter) var(--space-40);
 }
 
 .top {
@@ -28,7 +28,7 @@
   font-size: var(--font-size-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--color-text-inverse-body-65);
+  color: var(--color-text-inverse-body);
   margin-bottom: var(--space-16);
 }
 
@@ -36,7 +36,7 @@
   font-size: var(--font-size-label);
   line-height: var(--leading-body);
   max-width: 34ch;
-  color: var(--color-text-inverse-meta-50);
+  color: var(--color-text-inverse-meta);
   margin-bottom: var(--space-24);
 }
 
@@ -48,7 +48,7 @@
   width: 100%;
   max-width: 280px;
   padding-bottom: var(--space-8);
-  border-bottom: 1px solid var(--color-rule-inverse-35);
+  border-bottom: 1px solid var(--color-rule-input);
 }
 
 .newsletterInput {
@@ -62,7 +62,7 @@
   font-size: var(--font-size-label);
 }
 .newsletterInput::placeholder {
-  color: var(--color-text-inverse-meta-40);
+  color: var(--color-text-inverse-meta);
 }
 .newsletterInput:focus {
   outline: none;
@@ -80,7 +80,7 @@
   width: 1px;
   height: 1px;
   padding: 0;
-  margin: var(--space-neg-1);
+  margin: -1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
@@ -92,7 +92,7 @@
   font-size: var(--font-size-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--color-text-inverse-meta-40);
+  color: var(--color-text-inverse-meta);
   margin-bottom: var(--space-24);
 }
 
@@ -100,7 +100,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-12);
+  gap: var(--space-16);
   font-size: var(--font-size-label);
   color: var(--color-text-inverse-link);
 }
@@ -118,25 +118,25 @@
   gap: var(--space-16) var(--space-32);
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--color-rule-inverse-18);
+  border-top: 1px solid var(--color-rule-inverse);
   padding-top: var(--space-32);
   font-size: var(--font-size-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--color-text-inverse-meta-40);
+  color: var(--color-text-inverse-meta);
 }
 
 .socials {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-20);
+  gap: var(--space-24);
   align-items: center;
 }
 
 .social {
   display: flex;
-  color: var(--color-text-inverse-body-70);
-  transition: color var(--duration-fade) ease;
+  color: var(--color-text-inverse-body);
+  transition: color var(--duration-base) ease;
 }
 .social:hover {
   color: var(--color-text-inverse);

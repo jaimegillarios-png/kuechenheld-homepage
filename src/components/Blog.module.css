@@ -1,6 +1,6 @@
 /* Vertical padding holds at every width here — only the gutter narrows. */
 .head {
-  padding: var(--space-120) var(--gutter) 0;
+  padding: var(--space-128) var(--gutter) 0;
 }
 
 .headInner {
@@ -35,7 +35,7 @@
   composes: container from "../styles/shared.module.css";
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: var(--space-80);
+  gap: var(--space-64);
   align-items: start;
 }
 @media (max-width: 900px) {
@@ -50,7 +50,7 @@
 .featured {
   display: block;
   cursor: pointer;
-  transition: opacity var(--duration-fade) ease;
+  transition: opacity var(--duration-base) ease;
 }
 .featured:hover {
   opacity: 0.86;
@@ -76,7 +76,7 @@
 .featuredTitle {
   font-size: var(--font-size-numeral);
   font-weight: var(--font-weight-light);
-  line-height: var(--leading-heading-loose);
+  line-height: var(--leading-tight);
   max-width: 24ch;
   margin-bottom: var(--space-16);
 }
@@ -100,9 +100,9 @@
   gap: var(--space-fluid-16-32);
   align-items: start;
   padding: var(--space-24) 0;
-  border-bottom: 1px solid var(--color-rule-12);
+  border-bottom: 1px solid var(--color-rule);
   cursor: pointer;
-  transition: opacity var(--duration-fade) ease;
+  transition: opacity var(--duration-base) ease;
 }
 .row:hover {
   opacity: 0.6;
@@ -127,20 +127,20 @@
 
 .rowTitle {
   composes: cardTitle from "../styles/shared.module.css";
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-16);
 }
 
 .rowExcerpt {
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-body);
   line-height: var(--leading-body);
-  color: var(--color-text-muted-60);
+  color: var(--color-text-muted);
   max-width: 52ch;
 }
 
 .rowMeta {
   composes: eyebrow from "../styles/shared.module.css";
-  color: var(--color-text-meta-40);
-  margin-top: var(--space-12);
+  color: var(--color-text-meta);
+  margin-top: var(--space-16);
 }
 
 .allPosts {

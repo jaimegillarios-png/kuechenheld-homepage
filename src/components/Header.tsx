@@ -36,8 +36,7 @@ export default function Header() {
         }
       }
 
-      el.style.borderBottomColor =
-        y > 24 ? "var(--color-rule-14)" : "transparent";
+      el.style.borderBottomColor = y > 24 ? "var(--color-rule)" : "transparent";
       el.style.boxShadow =
         y > 24 && !hidden ? "var(--elevation-header)" : "none";
       last = y;

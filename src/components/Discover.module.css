@@ -1,6 +1,6 @@
 /* Vertical padding holds at every width here — only the gutter narrows. */
 .head {
-  padding: var(--space-120) var(--gutter) 0;
+  padding: var(--space-128) var(--gutter) 0;
 }
 
 .heading {
@@ -14,7 +14,7 @@
 }
 
 .railSection {
-  padding: var(--space-56) var(--gutter) var(--space-128);
+  padding: var(--space-64) var(--gutter) var(--space-128);
 }
 
 .railWrap {
@@ -49,14 +49,14 @@
 
 .cardTitle {
   composes: cardTitle from "../styles/shared.module.css";
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-16);
 }
 
 .cardBody {
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-body);
   line-height: var(--leading-body);
   max-width: 44ch;
-  color: var(--color-text-muted-60);
+  color: var(--color-text-muted);
 }
 
 /* Overlay that positions the arrows against the image, not the whole card. */
@@ -78,14 +78,14 @@
 .arrowPrev {
   composes: arrow from "../styles/shared.module.css";
   left: 16px;
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-body);
   pointer-events: auto;
 }
 
 .arrowNext {
   composes: arrow from "../styles/shared.module.css";
   right: 16px;
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-body);
   pointer-events: auto;
 }
 

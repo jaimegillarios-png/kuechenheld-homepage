@@ -1,11 +1,11 @@
 .section {
   background: var(--color-surface-cream);
-  padding: var(--space-112) var(--gutter);
+  padding: var(--space-96) var(--gutter);
 }
 @media (max-width: 900px) {
   .section {
-    padding-top: var(--space-72);
-    padding-bottom: var(--space-80);
+    padding-top: var(--space-64);
+    padding-bottom: var(--space-64);
   }
 }
 

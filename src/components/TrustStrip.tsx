@@ -10,7 +10,7 @@ export default function TrustStrip() {
           className={styles.cell}
           style={{
             // Delay is computed per cell, so it stays a literal.
-            animation: `var(--kf-rise) var(--time-900) ease ${1.1 + i * 0.1}s both`,
+            animation: `var(--kf-rise) 0.9s ease ${1.1 + i * 0.1}s both`,
           }}
         >
           {item}

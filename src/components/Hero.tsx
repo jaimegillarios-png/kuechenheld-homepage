@@ -9,7 +9,9 @@ import shared from "@/styles/shared.module.css";
 import styles from "./Hero.module.css";
 
 const SLIDE_MS = 8600;
-const CURTAIN = "var(--duration-curtain) var(--ease-curtain) both";
+// Choreography timings are literal by design — offsets in one sequence,
+// not a reusable scale. Only the easing comes from the token set.
+const CURTAIN = "1.7s var(--easing-curtain) both";
 
 /** `children` is the trust strip — hero and strip together fill the first screen. */
 export default function Hero({ children }: { children?: React.ReactNode }) {
@@ -61,8 +63,7 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
         if (img) {
           img.style.animation = "none";
           void img.offsetWidth;
-          img.style.animation =
-            "var(--kf-hero-drift) var(--duration-drift) linear both";
+          img.style.animation = "var(--kf-hero-drift) 9s linear both";
         }
       }
 
@@ -175,10 +176,8 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
                 <div
                   className={styles.caption}
                   style={{
-                    animation: `var(--kf-fade) var(--duration-reveal-slow) ease ${
-                      i === 0
-                        ? "var(--duration-reveal-slow)"
-                        : "var(--time-500)"
+                    animation: `var(--kf-fade) 1.2s ease ${
+                      i === 0 ? "1.2s" : "0.5s"
                     } both`,
                   }}
                 >

@@ -11,9 +11,9 @@
   border-bottom: 1px solid transparent;
   will-change: transform;
   transition:
-    transform var(--duration-accordion-sign) var(--ease-out),
-    border-color var(--duration-control) ease,
-    box-shadow var(--duration-control) ease;
+    transform var(--duration-slow) var(--ease-out),
+    border-color var(--duration-slow) ease,
+    box-shadow var(--duration-slow) ease;
 }
 
 .wordmark {
@@ -53,7 +53,7 @@
 .actionRuled {
   white-space: nowrap;
   border-bottom: 1px solid var(--color-rule-strong);
-  padding-bottom: var(--space-2);
+  padding-bottom: 2px;
 }
 
 .burger {
@@ -61,7 +61,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  gap: var(--space-5);
+  gap: 5px;
   width: 40px;
   height: 40px;
   margin-left: auto;
@@ -100,7 +100,7 @@
   flex-direction: column;
   padding: var(--space-24);
   overflow-y: auto;
-  animation: var(--kf-nav-in) var(--duration-underline) var(--ease-out) both;
+  animation: var(--kf-nav-in) var(--duration-slow) var(--ease-out) both;
 }
 
 .overlayTop {
@@ -118,7 +118,7 @@
 
 .close {
   font-size: var(--font-size-card-title);
-  font-weight: var(--font-weight-hairline);
+  font-weight: var(--font-weight-light);
   line-height: var(--leading-flat);
   width: 40px;
   height: 40px;
@@ -135,12 +135,12 @@
 
 .overlayItem {
   font-size: var(--font-size-nav-mobile);
-  font-weight: var(--font-weight-hairline);
-  padding: var(--space-20) 0;
-  border-top: 1px solid var(--color-rule-14);
+  font-weight: var(--font-weight-light);
+  padding: var(--space-24) 0;
+  border-top: 1px solid var(--color-rule);
 }
 .overlayItem:last-child {
-  border-bottom: 1px solid var(--color-rule-14);
+  border-bottom: 1px solid var(--color-rule);
 }
 
 .overlayFoot {
@@ -156,8 +156,8 @@
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   background: var(--color-action);
-  color: var(--color-action-text);
-  padding: var(--space-18) var(--space-32);
+  color: var(--color-text-on-dark);
+  padding: 18px var(--space-32);
   text-align: center;
 }
 
@@ -166,6 +166,6 @@
   font-size: var(--font-size-label);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--color-text-muted-55);
+  color: var(--color-text-muted);
   text-align: center;
 }

@@ -2,12 +2,12 @@
    here rather than redeclaring the scale. */
 
 .section {
-  padding: var(--space-120) var(--gutter) var(--space-128);
+  padding: var(--space-128) var(--gutter) var(--space-128);
 }
 @media (max-width: 900px) {
   .section {
-    padding-top: var(--space-72);
-    padding-bottom: var(--space-80);
+    padding-top: var(--space-64);
+    padding-bottom: var(--space-64);
   }
 }
 
@@ -26,18 +26,18 @@
   font-weight: var(--font-weight-regular);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--color-text-meta-45);
+  color: var(--color-text-meta);
 }
 
 .eyebrowOnDark {
   composes: eyebrow;
-  color: var(--color-text-inverse-meta-55);
+  color: var(--color-text-inverse-meta);
 }
 
 .h2 {
   font-size: var(--font-size-heading);
   font-weight: var(--font-weight-light);
-  line-height: var(--leading-heading);
+  line-height: var(--leading-tight);
 }
 /* Note: a heading's `max-width` measure is dropped below 900px, but that has to
    be done by the component's own class. `composes` gives both classes equal
@@ -53,14 +53,14 @@
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-regular);
   line-height: var(--leading-body);
-  color: var(--color-text-body-70);
+  color: var(--color-text-body);
 }
 
 .bodySmall {
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-body);
   font-weight: var(--font-weight-regular);
   line-height: var(--leading-body);
-  color: var(--color-text-body-72);
+  color: var(--color-text-body);
 }
 
 .cardTitle {
@@ -70,7 +70,7 @@
 }
 
 .stat {
-  font-size: var(--font-size-stat);
+  font-size: var(--font-size-heading);
   font-weight: var(--font-weight-light);
   line-height: var(--leading-flat);
 }
@@ -93,10 +93,10 @@
   composes: label;
   display: inline-block;
   background: var(--color-action);
-  color: var(--color-action-text);
+  color: var(--color-text-on-dark);
   padding: var(--space-16) var(--space-40);
   cursor: pointer;
-  transition: opacity var(--duration-hover);
+  transition: opacity var(--duration-fast);
 }
 .btnPrimary:hover {
   opacity: 0.82;
@@ -109,8 +109,8 @@
   padding: var(--space-16) var(--space-32);
   cursor: pointer;
   transition:
-    background var(--duration-hover-fast),
-    color var(--duration-hover-fast);
+    background var(--duration-fast),
+    color var(--duration-fast);
 }
 .btnOutline:hover {
   background: var(--color-action);
@@ -122,13 +122,13 @@
   display: inline-block;
   align-self: flex-start;
   background: var(--color-action-inverse);
-  color: var(--color-action-inverse-text);
+  color: var(--color-text);
   padding: var(--space-16) var(--space-40);
   cursor: pointer;
   transition:
-    background var(--duration-hover-slow) ease,
-    color var(--duration-hover-slow) ease,
-    box-shadow var(--duration-hover-slow) ease;
+    background var(--duration-base) ease,
+    color var(--duration-base) ease,
+    box-shadow var(--duration-base) ease;
 }
 .btnCream:hover {
   background: transparent;
@@ -150,24 +150,24 @@
 .arrow {
   position: absolute;
   top: 50%;
-  margin-top: var(--space-neg-20);
+  margin-top: -20px;
   width: 40px;
   height: 40px;
-  background: var(--color-overlay-control);
-  border: 1px solid var(--color-rule-12);
+  background: var(--color-overlay);
+  border: 1px solid var(--color-rule);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--font-size-body);
   cursor: pointer;
   transition:
-    opacity var(--duration-fade) ease,
-    background var(--duration-hover-fast),
-    color var(--duration-hover-fast);
+    opacity var(--duration-base) ease,
+    background var(--duration-fast),
+    color var(--duration-fast);
 }
 .arrow:hover {
   background: var(--color-action);
-  color: var(--color-action-text);
+  color: var(--color-text-on-dark);
 }
 @media (max-width: 900px) {
   .arrow {

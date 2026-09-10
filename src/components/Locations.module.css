@@ -1,15 +1,15 @@
 .rule {
   height: 1px;
-  background: var(--color-rule-18);
+  background: var(--color-rule);
 }
 
 .section {
-  padding: var(--space-120) var(--gutter) var(--space-128);
+  padding: var(--space-128) var(--gutter) var(--space-128);
 }
 @media (max-width: 900px) {
   .section {
-    padding-top: var(--space-72);
-    padding-bottom: var(--space-80);
+    padding-top: var(--space-64);
+    padding-bottom: var(--space-64);
   }
 }
 
@@ -29,7 +29,7 @@
 
 .eyebrow {
   composes: eyebrow from "../styles/shared.module.css";
-  color: var(--color-text-meta-40);
+  color: var(--color-text-meta);
   margin-bottom: var(--space-32);
 }
 
@@ -66,7 +66,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--color-rule-16);
+  border-top: 1px solid var(--color-rule);
 }
 
 .row {
@@ -74,27 +74,27 @@
   grid-template-columns: 40px minmax(0, 1fr) 24px;
   align-items: center;
   gap: var(--space-24);
-  padding: var(--space-20) var(--space-8);
-  border-bottom: 1px solid var(--color-rule-16);
+  padding: var(--space-24) var(--space-8);
+  border-bottom: 1px solid var(--color-rule);
   cursor: pointer;
   transition:
-    padding-left var(--duration-hover-slow) ease,
-    background var(--duration-hover-slow) ease;
+    padding-left var(--duration-base) ease,
+    background var(--duration-base) ease;
 }
 .row:hover {
-  background: var(--color-surface-hover-04);
+  background: var(--color-surface-hover);
   padding-left: var(--space-16);
 }
 
 .rowNum {
   font-size: var(--font-size-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
-  color: var(--color-text-meta-40);
+  color: var(--color-text-decorative);
 }
 
 .rowArrow {
   font-size: var(--font-size-body);
-  color: var(--color-text-faint-35);
+  color: var(--color-text-faint);
   text-align: right;
 }
 

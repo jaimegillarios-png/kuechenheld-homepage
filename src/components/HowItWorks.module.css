@@ -16,7 +16,7 @@
 }
 
 .content {
-  padding: var(--space-104) var(--space-56) var(--space-112);
+  padding: var(--space-96) var(--space-64) var(--space-96);
 }
 
 .eyebrow {
@@ -45,17 +45,17 @@
   gap: var(--space-24);
   align-items: start;
   padding: var(--space-40) 0;
-  border-top: 1px solid var(--color-rule-18);
+  border-top: 1px solid var(--color-rule);
 }
 .step:last-child {
-  border-bottom: 1px solid var(--color-rule-18);
+  border-bottom: 1px solid var(--color-rule);
 }
 
 .stepNum {
   font-size: var(--font-size-numeral);
   font-weight: var(--font-weight-light);
   line-height: var(--leading-flat);
-  color: var(--color-text-faint-30);
+  color: var(--color-text-faint);
 }
 
 /* space between the step title and its paragraph */
@@ -71,7 +71,7 @@
     min-height: 360px;
   }
   .content {
-    padding: var(--space-64) var(--space-24) var(--space-72);
+    padding: var(--space-64) var(--space-24) var(--space-64);
   }
   .step {
     grid-template-columns: 40px minmax(0, 1fr);

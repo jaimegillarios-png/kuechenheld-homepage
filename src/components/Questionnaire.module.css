@@ -1,11 +1,11 @@
 .section {
   background: var(--color-surface-warm);
-  padding: var(--space-120) var(--gutter) var(--space-128);
+  padding: var(--space-128) var(--gutter) var(--space-128);
 }
 @media (max-width: 900px) {
   .section {
-    padding-top: var(--space-72);
-    padding-bottom: var(--space-80);
+    padding-top: var(--space-64);
+    padding-bottom: var(--space-64);
   }
 }
 
@@ -40,7 +40,7 @@
   width: 1px;
   height: 1px;
   padding: 0;
-  margin: var(--space-neg-1);
+  margin: -1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
@@ -49,16 +49,16 @@
 .card {
   position: relative;
   background: var(--color-surface);
-  border: 1px solid var(--color-rule-14);
-  padding: var(--space-64) 0 var(--space-56);
+  border: 1px solid var(--color-rule-control);
+  padding: var(--space-64) 0 var(--space-64);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--space-16);
   transition:
-    border-color var(--duration-hover-fast),
-    box-shadow var(--duration-hover-fast);
+    border-color var(--duration-fast),
+    box-shadow var(--duration-fast);
 }
 .card:hover {
   border-color: var(--color-rule-strong);
@@ -69,7 +69,7 @@
 .cardRing {
   position: absolute;
   inset: -1px;
-  border: 1.5px solid var(--color-selected);
+  border: 1.5px solid var(--color-rule-strong);
   pointer-events: none;
 }
 
@@ -99,7 +99,7 @@
 .otherForm {
   font-size: var(--font-size-label);
   color: var(--color-text);
-  border-bottom: 1px solid var(--color-rule-link-50);
+  border-bottom: 1px solid var(--color-rule-link);
   padding-bottom: var(--space-4);
 }
 
@@ -108,21 +108,21 @@
   align-items: center;
   gap: var(--space-24);
   flex-wrap: wrap;
-  animation: var(--kf-rise) var(--time-600) var(--ease-out) both;
+  animation: var(--kf-rise) 0.6s var(--ease-out) both;
 }
 
 .pickedNote {
   composes: label from "../styles/shared.module.css";
-  color: var(--color-text-muted-55);
+  color: var(--color-text-muted);
 }
 
 .continueBtn {
   composes: label from "../styles/shared.module.css";
   background: var(--color-action);
-  color: var(--color-action-text-warm);
+  color: var(--color-action-text);
   padding: var(--space-16) var(--space-32);
   white-space: nowrap;
-  transition: opacity var(--duration-hover);
+  transition: opacity var(--duration-fast);
 }
 .continueBtn:hover {
   opacity: 0.82;
@@ -138,8 +138,8 @@
    glyph touching the borders or the label wrapping. */
 @media (max-width: 560px) {
   .card {
-    padding: var(--space-32) var(--space-4) var(--space-28);
-    gap: var(--space-12);
+    padding: var(--space-32) var(--space-4) var(--space-24);
+    gap: var(--space-16);
   }
   .icon {
     width: 100%;
