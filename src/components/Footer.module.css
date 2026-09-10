@@ -1,11 +1,11 @@
 .footer {
   background: var(--color-surface-inverse);
   color: var(--color-text-inverse);
-  padding: var(--space-8) var(--gutter) var(--space-6);
+  padding: var(--space-8) var(--layout-gutter) var(--space-6);
 }
 
 .top {
-  max-width: var(--content-max);
+  max-width: var(--layout-content-max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
@@ -111,7 +111,7 @@
 /* --- bottom bar ---------------------------------------------------------- */
 
 .bottom {
-  max-width: var(--content-max);
+  max-width: var(--layout-content-max);
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;

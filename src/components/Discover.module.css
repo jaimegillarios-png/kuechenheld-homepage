@@ -1,6 +1,6 @@
 /* Vertical padding holds at every width here — only the gutter narrows. */
 .head {
-  padding: var(--space-10) var(--gutter) 0;
+  padding: var(--space-10) var(--layout-gutter) 0;
 }
 
 .heading {
@@ -14,7 +14,7 @@
 }
 
 .railSection {
-  padding: var(--space-8) var(--gutter) var(--space-10);
+  padding: var(--space-8) var(--layout-gutter) var(--space-10);
 }
 
 .railWrap {

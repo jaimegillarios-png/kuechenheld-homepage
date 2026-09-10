@@ -2,7 +2,7 @@
    here rather than redeclaring the scale. */
 
 .section {
-  padding: var(--space-10) var(--gutter) var(--space-10);
+  padding: var(--space-10) var(--layout-gutter) var(--space-10);
 }
 @media (max-width: 900px) {
   .section {
@@ -15,7 +15,7 @@
    the two on separate elements — putting `max-width` and padding on the same
    border-box element would eat the gutter out of the content width. */
 .container {
-  max-width: var(--content-max);
+  max-width: var(--layout-content-max);
   margin: 0 auto;
 }
 

@@ -4,7 +4,7 @@
 }
 
 .section {
-  padding: var(--space-10) var(--gutter) var(--space-10);
+  padding: var(--space-10) var(--layout-gutter) var(--space-10);
 }
 
 .inner {
@@ -83,7 +83,7 @@
   text-align: right;
   display: block;
   transition:
-    transform var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--easing-standard),
     color var(--duration-base) ease;
 }
 
@@ -91,7 +91,7 @@
 .panel {
   display: grid;
   grid-template-rows: 1fr;
-  animation: var(--kf-acc) 0.55s var(--ease-out);
+  animation: var(--kf-acc) 0.55s var(--easing-standard);
 }
 
 .panelClip {

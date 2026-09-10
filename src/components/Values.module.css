@@ -1,7 +1,7 @@
 .section {
   background: var(--color-surface-inverse);
   color: var(--color-text-inverse);
-  padding: var(--space-10) var(--gutter) var(--space-10);
+  padding: var(--space-10) var(--layout-gutter) var(--space-10);
 }
 @media (max-width: 900px) {
   .section {

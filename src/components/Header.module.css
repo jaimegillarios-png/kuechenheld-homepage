@@ -6,12 +6,12 @@
   align-items: center;
   gap: var(--space-5);
   flex-wrap: wrap;
-  padding: var(--space-4) var(--gutter);
+  padding: var(--space-4) var(--layout-gutter);
   background: var(--color-surface);
   border-bottom: 1px solid transparent;
   will-change: transform;
   transition:
-    transform var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--easing-standard),
     border-color var(--duration-slow) ease,
     box-shadow var(--duration-slow) ease;
 }
@@ -100,7 +100,7 @@
   flex-direction: column;
   padding: var(--space-4);
   overflow-y: auto;
-  animation: var(--kf-nav-in) var(--duration-slow) var(--ease-out) both;
+  animation: var(--kf-nav-in) var(--duration-slow) var(--easing-standard) both;
 }
 
 .overlayTop {

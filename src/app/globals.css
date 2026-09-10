@@ -194,7 +194,7 @@ p {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform var(--duration-slow) var(--ease-out);
+  transition: transform var(--duration-slow) var(--easing-standard);
 }
 [data-ul]:hover::after {
   transform: scaleX(1);

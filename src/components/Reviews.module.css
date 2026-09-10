@@ -1,6 +1,6 @@
 .section {
   background: var(--color-surface-warm);
-  padding: var(--space-10) var(--gutter);
+  padding: var(--space-10) var(--layout-gutter);
 }
 @media (max-width: 900px) {
   .section {

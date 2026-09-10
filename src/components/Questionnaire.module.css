@@ -1,6 +1,6 @@
 .section {
   background: var(--color-surface-warm);
-  padding: var(--space-10) var(--gutter) var(--space-10);
+  padding: var(--space-10) var(--layout-gutter) var(--space-10);
 }
 @media (max-width: 900px) {
   .section {
@@ -108,7 +108,7 @@
   align-items: center;
   gap: var(--space-4);
   flex-wrap: wrap;
-  animation: var(--kf-rise) 0.6s var(--ease-out) both;
+  animation: var(--kf-rise) 0.6s var(--easing-standard) both;
 }
 
 .pickedNote {

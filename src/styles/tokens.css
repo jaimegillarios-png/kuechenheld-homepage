@@ -245,4 +245,8 @@
   --easing-rule-retract: var(--ease-rule-retract);
   --easing-rule-out: var(--ease-rule-out);
   --easing-rule-in: var(--ease-rule-in);
+
+  /* --- layout roles ----------------------------------------------------- */
+  --layout-gutter: var(--gutter); /* responsive: 40px -> 24px at 900px */
+  --layout-content-max: var(--content-max);
 }
