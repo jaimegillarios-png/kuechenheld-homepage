@@ -3,10 +3,6 @@
   background: var(--color-rule);
 }
 
-.section {
-  padding: var(--space-section-y) var(--layout-gutter);
-}
-
 .inner {
   composes: container from "../styles/shared.module.css";
   display: grid;
@@ -21,39 +17,10 @@
   }
 }
 
-.eyebrow {
-  composes: eyebrow from "../styles/shared.module.css";
-  color: var(--color-text-meta);
-  margin-bottom: var(--space-5);
-}
-
-.heading {
-  composes: h2 from "../styles/shared.module.css";
-  max-width: 20ch;
-  margin-bottom: var(--space-4);
-}
-
-.lead {
-  composes: body from "../styles/shared.module.css";
-  max-width: 36ch;
-  margin-bottom: var(--space-6);
-}
-
 .stats {
   display: flex;
   gap: var(--space-6);
   margin-top: var(--space-8);
-}
-
-.statNum {
-  font-size: var(--font-size-numeral);
-  font-weight: var(--font-weight-light);
-  line-height: var(--leading-flat);
-}
-
-.statLabel {
-  composes: eyebrow from "../styles/shared.module.css";
-  margin-top: var(--space-2);
 }
 
 .list {
@@ -90,11 +57,4 @@
   font-size: var(--font-size-body);
   color: var(--color-text-faint);
   text-align: right;
-}
-
-/* Drop the heading measure once the column narrows. */
-@media (max-width: 900px) {
-  .heading {
-    max-width: none;
-  }
 }

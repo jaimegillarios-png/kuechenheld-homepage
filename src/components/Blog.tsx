@@ -1,30 +1,31 @@
 import Image from "next/image";
-import MaybeLink from "./MaybeLink";
 import { blogPosts, featuredPost, routes } from "@/lib/content";
+import MaybeLink from "./MaybeLink";
+import Section from "./ui/Section";
+import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
+import TextLink from "./ui/TextLink";
 import styles from "./Blog.module.css";
 
 export default function Blog() {
   return (
     <>
-      <section id="blog" className={styles.head}>
+      <Section id="blog" rhythm="lead" contained={false}>
         <div className={styles.headInner}>
           <div>
-            <div className={styles.eyebrow} data-reveal="letter">
-              Blog
-            </div>
-            <h2 className={styles.heading} data-reveal="mask">
+            <Eyebrow gap={4}>Blog</Eyebrow>
+            <Heading measure="wide">
               Tipps &amp; Inspiration rund um den Küchenkauf
-            </h2>
+            </Heading>
           </div>
-          <p className={styles.lead} data-reveal="rise" data-reveal-delay="140">
+          <Lede measure="default">
             Entdecken Sie nützliche Tipps, innovative Gestaltungsideen und
             wertvolle Empfehlungen, um Ihren Küchenkauf zu einem erfolgreichen
             und inspirierenden Erlebnis zu machen.
-          </p>
+          </Lede>
         </div>
-      </section>
+      </Section>
 
-      <section className={styles.body}>
+      <Section rhythm="trail" contained={false}>
         <div className={styles.bodyInner}>
           <MaybeLink
             href={featuredPost.href ?? routes.blog}
@@ -77,17 +78,13 @@ export default function Blog() {
             ))}
 
             <div data-reveal className={styles.allPosts}>
-              <MaybeLink
-                href={routes.blog}
-                data-ul2
-                className={styles.allPostsLink}
-              >
+              <TextLink href={routes.blog} offset={2}>
                 Alle Beiträge ansehen
-              </MaybeLink>
+              </TextLink>
             </div>
           </div>
         </div>
-      </section>
+      </Section>
     </>
   );
 }

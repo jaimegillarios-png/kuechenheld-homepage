@@ -1,0 +1,55 @@
+.section {
+  padding: var(--space-section-y) var(--layout-gutter);
+}
+
+/* Sections whose rhythm is not the shared one. `tight` is the cream offer band;
+   `lead` and `trail` are the two halves of a head/body pair that reads as one
+   section but is two elements, so the seam between them carries no padding. */
+.tight {
+  padding: var(--space-9) var(--layout-gutter);
+}
+@media (max-width: 900px) {
+  .tight {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+}
+
+.lead {
+  padding: var(--space-10) var(--layout-gutter) 0;
+}
+
+.trail {
+  padding: var(--space-8) var(--layout-gutter) var(--space-10);
+}
+
+.flush {
+  padding: 0;
+}
+
+.container {
+  composes: container from "../../styles/shared.module.css";
+}
+
+/* --- tones --------------------------------------------------------------- */
+/* `paper` is the body's own ground, so it deliberately paints nothing — giving
+   it a background would tint the section's computed colour for no visible gain. */
+
+.warm {
+  background: var(--color-surface-warm);
+}
+
+.cream {
+  background: var(--color-surface-cream);
+}
+
+.inverse {
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+}
+
+/* One step lighter than --inverse so the band lifts off the footer. */
+.inverseRaised {
+  background: var(--color-surface-inverse-raised);
+  color: var(--color-text-inverse);
+}

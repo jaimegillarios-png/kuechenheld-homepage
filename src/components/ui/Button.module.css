@@ -1,0 +1,69 @@
+.base {
+  composes: label from "../../styles/shared.module.css";
+  display: inline-block;
+  cursor: pointer;
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+
+/* Horizontal padding belongs to the variant: a filled button needs more room
+   around its label than an outlined one to read as the same weight. */
+
+.primary {
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+  background: var(--color-action);
+  color: var(--color-action-text);
+  transition: opacity var(--duration-fast);
+}
+.primary:hover {
+  opacity: 0.82;
+}
+
+.outline {
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+  border: 1px solid var(--color-rule-strong);
+  transition:
+    background var(--duration-fast),
+    color var(--duration-fast);
+}
+.outline:hover {
+  background: var(--color-action);
+  color: var(--color-text-inverse);
+}
+
+.cream {
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+  align-self: flex-start;
+  background: var(--color-action-inverse);
+  color: var(--color-text);
+  transition:
+    background var(--duration-base) ease,
+    color var(--duration-base) ease,
+    box-shadow var(--duration-base) ease;
+}
+.cream:hover {
+  background: transparent;
+  color: var(--color-text-inverse);
+  box-shadow: var(--elevation-ring-inverse);
+}
+
+/* --- modifiers ----------------------------------------------------------- */
+/* These override a variant's padding, and a single class cannot outrank another
+   single class on specificity — so they have to be emitted last. Keep them at
+   the bottom of the file. */
+
+.full {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* The one button that sits in a flex row beside a note, so it must not wrap. */
+.compact {
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+  white-space: nowrap;
+}

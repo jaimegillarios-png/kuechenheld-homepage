@@ -1,10 +1,6 @@
 /* Type roles and button shapes shared across sections. Sections `compose` from
    here rather than redeclaring the scale. */
 
-.section {
-  padding: var(--space-section-y) var(--layout-gutter);
-}
-
 /* Every section is padded by the gutter and holds its content to 1240px. Keep
    the two on separate elements — putting `max-width` and padding on the same
    border-box element would eat the gutter out of the content width. */
@@ -68,75 +64,12 @@
   font-weight: var(--font-weight-light);
   line-height: var(--leading-flat);
 }
-@media (max-width: 900px) {
-  .stat {
-    font-size: var(--font-size-numeral);
-  }
-}
 
 .label {
   font-size: var(--font-size-label);
   font-weight: var(--font-weight-regular);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-}
-
-/* --- buttons ------------------------------------------------------------- */
-
-.btnPrimary {
-  composes: label;
-  display: inline-block;
-  background: var(--color-action);
-  color: var(--color-text-on-dark);
-  padding: var(--space-3) var(--space-6);
-  cursor: pointer;
-  transition: opacity var(--duration-fast);
-}
-.btnPrimary:hover {
-  opacity: 0.82;
-}
-
-.btnOutline {
-  composes: label;
-  display: inline-block;
-  border: 1px solid var(--color-rule-strong);
-  padding: var(--space-3) var(--space-5);
-  cursor: pointer;
-  transition:
-    background var(--duration-fast),
-    color var(--duration-fast);
-}
-.btnOutline:hover {
-  background: var(--color-action);
-  color: var(--color-text-inverse);
-}
-
-.btnCream {
-  composes: label;
-  display: inline-block;
-  align-self: flex-start;
-  background: var(--color-action-inverse);
-  color: var(--color-text);
-  padding: var(--space-3) var(--space-6);
-  cursor: pointer;
-  transition:
-    background var(--duration-base) ease,
-    color var(--duration-base) ease,
-    box-shadow var(--duration-base) ease;
-}
-.btnCream:hover {
-  background: transparent;
-  color: var(--color-text-inverse);
-  box-shadow: var(--elevation-ring-inverse);
-}
-
-/* Underlined uppercase link — the drawn-rule hover lives in globals.css. */
-.linkUnderline {
-  composes: label;
-  align-self: flex-start;
-  border-bottom: 1px solid var(--color-rule-strong);
-  padding-bottom: var(--space-1);
-  cursor: pointer;
 }
 
 /* --- rail arrows --------------------------------------------------------- */

@@ -4,7 +4,8 @@ import { useRef } from "react";
 import Image from "next/image";
 import { discoverCards } from "@/lib/content";
 import { useRail } from "@/lib/useRail";
-import shared from "@/styles/shared.module.css";
+import Section from "./ui/Section";
+import { Heading, Lede } from "./ui/SectionHeader";
 import styles from "./Discover.module.css";
 
 export default function Discover() {
@@ -13,19 +14,17 @@ export default function Discover() {
 
   return (
     <>
-      <section id="kuechendesign" className={styles.head}>
-        <div className={shared.container}>
-          <h2 className={styles.heading} data-reveal="mask">
-            Küchenplanung entdecken
-          </h2>
-          <p className={styles.lead} data-reveal="rise" data-reveal-delay="140">
-            Erleben Sie individuelle Küchenplanung – Transparent, digital und
-            auf Sie zugeschnitten.
-          </p>
-        </div>
-      </section>
+      <Section id="kuechendesign" rhythm="lead">
+        <Heading measure="none" gap={3}>
+          Küchenplanung entdecken
+        </Heading>
+        <Lede measure="wide">
+          Erleben Sie individuelle Küchenplanung – Transparent, digital und auf
+          Sie zugeschnitten.
+        </Lede>
+      </Section>
 
-      <section className={styles.railSection}>
+      <Section rhythm="trail" contained={false}>
         <div className={styles.railWrap} {...rail.hoverProps}>
           <div
             ref={railRef}
@@ -75,7 +74,7 @@ export default function Discover() {
             </button>
           </div>
         </div>
-      </section>
+      </Section>
     </>
   );
 }

@@ -216,7 +216,6 @@
   /* One step below --font-size-heading: the mobile h2, the mobile nav
      items, and the blog featured title. */
   --font-size-subheading: var(--text-2xl);
-  --font-size-numeral: var(--text-3xl);
   --font-size-heading: var(--text-3xl); /* 40 and 48 merged onto 44 */
   --font-size-hero: var(--text-display-hero);
   --font-size-hero-narrow: var(--text-display-hero-narrow);
@@ -258,6 +257,21 @@
 
   /* Shared minimum control dimension: rail arrow, burger, overlay close. */
   --size-control: 40px;
+
+  /* Line measures. Nine section headers between them used seven different `ch`
+     values. The ledes collapse to three widths with no change to how any of
+     them break; the headings do not collapse as far, because at 44px a width
+     change moves the line break rather than just the rag.
+       column — the heading shares its row with a sibling column
+       wide   — the heading sits beside its own lede in a flex row
+       full   — the heading owns the container, or the column already limits it
+     A heading with no measure at all is `none`; see SectionHeader. */
+  --measure-heading-column: 20ch;
+  --measure-heading-wide: 28ch;
+  --measure-heading-full: 34ch;
+  --measure-lede-tight: 36ch;
+  --measure-lede-default: 44ch;
+  --measure-lede-wide: 56ch;
 }
 
 @media (max-width: 900px) {

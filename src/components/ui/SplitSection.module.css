@@ -1,0 +1,60 @@
+/* Full-bleed media one side, content the other. Three sections use this; they
+   differ only in how tall the media column stands and which side it takes. */
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+/* CustomerStories' rail needs both tracks to be able to shrink. */
+.even {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.media {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface-media);
+  min-height: var(--split-media-min-height);
+}
+
+/* The rail media positions its own children absolutely, so it must not clip. */
+.mediaRail {
+  overflow: visible;
+  background: none;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.content {
+  padding: var(--space-9) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* HowItWorks fills its column top to bottom rather than centring. */
+.contentTop {
+  display: block;
+}
+
+/* The CTA band stands a step taller than the other two splits. */
+.contentTall {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
+}
+
+@media (max-width: 900px) {
+  .section,
+  .even {
+    grid-template-columns: 1fr;
+  }
+  .media {
+    min-height: var(--split-media-min-height-narrow);
+  }
+  .content {
+    padding: var(--space-8) var(--space-4);
+  }
+}

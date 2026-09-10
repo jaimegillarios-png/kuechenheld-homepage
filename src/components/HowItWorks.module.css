@@ -1,36 +1,9 @@
-.section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: stretch;
-}
-
-.media {
-  position: relative;
-  min-height: 640px;
-  overflow: hidden;
-  background: var(--color-surface-media);
-}
-
 .photo {
   object-fit: cover;
 }
 
-.content {
-  padding: var(--space-9) var(--space-8) var(--space-9);
-}
-
-.eyebrow {
-  composes: eyebrow from "../styles/shared.module.css";
-  margin-bottom: var(--space-4);
-}
-
 .intro {
   margin-bottom: var(--space-8);
-}
-
-.heading {
-  composes: h2 from "../styles/shared.module.css";
-  margin-bottom: var(--space-4);
 }
 
 .steps {
@@ -52,7 +25,7 @@
 }
 
 .stepNum {
-  font-size: var(--font-size-numeral);
+  font-size: var(--font-size-heading);
   font-weight: var(--font-weight-light);
   line-height: var(--leading-flat);
   color: var(--color-text-faint);
@@ -64,15 +37,6 @@
 }
 
 @media (max-width: 900px) {
-  .section {
-    grid-template-columns: 1fr;
-  }
-  .media {
-    min-height: 360px;
-  }
-  .content {
-    padding: var(--space-8) var(--space-4) var(--space-8);
-  }
   .step {
     grid-template-columns: 40px minmax(0, 1fr);
     gap: var(--space-3);

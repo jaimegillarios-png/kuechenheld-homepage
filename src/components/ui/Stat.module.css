@@ -1,0 +1,9 @@
+.value {
+  composes: stat from "../../styles/shared.module.css";
+  margin-bottom: var(--stat-gap, 0);
+}
+
+.label {
+  composes: eyebrow from "../../styles/shared.module.css";
+  margin-top: var(--space-2);
+}

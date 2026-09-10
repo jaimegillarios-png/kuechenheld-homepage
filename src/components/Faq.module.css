@@ -3,20 +3,6 @@
   background: var(--color-rule);
 }
 
-.section {
-  padding: var(--space-section-y) var(--layout-gutter);
-}
-
-.inner {
-  composes: container from "../styles/shared.module.css";
-}
-
-.eyebrow {
-  composes: eyebrow from "../styles/shared.module.css";
-  color: var(--color-text-meta);
-  margin-bottom: var(--space-5);
-}
-
 .head {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -29,17 +15,6 @@
     grid-template-columns: 1fr;
     gap: var(--space-5);
   }
-}
-
-.heading {
-  composes: h2 from "../styles/shared.module.css";
-  max-width: 20ch;
-}
-
-.lead {
-  composes: body from "../styles/shared.module.css";
-  max-width: 52ch;
-  margin-bottom: var(--space-5);
 }
 
 .list {
@@ -110,12 +85,5 @@
   .answerRow {
     grid-template-columns: 32px minmax(0, 1fr) 24px;
     gap: var(--space-3);
-  }
-}
-
-/* Drop the heading measure once the column narrows. */
-@media (max-width: 900px) {
-  .heading {
-    max-width: none;
   }
 }

@@ -1,0 +1,73 @@
+/* The eyebrow / heading / lede stack that opens nine sections.
+   Gaps come in as spacing-scale steps on --sh-gap-*, because the nine headers
+   do not share one rhythm; see the extraction notes. */
+
+.eyebrow {
+  composes: eyebrow from "../../styles/shared.module.css";
+  margin-bottom: var(--sh-gap-eyebrow, 0);
+}
+
+.eyebrowInverse {
+  composes: eyebrowOnDark from "../../styles/shared.module.css";
+  margin-bottom: var(--sh-gap-eyebrow, 0);
+}
+
+.heading {
+  composes: h2 from "../../styles/shared.module.css";
+  margin-bottom: var(--sh-gap-heading, 0);
+}
+
+/* The measure is declared on the local class, not on the composed `h2`.
+   `composes` gives both classes equal specificity, so a `max-width` declared in
+   shared.module.css would win or lose on emit order alone. */
+.measureColumn {
+  max-width: var(--measure-heading-column);
+}
+
+.measureWide {
+  max-width: var(--measure-heading-wide);
+}
+
+.measureFull {
+  max-width: var(--measure-heading-full);
+}
+
+/* Once the column narrows there is nothing left to hold the heading back. */
+@media (max-width: 900px) {
+  .measureColumn,
+  .measureWide,
+  .measureFull {
+    max-width: none;
+  }
+}
+
+.lede {
+  composes: body from "../../styles/shared.module.css";
+  margin-bottom: var(--sh-gap-lede, 0);
+}
+
+.ledeInverse {
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  color: var(--color-text-inverse-body);
+  margin-bottom: var(--sh-gap-lede, 0);
+}
+
+.ledeTight {
+  max-width: var(--measure-lede-tight);
+}
+
+.ledeDefault {
+  max-width: var(--measure-lede-default);
+}
+
+.ledeWide {
+  max-width: var(--measure-lede-wide);
+}
+
+/* CustomerStories' heading is long enough to overflow its column at the
+   narrowest split; it is the only one that needs to break inside a word. */
+.hyphenate {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}

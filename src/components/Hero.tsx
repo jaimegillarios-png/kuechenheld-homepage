@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import AnchorLink from "./AnchorLink";
+import Button from "./ui/Button";
 import { heroSlides } from "@/lib/content";
 import { prefersReducedMotion } from "@/lib/motion";
-import shared from "@/styles/shared.module.css";
 import styles from "./Hero.module.css";
 
 const SLIDE_MS = 8600;
@@ -132,9 +132,7 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
           </p>
 
           <div className={styles.ctas}>
-            <AnchorLink href="#fragebogen" className={shared.btnPrimary}>
-              Küchenwünsche angeben
-            </AnchorLink>
+            <Button href="#fragebogen">Küchenwünsche angeben</Button>
             <AnchorLink href="#standorte" data-ul2 className={styles.secondary}>
               Showrooms ansehen
             </AnchorLink>

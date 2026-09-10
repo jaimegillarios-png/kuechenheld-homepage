@@ -1,6 +1,9 @@
-import AnchorLink from "./AnchorLink";
-import MaybeLink from "./MaybeLink";
 import { routes, showrooms } from "@/lib/content";
+import MaybeLink from "./MaybeLink";
+import Button from "./ui/Button";
+import Section from "./ui/Section";
+import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
+import Stat from "./ui/Stat";
 import shared from "@/styles/shared.module.css";
 import styles from "./Locations.module.css";
 
@@ -9,45 +12,29 @@ export default function Locations() {
     <>
       <div data-rule className={styles.rule} />
 
-      <section id="standorte" className={styles.section}>
+      <Section id="standorte" contained={false}>
         <div className={styles.inner}>
           <div>
-            <div className={styles.eyebrow} data-reveal="letter">
-              Standorte
-            </div>
-            <h2 className={styles.heading} data-reveal="mask">
+            <Eyebrow gap={5}>Standorte</Eyebrow>
+            <Heading measure="column" gap={4}>
               Küche kaufen leicht gemacht: Online planen, vor Ort erleben
-            </h2>
-            <p
-              className={styles.lead}
-              data-reveal="rise"
-              data-reveal-delay="140"
-            >
+            </Heading>
+            <Lede measure="tight" gap={6}>
               Buchen Sie Ihre Küchenberatung exklusiv in einem unserer 8
               Showrooms!
-            </p>
-            <AnchorLink
+            </Lede>
+            <Button
               href="#fragebogen"
-              className={shared.btnOutline}
+              variant="outline"
               data-reveal="rise"
-              data-reveal-delay="240"
+              data-reveal-delay={240}
             >
               Termin buchen
-            </AnchorLink>
+            </Button>
 
             <div className={styles.stats}>
-              <div>
-                <div className={styles.statNum} data-count>
-                  8
-                </div>
-                <div className={styles.statLabel}>Showrooms</div>
-              </div>
-              <div>
-                <div className={styles.statNum} data-count>
-                  1
-                </div>
-                <div className={styles.statLabel}>Planungsteam</div>
-              </div>
+              <Stat value="8" label="Showrooms" />
+              <Stat value="1" label="Planungsteam" />
             </div>
           </div>
 
@@ -71,7 +58,7 @@ export default function Locations() {
             ))}
           </ul>
         </div>
-      </section>
+      </Section>
     </>
   );
 }

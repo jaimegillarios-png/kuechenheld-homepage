@@ -1,0 +1,9 @@
+/* Underlined uppercase link. The drawn-rule hover lives in globals.css, keyed
+   off [data-ul2], so it stays attribute-driven and works on <span> too. */
+.link {
+  composes: label from "../../styles/shared.module.css";
+  align-self: flex-start;
+  border-bottom: 1px solid var(--color-rule-strong);
+  padding-bottom: var(--tl-offset, var(--space-1));
+  cursor: pointer;
+}
