@@ -96,7 +96,7 @@
 
 .quoteText {
   margin: 0;
-  font-size: var(--font-size-card-title);
+  font-size: var(--font-size-quote);
   font-weight: var(--font-weight-light);
   line-height: var(--leading-title);
   color: var(--color-text);
