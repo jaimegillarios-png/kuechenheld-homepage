@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 import AnchorLink from "../AnchorLink";
 import MaybeLink from "../MaybeLink";
 import styles from "./CtaButton.module.css";
@@ -15,16 +16,12 @@ export default function CtaButton({
   const inner = (
     <>
       {label}
-      <svg
+      <ChevronRight
         className={styles.arrow}
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
+        size={16}
+        strokeWidth={1.8}
         aria-hidden="true"
-      >
-        <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.5" />
-      </svg>
+      />
     </>
   );
 

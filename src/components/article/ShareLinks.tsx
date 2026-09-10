@@ -1,5 +1,6 @@
 "use client";
 
+import { Link2 } from "lucide-react";
 import { useState } from "react";
 import { SocialIcon } from "../SocialIcons";
 import styles from "./ShareLinks.module.css";
@@ -52,7 +53,7 @@ export default function ShareLinks({ url, title }: Props) {
             URL kopiert
           </span>
         )}
-        <SocialIcon name="Link" size={24} />
+        <Link2 size={24} strokeWidth={1.8} aria-hidden="true" />
       </button>
 
       {targets.map((target) => (
