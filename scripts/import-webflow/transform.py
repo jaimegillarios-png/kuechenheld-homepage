@@ -77,6 +77,13 @@ def clean_text(s: str, rep: Report) -> str:
     return "".join(out)
 
 
+def norm_text(s: str) -> str:
+    """Comparable text: no zero-width noise, no repeated whitespace."""
+    for ch in ZERO_WIDTH:
+        s = s.replace(ch, "")
+    return " ".join(s.split())
+
+
 MD_ESCAPE = re.compile(r"([\\`*_\[\]<>|])")
 
 def escape_md(s: str) -> str:
@@ -153,10 +160,14 @@ def drop_empty(soup: Tag, rep: Report):
         if blank(el):
             rep.empty_embeds += 1
             el.decompose()
-    for el in soup.find_all("strong"):
+    for el in soup.find_all(["strong", "em"]):
         if blank(el):
             rep.empty_strong += 1
-            el.decompose()
+            # `In einer<strong> </strong>Küche` — the element is empty of words
+            # but the space between them is real. Removing the element must
+            # leave the space behind or the two words fuse.
+            had_space = bool(re.search(r"[ \u00a0]", el.get_text("")))
+            el.replace_with(NavigableString(" ") if had_space else "")
     for el in soup.find_all("p"):
         if blank(el):
             rep.empty_p += 1
@@ -164,15 +175,21 @@ def drop_empty(soup: Tag, rep: Report):
 
 
 def strip_heading_strong(soup: Tag, rep: Report):
-    """A <strong> that wraps an entire h2/h3 is not emphasis — the heading is
-    already the emphasis. Unwrap it and keep the heading."""
+    """A heading that is bold from end to end is not emphasising anything — the
+    heading is already the emphasis. Webflow's editor splits that bold across
+    several <strong> elements whenever a link or a line break interrupts it, so
+    the test is whether the heading has any text *outside* bold, not whether a
+    single <strong> happens to be the only child."""
     for h in soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6"]):
-        kids = [c for c in h.children
-                if not (isinstance(c, NavigableString) and not c.strip().replace("‍", ""))]
-        if len(kids) == 1 and isinstance(kids[0], Tag) and kids[0].name == "strong":
-            rep.strong_headings_stripped.append(
-                (h.name, kids[0].get_text(" ", strip=True)[:70]))
-            kids[0].unwrap()
+        strongs = h.find_all(["strong", "b"])
+        if not strongs:
+            continue
+        whole = norm_text(h.get_text(" "))
+        bolded = norm_text(" ".join(s.get_text(" ") for s in strongs))
+        if whole and whole == bolded:
+            rep.strong_headings_stripped.append((h.name, whole[:70]))
+            for s in strongs:
+                s.unwrap()
 
 
 def normalise_figures(soup: Tag, rep: Report):
@@ -365,8 +382,12 @@ def inline(node, rep: Report) -> str:
     if name == "a":
         href = node.get("href", "")
         href = relativise(decode_double_encoded(href, rep), rep)
+        # Hoist surrounding space outside the link, the same as emphasis does.
+        # Stripping it here loses the word gap when the next node is emphasis.
+        lead = " " if kids[:1].isspace() else ""
+        trail = " " if kids[-1:].isspace() else ""
         text = kids.strip() or href
-        return f"[{text}]({href})"
+        return f"{lead}[{text}]({href}){trail}"
     if name == "br":
         return "  \n"          # markdown hard line break
     if name == "img":
@@ -469,11 +490,13 @@ def convert(fragment_html: str, slug: str):
     soup = BeautifulSoup(f"<div id='root'>{fragment_html}</div>", "lxml").find(id="root")
     rep = Report(slug=slug)
     extract_ctas(soup, rep)
-    strip_heading_strong(soup, rep)
     normalise_figures(soup, rep)
     classify_brs(soup, rep)
     split_paragraphs(soup, rep)
     drop_empty(soup, rep)
+    # After the <br> and empty-node noise is gone, so a heading padded with
+    # either still reads as bold end to end.
+    strip_heading_strong(soup, rep)
     strip_attrs(soup, rep)
     unwrap_leftover_divs(soup, rep)
     adopt_orphan_lis(soup, rep)
