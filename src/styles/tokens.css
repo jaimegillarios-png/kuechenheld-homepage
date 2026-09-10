@@ -63,7 +63,6 @@
   --text-3xl: 44px;
   --text-display-hero: clamp(45px, 4.8vw, 90px);
   --text-display-hero-narrow: clamp(45px, 13.5vw, 68px);
-  --text-display-section: clamp(36px, 3.4vw, 54px);
 
   --weight-light: 300;
   --weight-regular: 400;
@@ -219,7 +218,6 @@
   --font-size-heading: var(--text-3xl); /* 40 and 48 merged onto 44 */
   --font-size-hero: var(--text-display-hero);
   --font-size-hero-narrow: var(--text-display-hero-narrow);
-  --font-size-heading-fluid: var(--text-display-section);
 
   --font-weight-light: var(--weight-light);
   --font-weight-regular: var(--weight-regular);

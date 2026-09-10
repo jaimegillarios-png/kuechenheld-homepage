@@ -65,9 +65,7 @@
 }
 
 .heading {
-  font-size: var(--font-size-heading-fluid);
-  font-weight: var(--font-weight-light);
-  line-height: var(--leading-tight);
+  composes: h2 from "../styles/shared.module.css";
   max-width: 24ch;
   margin: 0 0 var(--space-4);
   overflow-wrap: break-word;
