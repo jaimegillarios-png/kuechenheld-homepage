@@ -65,9 +65,12 @@
   font-size: var(--font-size-prose-h4);
 }
 
-/* At body size, weight is the only thing left to distinguish it. */
+/* h5 is the one level that shares the body's own size, so weight is the only
+   cue left to carry it — and one step above the body was not enough. It takes
+   the same weight as `strong`; the space above it does the rest. */
 .prose h5 {
   font-size: var(--font-size-prose-h5);
+  font-weight: var(--font-weight-strong);
 }
 
 .prose > h2 {
@@ -78,7 +81,10 @@
   margin-top: var(--gap-prose-h3-above);
 }
 
-/* An h4 is barely more than a run-in, so it takes the ordinary block gap. */
+.prose > h4,
+.prose > h5 {
+  margin-top: var(--gap-prose-minor-above);
+}
 
 /* The space *after* a heading is carried by whatever follows it. Two headings
    in a row therefore sit close together without a rule of their own. */

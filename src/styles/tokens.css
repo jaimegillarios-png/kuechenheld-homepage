@@ -319,6 +319,10 @@
   --gap-prose-block: var(--space-5);
   --gap-prose-h2-above: var(--space-8);
   --gap-prose-h3-above: var(--space-7);
+  /* h4 and h5 share one step. Both are minor headings, and both were taking the
+     ordinary block gap — a heading given a paragraph's worth of room above it
+     reads as a paragraph. */
+  --gap-prose-minor-above: var(--space-6);
   --gap-prose-heading-lead: var(--space-3);
   --gap-prose-rule: var(--space-8);
   --gap-prose-caption: var(--space-3);
