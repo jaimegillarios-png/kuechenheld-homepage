@@ -1,5 +1,5 @@
 import ArticleRow from "../ui/ArticleRow";
-import Section from "../ui/Section";
+import Section, { type SectionTone } from "../ui/Section";
 import SectionHeader from "../ui/SectionHeader";
 import type { PostSummary } from "@/lib/blog";
 import styles from "./RelatedArticles.module.css";
@@ -14,15 +14,17 @@ export default function RelatedArticles({
   posts,
   heading = "Weiterlesen",
   eyebrow = "Mehr aus dem Blog",
+  tone = "paper",
 }: {
   posts: PostSummary[];
   heading?: string;
   eyebrow?: string;
+  tone?: SectionTone;
 }) {
   if (posts.length === 0) return null;
 
   return (
-    <Section>
+    <Section tone={tone}>
       <SectionHeader eyebrow={eyebrow} heading={heading} measure="wide" />
       <div className={styles.rows}>
         {posts.map((post, i) => (

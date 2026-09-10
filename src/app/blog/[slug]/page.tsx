@@ -56,7 +56,10 @@ export default async function BlogPostPage({ params }: Params) {
 
       <main id="main">
         <article>
-          <Section rhythm="lead">
+          {/* The masthead sits on a tone so the article opens against
+              something, and the lead rhythm leaves no padding under it — the
+              main image forms the band's own bottom edge. */}
+          <Section rhythm="lead" tone="warm">
             <ArticleHeader post={post} />
           </Section>
           <Section rhythm="trail">
@@ -64,7 +67,7 @@ export default async function BlogPostPage({ params }: Params) {
           </Section>
         </article>
 
-        <RelatedArticles posts={related} />
+        <RelatedArticles posts={related} tone="warm" />
       </main>
 
       <Footer />
