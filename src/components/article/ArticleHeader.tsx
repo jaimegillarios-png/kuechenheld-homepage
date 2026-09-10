@@ -41,14 +41,14 @@ function Crumbs({ items, title }: { items: Breadcrumb[]; title: string }) {
               {crumb.name}
             </MaybeLink>
           ) : (
-            // The post's own step. Its title is the h1 immediately below, so
-            // the trail marks the position without repeating the heading.
+            // Truncated by CSS rather than sliced, so the whole title stays
+            // in the accessibility tree and the cut adapts to the space.
             <span
               className={styles.crumbCurrent}
               aria-current="page"
               title={title}
             >
-              …
+              {title}
             </span>
           )}
         </span>

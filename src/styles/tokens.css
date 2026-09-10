@@ -294,6 +294,9 @@
   --measure-prose-long: 72ch;
   /* A card title carries fewer words per line than body copy at the same width. */
   --measure-title-card: 24ch;
+  /* The post's own step in a breadcrumb trail: enough of the title to place
+     the page, cut off before it competes with the h1 underneath. */
+  --measure-crumb: 26ch;
 
   /* Section head rhythm. Eleven heads carried six different gaps between them;
      regrouped by what each gap separates, they turned out to be four jobs, and

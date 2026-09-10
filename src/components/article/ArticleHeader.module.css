@@ -44,9 +44,14 @@
   color: var(--color-text-inverse);
 }
 
-/* The post itself. Its title is already the h1 directly below, so the trail
-   only marks the position rather than repeating the whole heading. */
+/* The post itself. Enough of the title to place the page, truncated rather
+   than sliced so the whole heading stays in the accessibility tree. */
 .crumbCurrent {
+  display: block;
+  max-width: var(--measure-crumb);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: var(--color-text-meta);
 }
 
