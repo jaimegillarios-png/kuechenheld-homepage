@@ -8,7 +8,6 @@ export default function OfferCompare() {
       <SectionHeader
         heading="Haben Sie schon ein Angebot? Vergleichen lohnt sich!"
         lede="Nutzen Sie unseren Angebotsvergleich-Service und sichern Sie sich das bestmögliche Angebot für Ihre Traumküche!"
-        gaps={{ heading: 4, lede: 5 }}
       >
         <Button
           href="#fragebogen"

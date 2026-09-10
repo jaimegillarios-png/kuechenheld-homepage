@@ -43,13 +43,9 @@ export default function CtaBand({
         />
       }
     >
-      <Eyebrow tone="inverse" gap={4}>
-        {eyebrow}
-      </Eyebrow>
-      <Heading measure="column" gap={4}>
-        {heading}
-      </Heading>
-      <Lede tone="inverse" measure="default" gap={7}>
+      <Eyebrow tone="inverse">{eyebrow}</Eyebrow>
+      <Heading measure="column">{heading}</Heading>
+      <Lede tone="inverse" measure="default" gap="action-open">
         {lede}
       </Lede>
       <Button

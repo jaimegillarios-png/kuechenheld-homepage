@@ -3,7 +3,7 @@
 }
 
 .intro {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--gap-head-body);
 }
 
 .steps {

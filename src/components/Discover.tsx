@@ -17,9 +17,7 @@ export default function Discover() {
   return (
     <>
       <Section id="kuechendesign" rhythm="lead">
-        <Heading measure="none" gap={3}>
-          Küchenplanung entdecken
-        </Heading>
+        <Heading measure="none">Küchenplanung entdecken</Heading>
         <Lede measure="wide">
           Erleben Sie individuelle Küchenplanung – Transparent, digital und auf
           Sie zugeschnitten.

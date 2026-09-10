@@ -276,6 +276,24 @@
   --measure-prose-long: 72ch;
   /* A card title carries fewer words per line than body copy at the same width. */
   --measure-title-card: 24ch;
+
+  /* Section head rhythm. Eleven heads carried six different gaps between them;
+     regrouped by what each gap separates, they turned out to be four jobs, and
+     two of those were already one value each.
+       stack  — label to title, and title to lede: the head's internal rhythm
+       action — the lede to the action it invites. `open` is for a head that is
+                a vertically centred split column, where the block floats in
+                enough air that the tighter step reads as attached to the lede
+       body   — the head to the body block it introduces. Already 64px in five
+                of the six places it lives; it belongs to the body, not the head */
+  --gap-head-stack: var(--space-4);
+  --gap-head-action: var(--space-5);
+  --gap-head-action-open: var(--space-7);
+  --gap-head-body: var(--space-8);
+
+  /* Distance from an underlined link's text to its rule. */
+  --gap-link-rule: var(--space-1);
+  --gap-link-rule-loose: var(--space-2);
 }
 
 @media (max-width: 900px) {

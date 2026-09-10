@@ -16,13 +16,11 @@ export default function Reviews() {
 
   return (
     <Section tone="warm">
-      <Eyebrow gap={5}>Bewertungen</Eyebrow>
+      <Eyebrow>Bewertungen</Eyebrow>
 
       <div className={styles.head} data-reveal-stagger>
         <div>
-          <Heading measure="full" gap={4}>
-            Über 1.500 gekaufte Küchen im Jahr
-          </Heading>
+          <Heading measure="full">Über 1.500 gekaufte Küchen im Jahr</Heading>
           <Lede measure="wide">
             Jedes Jahr dürfen wir mehr als 1.500 KundInnen bei ihrer
             Küchenrenovierung unterstützen! Unsere KundInnen sind von der

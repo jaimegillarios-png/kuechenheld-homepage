@@ -1,5 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
-import type { SpaceStep } from "./spacing";
+import type { ReactNode } from "react";
 import AnchorLink from "../AnchorLink";
 import MaybeLink from "../MaybeLink";
 import styles from "./TextLink.module.css";
@@ -7,8 +6,8 @@ import styles from "./TextLink.module.css";
 type Props = {
   children: ReactNode;
   href?: string | null;
-  /** Distance from the text to its rule, as a spacing-scale step. */
-  offset?: SpaceStep;
+  /** Distance from the text to its rule. */
+  offset?: "default" | "loose";
   className?: string;
   "data-reveal"?: string;
   "data-reveal-delay"?: number;
@@ -17,30 +16,23 @@ type Props = {
 export default function TextLink({
   children,
   href,
-  offset,
+  offset = "default",
   className,
   ...rest
 }: Props) {
-  const classes = [styles.link, className].filter(Boolean).join(" ");
-  const style = (
-    offset ? { "--tl-offset": `var(--space-${offset})` } : undefined
-  ) as CSSProperties | undefined;
+  const classes = [styles.link, offset === "loose" && styles.loose, className]
+    .filter(Boolean)
+    .join(" ");
 
   if (href?.startsWith("#")) {
     return (
-      <AnchorLink
-        href={href}
-        data-ul2
-        className={classes}
-        style={style}
-        {...rest}
-      >
+      <AnchorLink href={href} data-ul2 className={classes} {...rest}>
         {children}
       </AnchorLink>
     );
   }
   return (
-    <MaybeLink href={href} data-ul2 className={classes} style={style} {...rest}>
+    <MaybeLink href={href} data-ul2 className={classes} {...rest}>
       {children}
     </MaybeLink>
   );

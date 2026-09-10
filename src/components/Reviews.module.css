@@ -3,7 +3,7 @@
   grid-template-columns: 1fr auto;
   gap: var(--space-8);
   align-items: end;
-  padding-bottom: var(--space-8);
+  padding-bottom: var(--gap-head-body);
 }
 
 .stats {

@@ -14,11 +14,11 @@ export default function Locations() {
       <Section id="standorte" contained={false}>
         <div className={styles.inner}>
           <div>
-            <Eyebrow gap={5}>Standorte</Eyebrow>
-            <Heading measure="column" gap={4}>
+            <Eyebrow>Standorte</Eyebrow>
+            <Heading measure="column">
               Küche kaufen leicht gemacht: Online planen, vor Ort erleben
             </Heading>
-            <Lede measure="tight" gap={6}>
+            <Lede measure="tight" gap="action">
               Buchen Sie Ihre Küchenberatung exklusiv in einem unserer 8
               Showrooms!
             </Lede>

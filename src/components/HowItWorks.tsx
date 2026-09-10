@@ -25,10 +25,10 @@ export default function HowItWorks() {
         />
       }
     >
-      <Eyebrow gap={4}>Küchenwunsch, Planung, fertig</Eyebrow>
+      <Eyebrow>Küchenwunsch, Planung, fertig</Eyebrow>
 
       <div className={styles.intro}>
-        <Heading measure="full" gap={4}>
+        <Heading measure="full">
           So funktioniert der Küchenkauf mit Küchenheld
         </Heading>
         <Lede measure="wide">

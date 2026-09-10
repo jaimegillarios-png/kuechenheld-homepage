@@ -4,6 +4,11 @@
   composes: label from "../../styles/shared.module.css";
   align-self: flex-start;
   border-bottom: 1px solid var(--color-rule-strong);
-  padding-bottom: var(--tl-offset, var(--space-1));
+  padding-bottom: var(--gap-link-rule);
   cursor: pointer;
+}
+
+/* Emitted after .link so it outranks it on order. */
+.loose {
+  padding-bottom: var(--gap-link-rule-loose);
 }

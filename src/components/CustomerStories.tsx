@@ -48,11 +48,11 @@ export default function CustomerStories() {
         </>
       }
     >
-      <Eyebrow gap={4}>Erfahrungsberichte</Eyebrow>
-      <Heading measure="full" gap={4} hyphenate>
+      <Eyebrow>Erfahrungsberichte</Eyebrow>
+      <Heading measure="full" hyphenate>
         Kundenerfahrungen: Gemeinsam Erfolge schaffen
       </Heading>
-      <Lede measure="default" gap={7}>
+      <Lede measure="default" gap="action-open">
         Sehen Sie, wie die Zusammenarbeit mit unserem Team zu transformierenden
         Ergebnissen für unsere KundInnen geführt hat.
       </Lede>

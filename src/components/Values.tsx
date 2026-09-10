@@ -11,7 +11,6 @@ export default function Values() {
         heading="Ihre Vorteile auf einen Blick"
         tone="inverse"
         measure="none"
-        gaps={{ eyebrow: 4, heading: 8 }}
       />
 
       <div className={styles.grid} data-reveal-stagger>

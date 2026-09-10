@@ -1,11 +1,17 @@
-import type { CSSProperties, ReactNode } from "react";
-import type { SpaceStep } from "./spacing";
+import type { ReactNode } from "react";
 import styles from "./SectionHeader.module.css";
 
 /** Two widths cover every heading on the page; three cover every lede. */
 export type HeadingMeasure = "column" | "wide" | "full" | "none";
 export type LedeMeasure = "tight" | "default" | "wide";
 export type Tone = "light" | "inverse";
+
+/**
+ * How much room a head gives the action it invites. `open` is for a head that
+ * is a vertically centred split column — the block floats in enough air that
+ * the tighter step reads as attached to the lede.
+ */
+export type HeadGaps = "default" | "open";
 
 const HEADING_MEASURE: Record<HeadingMeasure, string | undefined> = {
   column: styles.measureColumn,
@@ -23,25 +29,20 @@ const LEDE_MEASURE = {
 const cx = (...v: (string | false | undefined)[]) =>
   v.filter(Boolean).join(" ");
 
-// Spacing-scale steps only — the SpaceStep type keeps this closed.
-const gapStyle = (name: string, step?: SpaceStep) =>
-  (step ? { [name]: `var(--space-${step})` } : undefined) as
-    CSSProperties | undefined;
-
 /* --- parts ---------------------------------------------------------------- */
-/* Four of the nine heads split their eyebrow, heading and lede across a grid,
-   so the three parts are the component and `SectionHeader` is the convenience
-   wrapper for the five that stack. */
+/* Nine of the eleven heads split their eyebrow, heading and lede across a grid
+   or a split column, so the three parts are the component and `SectionHeader`
+   is the convenience wrapper for the two that stack.
+   A part used on its own cannot see what follows it, so it is told which gap
+   tier sits underneath. The tiers are named, never a step. */
 
 export function Eyebrow({
   children,
   tone = "light",
-  gap,
   className,
 }: {
   children: ReactNode;
   tone?: Tone;
-  gap?: SpaceStep;
   className?: string;
 }) {
   return (
@@ -50,7 +51,6 @@ export function Eyebrow({
         tone === "inverse" ? styles.eyebrowInverse : styles.eyebrow,
         className,
       )}
-      style={gapStyle("--sh-gap-eyebrow", gap)}
       data-reveal="letter"
     >
       {children}
@@ -61,13 +61,14 @@ export function Eyebrow({
 export function Heading({
   children,
   measure = "full",
-  gap,
+  /** `stack` when a lede follows; `none` when the heading ends the head. */
+  gap = "stack",
   hyphenate,
   className,
 }: {
   children: ReactNode;
   measure?: HeadingMeasure;
-  gap?: SpaceStep;
+  gap?: "stack" | "none";
   hyphenate?: boolean;
   className?: string;
 }) {
@@ -77,9 +78,9 @@ export function Heading({
         styles.heading,
         HEADING_MEASURE[measure],
         hyphenate && styles.hyphenate,
+        gap === "stack" && styles.gapStack,
         className,
       )}
-      style={gapStyle("--sh-gap-heading", gap)}
       data-reveal="mask"
     >
       {children}
@@ -91,14 +92,15 @@ export function Lede({
   children,
   tone = "light",
   measure = "default",
-  gap,
+  /** `none` when the lede ends the head and the body below owns the spacing. */
+  gap = "none",
   delay = 140,
   className,
 }: {
   children: ReactNode;
   tone?: Tone;
   measure?: LedeMeasure;
-  gap?: SpaceStep;
+  gap?: "action" | "action-open" | "none";
   delay?: number;
   className?: string;
 }) {
@@ -107,9 +109,10 @@ export function Lede({
       className={cx(
         tone === "inverse" ? styles.ledeInverse : styles.lede,
         LEDE_MEASURE[measure],
+        gap === "action" && styles.gapAction,
+        gap === "action-open" && styles.gapActionOpen,
         className,
       )}
-      style={gapStyle("--sh-gap-lede", gap)}
       data-reveal="rise"
       data-reveal-delay={delay}
     >
@@ -127,8 +130,7 @@ type Props = {
   tone?: Tone;
   measure?: HeadingMeasure;
   ledeMeasure?: LedeMeasure;
-  /** Per-slot bottom margins, as spacing-scale steps. */
-  gaps?: { eyebrow?: SpaceStep; heading?: SpaceStep; lede?: SpaceStep };
+  gaps?: HeadGaps;
   hyphenate?: boolean;
   /** Rendered after the lede — a CTA, usually. */
   children?: ReactNode;
@@ -142,23 +144,28 @@ export default function SectionHeader({
   tone = "light",
   measure = "full",
   ledeMeasure = "default",
-  gaps,
+  gaps = "default",
   hyphenate,
   children,
   className,
 }: Props) {
+  // The stacked head can see what follows each slot, so it works its own gaps
+  // out rather than being told them.
+  const headingGap = lede ? "stack" : "none";
+  const ledeGap = !children
+    ? "none"
+    : gaps === "open"
+      ? "action-open"
+      : "action";
+
   return (
     <div className={className}>
-      {eyebrow && (
-        <Eyebrow tone={tone} gap={gaps?.eyebrow}>
-          {eyebrow}
-        </Eyebrow>
-      )}
-      <Heading measure={measure} gap={gaps?.heading} hyphenate={hyphenate}>
+      {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
+      <Heading measure={measure} gap={headingGap} hyphenate={hyphenate}>
         {heading}
       </Heading>
       {lede && (
-        <Lede tone={tone} measure={ledeMeasure} gap={gaps?.lede}>
+        <Lede tone={tone} measure={ledeMeasure} gap={ledeGap}>
           {lede}
         </Lede>
       )}

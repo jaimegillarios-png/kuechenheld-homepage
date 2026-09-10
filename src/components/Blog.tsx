@@ -12,8 +12,8 @@ export default function Blog() {
       <Section id="blog" rhythm="lead" contained={false}>
         <div className={styles.headInner}>
           <div>
-            <Eyebrow gap={4}>Blog</Eyebrow>
-            <Heading measure="wide">
+            <Eyebrow>Blog</Eyebrow>
+            <Heading measure="wide" gap="none">
               Tipps &amp; Inspiration rund um den Küchenkauf
             </Heading>
           </div>
@@ -51,7 +51,7 @@ export default function Blog() {
             ))}
 
             <div data-reveal className={styles.allPosts}>
-              <TextLink href={routes.blog} offset={2}>
+              <TextLink href={routes.blog} offset="loose">
                 Alle Beiträge ansehen
               </TextLink>
             </div>

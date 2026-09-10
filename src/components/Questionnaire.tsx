@@ -15,9 +15,9 @@ export default function Questionnaire() {
 
   return (
     <Section id="fragebogen" tone="warm">
-      <Eyebrow gap={3}>Schritt 1 von 4 — Küchenform</Eyebrow>
+      <Eyebrow>Schritt 1 von 4 — Küchenform</Eyebrow>
 
-      <Heading measure="full" gap={3}>
+      <Heading measure="full">
         Jetzt Ihre Küchenwünsche angeben und ein kostenloses Angebot erhalten
       </Heading>
 

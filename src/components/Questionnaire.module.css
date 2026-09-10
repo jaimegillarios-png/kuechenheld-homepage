@@ -1,6 +1,6 @@
 .meta {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-bottom: var(--space-7);
+  margin-bottom: var(--gap-head-body);
 }
 
 .grid {

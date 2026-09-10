@@ -8,7 +8,7 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space-8);
   align-items: start;
-  padding-bottom: var(--space-8);
+  padding-bottom: var(--gap-head-body);
 }
 @media (max-width: 900px) {
   .head {

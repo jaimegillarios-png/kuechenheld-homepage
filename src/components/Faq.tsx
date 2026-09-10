@@ -11,14 +11,14 @@ export default function Faq() {
       <div data-rule className={styles.rule} />
 
       <Section>
-        <Eyebrow gap={5}>Fragen &amp; Antworten</Eyebrow>
+        <Eyebrow>Fragen &amp; Antworten</Eyebrow>
 
         <div className={styles.head}>
-          <Heading measure="column">
+          <Heading measure="column" gap="none">
             Häufige Fragen zum Thema Küche kaufen
           </Heading>
           <div>
-            <Lede measure="default" gap={5}>
+            <Lede measure="default" gap="action">
               Hier finden Sie Antworten auf die wichtigsten Fragen rund um den
               Küchenkauf. Von der Planung über die Auswahl der Materialien bis
               hin zur Lieferung – wir helfen Ihnen, Ihre Traumküche mit
