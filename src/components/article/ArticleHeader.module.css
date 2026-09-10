@@ -1,6 +1,9 @@
 /* --- breadcrumbs ---------------------------------------------------------- */
 /* Sentence case, not the uppercase eyebrow treatment: at the length these
-   trails run, uppercase and tracking make them hard to read rather than quiet. */
+   trails run, uppercase and tracking make them hard to read rather than quiet.
+   Everything else stays as firm as the rest of the page — the trail carries
+   weight and full ink rather than sitting back in grey, and only the chevrons
+   between the steps recede. */
 
 .breadcrumbs {
   display: flex;
@@ -8,23 +11,37 @@
   align-items: center;
   gap: var(--space-2);
   font-size: var(--font-size-label);
-  color: var(--color-text-meta);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--leading-title);
+  color: var(--color-text);
   margin-bottom: var(--gap-head-stack);
 }
 
-.crumbLink {
-  color: var(--color-text-meta);
-  transition: color var(--duration-fast);
-}
-.crumbLink:hover {
-  color: var(--color-text);
+.crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
-/* The trail's last real step is the post's category, which reads as a chip. */
-.crumbCategory {
-  border: 1px solid var(--color-rule-control);
-  padding: var(--space-1) var(--space-3);
+.crumbLink {
   color: var(--color-text);
+  transition: opacity var(--duration-fast);
+}
+.crumbLink:hover {
+  opacity: 0.6;
+}
+
+/* The trail's last real step is the post's category, and it reads as a chip.
+   Same ink and same hairline as an outlined control elsewhere on the site. */
+.crumbCategory {
+  border: 1px solid var(--color-rule-strong);
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-text);
+  transition: background var(--duration-fast), color var(--duration-fast);
+}
+.crumbCategory:hover {
+  background: var(--color-action);
+  color: var(--color-text-inverse);
 }
 
 /* The post itself. Its title is already the h1 directly below, so the trail
@@ -34,7 +51,9 @@
 }
 
 .separator {
+  display: block;
   color: var(--color-text-faint);
+  flex: none;
 }
 
 /* --- title --------------------------------------------------------------- */
@@ -77,10 +96,14 @@
   flex: none;
 }
 
+/* Name and date differ by weight, not by colour — the same ink for both keeps
+   the block reading as one thing rather than fading out under itself. */
 .name {
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-heading);
+  line-height: var(--leading-title);
   color: var(--color-text);
+  margin-bottom: var(--space-1);
 }
 
 .meta {
@@ -88,7 +111,12 @@
   align-items: center;
   gap: var(--space-2);
   font-size: var(--font-size-label);
-  color: var(--color-text-meta);
+  line-height: var(--leading-title);
+  color: var(--color-text-body);
+}
+
+.dot {
+  color: var(--color-text-faint);
 }
 
 .mainImage {

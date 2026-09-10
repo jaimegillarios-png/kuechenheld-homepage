@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import MaybeLink from "../MaybeLink";
 import ShareLinks from "./ShareLinks";
@@ -21,11 +22,14 @@ function Crumbs({ items, title }: { items: Breadcrumb[]; title: string }) {
   return (
     <nav className={styles.breadcrumbs} aria-label="Brotkrümelnavigation">
       {items.map((crumb, i) => (
-        <span key={`${crumb.name}-${i}`}>
+        <span key={`${crumb.name}-${i}`} className={styles.crumb}>
           {i > 0 && (
-            <span className={styles.separator} aria-hidden="true">
-              {"› "}
-            </span>
+            <ChevronRight
+              className={styles.separator}
+              size={14}
+              strokeWidth={1.8}
+              aria-hidden="true"
+            />
           )}
           {crumb.href ? (
             <MaybeLink
@@ -82,13 +86,19 @@ export default function ArticleHeader({ post }: { post: PostSummary }) {
                 )}
                 {post.dateUpdated && (
                   <>
-                    <span aria-hidden="true">•</span>
+                    <span className={styles.dot} aria-hidden="true">
+                      •
+                    </span>
                     <time dateTime={post.dateUpdated}>
                       Aktualisiert: {formatDate(post.dateUpdated)}
                     </time>
                   </>
                 )}
-                {post.date && <span aria-hidden="true">•</span>}
+                {post.date && (
+                  <span className={styles.dot} aria-hidden="true">
+                    •
+                  </span>
+                )}
                 <span>{post.readingTime} min Lesezeit</span>
               </div>
             </div>
