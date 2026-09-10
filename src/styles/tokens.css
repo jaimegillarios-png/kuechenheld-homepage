@@ -66,6 +66,11 @@
 
   --weight-light: 300;
   --weight-regular: 400;
+  /* Prose emphasis. The design had never needed a third weight — headings are
+     light and body is regular — but <strong> has to read as heavier than the
+     text around it. 500 against a 400 body is legible without going heavy
+     next to 300-weight headings; Figtree's axis runs 300-900. */
+  --weight-medium: 500;
 
   /* Computed line box lands on a 4px multiple except where noted. */
   --leading-1: 1; /* 44->44, 36->36 */
@@ -222,6 +227,7 @@
 
   --font-weight-light: var(--weight-light);
   --font-weight-regular: var(--weight-regular);
+  --font-weight-strong: var(--weight-medium);
 
   --leading-flat: var(--leading-1);
   --leading-tight: var(--leading-2);
@@ -294,6 +300,33 @@
   /* Distance from an underlined link's text to its rule. */
   --gap-link-rule: var(--space-1);
   --gap-link-rule-loose: var(--space-2);
+
+  /* --- prose ------------------------------------------------------------
+     A rich-text field can emit anything in any order, so the article body
+     needs a rhythm of its own rather than per-component margins.
+     Blocks are spaced from above — a stack, not a chain of bottom margins —
+     because that is the only arrangement that survives arbitrary ordering and
+     reduces first- and last-child handling to one rule each.
+     `block` is 32px: exactly one blank line at the body's 32px leading, so
+     prose keeps landing on the same 4px rhythm as everything else.
+     A heading's own space is the gap *above* it, and the gap *below* is
+     carried by whatever follows — that is what binds a heading to its text
+     and what makes two consecutive headings sit close together for free. */
+  --gap-prose-block: var(--space-5);
+  --gap-prose-h2-above: var(--space-8);
+  --gap-prose-h3-above: var(--space-7);
+  --gap-prose-heading-lead: var(--space-3);
+  --gap-prose-rule: var(--space-8);
+  --gap-prose-caption: var(--space-3);
+  --gap-prose-list-item: var(--space-2);
+  --indent-prose-list: var(--space-4);
+  --indent-prose-quote: var(--space-5);
+  --pad-prose-cell-y: var(--space-3);
+  --pad-prose-cell-x: var(--space-4);
+
+  /* An h4 is the fourth heading step and no existing role names it. Pointing
+     it at --font-size-quote would make the pull-quote role mean two things. */
+  --font-size-prose-h4: var(--text-lg-plus);
 }
 
 @media (max-width: 900px) {

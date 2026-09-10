@@ -1,0 +1,19 @@
+[
+  {
+    "id": "nathalie",
+    "name": "Nathalie Brandt",
+    "role": "Küchenplanerin",
+    "avatar": "/images/authors/nathalie.jpg"
+  },
+  {
+    "id": "reiner",
+    "name": "Reiner Voss",
+    "role": "Leiter Planung",
+    "avatar": "/images/authors/reiner.jpg"
+  },
+  {
+    "id": "yannick",
+    "name": "Yannick Sommer",
+    "role": "Redaktion"
+  }
+]

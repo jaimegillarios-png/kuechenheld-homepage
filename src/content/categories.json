@@ -1,0 +1,6 @@
+[
+  { "id": "trends", "name": "Trends", "slug": "trends" },
+  { "id": "planung", "name": "Planung", "slug": "planung" },
+  { "id": "materialien", "name": "Materialien", "slug": "materialien" },
+  { "id": "inspiration", "name": "Inspiration", "slug": "inspiration" }
+]

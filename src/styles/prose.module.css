@@ -1,0 +1,252 @@
+/**
+ * The prose layer: every element a rich-text field can emit.
+ *
+ * Written as element selectors under `.prose` rather than as classes, so it
+ * styles a CMS's raw HTML exactly as it styles the local MDX. Nothing here
+ * depends on the source having wrapped anything in a class of ours — the one
+ * exception is `.tableWrap`, which only adds a scroll container and which a
+ * bare `<table>` does without.
+ */
+
+.prose {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-body);
+  color: var(--color-text-body);
+}
+
+/* --- block rhythm --------------------------------------------------------- */
+/* Two columns: the text measure, and whatever is left. Everything sits in the
+   first; a full-bleed figure spans both.
+   The measure has to be a track rather than a `max-width` on each block,
+   because `ch` resolves against the element's own font-size — a 22px
+   blockquote and a 36px heading would each get a different measure, and the
+   headings would run the full container width. As a track it is computed once,
+   on the container, at body size. */
+.prose {
+  display: grid;
+  grid-template-columns: min(100%, var(--measure-prose-long)) 1fr;
+}
+
+/* The horizontal reset matters: the UA stylesheet gives `figure` and
+   `blockquote` a 40px inline margin, which would indent them out of line with
+   the prose beside them.
+   Space comes from above, so ordering never matters and the first block never
+   has to be special-cased anywhere but here. */
+.prose > * {
+  grid-column: 1;
+  margin: var(--gap-prose-block) 0 0;
+}
+
+.prose > *:first-child {
+  margin-top: 0;
+}
+
+/* --- headings ------------------------------------------------------------- */
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-title);
+  color: var(--color-text);
+}
+
+.prose h2 {
+  font-size: var(--font-size-subheading);
+}
+
+.prose h3 {
+  font-size: var(--font-size-card-title);
+}
+
+.prose h4 {
+  font-size: var(--font-size-prose-h4);
+  font-weight: var(--font-weight-regular);
+}
+
+.prose > h2 {
+  margin-top: var(--gap-prose-h2-above);
+}
+
+.prose > h3 {
+  margin-top: var(--gap-prose-h3-above);
+}
+
+/* An h4 is barely more than a run-in, so it takes the ordinary block gap. */
+
+/* The space *after* a heading is carried by whatever follows it. Two headings
+   in a row therefore sit close together without a rule of their own. */
+.prose > h2 + *,
+.prose > h3 + *,
+.prose > h4 + * {
+  margin-top: var(--gap-prose-heading-lead);
+}
+
+/* --- inline --------------------------------------------------------------- */
+
+.prose strong {
+  font-weight: var(--font-weight-strong);
+  color: var(--color-text);
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule-link);
+  text-underline-offset: var(--gap-link-rule);
+  transition: text-decoration-color var(--duration-fast);
+}
+.prose a:hover {
+  text-decoration-color: var(--color-rule-strong);
+}
+
+/* --- lists ---------------------------------------------------------------- */
+
+.prose ul,
+.prose ol {
+  padding-left: var(--indent-prose-list);
+}
+
+.prose li + li {
+  margin-top: var(--gap-prose-list-item);
+}
+
+.prose li::marker {
+  color: var(--color-text-meta);
+}
+
+/* A nested list is part of its parent item, so it takes the item gap rather
+   than the block gap it would inherit from `.prose > *`. */
+.prose li > ul,
+.prose li > ol {
+  margin-top: var(--gap-prose-list-item);
+}
+
+/* --- blockquote ----------------------------------------------------------- */
+
+.prose blockquote {
+  padding-left: var(--indent-prose-quote);
+  border-left: 1px solid var(--color-rule-strong);
+  font-size: var(--font-size-quote);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-title);
+  color: var(--color-text);
+}
+
+.prose blockquote p + p {
+  margin-top: var(--gap-prose-block);
+}
+
+/* Attribution, when there is one. Both `cite` and `footer` are what rich-text
+   fields tend to emit, so both are styled. */
+.prose blockquote cite,
+.prose blockquote footer {
+  display: block;
+  margin-top: var(--gap-prose-caption);
+  font-size: var(--font-size-eyebrow);
+  font-style: normal;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-meta);
+}
+
+/* --- figures -------------------------------------------------------------- */
+
+.prose figure img,
+.prose > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.prose figcaption {
+  margin-top: var(--gap-prose-caption);
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta);
+}
+
+/* Full-bleed spans both tracks: the article column's own width rather than the
+   text measure. The page gutter still holds, so it never reaches the viewport
+   edge. */
+.prose > figure[data-width="full"] {
+  grid-column: 1 / -1;
+}
+
+/* --- table ---------------------------------------------------------------- */
+/* A bare <table> from a CMS is styled the same; the wrapper only adds the
+   scroll container, which a narrow screen needs and a wide one never shows. */
+
+.prose > .tableWrap {
+  overflow-x: auto;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-body);
+  text-align: left;
+}
+
+.prose th,
+.prose td {
+  padding: var(--pad-prose-cell-y) var(--pad-prose-cell-x);
+  border-bottom: 1px solid var(--color-rule);
+  vertical-align: top;
+}
+
+/* The first column sits flush with the prose beside it. */
+.prose th:first-child,
+.prose td:first-child {
+  padding-left: 0;
+}
+.prose th:last-child,
+.prose td:last-child {
+  padding-right: 0;
+}
+
+.prose thead th {
+  font-size: var(--font-size-eyebrow);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta);
+  border-bottom: 1px solid var(--color-rule-strong);
+}
+
+/* --- rule ----------------------------------------------------------------- */
+
+.prose > hr {
+  height: 1px;
+  border: 0;
+  background: var(--color-rule);
+  margin-top: var(--gap-prose-rule);
+}
+
+/* A thematic break earns as much room below it as above. */
+.prose > hr + * {
+  margin-top: var(--gap-prose-rule);
+}
+
+@media (max-width: 560px) {
+  .prose > .tableWrap {
+    /* Let the scroll container reach the gutter so a wide table has room. */
+    grid-column: 1 / -1;
+  }
+  .prose th,
+  .prose td {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+    white-space: nowrap;
+  }
+  .prose th:first-child,
+  .prose td:first-child {
+    padding-left: 0;
+  }
+}

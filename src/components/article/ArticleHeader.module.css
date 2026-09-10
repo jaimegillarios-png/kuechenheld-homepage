@@ -1,0 +1,84 @@
+.breadcrumbs {
+  composes: eyebrow from "../../styles/shared.module.css";
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--gap-head-stack);
+}
+
+.crumbLink {
+  color: var(--color-text-meta);
+  transition: color var(--duration-fast);
+}
+.crumbLink:hover {
+  color: var(--color-text);
+}
+
+.crumbCurrent {
+  color: var(--color-text);
+}
+
+.separator {
+  color: var(--color-text-faint);
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--gap-head-stack);
+}
+
+.chip {
+  composes: label from "../../styles/shared.module.css";
+  border: 1px solid var(--color-rule-control);
+  padding: var(--space-1) var(--space-3);
+  color: var(--color-text-meta);
+}
+
+.title {
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-tight);
+  max-width: var(--measure-heading-full);
+  margin-bottom: var(--gap-head-stack);
+}
+@media (max-width: 900px) {
+  .title {
+    font-size: var(--font-size-subheading);
+    max-width: none;
+  }
+}
+
+.summary {
+  composes: body from "../../styles/shared.module.css";
+  max-width: var(--measure-prose-wide);
+  margin-bottom: var(--gap-head-stack);
+}
+
+.byline {
+  composes: eyebrow from "../../styles/shared.module.css";
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-rule);
+}
+
+.author {
+  color: var(--color-text);
+}
+
+.mainImage {
+  margin-top: var(--gap-head-body);
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
