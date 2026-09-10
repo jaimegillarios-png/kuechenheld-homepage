@@ -1,6 +1,6 @@
 /* Vertical padding holds at every width here — only the gutter narrows. */
 .head {
-  padding: var(--space-128) var(--gutter) 0;
+  padding: var(--space-10) var(--gutter) 0;
 }
 
 .headInner {
@@ -8,13 +8,13 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
-  gap: var(--space-40);
+  gap: var(--space-6);
   flex-wrap: wrap;
 }
 
 .eyebrow {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--space-4);
 }
 
 .heading {
@@ -28,20 +28,20 @@
 }
 
 .body {
-  padding: var(--space-64) var(--gutter) var(--space-128);
+  padding: var(--space-8) var(--gutter) var(--space-10);
 }
 
 .bodyInner {
   composes: container from "../styles/shared.module.css";
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: var(--space-64);
+  gap: var(--space-8);
   align-items: start;
 }
 @media (max-width: 900px) {
   .bodyInner {
     grid-template-columns: 1fr;
-    gap: var(--space-32);
+    gap: var(--space-5);
   }
 }
 
@@ -57,7 +57,7 @@
 }
 
 .featuredFrame {
-  margin-bottom: var(--space-32);
+  margin-bottom: var(--space-5);
 }
 
 .featuredPhoto {
@@ -70,7 +70,7 @@
 
 .meta {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-3);
 }
 
 .featuredTitle {
@@ -78,7 +78,7 @@
   font-weight: var(--font-weight-light);
   line-height: var(--leading-tight);
   max-width: 24ch;
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-3);
 }
 @media (max-width: 900px) {
   .featuredTitle {
@@ -99,7 +99,7 @@
   grid-template-columns: clamp(96px, 14vw, 176px) minmax(0, 1fr);
   gap: var(--space-fluid-16-32);
   align-items: start;
-  padding: var(--space-24) 0;
+  padding: var(--space-4) 0;
   border-bottom: 1px solid var(--color-rule);
   cursor: pointer;
   transition: opacity var(--duration-base) ease;
@@ -127,7 +127,7 @@
 
 .rowTitle {
   composes: cardTitle from "../styles/shared.module.css";
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-3);
 }
 
 .rowExcerpt {
@@ -140,24 +140,24 @@
 .rowMeta {
   composes: eyebrow from "../styles/shared.module.css";
   color: var(--color-text-meta);
-  margin-top: var(--space-16);
+  margin-top: var(--space-3);
 }
 
 .allPosts {
-  padding-top: var(--space-40);
+  padding-top: var(--space-6);
 }
 
 .allPostsLink {
   composes: label from "../styles/shared.module.css";
   border-bottom: 1px solid var(--color-rule-strong);
-  padding-bottom: var(--space-8);
+  padding-bottom: var(--space-2);
   cursor: pointer;
 }
 
 @media (max-width: 900px) {
   .row {
     grid-template-columns: 88px minmax(0, 1fr);
-    gap: var(--space-16);
+    gap: var(--space-3);
   }
 }
 @media (max-width: 560px) {

@@ -1,32 +1,32 @@
 .section {
   background: var(--color-surface-warm);
-  padding: var(--space-128) var(--gutter);
+  padding: var(--space-10) var(--gutter);
 }
 @media (max-width: 900px) {
   .section {
-    padding-top: var(--space-64);
-    padding-bottom: var(--space-64);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
   }
 }
 
 .eyebrow {
   composes: eyebrow from "../styles/shared.module.css";
   color: var(--color-text-meta);
-  margin-bottom: var(--space-32);
+  margin-bottom: var(--space-5);
 }
 
 .head {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: var(--space-64);
+  gap: var(--space-8);
   align-items: end;
-  padding-bottom: var(--space-64);
+  padding-bottom: var(--space-8);
 }
 
 .heading {
   composes: h2 from "../styles/shared.module.css";
   max-width: 24ch;
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--space-4);
 }
 
 .lead {
@@ -36,21 +36,21 @@
 
 .stats {
   display: flex;
-  gap: var(--space-64);
+  gap: var(--space-8);
   align-items: flex-end;
   flex-wrap: wrap;
 }
 
 .statLabel {
   composes: eyebrow from "../styles/shared.module.css";
-  margin-top: var(--space-8);
+  margin-top: var(--space-2);
 }
 
 .bareArrows {
   display: flex;
-  gap: var(--space-24);
+  gap: var(--space-4);
   margin-left: auto;
-  padding-bottom: var(--space-4);
+  padding-bottom: var(--space-1);
 }
 .bareArrows button {
   font-size: var(--font-size-wordmark);
@@ -74,10 +74,10 @@
   width: 33.3333%;
   scroll-snap-align: start;
   margin: 0;
-  padding: var(--space-32) var(--space-40) 0 0;
+  padding: var(--space-5) var(--space-6) 0 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-24);
+  gap: var(--space-4);
   border-top: 1px solid var(--color-rule);
 }
 
@@ -85,7 +85,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: var(--space-16);
+  gap: var(--space-3);
 }
 
 .stars {
@@ -115,7 +115,7 @@
   color: var(--color-text-meta);
   line-height: var(--leading-body);
   margin-top: auto;
-  padding-bottom: var(--space-32);
+  padding-bottom: var(--space-5);
   /* 32px of text box + the 32px pad below it — a one- and a two-line author
      name must leave the card the same height. */
   min-height: 64px;
@@ -124,11 +124,11 @@
 @media (max-width: 900px) {
   .head {
     grid-template-columns: 1fr;
-    gap: var(--space-32);
+    gap: var(--space-5);
   }
   .quote {
     width: 88%;
-    padding-right: var(--space-24);
+    padding-right: var(--space-4);
   }
 }
 @media (max-width: 560px) {

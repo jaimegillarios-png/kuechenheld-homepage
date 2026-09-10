@@ -290,7 +290,7 @@ p {
   z-index: 300;
   background: var(--color-action);
   color: var(--color-text-on-dark);
-  padding: var(--space-16) var(--space-24);
+  padding: var(--space-3) var(--space-4);
   font-size: var(--font-size-label);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
