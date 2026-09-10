@@ -67,7 +67,10 @@
   font-size: var(--font-size-heading);
   font-weight: var(--font-weight-heading);
   line-height: var(--leading-tight);
-  max-width: var(--measure-heading-full);
+  /* A step in from the container width the section headings use — an article
+     title carries more words than a section heading and reads better broken
+     sooner. */
+  max-width: var(--measure-heading-wide);
   margin-bottom: var(--gap-head-body);
 }
 @media (max-width: 900px) {

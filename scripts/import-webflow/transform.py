@@ -39,7 +39,7 @@ class Report:
     nbsp_converted: int = 0
     nbsp_kept: int = 0
     links_made_relative: int = 0
-    urls_decoded: int = 0
+    urls_left_encoded: int = 0
     br_dropped_trailing: int = 0
     br_to_paragraph: int = 0
     br_kept_inline: int = 0
@@ -97,9 +97,16 @@ def escape_md(s: str) -> str:
 
 
 def decode_double_encoded(url: str, rep: Report) -> str:
+    """Deliberately does nothing. Left in place so the reason is recorded.
+
+    Thirty image URLs look double-encoded — `k%25C3%25BCchenheld` where
+    `k%C3%BCchenheld` was surely meant. Decoding them is wrong: the files on
+    Webflow's CDN are named with those literal characters, so the encoded form
+    is the only one that resolves. Checked against the CDN, all thirty return
+    200 as they stand and 403 decoded.
+    """
     if "%25" in url:
-        rep.urls_decoded += 1
-        return urllib.parse.unquote(url)
+        rep.urls_left_encoded += 1
     return url
 
 
@@ -209,7 +216,13 @@ def normalise_figures(soup: Tag, rep: Report):
             if alt == "__wf_reserved_inherit":
                 alt = ""
             img.attrs = {"src": src, "alt": alt}
-        fig.attrs = {"data-width": "full"} if full else {}
+        # Webflow marked 361 of 365 figures "fullwidth", which there meant the
+        # rich-text column's own width. Here the body has a text measure inside
+        # a wider container, so honouring that literally put every photograph
+        # 400px wider than the words beside it. They sit at the measure now;
+        # `data-width="full"` stays available for a figure that genuinely wants
+        # to break out, and the counts still record what the source claimed.
+        fig.attrs = {}
         if full:
             rep.figures_full += 1
         else:
