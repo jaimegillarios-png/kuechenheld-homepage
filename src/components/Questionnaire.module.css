@@ -127,6 +127,14 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+/* Below 360px a 2-up card cannot hold the longest label ("Kücheninsel") at
+   the 14px label size, so the grid drops to one column there. */
+@media (max-width: 359px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Two up on phones as well. The cards give up most of their padding and the
    icon scales with the card, so a pair still fits a 320px screen without the
    glyph touching the borders or the label wrapping. */
