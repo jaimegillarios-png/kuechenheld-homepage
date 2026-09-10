@@ -267,6 +267,9 @@
 
   /* Shared minimum control dimension: rail arrow, burger, overlay close. */
   --size-control: 40px;
+  /* An author portrait in a byline, and the share icons beside it. */
+  --size-avatar: 48px;
+  --size-icon: 24px;
 
   /* Line measures. Nine section headers between them used seven different `ch`
      values. The ledes collapse to three widths with no change to how any of

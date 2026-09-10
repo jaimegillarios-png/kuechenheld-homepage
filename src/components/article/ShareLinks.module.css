@@ -1,0 +1,38 @@
+.share {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-left: auto;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-icon);
+  height: var(--size-icon);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: opacity var(--duration-fast);
+}
+.link:hover {
+  opacity: 0.6;
+}
+
+/* The copy button says what it did, so the word needs somewhere to sit that
+   does not shift the icons beside it. */
+.copy {
+  position: relative;
+}
+
+.copied {
+  position: absolute;
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta);
+}

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import MaybeLink from "../MaybeLink";
+import ShareLinks from "./ShareLinks";
 import type { Breadcrumb, PostSummary } from "@/lib/blog";
+import { siteUrl } from "@/lib/site";
 import styles from "./ArticleHeader.module.css";
 
 const dateFormat = new Intl.DateTimeFormat("de-DE", {
@@ -11,23 +13,38 @@ const dateFormat = new Intl.DateTimeFormat("de-DE", {
 
 const formatDate = (iso: string) => dateFormat.format(new Date(iso));
 
-function Crumbs({ items }: { items: Breadcrumb[] }) {
+/** The trail's category step is a link into /blog-categories. */
+const isCategory = (crumb: Breadcrumb) =>
+  Boolean(crumb.href?.startsWith("/blog-categories/"));
+
+function Crumbs({ items, title }: { items: Breadcrumb[]; title: string }) {
   return (
     <nav className={styles.breadcrumbs} aria-label="Brotkrümelnavigation">
       {items.map((crumb, i) => (
-        <span key={crumb.name} className={styles.crumb}>
+        <span key={`${crumb.name}-${i}`}>
           {i > 0 && (
             <span className={styles.separator} aria-hidden="true">
-              /{" "}
+              {"› "}
             </span>
           )}
           {crumb.href ? (
-            <MaybeLink href={crumb.href} className={styles.crumbLink}>
+            <MaybeLink
+              href={crumb.href}
+              className={
+                isCategory(crumb) ? styles.crumbCategory : styles.crumbLink
+              }
+            >
               {crumb.name}
             </MaybeLink>
           ) : (
-            <span className={styles.crumbCurrent} aria-current="page">
-              {crumb.name}
+            // The post's own step. Its title is the h1 immediately below, so
+            // the trail marks the position without repeating the heading.
+            <span
+              className={styles.crumbCurrent}
+              aria-current="page"
+              title={title}
+            >
+              …
             </span>
           )}
         </span>
@@ -39,39 +56,46 @@ function Crumbs({ items }: { items: Breadcrumb[] }) {
 export default function ArticleHeader({ post }: { post: PostSummary }) {
   return (
     <header>
-      <Crumbs items={post.breadcrumbs} />
-
-      {post.categories.length > 0 && (
-        <div className={styles.categories}>
-          {post.categories.map((category) => (
-            <span key={category.slug} className={styles.chip}>
-              {category.name}
-            </span>
-          ))}
-        </div>
-      )}
+      <Crumbs items={post.breadcrumbs} title={post.title} />
 
       <h1 className={styles.title} data-reveal="mask">
         {post.title}
       </h1>
 
-      <p className={styles.summary} data-reveal="rise" data-reveal-delay={140}>
-        {post.summary}
-      </p>
-
-      {/* The author's avatar and role are part of the type and deliberately not
-          rendered — the design's byline is a single line of meta. */}
       <div className={styles.byline}>
         {post.author && (
-          <span className={styles.author}>{post.author.name}</span>
+          <div className={styles.author}>
+            {post.author.avatar && (
+              <Image
+                src={post.author.avatar}
+                alt=""
+                width={96}
+                height={96}
+                className={styles.avatar}
+              />
+            )}
+            <div>
+              <div className={styles.name}>{post.author.name}</div>
+              <div className={styles.meta}>
+                {post.date && (
+                  <time dateTime={post.date}>{formatDate(post.date)}</time>
+                )}
+                {post.dateUpdated && (
+                  <>
+                    <span aria-hidden="true">•</span>
+                    <time dateTime={post.dateUpdated}>
+                      Aktualisiert: {formatDate(post.dateUpdated)}
+                    </time>
+                  </>
+                )}
+                {post.date && <span aria-hidden="true">•</span>}
+                <span>{post.readingTime} min Lesezeit</span>
+              </div>
+            </div>
+          </div>
         )}
-        {post.date && <time dateTime={post.date}>{formatDate(post.date)}</time>}
-        <span>{post.readingTime} Min. Lesedauer</span>
-        {post.dateUpdated && (
-          <time dateTime={post.dateUpdated}>
-            Aktualisiert {formatDate(post.dateUpdated)}
-          </time>
-        )}
+
+        <ShareLinks url={`${siteUrl}/blog/${post.slug}`} title={post.title} />
       </div>
 
       <div className={styles.mainImage}>

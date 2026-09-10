@@ -1,4 +1,4 @@
-import type { JSX } from "react";
+import { cloneElement, type JSX } from "react";
 
 const paths: Record<string, JSX.Element> = {
   Facebook: (
@@ -38,6 +38,32 @@ const paths: Record<string, JSX.Element> = {
       <path d="M12 2a10 10 0 0 0-3.65 19.31c-.09-.75-.17-1.9.04-2.72.19-.74 1.21-4.71 1.21-4.71s-.31-.62-.31-1.53c0-1.44.83-2.51 1.87-2.51.88 0 1.31.66 1.31 1.46 0 .89-.57 2.22-.86 3.45-.24 1.04.52 1.89 1.55 1.89 1.86 0 3.29-1.96 3.29-4.79 0-2.5-1.8-4.25-4.37-4.25-2.97 0-4.72 2.23-4.72 4.53 0 .9.35 1.86.78 2.38.09.1.1.19.07.3-.08.32-.25.99-.28 1.13-.05.19-.16.23-.36.14-1.35-.63-2.19-2.6-2.19-4.18 0-3.41 2.48-6.54 7.14-6.54 3.75 0 6.66 2.67 6.66 6.24 0 3.73-2.35 6.73-5.61 6.73-1.1 0-2.13-.57-2.48-1.25l-.68 2.58c-.24.94-.9 2.12-1.34 2.84A10 10 0 1 0 12 2Z" />
     </svg>
   ),
+  Twitter: (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M18.9 2.5h3.3l-7.2 8.24L23.5 21.5h-6.64l-5.2-6.8-5.95 6.8H2.4l7.7-8.8L2.1 2.5h6.8l4.7 6.22 5.3-6.22Zm-1.16 17h1.83L7.35 4.4H5.39l12.35 15.1Z" />
+    </svg>
+  ),
+  Link: (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <path d="M10.6 13.4a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1.2 1.2" />
+      <path d="M13.4 10.6a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1.2-1.2" />
+    </svg>
+  ),
   LinkedIn: (
     <svg
       width="16"
@@ -51,6 +77,8 @@ const paths: Record<string, JSX.Element> = {
   ),
 };
 
-export function SocialIcon({ name }: { name: string }) {
-  return paths[name] ?? null;
+export function SocialIcon({ name, size = 16 }: { name: string; size?: number }) {
+  const icon = paths[name];
+  if (!icon) return null;
+  return cloneElement(icon, { width: size, height: size });
 }

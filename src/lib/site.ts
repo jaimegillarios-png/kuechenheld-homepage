@@ -6,6 +6,9 @@
  * compete with kuechenheld.de. Set `SITE_INDEXABLE=true` only on the
  * deployment that genuinely serves the site.
  */
+/** Canonical origin. Share links need an absolute URL, and so does metadata. */
+export const siteUrl = "https://www.kuechenheld.de";
+
 export const isIndexable = process.env.SITE_INDEXABLE === "true";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";

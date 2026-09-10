@@ -1,9 +1,14 @@
+/* --- breadcrumbs ---------------------------------------------------------- */
+/* Sentence case, not the uppercase eyebrow treatment: at the length these
+   trails run, uppercase and tracking make them hard to read rather than quiet. */
+
 .breadcrumbs {
-  composes: eyebrow from "../../styles/shared.module.css";
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2);
+  font-size: var(--font-size-label);
+  color: var(--color-text-meta);
   margin-bottom: var(--gap-head-stack);
 }
 
@@ -15,34 +20,31 @@
   color: var(--color-text);
 }
 
-.crumbCurrent {
+/* The trail's last real step is the post's category, which reads as a chip. */
+.crumbCategory {
+  border: 1px solid var(--color-rule-control);
+  padding: var(--space-1) var(--space-3);
   color: var(--color-text);
+}
+
+/* The post itself. Its title is already the h1 directly below, so the trail
+   only marks the position rather than repeating the whole heading. */
+.crumbCurrent {
+  color: var(--color-text-meta);
 }
 
 .separator {
   color: var(--color-text-faint);
 }
 
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--gap-head-stack);
-}
-
-.chip {
-  composes: label from "../../styles/shared.module.css";
-  border: 1px solid var(--color-rule-control);
-  padding: var(--space-1) var(--space-3);
-  color: var(--color-text-meta);
-}
+/* --- title --------------------------------------------------------------- */
 
 .title {
   font-size: var(--font-size-heading);
   font-weight: var(--font-weight-heading);
   line-height: var(--leading-tight);
   max-width: var(--measure-heading-full);
-  margin-bottom: var(--gap-head-stack);
+  margin-bottom: var(--gap-head-body);
 }
 @media (max-width: 900px) {
   .title {
@@ -51,24 +53,42 @@
   }
 }
 
-.summary {
-  composes: body from "../../styles/shared.module.css";
-  max-width: var(--measure-prose-wide);
-  margin-bottom: var(--gap-head-stack);
-}
+/* --- byline -------------------------------------------------------------- */
 
 .byline {
-  composes: eyebrow from "../../styles/shared.module.css";
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-3);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-rule);
+  gap: var(--space-4);
+  flex-wrap: wrap;
 }
 
 .author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.avatar {
+  width: var(--size-avatar);
+  height: var(--size-avatar);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  flex: none;
+}
+
+.name {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-heading);
   color: var(--color-text);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-label);
+  color: var(--color-text-meta);
 }
 
 .mainImage {
