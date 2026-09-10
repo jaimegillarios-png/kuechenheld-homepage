@@ -1,0 +1,34 @@
+/* Arrows laid over the rail's media. Reviews does not use these — its pair sits
+   inline in the section head, with no ground and no hover fade, which is a
+   different control rather than a variant of this one. */
+.prev {
+  composes: arrow from "../../styles/shared.module.css";
+  left: var(--space-3);
+}
+
+.next {
+  composes: arrow from "../../styles/shared.module.css";
+  right: var(--space-3);
+}
+
+/* Discover's arrows centre on the card image, not on the whole card, so they
+   are positioned against a spacer of the image's own aspect ratio. */
+.band {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.bandPrev {
+  composes: prev;
+  pointer-events: auto;
+}
+
+.bandNext {
+  composes: next;
+  pointer-events: auto;
+}

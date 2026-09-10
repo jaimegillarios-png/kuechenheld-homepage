@@ -4,6 +4,8 @@ import { useRef } from "react";
 import Image from "next/image";
 import { discoverCards } from "@/lib/content";
 import { useRail } from "@/lib/useRail";
+import OverlayArrows from "./ui/OverlayArrows";
+import Rail from "./ui/Rail";
 import Section from "./ui/Section";
 import { Heading, Lede } from "./ui/SectionHeader";
 import styles from "./Discover.module.css";
@@ -26,13 +28,7 @@ export default function Discover() {
 
       <Section rhythm="trail" contained={false}>
         <div className={styles.railWrap} {...rail.hoverProps}>
-          <div
-            ref={railRef}
-            className={styles.rail}
-            data-rail
-            data-reveal-stagger
-            data-reveal-stagger-step="110"
-          >
+          <Rail railRef={railRef} gapped>
             {discoverCards.map((card) => (
               <article key={card.title} className={styles.card}>
                 <div data-zoom className={styles.frame}>
@@ -49,30 +45,16 @@ export default function Discover() {
                 <p className={styles.cardBody}>{card.body}</p>
               </article>
             ))}
-          </div>
+          </Rail>
 
           {/* Arrows sit at the vertical centre of the card image, not the section. */}
-          <div className={styles.arrows} aria-hidden={rail.arrowOpacity === 0}>
-            <div className={styles.arrowSpacer} />
-            <button
-              type="button"
-              aria-label="Vorherige Karte"
-              className={styles.arrowPrev}
-              style={{ opacity: rail.arrowOpacity }}
-              onClick={rail.prev}
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              aria-label="Nächste Karte"
-              className={styles.arrowNext}
-              style={{ opacity: rail.arrowOpacity }}
-              onClick={rail.next}
-            >
-              →
-            </button>
-          </div>
+          <OverlayArrows
+            onPrev={rail.prev}
+            onNext={rail.next}
+            opacity={rail.arrowOpacity}
+            labels={{ prev: "Vorherige Karte", next: "Nächste Karte" }}
+            spacer={<div className={styles.arrowSpacer} />}
+          />
         </div>
       </Section>
     </>

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { reviews } from "@/lib/content";
 import { useRail } from "@/lib/useRail";
+import Rail from "./ui/Rail";
 import Section from "./ui/Section";
 import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
 import Stat from "./ui/Stat";
@@ -52,13 +53,7 @@ export default function Reviews() {
       </div>
 
       <div {...rail.hoverProps}>
-        <div
-          ref={railRef}
-          className={styles.rail}
-          data-rail
-          data-reveal-stagger
-          data-reveal-stagger-step="110"
-        >
+        <Rail railRef={railRef} stretch>
           {reviews.map((review) => (
             <figure key={review.author} className={styles.quote}>
               <div className={styles.quoteTop}>
@@ -71,7 +66,7 @@ export default function Reviews() {
               <figcaption className={styles.author}>{review.author}</figcaption>
             </figure>
           ))}
-        </div>
+        </Rail>
       </div>
     </Section>
   );

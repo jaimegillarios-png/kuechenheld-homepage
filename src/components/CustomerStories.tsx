@@ -4,6 +4,8 @@ import { useRef } from "react";
 import Image from "next/image";
 import { routes, storySlides } from "@/lib/content";
 import { useRail } from "@/lib/useRail";
+import OverlayArrows from "./ui/OverlayArrows";
+import Rail from "./ui/Rail";
 import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
 import SplitSection from "./ui/SplitSection";
 import TextLink from "./ui/TextLink";
@@ -22,13 +24,7 @@ export default function CustomerStories() {
       mediaProps={rail.hoverProps}
       media={
         <>
-          <div
-            ref={railRef}
-            className={styles.rail}
-            data-rail
-            data-reveal-stagger
-            data-reveal-stagger-step="110"
-          >
+          <Rail railRef={railRef} filled>
             {storySlides.map((slide) => (
               <div key={slide.src} className={styles.slide}>
                 <Image
@@ -41,26 +37,14 @@ export default function CustomerStories() {
                 <span className={styles.caption}>{slide.caption}</span>
               </div>
             ))}
-          </div>
+          </Rail>
 
-          <button
-            type="button"
-            aria-label="Vorheriges Bild"
-            className={styles.arrowPrev}
-            style={{ opacity: rail.arrowOpacity }}
-            onClick={rail.prev}
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            aria-label="Nächstes Bild"
-            className={styles.arrowNext}
-            style={{ opacity: rail.arrowOpacity }}
-            onClick={rail.next}
-          >
-            →
-          </button>
+          <OverlayArrows
+            onPrev={rail.prev}
+            onNext={rail.next}
+            opacity={rail.arrowOpacity}
+            labels={{ prev: "Vorheriges Bild", next: "Nächstes Bild" }}
+          />
         </>
       }
     >

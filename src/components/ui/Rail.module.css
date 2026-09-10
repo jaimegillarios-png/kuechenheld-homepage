@@ -1,0 +1,24 @@
+/* Native horizontal scroll-snap track. All three rails share this; what they do
+   not share is how their arrows are placed — see OverlayArrows and the inline
+   pair in Reviews. */
+.rail {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+/* The card rail sets its own column gap; the two full-bleed rails do not. */
+.gapped {
+  gap: var(--space-5);
+}
+
+/* CustomerStories' rail fills its column absolutely rather than flowing. */
+.filled {
+  position: absolute;
+  inset: 0;
+}
+
+/* Reviews' quote cards are stretched so a short quote still rules off level. */
+.stretch {
+  align-items: stretch;
+}

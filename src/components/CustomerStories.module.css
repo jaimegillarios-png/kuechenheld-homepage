@@ -1,11 +1,3 @@
-.rail {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-}
-
 .slide {
   position: relative;
   flex: none;
@@ -29,14 +21,4 @@
   text-transform: uppercase;
   color: var(--color-text-on-dark);
   opacity: 0.92;
-}
-
-.arrowPrev {
-  composes: arrow from "../styles/shared.module.css";
-  left: var(--space-3);
-}
-
-.arrowNext {
-  composes: arrow from "../styles/shared.module.css";
-  right: var(--space-3);
 }

@@ -29,13 +29,6 @@
   color: var(--color-text);
 }
 
-.rail {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  align-items: stretch;
-}
-
 .quote {
   flex: none;
   width: 33.3333%;
