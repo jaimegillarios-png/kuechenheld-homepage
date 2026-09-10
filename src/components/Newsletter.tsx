@@ -3,22 +3,32 @@
 import { useState, type FormEvent } from "react";
 import styles from "./Footer.module.css";
 
-export default function Newsletter() {
+type Props = {
+  eyebrow?: string;
+  body?: string;
+  submitLabel?: string;
+  /** INTEGRATION POINT: the design has no success or error state, so agree on
+   *  one before wiring this up. */
+  onSubscribe?: (email: string) => void;
+};
+
+export default function Newsletter({
+  eyebrow = "Newsletter abonnieren",
+  body = "Mit unserem Newsletter erhalten Sie regelmäßig spannende Infos rund um moderne Küchenplanung und erfahren alles über die neusten Küchentrends.",
+  submitLabel = "Anmelden",
+  onSubscribe,
+}: Props) {
   const [email, setEmail] = useState("");
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // INTEGRATION POINT: post `email` to the newsletter provider. The design
-    // has no success or error state, so agree on one before wiring this up.
+    onSubscribe?.(email);
   };
 
   return (
     <>
-      <div className={styles.newsletterEyebrow}>Newsletter abonnieren</div>
-      <p className={styles.newsletterBody}>
-        Mit unserem Newsletter erhalten Sie regelmäßig spannende Infos rund um
-        moderne Küchenplanung und erfahren alles über die neusten Küchentrends.
-      </p>
+      <div className={styles.newsletterEyebrow}>{eyebrow}</div>
+      <p className={styles.newsletterBody}>{body}</p>
 
       <form className={styles.newsletterForm} onSubmit={onSubmit}>
         <label htmlFor="newsletter-email" className={styles.srOnly}>
@@ -35,7 +45,7 @@ export default function Newsletter() {
           className={styles.newsletterInput}
         />
         <button type="submit" className={styles.newsletterSubmit}>
-          Anmelden
+          {submitLabel}
         </button>
       </form>
     </>

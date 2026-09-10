@@ -7,7 +7,16 @@ import { navItems, routes } from "@/lib/content";
 import { prefersReducedMotion } from "@/lib/motion";
 import styles from "./Header.module.css";
 
-export default function Header() {
+type Props = {
+  items?: readonly { href: string; label: string }[];
+  /** Falls back to the site wordmark. */
+  wordmark?: string;
+};
+
+export default function Header({
+  items = navItems,
+  wordmark = "Küchenheld",
+}: Props) {
   const headerRef = useRef<HTMLElement>(null);
   const [navOpen, setNavOpen] = useState(false);
 
@@ -72,10 +81,10 @@ export default function Header() {
   return (
     <>
       <header ref={headerRef} className={styles.header}>
-        <div className={styles.wordmark}>Küchenheld</div>
+        <div className={styles.wordmark}>{wordmark}</div>
 
         <nav className={styles.nav} aria-label="Hauptnavigation">
-          {navItems.map((item) => (
+          {items.map((item) => (
             <AnchorLink key={item.href} href={item.href} data-ul>
               {item.label}
             </AnchorLink>
@@ -116,7 +125,7 @@ export default function Header() {
           aria-modal="true"
         >
           <div className={styles.overlayTop}>
-            <div className={styles.overlayWordmark}>Küchenheld</div>
+            <div className={styles.overlayWordmark}>{wordmark}</div>
             <button
               type="button"
               className={styles.close}
@@ -128,7 +137,7 @@ export default function Header() {
           </div>
 
           <nav className={styles.overlayNav} aria-label="Hauptnavigation">
-            {navItems.map((item) => (
+            {items.map((item) => (
               <AnchorLink
                 key={item.href}
                 href={item.href}

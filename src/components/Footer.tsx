@@ -4,16 +4,28 @@ import MaybeLink from "./MaybeLink";
 import Newsletter from "./Newsletter";
 import styles from "./Footer.module.css";
 
-export default function Footer() {
+type Props = {
+  columns?: typeof footerColumns;
+  legal?: readonly string[];
+  links?: typeof socials;
+  wordmark?: string;
+};
+
+export default function Footer({
+  columns = footerColumns,
+  legal = legalLinks,
+  links = socials,
+  wordmark = "Küchenheld",
+}: Props) {
   return (
     <footer className={styles.footer}>
       <div className={styles.top} data-reveal-stagger>
         <div>
-          <div className={styles.wordmark}>Küchenheld</div>
+          <div className={styles.wordmark}>{wordmark}</div>
           <Newsletter />
         </div>
 
-        {footerColumns.map((column) => (
+        {columns.map((column) => (
           <div key={column.heading}>
             <div className={styles.columnHeading}>{column.heading}</div>
             <div className={styles.columnLinks}>
@@ -31,7 +43,7 @@ export default function Footer() {
         <span>© Küchenheld GmbH 2026</span>
 
         <div className={styles.socials}>
-          {socials.map((social) => (
+          {links.map((social) => (
             <a
               key={social.label}
               href={social.href}
@@ -46,7 +58,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.legal}>
-          {legalLinks.map((link) => (
+          {legal.map((link) => (
             <MaybeLink key={link} data-ul>
               {link}
             </MaybeLink>

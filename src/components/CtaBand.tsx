@@ -5,9 +5,26 @@ import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
 import SplitSection from "./ui/SplitSection";
 import styles from "./CtaBand.module.css";
 
-const reassurance = ["Unverbindlich", "Kostenlos", "In 24 Stunden"];
+const DEFAULT_MARKS = ["Unverbindlich", "Kostenlos", "In 24 Stunden"];
 
-export default function CtaBand() {
+type Props = {
+  eyebrow?: string;
+  heading?: string;
+  lede?: string;
+  cta?: { label: string; href: string };
+  /** The reassurance strip under the button. */
+  marks?: readonly string[];
+  image?: { src: string; alt: string };
+};
+
+export default function CtaBand({
+  eyebrow = "Küchenkauf starten",
+  heading = "Angebot mit Preisindikation für Ihre Traumküche",
+  lede = "Einfach Ihre Vorstellungen einer Traumküche angeben und wir erstellen individuell für Sie Ihr unverbindliches, kostenloses Angebot.",
+  cta = { label: "Kostenloses Angebot erhalten", href: "#fragebogen" },
+  marks = DEFAULT_MARKS,
+  image = ctaBandImage,
+}: Props) {
   return (
     <SplitSection
       tone="inverse-raised"
@@ -16,8 +33,8 @@ export default function CtaBand() {
       mediaMinHeightNarrow={320}
       media={
         <Image
-          src={ctaBandImage.src}
-          alt={ctaBandImage.alt}
+          src={image.src}
+          alt={image.alt}
           fill
           sizes="(max-width: 900px) 100vw, 50vw"
           data-parallax
@@ -27,26 +44,25 @@ export default function CtaBand() {
       }
     >
       <Eyebrow tone="inverse" gap={4}>
-        Küchenkauf starten
+        {eyebrow}
       </Eyebrow>
       <Heading measure="column" gap={4}>
-        Angebot mit Preisindikation für Ihre Traumküche
+        {heading}
       </Heading>
       <Lede tone="inverse" measure="default" gap={7}>
-        Einfach Ihre Vorstellungen einer Traumküche angeben und wir erstellen
-        individuell für Sie Ihr unverbindliches, kostenloses Angebot.
+        {lede}
       </Lede>
       <Button
-        href="#fragebogen"
+        href={cta.href}
         variant="cream"
         data-reveal="rise"
         data-reveal-delay={240}
       >
-        Kostenloses Angebot erhalten
+        {cta.label}
       </Button>
 
       <div className={styles.reassurance}>
-        {reassurance.map((item) => (
+        {marks.map((item) => (
           <span key={item}>{item}</span>
         ))}
       </div>
