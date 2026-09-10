@@ -48,6 +48,7 @@ class Report:
     headings: dict = field(default_factory=dict)
     orphan_li_runs: list = field(default_factory=list)
     emphasis_as_html: int = 0
+    heading_levels_fixed: list = field(default_factory=list)
     paragraphs_wrapped: int = 0
     warnings: list = field(default_factory=list)
 
@@ -260,6 +261,35 @@ def adopt_orphan_lis(soup: Tag, rep: Report):
         else:
             flush()
     flush()
+
+
+# The article's own <h1> is the post title, so a body outline starts at h2.
+PROSE_TOP = 2
+
+def normalise_heading_levels(soup: Tag, rep: Report):
+    """Close the gaps in a post's outline: after an h2 comes an h3, never an h5.
+
+    Depth is taken from a stack of the levels still open rather than by
+    clamping each heading against the one before it. Clamping gets siblings
+    wrong — the second of two h5s under an h2 would land a level below the
+    first instead of beside it. The stack keeps siblings level and keeps real
+    nesting nested, so h2 > h4 > h5 becomes h2 > h3 > h4."""
+    stack: list[int] = []
+    for h in soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6"]):
+        level = int(h.name[1])
+        # An <h1> in the body duplicates the article's own title. Treated as the
+        # root of the outline it would push every real section a level down, so
+        # it joins the top level rather than sitting above it.
+        if level == 1:
+            level = PROSE_TOP
+        while stack and stack[-1] >= level:
+            stack.pop()
+        stack.append(level)
+        out = min(6, PROSE_TOP + len(stack) - 1)
+        if f"h{out}" != h.name:
+            rep.heading_levels_fixed.append(
+                (f"{h.name}->h{out}", norm_text(h.get_text(" "))[:60]))
+            h.name = f"h{out}"
 
 
 def unwrap_leftover_divs(soup: Tag, rep: Report):
@@ -497,6 +527,7 @@ def convert(fragment_html: str, slug: str):
     # After the <br> and empty-node noise is gone, so a heading padded with
     # either still reads as bold end to end.
     strip_heading_strong(soup, rep)
+    normalise_heading_levels(soup, rep)
     strip_attrs(soup, rep)
     unwrap_leftover_divs(soup, rep)
     adopt_orphan_lis(soup, rep)

@@ -40,6 +40,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -91,6 +92,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -133,6 +135,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -226,6 +229,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -323,6 +327,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 3,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 1,
    "warnings": []
   },
@@ -361,6 +366,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -414,6 +420,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -479,6 +486,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -568,6 +576,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -653,6 +662,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -710,6 +720,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -793,6 +804,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 3,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 1,
    "warnings": []
   },
@@ -906,6 +918,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -954,6 +967,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -1028,6 +1042,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -1078,6 +1093,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -1134,6 +1150,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -1192,6 +1209,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 2,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -1233,6 +1251,10 @@
     [
      "h2",
      "Pflegeleichtigkeit"
+    ],
+    [
+     "h2",
+     "Wertsteigerung Ihres Zuhauses"
     ]
    ],
    "empty_p": 1,
@@ -1255,6 +1277,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 2,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 1,
    "warnings": []
   },
@@ -1336,6 +1359,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -1395,6 +1419,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 2,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -1446,6 +1471,10 @@
     ],
     [
      "h5",
+     "Welche Holzart eignet sich am besten für Arbeitsplatten und Rückwände?"
+    ],
+    [
+     "h5",
      "Sind Holzfronten für Küchenmöbel pflegeleicht?"
     ],
     [
@@ -1470,11 +1499,44 @@
    "attrs_stripped": 1,
    "headings": {
     "h2": 4,
-    "h5": 5,
-    "h4": 3
+    "h3": 8
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 2,
+   "heading_levels_fixed": [
+    [
+     "h5->h3",
+     "Eiche: robust und zeitlos"
+    ],
+    [
+     "h5->h3",
+     "Nussbaum: Dunkle Eleganz"
+    ],
+    [
+     "h4->h3",
+     "Moderne Küche mit natürlichem Charme"
+    ],
+    [
+     "h4->h3",
+     "Klassische Landhausküche"
+    ],
+    [
+     "h4->h3",
+     "Industrial-Küche mit warmen Elementen"
+    ],
+    [
+     "h5->h3",
+     "Welche Holzart eignet sich am besten für Arbeitsplatten und "
+    ],
+    [
+     "h5->h3",
+     "Sind Holzfronten für Küchenmöbel pflegeleicht?"
+    ],
+    [
+     "h5->h3",
+     "Welche Holzart ist am umweltfreundlichsten?"
+    ]
+   ],
    "paragraphs_wrapped": 1,
    "warnings": []
   },
@@ -1535,6 +1597,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 16,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -1585,6 +1648,26 @@
     [
      "h2",
      "Jetzt Ihre Express Küche bei Küchenheld planen"
+    ],
+    [
+     "h3",
+     "Was ist der Unterschied zwischen Express Küchen und Nolte Küchen?"
+    ],
+    [
+     "h3",
+     "Für wen eignet sich Express Küchen besonders?"
+    ],
+    [
+     "h3",
+     "Sind die Küchen trotz des günstigen Preises langlebig?"
+    ],
+    [
+     "h3",
+     "Welche Designs bietet Express Küchen?"
+    ],
+    [
+     "h3",
+     "Wie lange dauert die Lieferung einer Express Küche?"
     ]
    ],
    "empty_p": 0,
@@ -1608,6 +1691,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -1660,6 +1744,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -1702,6 +1787,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -1755,6 +1841,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -1829,6 +1916,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -1889,6 +1977,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -1931,7 +2020,24 @@
    "figures_full": 3,
    "figures_content": 0,
    "figcaptions": 1,
-   "strong_headings_stripped": [],
+   "strong_headings_stripped": [
+    [
+     "h3",
+     "Moderne Küche :"
+    ],
+    [
+     "h3",
+     "Landhaus Küche :"
+    ],
+    [
+     "h3",
+     "Industrielle Küche :"
+    ],
+    [
+     "h3",
+     "Luxus Küche :"
+    ]
+   ],
    "empty_p": 1,
    "empty_strong": 0,
    "empty_embeds": 0,
@@ -1951,6 +2057,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2003,6 +2110,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2065,6 +2173,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 2,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2140,6 +2249,7 @@
     4
    ],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2192,6 +2302,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2249,6 +2360,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -2274,7 +2386,28 @@
    "figures_full": 5,
    "figures_content": 0,
    "figcaptions": 0,
-   "strong_headings_stripped": [],
+   "strong_headings_stripped": [
+    [
+     "h3",
+     "Wie vielseitig sind Arbeitsplatten aus Keramik?"
+    ],
+    [
+     "h3",
+     "Welche Vorteile bieten Keramikoberflächen in der Küche?"
+    ],
+    [
+     "h3",
+     "Wie lassen sich Arbeitsplatten aus Keramik reinigen?"
+    ],
+    [
+     "h3",
+     "Wie lassen sich Keramikoberflächen in der Küche kombinieren?"
+    ],
+    [
+     "h3",
+     "Das neue Herzstück Ihrer Traumküche"
+    ]
+   ],
    "empty_p": 1,
    "empty_strong": 0,
    "empty_embeds": 0,
@@ -2291,10 +2424,32 @@
    "wrappers_unwrapped": 5,
    "attrs_stripped": 0,
    "headings": {
-    "h3": 5
+    "h2": 5
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h3->h2",
+     "Wie vielseitig sind Arbeitsplatten aus Keramik?"
+    ],
+    [
+     "h3->h2",
+     "Welche Vorteile bieten Keramikoberflächen in der Küche?"
+    ],
+    [
+     "h3->h2",
+     "Wie lassen sich Arbeitsplatten aus Keramik reinigen?"
+    ],
+    [
+     "h3->h2",
+     "Wie lassen sich Keramikoberflächen in der Küche kombinieren?"
+    ],
+    [
+     "h3->h2",
+     "Das neue Herzstück Ihrer Traumküche"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -2324,6 +2479,10 @@
     [
      "h3",
      "1. Funktionalität im Fokus"
+    ],
+    [
+     "h3",
+     "3. Finden Sie Ihren Stil"
     ]
    ],
    "empty_p": 0,
@@ -2342,10 +2501,36 @@
    "wrappers_unwrapped": 4,
    "attrs_stripped": 0,
    "headings": {
-    "h3": 6
+    "h2": 6
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h3->h2",
+     "1. Funktionalität im Fokus"
+    ],
+    [
+     "h3->h2",
+     "2. Elektrogeräte im Küchenpaket"
+    ],
+    [
+     "h3->h2",
+     "3. Finden Sie Ihren Stil"
+    ],
+    [
+     "h3->h2",
+     "4. Nutze Sie VR-Brillen"
+    ],
+    [
+     "h3->h2",
+     "5. Smarte Technologie für die moderne Küche"
+    ],
+    [
+     "h3->h2",
+     "Fazit"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2398,6 +2583,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2445,6 +2631,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -2519,6 +2706,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2589,10 +2777,24 @@
    "attrs_stripped": 3,
    "headings": {
     "h2": 4,
-    "h5": 3
+    "h3": 3
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h5->h3",
+     "Flächenbündig"
+    ],
+    [
+     "h5->h3",
+     "Rahmenlos"
+    ],
+    [
+     "h5->h3",
+     "Mit Rahmen"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2677,6 +2879,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2720,11 +2923,15 @@
     ],
     [
      "h3",
-     ""
+     "Designküchen - puristisch und stilvoll"
     ],
     [
      "h3",
      "3 Gründe die für eine Design-Küche sprechen"
+    ],
+    [
+     "h3",
+     "Landhausküchen - gemütlich und rustikal"
     ],
     [
      "h3",
@@ -2736,7 +2943,7 @@
     ]
    ],
    "empty_p": 4,
-   "empty_strong": 0,
+   "empty_strong": 1,
    "empty_embeds": 0,
    "zero_width": {
     "ZWJ": 1
@@ -2751,10 +2958,44 @@
    "wrappers_unwrapped": 7,
    "attrs_stripped": 0,
    "headings": {
-    "h3": 7
+    "h2": 7
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h3->h2",
+     "Moderne Küchen - trendbewusst und individualisierbar"
+    ],
+    [
+     "h3->h2",
+     "3 Gründe, die für eine Moderne Küche sprechen"
+    ],
+    [
+     "h3->h2",
+     "Designküchen - puristisch und stilvoll"
+    ],
+    [
+     "h3->h2",
+     ""
+    ],
+    [
+     "h3->h2",
+     "3 Gründe die für eine Design-Küche sprechen"
+    ],
+    [
+     "h3->h2",
+     "Landhausküchen - gemütlich und rustikal"
+    ],
+    [
+     "h3->h2",
+     "3 Gründe, die für eine Landhausküche sprechen"
+    ],
+    [
+     "h3->h2",
+     "Darum passt dieser Stil zu Ihrer Küche!"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -2814,6 +3055,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -2883,6 +3125,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -2922,7 +3165,7 @@
     ]
    ],
    "empty_p": 0,
-   "empty_strong": 0,
+   "empty_strong": 2,
    "empty_embeds": 0,
    "zero_width": {},
    "nbsp_converted": 0,
@@ -2940,6 +3183,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 17,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 3,
    "warnings": []
   },
@@ -3021,6 +3265,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3074,6 +3319,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3127,6 +3373,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3179,6 +3426,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3246,7 +3494,7 @@
     ]
    ],
    "empty_p": 1,
-   "empty_strong": 4,
+   "empty_strong": 5,
    "empty_embeds": 0,
    "zero_width": {},
    "nbsp_converted": 2,
@@ -3263,7 +3511,8 @@
     "h3": 9
    },
    "orphan_li_runs": [],
-   "emphasis_as_html": 1,
+   "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3326,6 +3575,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3379,6 +3629,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3441,6 +3692,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3510,6 +3762,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3582,6 +3835,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3669,6 +3923,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3744,6 +3999,7 @@
     3
    ],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3776,7 +4032,24 @@
    "figures_full": 7,
    "figures_content": 0,
    "figcaptions": 1,
-   "strong_headings_stripped": [],
+   "strong_headings_stripped": [
+    [
+     "h2",
+     "Was sind Küchenpaneele?"
+    ],
+    [
+     "h3",
+     "Für welche Küchen eignen sich Paneelwände?"
+    ],
+    [
+     "h3",
+     "Was kann ich an einem Wandpaneel anbringen?"
+    ],
+    [
+     "h3",
+     "Wie plane ich Paneelwände mit Küchenheld?"
+    ]
+   ],
    "empty_p": 0,
    "empty_strong": 0,
    "empty_embeds": 0,
@@ -3798,6 +4071,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -3887,6 +4161,7 @@
     2
    ],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -3938,7 +4213,7 @@
     ]
    ],
    "empty_p": 1,
-   "empty_strong": 1,
+   "empty_strong": 2,
    "empty_embeds": 0,
    "zero_width": {},
    "nbsp_converted": 0,
@@ -3956,6 +4231,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4024,6 +4300,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 2,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4111,6 +4388,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no summary on the index card",
@@ -4177,6 +4455,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4241,11 +4520,17 @@
    "wrappers_unwrapped": 3,
    "attrs_stripped": 1,
    "headings": {
-    "h3": 5,
-    "h2": 4
+    "h2": 5,
+    "h3": 4
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h3->h2",
+     "Küchen in L-Form: Weitere Optionen für die Gestaltung"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4318,6 +4603,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4435,6 +4721,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4465,6 +4752,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 9,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 3,
    "warnings": []
   },
@@ -4521,6 +4809,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -4599,11 +4888,25 @@
    "wrappers_unwrapped": 2,
    "attrs_stripped": 0,
    "headings": {
-    "h3": 7,
-    "h2": 1
+    "h2": 4,
+    "h3": 4
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h3->h2",
+     "1. Knusprige Pommes und goldgelbe Panaden ohne zusätzliches "
+    ],
+    [
+     "h3->h2",
+     "2. Backofen-Aktionsmodell mit AirFry-Funktion"
+    ],
+    [
+     "h3->h2",
+     "3. Grill- und Bratblech"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4680,11 +4983,25 @@
    "wrappers_unwrapped": 2,
    "attrs_stripped": 0,
    "headings": {
-    "h3": 7,
-    "h2": 1
+    "h2": 4,
+    "h3": 4
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h3->h2",
+     "1. Konsequentes „All-Black-Design“"
+    ],
+    [
+     "h3->h2",
+     "2. Großzügige PowerFlex XL-Kochzonen"
+    ],
+    [
+     "h3->h2",
+     "3. Leistungsstark, leise und smart"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4733,6 +5050,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -4791,6 +5109,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4826,6 +5145,10 @@
     [
      "h2",
      "Wasser sparen"
+    ],
+    [
+     "h2",
+     "Fazit"
     ]
    ],
    "empty_p": 2,
@@ -4845,10 +5168,16 @@
    "attrs_stripped": 1,
    "headings": {
     "h2": 5,
-    "h4": 1
+    "h3": 1
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h4->h3",
+     "Umweltsiegel für Küchenmöbel"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -4900,6 +5229,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -4946,6 +5276,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -5008,6 +5339,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5080,6 +5412,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5152,6 +5485,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5204,6 +5538,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5234,12 +5569,24 @@
    "figcaptions": 1,
    "strong_headings_stripped": [
     [
-     "h2",
-     "3 Mythen über Pyrolyse-Backöfen"
+     "h3",
+     "Vorteile von Pyrolyse-Öfen:"
     ],
     [
      "h3",
-     "Mythos 1: Pyrolyse ist umweltschädlich"
+     "Nachteile von Pyrolyse-Öfen:"
+    ],
+    [
+     "h2",
+     "3 Mythen über Pyrolyse-Backöfen"
+    ],
+    [
+     "h3",
+     "Mythos 1: Pyrolyse ist umweltschädlich"
+    ],
+    [
+     "h3",
+     "Mythos 2: Pyrolyse ist teuer"
     ],
     [
      "h3",
@@ -5286,7 +5633,8 @@
     "h3": 13
    },
    "orphan_li_runs": [],
-   "emphasis_as_html": 4,
+   "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5344,6 +5692,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5395,6 +5744,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -5434,6 +5784,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 2,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5500,6 +5851,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -5585,6 +5937,7 @@
     4
    ],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5616,6 +5969,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5685,6 +6039,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5736,6 +6091,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -5786,6 +6142,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -5829,11 +6186,16 @@
    "wrappers_unwrapped": 5,
    "attrs_stripped": 3,
    "headings": {
-    "h1": 1,
-    "h2": 6
+    "h2": 7
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h1->h2",
+     "Trendige und moderne Küchen im Country Style"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -5942,6 +6304,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 2,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -6002,11 +6365,25 @@
    "wrappers_unwrapped": 2,
    "attrs_stripped": 0,
    "headings": {
-    "h3": 7,
-    "h2": 1
+    "h2": 4,
+    "h3": 4
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [
+    [
+     "h3->h2",
+     "1. Schnell und sauber auf Wunsch in nur 58 Minuten"
+    ],
+    [
+     "h3->h2",
+     "2. Ressourcenschonung durch EcoPower-Technologie und AutoOpe"
+    ],
+    [
+     "h3->h2",
+     "3. Dritte Spülebene für höchsten Komfort"
+    ]
+   ],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -6085,6 +6462,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -6129,6 +6507,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": [
     "no date on the index card"
@@ -6220,6 +6599,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -6271,6 +6651,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -6301,6 +6682,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -6363,6 +6745,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   },
@@ -6425,6 +6808,7 @@
    },
    "orphan_li_runs": [],
    "emphasis_as_html": 0,
+   "heading_levels_fixed": [],
    "paragraphs_wrapped": 0,
    "warnings": []
   }
