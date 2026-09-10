@@ -77,14 +77,14 @@
 
 .arrowPrev {
   composes: arrow from "../styles/shared.module.css";
-  left: 16px;
+  left: var(--space-3);
   font-size: var(--font-size-body);
   pointer-events: auto;
 }
 
 .arrowNext {
   composes: arrow from "../styles/shared.module.css";
-  right: 16px;
+  right: var(--space-3);
   font-size: var(--font-size-body);
   pointer-events: auto;
 }

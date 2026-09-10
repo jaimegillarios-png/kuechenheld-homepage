@@ -249,4 +249,17 @@
   /* --- layout roles ----------------------------------------------------- */
   --layout-gutter: var(--gutter); /* responsive: 40px -> 24px at 900px */
   --layout-content-max: var(--content-max);
+
+  /* Section vertical rhythm. Responsive like --gutter: this replaced the same
+     media query duplicated across six section stylesheets. */
+  --space-section-y: var(--space-10);
+
+  /* Shared minimum control dimension: rail arrow, burger, overlay close. */
+  --size-control: 40px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --space-section-y: var(--space-8);
+  }
 }

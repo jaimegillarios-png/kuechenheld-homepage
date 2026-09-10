@@ -183,9 +183,9 @@
 
 .caption {
   position: absolute;
-  left: 32px;
-  right: 32px;
-  bottom: 32px;
+  left: var(--space-5);
+  right: var(--space-5);
+  bottom: var(--space-5);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -216,8 +216,8 @@
 
 .dots {
   position: absolute;
-  right: 32px;
-  top: 32px;
+  right: var(--space-5);
+  top: var(--space-5);
   z-index: 20;
   display: flex;
   gap: var(--space-2);

@@ -1,12 +1,6 @@
 .section {
   background: var(--color-surface-warm);
-  padding: var(--space-10) var(--layout-gutter) var(--space-10);
-}
-@media (max-width: 900px) {
-  .section {
-    padding-top: var(--space-8);
-    padding-bottom: var(--space-8);
-  }
+  padding: var(--space-section-y) var(--layout-gutter);
 }
 
 .stepEyebrow {
@@ -75,8 +69,8 @@
 
 .cardCheck {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: var(--space-3);
+  right: var(--space-3);
   font-size: var(--font-size-label);
 }
 
