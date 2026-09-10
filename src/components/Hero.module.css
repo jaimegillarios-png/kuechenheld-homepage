@@ -91,7 +91,7 @@
 
 .h1 {
   font-size: var(--font-size-hero);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-heading);
   line-height: var(--leading-display);
 }
 
@@ -113,7 +113,7 @@
 .line2 {
   padding-left: var(--indent-110);
   font-style: italic;
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-heading);
   animation-delay: var(--duration-fast);
 }
 .line3 {

@@ -26,7 +26,7 @@
 
 .stepNum {
   font-size: var(--font-size-heading);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-display);
   line-height: var(--leading-flat);
   color: var(--color-text-faint);
 }

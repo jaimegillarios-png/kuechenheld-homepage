@@ -48,7 +48,7 @@
 .prose h3,
 .prose h4,
 .prose h5 {
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-heading);
   line-height: var(--leading-title);
   color: var(--color-text);
 }
@@ -63,13 +63,11 @@
 
 .prose h4 {
   font-size: var(--font-size-prose-h4);
-  font-weight: var(--font-weight-regular);
 }
 
 /* At body size, weight is the only thing left to distinguish it. */
 .prose h5 {
   font-size: var(--font-size-prose-h5);
-  font-weight: var(--font-weight-strong);
 }
 
 .prose > h2 {
@@ -144,7 +142,7 @@
   padding-left: var(--indent-prose-quote);
   border-left: 1px solid var(--color-rule-strong);
   font-size: var(--font-size-quote);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-display);
   line-height: var(--leading-title);
   color: var(--color-text);
 }

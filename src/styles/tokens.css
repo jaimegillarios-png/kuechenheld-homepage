@@ -66,11 +66,8 @@
 
   --weight-light: 300;
   --weight-regular: 400;
-  /* Prose emphasis. The design had never needed a third weight — headings are
-     light and body is regular — but <strong> has to read as heavier than the
-     text around it. 500 against a 400 body is legible without going heavy
-     next to 300-weight headings; Figtree's axis runs 300-900. */
   --weight-medium: 500;
+  --weight-bold: 700;
 
   /* Computed line box lands on a 4px multiple except where noted. */
   --leading-1: 1; /* 44->44, 36->36 */
@@ -225,9 +222,16 @@
   --font-size-hero: var(--text-display-hero);
   --font-size-hero-narrow: var(--text-display-hero-narrow);
 
-  --font-weight-light: var(--weight-light);
+  /* Three jobs, not three weights. Headings and numerals both used to sit on
+     300; they are separated here because a heading wants to read as a heading
+     and a 44px numeral or a pull quote still wants the light, open setting the
+     design was drawn with.
+     `strong` is 700 rather than 500: at 500 against a 400 body it read as a
+     slightly darker word rather than as bold. */
+  --font-weight-heading: var(--weight-medium);
+  --font-weight-display: var(--weight-light);
   --font-weight-regular: var(--weight-regular);
-  --font-weight-strong: var(--weight-medium);
+  --font-weight-strong: var(--weight-bold);
 
   --leading-flat: var(--leading-1);
   --leading-tight: var(--leading-2);

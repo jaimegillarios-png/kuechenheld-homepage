@@ -27,7 +27,7 @@
 
 .title {
   font-size: var(--font-size-subheading);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-heading);
   line-height: var(--leading-tight);
   max-width: var(--measure-title-card);
   margin-bottom: var(--space-3);

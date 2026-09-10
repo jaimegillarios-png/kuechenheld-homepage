@@ -118,7 +118,7 @@
 
 .close {
   font-size: var(--font-size-card-title);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-display);
   line-height: var(--leading-flat);
   width: var(--size-control);
   height: var(--size-control);
@@ -135,7 +135,7 @@
 
 .overlayItem {
   font-size: var(--font-size-subheading);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-heading);
   padding: var(--space-4) 0;
   border-top: 1px solid var(--color-rule);
 }

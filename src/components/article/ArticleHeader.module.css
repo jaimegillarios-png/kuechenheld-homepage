@@ -39,7 +39,7 @@
 
 .title {
   font-size: var(--font-size-heading);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-heading);
   line-height: var(--leading-tight);
   max-width: var(--measure-heading-full);
   margin-bottom: var(--gap-head-stack);

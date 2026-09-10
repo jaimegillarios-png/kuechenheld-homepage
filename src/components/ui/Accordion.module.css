@@ -33,7 +33,7 @@
 
 .sign {
   font-size: var(--font-size-card-title);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-display);
   line-height: var(--leading-title);
   color: var(--color-text-meta);
   text-align: right;

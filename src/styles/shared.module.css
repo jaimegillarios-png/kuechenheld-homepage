@@ -26,7 +26,7 @@
 
 .h2 {
   font-size: var(--font-size-heading);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-heading);
   line-height: var(--leading-tight);
 }
 /* Note: a heading's `max-width` measure is dropped below 900px, but that has to
@@ -61,7 +61,7 @@
 
 .stat {
   font-size: var(--font-size-heading);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-display);
   line-height: var(--leading-flat);
 }
 

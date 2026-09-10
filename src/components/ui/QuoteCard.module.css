@@ -32,7 +32,7 @@
 .quote {
   margin: 0;
   font-size: var(--font-size-quote);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-display);
   line-height: var(--leading-title);
   color: var(--color-text);
 }
