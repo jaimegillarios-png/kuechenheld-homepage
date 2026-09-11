@@ -1,0 +1,30 @@
+---
+import "@fontsource-variable/figtree/index.css";
+import "@fontsource-variable/figtree/wght-italic.css";
+import "../styles/fonts.css";
+import "../styles/tokens.css";
+import "../app/globals.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  index?: boolean;
+}
+
+const { title, description, index = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#141312" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {!index && <meta name="robots" content="noindex, nofollow, nocache" />}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
