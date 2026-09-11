@@ -30,6 +30,13 @@
   opacity: 0.86;
 }
 
+/* Wider than the stack's 4/3 — the index's lead sits beside its text rather
+   than over it, so the picture has the room to be landscape. Only here: the
+   homepage's stacked band keeps the base ratio. */
+.split .photo {
+  aspect-ratio: 3 / 2;
+}
+
 .split .frame {
   grid-column: 1;
   grid-row: 1 / -1;
