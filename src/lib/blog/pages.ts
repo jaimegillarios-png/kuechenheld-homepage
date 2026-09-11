@@ -33,6 +33,12 @@ export const pageHref = (base: string) => (page: number) =>
 export const extraPages = (total: number) =>
   Array.from({ length: pageCount(total) - 1 }, (_, i) => String(i + 2));
 
+/** Slug to display name, for anything that has only a slug to work from. */
+export async function categoryNames(): Promise<Record<string, string>> {
+  const categories = await blog.getCategories();
+  return Object.fromEntries(categories.map((c) => [c.slug, c.name]));
+}
+
 /** The chip row, with `current` resolved against the page being rendered. */
 export async function categoryLinks(currentSlug: string | null) {
   const categories = await blog.getCategories();

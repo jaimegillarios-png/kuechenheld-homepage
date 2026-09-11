@@ -7,6 +7,7 @@ import BlogIndex from "../../../components/blog/BlogIndex.astro";
 import { blog } from "../../../lib/blog";
 import {
   categoryLinks,
+  categoryNames,
   pageCount,
   pageHref,
   pageSlice,
@@ -34,6 +35,7 @@ const posts = await blog.getPostsByCategory(category!);
 // else its newest. That is what the live Webflow category pages show.
 const featured = pickFeatured(posts);
 const rest = posts.filter((p) => p.slug !== featured?.slug);
+const names = await categoryNames();
 const categories = await categoryLinks(category!);
 ---
 
@@ -53,6 +55,7 @@ const categories = await categoryLinks(category!);
       featured={featured}
       featuredLabel={name}
       categories={categories}
+      categoryNames={names}
       total={posts.length}
       page={1}
       totalPages={pageCount(rest.length)}

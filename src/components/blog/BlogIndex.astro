@@ -39,6 +39,8 @@ interface Props {
   /** Category slug when this page is scoped to one. */
   scope?: string | null;
   scopeName?: string | null;
+  /** Slug to display name, so a search result can label itself. */
+  categoryNames: Record<string, string>;
 }
 
 const {
@@ -54,6 +56,7 @@ const {
   hrefFor,
   scope = null,
   scopeName = null,
+  categoryNames,
 } = Astro.props;
 
 const dateFormat = new Intl.DateTimeFormat("de-DE", {
@@ -94,6 +97,7 @@ const byline = (post: PostSummary) => ({
         postHrefBase={asset("/blog/")}
         scope={scope}
         scopeName={scopeName}
+        categoryNames={categoryNames}
       />
     </div>
     {
@@ -148,6 +152,7 @@ const byline = (post: PostSummary) => ({
             excerpt={post.summary ?? ""}
             src={post.thumbnailImage.src}
             alt={post.thumbnailImage.alt}
+            categories={post.categories.map((c) => c.name)}
             {...byline(post)}
           />
         ))

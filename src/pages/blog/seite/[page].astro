@@ -8,6 +8,7 @@ import { blog } from "../../../lib/blog";
 import {
   HEADING,
   categoryLinks,
+  categoryNames,
   extraPages,
   pageCount,
   pageHref,
@@ -27,6 +28,7 @@ const page = Number(Astro.params.page);
 const posts = await blog.getAllPosts();
 const featured = pickFeatured(posts);
 const rest = posts.filter((p) => p.slug !== featured?.slug);
+const names = await categoryNames();
 const categories = await categoryLinks(null);
 ---
 
@@ -40,6 +42,7 @@ const categories = await categoryLinks(null);
       heading={HEADING}
       posts={pageSlice(rest, page)}
       categories={categories}
+      categoryNames={names}
       total={posts.length}
       page={page}
       totalPages={pageCount(rest.length)}

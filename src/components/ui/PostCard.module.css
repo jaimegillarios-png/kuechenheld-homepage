@@ -17,6 +17,14 @@
   display: block;
 }
 
+/* The same eyebrow the lead story puts above its title, so a card's category
+   and the lead's label read as one thing at two scales. */
+.categories {
+  composes: eyebrow from "../../styles/shared.module.css";
+  color: var(--color-text-meta);
+  margin-bottom: var(--space-3);
+}
+
 .title {
   composes: cardTitle from "../../styles/shared.module.css";
   margin-bottom: var(--space-3);

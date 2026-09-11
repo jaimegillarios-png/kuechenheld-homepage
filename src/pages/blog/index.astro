@@ -9,6 +9,7 @@ import {
   HEADING,
   LEDE,
   categoryLinks,
+  categoryNames,
   pageCount,
   pageHref,
   pageSlice,
@@ -20,6 +21,7 @@ const posts = await blog.getAllPosts();
 // The lead story is not repeated in the grid below it.
 const featured = pickFeatured(posts);
 const rest = posts.filter((p) => p.slug !== featured?.slug);
+const names = await categoryNames();
 const categories = await categoryLinks(null);
 ---
 
@@ -39,6 +41,7 @@ const categories = await categoryLinks(null);
       posts={pageSlice(rest, 1)}
       featured={featured}
       categories={categories}
+      categoryNames={names}
       total={posts.length}
       page={1}
       totalPages={pageCount(rest.length)}

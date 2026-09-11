@@ -8,6 +8,8 @@ type Props = {
   src: string;
   alt: string;
   href?: string | null;
+  /** Every category the post is in. A post can carry more than one. */
+  categories?: readonly string[];
   /** Absent on a post with no author recorded. */
   author?: BylineAuthor | null;
   /** ISO date, already formatted for display by the caller. */
@@ -36,6 +38,7 @@ export default function PostCard({
   src,
   alt,
   href,
+  categories,
   author,
   date,
   dateTime,
@@ -60,6 +63,9 @@ export default function PostCard({
         />
       </div>
 
+      {categories && categories.length > 0 && (
+        <div className={styles.categories}>{categories.join(" · ")}</div>
+      )}
       <Title className={styles.title}>{title}</Title>
       {excerpt && <p className={styles.excerpt}>{excerpt}</p>}
 

@@ -7,6 +7,7 @@ import BlogIndex from "../../../../components/blog/BlogIndex.astro";
 import { blog } from "../../../../lib/blog";
 import {
   categoryLinks,
+  categoryNames,
   extraPages,
   pageCount,
   pageHref,
@@ -39,6 +40,7 @@ const posts = await blog.getPostsByCategory(category!);
 // the slicing has to agree with it.
 const featured = pickFeatured(posts);
 const rest = posts.filter((p) => p.slug !== featured?.slug);
+const names = await categoryNames();
 const categories = await categoryLinks(category!);
 ---
 
@@ -52,6 +54,7 @@ const categories = await categoryLinks(category!);
       heading={name}
       posts={pageSlice(rest, page)}
       categories={categories}
+      categoryNames={names}
       total={posts.length}
       page={page}
       totalPages={pageCount(rest.length)}

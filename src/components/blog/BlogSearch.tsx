@@ -26,6 +26,11 @@ type Props = {
   /** Category slug when the page is scoped to one; search stays inside it. */
   scope?: string | null;
   scopeName?: string | null;
+  /**
+   * Slug to display name for every category. Passed in rather than carried on
+   * every entry in the index: three names beat a hundred repetitions of them.
+   */
+  categoryNames?: Record<string, string>;
 };
 
 /** Folds case and the diacritics German actually uses, so "kuche" finds "Küche". */
@@ -55,6 +60,7 @@ export default function BlogSearch({
   postHrefBase,
   scope,
   scopeName,
+  categoryNames = {},
 }: Props) {
   const [query, setQuery] = useState("");
   const [entries, setEntries] = useState<SearchEntry[] | null>(null);
@@ -185,6 +191,9 @@ export default function BlogSearch({
                     excerpt={entry.summary ?? ""}
                     src={entry.thumb}
                     alt={entry.alt}
+                    categories={entry.categories.map(
+                      (slug) => categoryNames[slug] ?? slug,
+                    )}
                     author={
                       entry.author
                         ? { name: entry.author, avatar: entry.avatar ?? undefined }
