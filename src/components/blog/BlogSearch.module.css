@@ -1,6 +1,9 @@
-/* The field. A hairline box at the shared control height, on paper — the only
-   other input on the site sits on the inverse ground in the footer. */
+/* The field. A hairline box at the shared control height. It carries its own
+   paper ground rather than letting the band's warm — and the drawing behind
+   it — show through, so the one thing on the band you type into reads as a
+   surface you can put something in. */
 .field {
+  background: var(--color-surface);
   display: flex;
   align-items: center;
   gap: var(--space-2);
