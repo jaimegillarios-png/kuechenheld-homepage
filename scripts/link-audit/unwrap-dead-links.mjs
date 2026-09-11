@@ -25,6 +25,13 @@ import path from "node:path";
 const POSTS = "src/content/posts";
 const KEEP = new Set(["/questionnaire"]);
 
+/** The live site 301s these; the link should point where the reader lands. */
+const RETARGET = {
+  "/blog/kuchentheke-gestalten-ideen-fur-ihren-kuechentresen":
+    "/blog/moderne-wohnkuechen-mit-integrierter-theke-oder-tisch",
+  "/blog/kuechenfronten-mit-griffen-oder-grifflos": "/blog/grifflose-kuechen",
+};
+
 const files = (await readdir(POSTS)).filter((f) => f.endsWith(".mdx"));
 const slugs = new Set(files.map((f) => f.slice(0, -4)));
 
@@ -50,6 +57,8 @@ for (const file of files) {
   const next = body.replace(
     /\[([^\]]+)\]\((\/[^)\s]*)\)/g,
     (match, text, href) => {
+      const moved = RETARGET[href.split("#")[0]];
+      if (moved) return `[${text}](${moved})`;
       if (isLive(href)) return match;
       unwrapped.push({ post: file.slice(0, -4), target: href, text });
       // A handful of links were authored with the URL as their own text.
@@ -101,6 +110,27 @@ const report = {
 if (unwrapped.length === 0) {
   console.log("nothing to unwrap; report left as it is");
 } else {
+  // Merge with whatever is already recorded. This file is the only record of
+  // what was removed, and a later run must not shrink it.
+  try {
+    const prior = JSON.parse(
+      await readFile("scripts/link-audit/report/unwrapped-links.json", "utf8"),
+    );
+    const seen = new Map(report.targets.map((t) => [t.target, t]));
+    for (const t of prior.targets) {
+      const cur = seen.get(t.target);
+      if (!cur) { report.targets.push(t); continue; }
+      for (const src of t.sources) {
+        if (!cur.sources.some((s) => s.post === src.post && s.text === src.text))
+          cur.sources.push(src);
+      }
+      cur.count = cur.sources.length;
+    }
+    report.total = report.targets.reduce((n, t) => n + t.count, 0);
+    report.targets.sort((a, b) => b.count - a.count);
+  } catch {
+    /* no prior report */
+  }
   await mkdir("scripts/link-audit/report", { recursive: true });
   await writeFile(
     "scripts/link-audit/report/unwrapped-links.json",

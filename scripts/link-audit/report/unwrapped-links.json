@@ -1,23 +1,51 @@
 {
   "generated": "2026-09-11",
   "note": "Links removed from post bodies because the target does not exist yet. Restore from here when a route ships.",
-  "total": 380,
+  "total": 433,
   "targets": [
     {
       "target": "/oberflaechen",
-      "count": 52,
+      "count": 58,
       "sources": [
         {
-          "post": "alpinova-nachhaltige-arbeitsplatte",
-          "text": "Küchenarbeitsplatte"
+          "post": "der-kuchengarten-blumen-pflanzen-krauter",
+          "text": "Arbeitsplatten"
+        },
+        {
+          "post": "es-werde-licht-die-richtige-beleuchtung-fur-jede-kuche",
+          "text": "Arbeitsflächen"
+        },
+        {
+          "post": "es-werde-licht-die-richtige-beleuchtung-fur-jede-kuche",
+          "text": "Arbeitsbereich"
+        },
+        {
+          "post": "glanzend-matt-oder-naturlich-welche-front-fur-welche-kuche",
+          "text": "Arbeitsplatten"
+        },
+        {
+          "post": "glanzend-matt-oder-naturlich-welche-front-fur-welche-kuche",
+          "text": "Arbeitsplatte"
+        },
+        {
+          "post": "kuchenpreise-vergleichen-so-einfach-gehts",
+          "text": "Arbeitsplatten"
+        },
+        {
+          "post": "kuchenpreise-vergleichen-so-einfach-gehts",
+          "text": "Arbeitsplatte"
+        },
+        {
+          "post": "naturstein-quarzstein-arbeitsplatten",
+          "text": "Laminat, Massivholz, Glas, Dekton uvm"
+        },
+        {
+          "post": "naturstein-quarzstein-arbeitsplatten",
+          "text": "**Arbeitsplatten**"
         },
         {
           "post": "alpinova-nachhaltige-arbeitsplatte",
           "text": "Küchenarbeitsplatte"
-        },
-        {
-          "post": "alpinova-nachhaltige-arbeitsplatte",
-          "text": "Küchenarbeitsplatten"
         },
         {
           "post": "alpinova-nachhaltige-arbeitsplatte",
@@ -62,10 +90,6 @@
         {
           "post": "die-wahl-des-richtigen-holzes-welche-holzart-passt-zu-ihrer-traumkuche",
           "text": "**Holzarbeitsplatte**"
-        },
-        {
-          "post": "die-wahl-des-richtigen-holzes-welche-holzart-passt-zu-ihrer-traumkuche",
-          "text": "Arbeitsplatten"
         },
         {
           "post": "dunkle-holzkuechen-modernes-design-in-schwarz-und-braun",
@@ -219,8 +243,32 @@
     },
     {
       "target": "/kuechenplaner",
-      "count": 45,
+      "count": 50,
       "sources": [
+        {
+          "post": "es-werde-licht-die-richtige-beleuchtung-fur-jede-kuche",
+          "text": "Küchenplanung"
+        },
+        {
+          "post": "kucheninsel-die-modernste-form-des-kochens",
+          "text": "hier"
+        },
+        {
+          "post": "kuchenpreise-vergleichen-so-einfach-gehts",
+          "text": "Küchenplanung"
+        },
+        {
+          "post": "muldenlufter-die-innovation-in-der-kuche",
+          "text": "Küchenplanung"
+        },
+        {
+          "post": "ratgeber-kuchenpreise-vergleichen",
+          "text": "Küchenplanung"
+        },
+        {
+          "post": "top-5-einbaugeraete-in-jeder-kueche",
+          "text": "Planung von Küchen"
+        },
         {
           "post": "alpinova-nachhaltige-arbeitsplatte",
           "text": "Küchenplanung"
@@ -334,10 +382,6 @@
           "text": "Küchenplanung"
         },
         {
-          "post": "kuechentrends-2026",
-          "text": "Küchenplanung"
-        },
-        {
           "post": "kuehlschrank-richtig-organisieren",
           "text": "Küchenplanung"
         },
@@ -405,8 +449,16 @@
     },
     {
       "target": "/kuechenstile",
-      "count": 24,
+      "count": 26,
       "sources": [
+        {
+          "post": "4-aspekte-die-sie-beim-kauf-einer-traumkuche-beachten-sollten",
+          "text": "Küchenstile"
+        },
+        {
+          "post": "es-werde-licht-die-richtige-beleuchtung-fur-jede-kuche",
+          "text": "Stil der Küche"
+        },
         {
           "post": "blaue-kuechen",
           "text": "welcher Küchenstil"
@@ -507,15 +559,27 @@
     },
     {
       "target": "/formen",
-      "count": 21,
+      "count": 24,
       "sources": [
         {
-          "post": "das-zeichen-fuer-induktionskochfeld",
+          "post": "4-aspekte-die-sie-beim-kauf-einer-traumkuche-beachten-sollten",
+          "text": "Küchenform"
+        },
+        {
+          "post": "der-kuchengarten-blumen-pflanzen-krauter",
+          "text": "Küchenform"
+        },
+        {
+          "post": "es-werde-licht-die-richtige-beleuchtung-fur-jede-kuche",
           "text": "Form"
         },
         {
-          "post": "der-neue-star-in-ihrem-zu-hause-die-moderne-kucheninsel",
-          "text": "Küchenform"
+          "post": "kindersichere-kuche-tipps-um-unfalle-zu-vermeiden",
+          "text": "Form"
+        },
+        {
+          "post": "das-zeichen-fuer-induktionskochfeld",
+          "text": "Form"
         },
         {
           "post": "der-neue-star-in-ihrem-zu-hause-die-moderne-kucheninsel",
@@ -679,8 +743,28 @@
     },
     {
       "target": "/hersteller",
-      "count": 13,
+      "count": 18,
       "sources": [
+        {
+          "post": "kuchenexperte-im-interview-darauf-sollten-sie-bei-der-kuchenplanung-achten",
+          "text": "Herstellern"
+        },
+        {
+          "post": "kuchenpreise-vergleichen-so-einfach-gehts",
+          "text": "Küchenhersteller"
+        },
+        {
+          "post": "ratgeber-kuchenpreise-vergleichen",
+          "text": "Küchenhersteller"
+        },
+        {
+          "post": "ratgeber-kuchenpreise-vergleichen",
+          "text": "Hersteller"
+        },
+        {
+          "post": "top-5-einbaugeraete-in-jeder-kueche",
+          "text": "Küchenhersteller"
+        },
         {
           "post": "der-neue-star-in-ihrem-zu-hause-die-moderne-kucheninsel",
           "text": "Hersteller"
@@ -794,6 +878,110 @@
       ]
     },
     {
+      "target": "/kuechenstile/einbaukuechen",
+      "count": 12,
+      "sources": [
+        {
+          "post": "kuechenkraeuter",
+          "text": "Einbauküche"
+        },
+        {
+          "post": "ratgeber-kuche-finanzieren",
+          "text": "Einbauküche"
+        },
+        {
+          "post": "ratgeber-kuchenpreise-vergleichen",
+          "text": "Einbauküche"
+        },
+        {
+          "post": "top-5-einbaugeraete-in-jeder-kueche",
+          "text": "Einbauküche"
+        },
+        {
+          "post": "dunkle-holzkuechen-modernes-design-in-schwarz-und-braun",
+          "text": "Einbauküche"
+        },
+        {
+          "post": "kueche-in-cremefarben",
+          "text": "Einbauküche"
+        },
+        {
+          "post": "kueche-mit-dachschraege",
+          "text": "Einbauküche"
+        },
+        {
+          "post": "kueche-renovieren",
+          "text": "Einbauküche"
+        },
+        {
+          "post": "kuechentrends-2024",
+          "text": "Einbauküche"
+        },
+        {
+          "post": "lieferzeit-kueche",
+          "text": "Einbauküchen"
+        },
+        {
+          "post": "trendige-landhauskuechen-moderne-kuechen-im-country-style",
+          "text": "Traumküche nach Maß"
+        },
+        {
+          "post": "wohnung-mit-oder-ohne-kueche-vermieten",
+          "text": "Einbauküche"
+        }
+      ]
+    },
+    {
+      "target": "/hersteller/siemens",
+      "count": 11,
+      "sources": [
+        {
+          "post": "muldenlufter-die-innovation-in-der-kuche",
+          "text": "Siemens"
+        },
+        {
+          "post": "top-5-einbaugeraete-in-jeder-kueche",
+          "text": "Siemens"
+        },
+        {
+          "post": "5-kuechenkauftypen",
+          "text": "Siemens"
+        },
+        {
+          "post": "ceranfeld-reinigen",
+          "text": "Siemens"
+        },
+        {
+          "post": "die-neuesten-trends-bei-kuchengeraten-das-kommt-2024",
+          "text": "Siemens Neuheiten ist der Backofen iQ700"
+        },
+        {
+          "post": "kochen-in-offener-kuche-losungen-von-siemens",
+          "text": "inductionAir Plus-Reihe von Siemens"
+        },
+        {
+          "post": "kochen-in-offener-kuche-losungen-von-siemens",
+          "text": "inductionAir Plus"
+        },
+        {
+          "post": "kuechentrends-2025",
+          "text": "Siemens"
+        },
+        {
+          "post": "nachhaltige-kuchen-tipps-fuer-umweltfreundliche-entscheidungen",
+          "text": "Backöfen der Serie iQ700 von Siemens"
+        },
+        {
+          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
+          "text": "Siemens"
+        },
+        {
+          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
+          "text": "Siemens iQ700 Einbau-Backöfen"
+        }
+      ]
+    },
+    {
       "target": "/kuechenstile/kuechen-im-landhausstil",
       "count": 11,
       "sources": [
@@ -844,52 +1032,6 @@
       ]
     },
     {
-      "target": "/hersteller/siemens",
-      "count": 10,
-      "sources": [
-        {
-          "post": "5-kuechenkauftypen",
-          "text": "Siemens"
-        },
-        {
-          "post": "ceranfeld-reinigen",
-          "text": "Siemens"
-        },
-        {
-          "post": "die-neuesten-trends-bei-kuchengeraten-das-kommt-2024",
-          "text": "Siemens Neuheiten ist der Backofen iQ700"
-        },
-        {
-          "post": "kochen-in-offener-kuche-losungen-von-siemens",
-          "text": "inductionAir Plus-Reihe von Siemens"
-        },
-        {
-          "post": "kochen-in-offener-kuche-losungen-von-siemens",
-          "text": "inductionAir Plus"
-        },
-        {
-          "post": "kuechentrends-2025",
-          "text": "Siemens"
-        },
-        {
-          "post": "nachhaltige-kuchen-tipps-fuer-umweltfreundliche-entscheidungen",
-          "text": "Backöfen der Serie iQ700 von Siemens"
-        },
-        {
-          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
-          "text": "Siemens"
-        },
-        {
-          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
-          "text": "Siemens iQ700 Einbau-Backöfen"
-        },
-        {
-          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
-          "text": "Siemens"
-        }
-      ]
-    },
-    {
       "target": "/blog/top-5-einbaugeraete-in-jeder-kueche",
       "count": 10,
       "sources": [
@@ -936,40 +1078,40 @@
       ]
     },
     {
-      "target": "/kuechenstile/einbaukuechen",
+      "target": "/hersteller/bosch",
       "count": 8,
       "sources": [
         {
-          "post": "dunkle-holzkuechen-modernes-design-in-schwarz-und-braun",
-          "text": "Einbauküche"
+          "post": "einbaugeraete-von-bosch",
+          "text": "Bosch"
         },
         {
-          "post": "kueche-in-cremefarben",
-          "text": "Einbauküche"
+          "post": "haben-sie-sich-bereits-fur-ein-kochfeld-der-neuen-generation-entschieden",
+          "text": "BOSCH"
         },
         {
-          "post": "kueche-mit-dachschraege",
-          "text": "Einbauküche"
+          "post": "kitchen-farming-gemusegarten-in-der-kuche",
+          "text": "Bosch"
         },
         {
-          "post": "kueche-renovieren",
-          "text": "Einbauküche"
+          "post": "muldenlufter-die-innovation-in-der-kuche",
+          "text": "Bosch"
         },
         {
-          "post": "kuechentrends-2024",
-          "text": "Einbauküche"
+          "post": "top-5-einbaugeraete-in-jeder-kueche",
+          "text": "Bosch"
         },
         {
-          "post": "lieferzeit-kueche",
-          "text": "Einbauküchen"
+          "post": "ceranfeld-reinigen",
+          "text": "Bosch"
         },
         {
-          "post": "trendige-landhauskuechen-moderne-kuechen-im-country-style",
-          "text": "Traumküche nach Maß"
+          "post": "kuechentrends-2025",
+          "text": "Bosch"
         },
         {
-          "post": "wohnung-mit-oder-ohne-kueche-vermieten",
-          "text": "Einbauküche"
+          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
+          "text": "Bosch"
         }
       ]
     },
@@ -1046,6 +1188,66 @@
       ]
     },
     {
+      "target": "/hersteller/miele",
+      "count": 6,
+      "sources": [
+        {
+          "post": "downair-dunstabzug-die-innovation-in-der-kuche",
+          "text": "Miele"
+        },
+        {
+          "post": "muldenlufter-die-innovation-in-der-kuche",
+          "text": "Miele"
+        },
+        {
+          "post": "top-5-einbaugeraete-in-jeder-kueche",
+          "text": "Miele"
+        },
+        {
+          "post": "ceranfeld-reinigen",
+          "text": "Miele"
+        },
+        {
+          "post": "kuechentrends-2025",
+          "text": "Miele"
+        },
+        {
+          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
+          "text": "Miele"
+        }
+      ]
+    },
+    {
+      "target": "/kuechenstile/luxus-kuechen",
+      "count": 6,
+      "sources": [
+        {
+          "post": "ratgeber-kuchenpreise-vergleichen",
+          "text": "Luxusküchen"
+        },
+        {
+          "post": "glas-in-der-mikrowelle",
+          "text": "Luxus Küche"
+        },
+        {
+          "post": "graue-kueche",
+          "text": "luxuriöse"
+        },
+        {
+          "post": "kuechenboden",
+          "text": "luxuriösen Küchen"
+        },
+        {
+          "post": "kuechenrueckwand-ideen",
+          "text": "luxuriösen Stil"
+        },
+        {
+          "post": "welches-spuelbecken-material-ist-am-besten",
+          "text": "luxuriöse Küchen"
+        }
+      ]
+    },
+    {
       "target": "/showrooms/smartroom-hamburg",
       "count": 6,
       "sources": [
@@ -1102,6 +1304,58 @@
         {
           "post": "wohnkueche-einrichtungsideen",
           "text": "Küchenkräuter"
+        }
+      ]
+    },
+    {
+      "target": "/prozess",
+      "count": 5,
+      "sources": [
+        {
+          "post": "4-aspekte-die-sie-beim-kauf-einer-traumkuche-beachten-sollten",
+          "text": "Küchenplanung"
+        },
+        {
+          "post": "kindersichere-kuche-tipps-um-unfalle-zu-vermeiden",
+          "text": "Küchenplanungsprozesses"
+        },
+        {
+          "post": "blaue-kuechen",
+          "text": "Online-Fragebogen"
+        },
+        {
+          "post": "rote-kuechen",
+          "text": "Online-Fragebogen"
+        },
+        {
+          "post": "trendfarbe-gruen",
+          "text": "Online-Fragebogen"
+        }
+      ]
+    },
+    {
+      "target": "/faq#fragebogen",
+      "count": 5,
+      "sources": [
+        {
+          "post": "es-werde-licht-die-richtige-beleuchtung-fur-jede-kuche",
+          "text": "<strong><em>Online-Fragebogen</em></strong>"
+        },
+        {
+          "post": "graue-kueche",
+          "text": "Online-Fragebogen"
+        },
+        {
+          "post": "kueche-in-pastell",
+          "text": "Online-Fragebogen"
+        },
+        {
+          "post": "skandinavische-kueche",
+          "text": "<strong><em>Online-Fragebogen</em></strong>"
+        },
+        {
+          "post": "speisekammer-planen",
+          "text": "**Online-Fragebogen**"
         }
       ]
     },
@@ -1184,28 +1438,46 @@
       ]
     },
     {
-      "target": "/kuechenstile/luxus-kuechen",
-      "count": 5,
+      "target": "/hersteller/bora",
+      "count": 4,
       "sources": [
         {
-          "post": "glas-in-der-mikrowelle",
-          "text": "Luxus Küche"
+          "post": "downair-dunstabzug-die-innovation-in-der-kuche",
+          "text": "Bora"
         },
         {
-          "post": "graue-kueche",
-          "text": "luxuriöse"
+          "post": "muldenlufter-die-innovation-in-der-kuche",
+          "text": "Bora"
         },
         {
-          "post": "kuechenboden",
-          "text": "luxuriösen Küchen"
+          "post": "muldenlufter-die-innovation-in-der-kuche",
+          "text": "Bora"
         },
         {
-          "post": "kuechenrueckwand-ideen",
-          "text": "luxuriösen Stil"
+          "post": "das-ende-des-traditionellen-kochens-bora-verandert-den-kuchenmarkt",
+          "text": "Bora"
+        }
+      ]
+    },
+    {
+      "target": "/oberflaechen/massivholz",
+      "count": 4,
+      "sources": [
+        {
+          "post": "natuerliche-arbeitsplatten-aus-holz",
+          "text": "unterschiedlichen Holzarten"
         },
         {
-          "post": "welches-spuelbecken-material-ist-am-besten",
-          "text": "luxuriöse Küchen"
+          "post": "ratgeber-kuchenpreise-vergleichen",
+          "text": "Arbeitsflächen aus Holz"
+        },
+        {
+          "post": "hauswirtschaftsraum-planen",
+          "text": "Küchenarbeitsplatte aus Massivholz"
+        },
+        {
+          "post": "kueche-renovieren",
+          "text": "Arbeitsplatten aus massivem Holz"
         }
       ]
     },
@@ -1228,28 +1500,6 @@
         {
           "post": "rote-kuechen",
           "text": "Elektrogeräte"
-        }
-      ]
-    },
-    {
-      "target": "/hersteller/bosch",
-      "count": 4,
-      "sources": [
-        {
-          "post": "ceranfeld-reinigen",
-          "text": "Bosch"
-        },
-        {
-          "post": "kuechentrends-2025",
-          "text": "Bosch"
-        },
-        {
-          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
-          "text": "Bosch"
-        },
-        {
-          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
-          "text": "Bosch"
         }
       ]
     },
@@ -1320,28 +1570,6 @@
       ]
     },
     {
-      "target": "/faq#fragebogen",
-      "count": 4,
-      "sources": [
-        {
-          "post": "graue-kueche",
-          "text": "Online-Fragebogen"
-        },
-        {
-          "post": "kueche-in-pastell",
-          "text": "Online-Fragebogen"
-        },
-        {
-          "post": "skandinavische-kueche",
-          "text": "<strong><em>Online-Fragebogen</em></strong>"
-        },
-        {
-          "post": "speisekammer-planen",
-          "text": "**Online-Fragebogen**"
-        }
-      ]
-    },
-    {
       "target": "/kuechenstile/moderne-weisse-kuechen",
       "count": 4,
       "sources": [
@@ -1364,38 +1592,38 @@
       ]
     },
     {
-      "target": "/prozess",
+      "target": "/kuechen/oberflaechen",
       "count": 3,
       "sources": [
         {
-          "post": "blaue-kuechen",
-          "text": "Online-Fragebogen"
+          "post": "kindersichere-kuche-tipps-um-unfalle-zu-vermeiden",
+          "text": "Arbeitsflächen"
         },
         {
-          "post": "rote-kuechen",
-          "text": "Online-Fragebogen"
+          "post": "geriffelte-holzfronten",
+          "text": "Küchenarbeitsplatten"
         },
         {
-          "post": "trendfarbe-gruen",
-          "text": "Online-Fragebogen"
+          "post": "hochwertige-arbeitsflaechen-bei-kuechenheld-von-rosskopf-und-partner",
+          "text": "**Arbeitsplatte**"
         }
       ]
     },
     {
-      "target": "/hersteller/miele",
+      "target": "/hersteller/gaggenau",
       "count": 3,
       "sources": [
         {
-          "post": "ceranfeld-reinigen",
-          "text": "Miele"
+          "post": "muldenlufter-die-innovation-in-der-kuche",
+          "text": "Gaggenau"
         },
         {
           "post": "kuechentrends-2025",
-          "text": "Miele"
+          "text": "Gaggenau"
         },
         {
           "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
-          "text": "Miele"
+          "text": "Gaggenau"
         }
       ]
     },
@@ -1486,6 +1714,62 @@
         {
           "post": "neolith-in-der-kueche-trends-und-eigenschaften",
           "text": "**Rosskopf + Partner**"
+        }
+      ]
+    },
+    {
+      "target": "/blog/ratgeber-kuche-planen-schritt-fuer-schritt",
+      "count": 2,
+      "sources": [
+        {
+          "post": "kuchenexperte-im-interview-darauf-sollten-sie-bei-der-kuchenplanung-achten",
+          "text": "digital"
+        },
+        {
+          "post": "der-neue-star-in-ihrem-zu-hause-die-moderne-kucheninsel",
+          "text": "Kücheninsel zu planen."
+        }
+      ]
+    },
+    {
+      "target": "/hersteller/berbel",
+      "count": 2,
+      "sources": [
+        {
+          "post": "muldenlufter-die-innovation-in-der-kuche",
+          "text": "Berbel"
+        },
+        {
+          "post": "kuechentrends-2025",
+          "text": "Berbel"
+        }
+      ]
+    },
+    {
+      "target": "/hersteller/quooker",
+      "count": 2,
+      "sources": [
+        {
+          "post": "quooker-und-co-koch-und-sprudelwasser-direkt-aus-der-armatur",
+          "text": "Quooker"
+        },
+        {
+          "post": "nachhaltige-kuchen-tipps-fuer-umweltfreundliche-entscheidungen",
+          "text": "**Qooker-Hahn**"
+        }
+      ]
+    },
+    {
+      "target": "/hersteller/aeg",
+      "count": 2,
+      "sources": [
+        {
+          "post": "top-5-einbaugeraete-in-jeder-kueche",
+          "text": "AEG"
+        },
+        {
+          "post": "ceranfeld-reinigen",
+          "text": "AEG"
         }
       ]
     },
@@ -1616,34 +1900,6 @@
       ]
     },
     {
-      "target": "/kuechen/oberflaechen",
-      "count": 2,
-      "sources": [
-        {
-          "post": "geriffelte-holzfronten",
-          "text": "Küchenarbeitsplatten"
-        },
-        {
-          "post": "hochwertige-arbeitsflaechen-bei-kuechenheld-von-rosskopf-und-partner",
-          "text": "**Arbeitsplatte**"
-        }
-      ]
-    },
-    {
-      "target": "/oberflaechen/massivholz",
-      "count": 2,
-      "sources": [
-        {
-          "post": "hauswirtschaftsraum-planen",
-          "text": "Küchenarbeitsplatte aus Massivholz"
-        },
-        {
-          "post": "kueche-renovieren",
-          "text": "Arbeitsplatten aus massivem Holz"
-        }
-      ]
-    },
-    {
       "target": "/oberflaechen/schichtstoff",
       "count": 2,
       "sources": [
@@ -1714,16 +1970,52 @@
       ]
     },
     {
-      "target": "/hersteller/gaggenau",
-      "count": 2,
+      "target": "/virtual-reality",
+      "count": 1,
       "sources": [
         {
-          "post": "kuechentrends-2025",
-          "text": "Gaggenau"
-        },
+          "post": "kucheninsel-die-modernste-form-des-kochens",
+          "text": "Virtual Reality"
+        }
+      ]
+    },
+    {
+      "target": "/hersteller-kategorie/armaturen",
+      "count": 1,
+      "sources": [
         {
-          "post": "pyrolyse-moderne-backofen-reinigen-sich-selbst",
-          "text": "Gaggenau"
+          "post": "quooker-und-co-koch-und-sprudelwasser-direkt-aus-der-armatur",
+          "text": "Armatur"
+        }
+      ]
+    },
+    {
+      "target": "/kuechenangebot-vergleichen",
+      "count": 1,
+      "sources": [
+        {
+          "post": "ratgeber-kuchenpreise-vergleichen",
+          "text": "Angebote für Ihre Wunschküche zu vergleichen"
+        }
+      ]
+    },
+    {
+      "target": "/ueber-uns",
+      "count": 1,
+      "sources": [
+        {
+          "post": "so-einfach-ist-videoberatung-bei-kuchenheld",
+          "text": "in einem unserer Showrooms"
+        }
+      ]
+    },
+    {
+      "target": "/faq#planungsprozess",
+      "count": 1,
+      "sources": [
+        {
+          "post": "so-einfach-ist-videoberatung-bei-kuchenheld",
+          "text": "Planung Ihrer Küche"
         }
       ]
     },
@@ -1744,36 +2036,6 @@
         {
           "post": "ceranfeld-reinigen",
           "text": "Kochfeld"
-        }
-      ]
-    },
-    {
-      "target": "/hersteller/aeg",
-      "count": 1,
-      "sources": [
-        {
-          "post": "ceranfeld-reinigen",
-          "text": "AEG"
-        }
-      ]
-    },
-    {
-      "target": "/hersteller/bora",
-      "count": 1,
-      "sources": [
-        {
-          "post": "das-ende-des-traditionellen-kochens-bora-verandert-den-kuchenmarkt",
-          "text": "Bora"
-        }
-      ]
-    },
-    {
-      "target": "/blog/ratgeber-kuche-planen-schritt-fuer-schritt",
-      "count": 1,
-      "sources": [
-        {
-          "post": "der-neue-star-in-ihrem-zu-hause-die-moderne-kucheninsel",
-          "text": "Kücheninsel zu planen."
         }
       ]
     },
@@ -1858,32 +2120,12 @@
       ]
     },
     {
-      "target": "/hersteller/berbel",
-      "count": 1,
-      "sources": [
-        {
-          "post": "kuechentrends-2025",
-          "text": "Berbel"
-        }
-      ]
-    },
-    {
       "target": "/hersteller/wiebe",
       "count": 1,
       "sources": [
         {
           "post": "marmor-kuechen",
           "text": "Wiebe"
-        }
-      ]
-    },
-    {
-      "target": "/hersteller/quooker",
-      "count": 1,
-      "sources": [
-        {
-          "post": "nachhaltige-kuchen-tipps-fuer-umweltfreundliche-entscheidungen",
-          "text": "**Qooker-Hahn**"
         }
       ]
     },
