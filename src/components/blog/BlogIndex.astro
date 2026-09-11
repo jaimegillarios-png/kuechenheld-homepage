@@ -78,8 +78,11 @@ const byline = (post: PostSummary) => ({
       reading order, with the field last. */}
   <div class={styles.headRow}>
     <div class={styles.headHeading}>
-      {/* The index states its own subject; there is no hero to do it. */}
-      <Heading as="h1" measure="wide" gap="none">{heading}</Heading>
+      {/* The index states its own subject; there is no hero to do it.
+          `column` because the heading does share its row with a sibling — the
+          search field — and because `wide` at 55px is broader than the column
+          itself, so it never bit and the title ragged badly. */}
+      <Heading as="h1" measure="column" gap="none">{heading}</Heading>
     </div>
     <div class={styles.search}>
       <BlogSearch
