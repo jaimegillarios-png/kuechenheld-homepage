@@ -14,6 +14,7 @@
     var(--color-surface-warm) 58%,
     var(--color-surface) 100%
   );
+  background-attachment: fixed;
 }
 
 .masthead::before {
@@ -27,10 +28,24 @@
   /* The drawing's own left third is empty, which is where the title goes. */
   background-position: center right;
   background-repeat: no-repeat;
+  /* Pinned to the viewport, so the content scrolls over a ground that stays
+     put. Both this and the colour behind it are then sized against the
+     viewport rather than the band, which is what makes the two stay in step. */
+  background-attachment: fixed;
   mix-blend-mode: multiply;
   opacity: 0.1;
   z-index: -1;
   pointer-events: none;
+}
+
+/* A pinned ground reads as motion to anyone who has asked for less of it, and
+   the rest of this site takes that seriously. Both layers scroll normally
+   under the preference. */
+@media (prefers-reduced-motion: reduce) {
+  .masthead,
+  .masthead::before {
+    background-attachment: scroll;
+  }
 }
 
 /* Heading and field on one row, lede on the row under the heading. The field
