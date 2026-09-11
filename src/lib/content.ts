@@ -33,7 +33,9 @@ export type NavItem = { label: string; href: string };
 export const navItems: NavItem[] = [
   { label: "Küchendesign", href: "#kuechendesign" },
   { label: "Planung", href: "#planung" },
-  { label: "Blog", href: "#blog" },
+  // A real route, not the homepage's own blog band: it is the one nav item
+  // that has somewhere of its own to go.
+  { label: "Blog", href: asset("/blog") },
   { label: "Standorte", href: "#standorte" },
 ];
 
