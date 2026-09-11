@@ -6,19 +6,6 @@
   color: var(--color-text-meta);
 }
 
-/* Full cream, not the 50% meta ink: the only inverse ground this is used on
-   is a photograph behind a scrim, where the dimmer ink does not reach AA. */
-.bylineInverse {
-  composes: byline;
-  color: var(--color-text-inverse);
-}
-.bylineInverse .author {
-  color: var(--color-text-inverse);
-}
-.bylineInverse .dot {
-  color: var(--color-rule-inverse);
-}
-
 .avatar {
   width: var(--size-avatar-sm);
   height: var(--size-avatar-sm);

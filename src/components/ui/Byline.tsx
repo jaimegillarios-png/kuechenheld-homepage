@@ -9,8 +9,6 @@ type Props = {
   date?: string | null;
   /** The ISO value behind it, for `<time>`. */
   dateTime?: string | null;
-  /** `inverse` on a dark ground, the same switch `Lede` takes. */
-  tone?: "light" | "inverse";
   className?: string;
 };
 
@@ -25,24 +23,11 @@ type Props = {
  * A post with no author keeps its date rather than showing a placeholder
  * portrait for someone who is not recorded.
  */
-export default function Byline({
-  author,
-  date,
-  dateTime,
-  tone = "light",
-  className,
-}: Props) {
+export default function Byline({ author, date, dateTime, className }: Props) {
   if (!author?.name && !date) return null;
 
   return (
-    <div
-      className={[
-        tone === "inverse" ? styles.bylineInverse : styles.byline,
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-    >
+    <div className={[styles.byline, className].filter(Boolean).join(" ")}>
       {author?.avatar && (
         <img
           src={author.avatar}

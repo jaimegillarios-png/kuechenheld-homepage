@@ -26,6 +26,14 @@
   margin-top: var(--space-4);
 }
 
+/* The lead story closes the warm band rather than straddling its edge: the
+   ground covers the whole top section and changes once, where the section
+   does. The gap above it is the head-to-body step, so the head and the story
+   read as one composition. */
+.featured {
+  margin-top: var(--gap-head-body);
+}
+
 /* The grid's header: categories at the left, the count at the right, and a
    hairline tying the pair to the cards below — the same hairline pagination
    uses at the other end. */
