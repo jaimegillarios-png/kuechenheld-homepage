@@ -1,3 +1,27 @@
+/* The band keeps its warm ground; the drawing sits on top of it in multiply,
+   so the white of the paper it was drawn on leaves the ground untouched and
+   only the linework darkens it. Opacity then sets how present those lines
+   are. Behind the content, never over it. */
+.masthead {
+  position: relative;
+  isolation: isolate;
+}
+
+.masthead::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/kueche-strichzeichnung.png");
+  background-size: cover;
+  /* The drawing's own left third is empty, which is where the title goes. */
+  background-position: center right;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
+  opacity: 0.32;
+  z-index: -1;
+  pointer-events: none;
+}
+
 /* Heading and field on one row, lede on the row under the heading. The field
    sits on the heading's last line, so the two read as one row rather than a
    title with something floating beside it. */
