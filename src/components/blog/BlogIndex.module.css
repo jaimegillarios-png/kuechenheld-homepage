@@ -1,19 +1,67 @@
-/* Categories and search are the two ways into the same set, so they share a
-   row. Both persist on every index page, which is why they live in the
-   masthead rather than beside the featured post — that band is only on the
-   first page of /blog. */
-.controls {
+/* Heading and field on one row, lede on the row under the heading. The field
+   sits on the heading's last line, so the two read as one row rather than a
+   title with something floating beside it. */
+.headRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  column-gap: var(--space-8);
+}
+
+.headHeading {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.search {
+  grid-column: 2;
+  grid-row: 1;
+  width: 22rem;
+  max-width: 100%;
+}
+
+.headLede {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: var(--space-4);
+}
+
+/* The lead story straddles the band's edge, the same device the article page
+   uses behind its hero: two stops of the same flat colour on either side of
+   one line, so the ground changes once partway down the story instead of
+   drifting. It ties the index to the article page and stops the band being a
+   plain rectangle the eye slides off. */
+.featuredBand {
+  padding: 0 var(--layout-gutter);
+  background: linear-gradient(
+    var(--color-surface-warm) var(--hero-band-stop),
+    var(--color-surface) var(--hero-band-stop)
+  );
+}
+
+.featuredInner {
+  composes: container from "../../styles/shared.module.css";
+  padding-bottom: var(--space-8);
+}
+
+/* The grid's header: categories at the left, the count at the right, and a
+   hairline tying the pair to the cards below — the same hairline pagination
+   uses at the other end. */
+.bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
-  margin-top: var(--space-7);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-rule);
+  margin-bottom: var(--space-8);
 }
 
-.search {
+.count {
   flex: none;
-  width: 22rem;
-  max-width: 100%;
+  font-size: var(--font-size-label);
+  color: var(--color-text-meta);
+  white-space: nowrap;
 }
 
 .grid {
@@ -27,20 +75,40 @@
   margin-top: var(--space-9);
 }
 
-/* A live query replaces the grid, its pagination and the featured band. The
-   island sets the attribute; the page decides what it hides. */
+/* A live query replaces the lead story, the grid and its pagination. The
+   category row stays: it is still how you get somewhere else. The island sets
+   the attribute; the page decides what it hides. */
 :global(body[data-blog-search="active"]) .hideWhileSearching {
   display: none;
 }
 
 @media (max-width: 900px) {
-  .controls {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-4);
+  .featuredInner {
+    padding-bottom: var(--space-7);
+  }
+  /* Reading order on a narrow screen: title, lede, then the field. */
+  .headRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .headLede {
+    grid-row: 2;
   }
   .search {
+    grid-column: 1;
+    grid-row: 3;
     width: 100%;
+    margin-top: var(--space-5);
+  }
+  .featured {
+    margin-top: var(--space-8);
+  }
+  .bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+  .count {
+    order: -1;
   }
   .grid {
     grid-template-columns: repeat(2, 1fr);

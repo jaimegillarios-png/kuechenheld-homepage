@@ -39,6 +39,7 @@ const categories = await categoryLinks(null);
       posts={pageSlice(rest, 1)}
       featured={featured}
       categories={categories}
+      total={posts.length}
       page={1}
       totalPages={pageCount(rest.length)}
       hrefFor={pageHref("/blog")}

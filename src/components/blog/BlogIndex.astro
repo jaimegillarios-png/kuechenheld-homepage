@@ -14,15 +14,23 @@ import styles from "./BlogIndex.module.css";
  * The body of every index route: /blog, its numbered pages, and each
  * category and its pages. The four route files differ only in which posts
  * they hand over and how they build a page href.
+ *
+ * The lead story sits inside the masthead band rather than under it, so the
+ * top of the page reads as one composition — a front page — and the grid
+ * below is plainly everything else. The category row is that grid's own
+ * header, not a masthead control: it answers "what else is there", which is
+ * a question you ask after the lead, not before it.
  */
 interface Props {
   heading: string;
   lede?: string;
   /** The posts on this page, already sliced. */
   posts: PostSummary[];
-  /** Shown above the grid on the first page of /blog only. */
+  /** Shown inside the masthead on the first page of /blog only. */
   featured?: PostSummary | null;
   categories: CategoryLink[];
+  /** Every post in scope, for the count beside the category row. */
+  total: number;
   page: number;
   totalPages: number;
   hrefFor: (page: number) => string;
@@ -37,6 +45,7 @@ const {
   posts,
   featured = null,
   categories,
+  total,
   page,
   totalPages,
   hrefFor,
@@ -62,11 +71,15 @@ const byline = (post: PostSummary) => ({
 
 <Section rhythm="masthead" tone="warm">
   <Eyebrow>Blog</Eyebrow>
-  <Heading measure="wide" gap={lede ? "stack" : "none"}>{heading}</Heading>
-  {lede && <Lede measure="default">{lede}</Lede>}
 
-  <div class={styles.controls}>
-    <CategoryLinks items={categories} />
+  {/* The heading and the search share the band's top row, so the right half
+      carries the way in rather than sitting empty above a stranded field. The
+      lede takes the row below it — and on a narrow screen the three stack in
+      reading order, with the field last. */}
+  <div class={styles.headRow}>
+    <div class={styles.headHeading}>
+      <Heading measure="wide" gap="none">{heading}</Heading>
+    </div>
     <div class={styles.search}>
       <BlogSearch
         client:idle
@@ -76,31 +89,50 @@ const byline = (post: PostSummary) => ({
         scopeName={scopeName}
       />
     </div>
+    {
+      lede && (
+        <div class={styles.headLede}>
+          <Lede measure="default">{lede}</Lede>
+        </div>
+      )
+    }
   </div>
+
 </Section>
 
 {
   featured && (
-    <Section rhythm="lead" className={styles.hideWhileSearching}>
-      <FeaturedArticle
-        layout="split"
-        href={postHref(featured.slug)}
-        title={featured.title}
-        excerpt={featured.summary ?? ""}
-        meta={[
-          featured.categories[0]?.name,
-          featured.date && dateFormat.format(new Date(featured.date)),
-        ]
-          .filter(Boolean)
-          .join(" · ")}
-        src={featured.mainImage.src}
-        alt={featured.mainImage.alt}
-      />
-    </Section>
+    <div class={`${styles.featuredBand} ${styles.hideWhileSearching}`}>
+      <div class={styles.featuredInner}>
+        <FeaturedArticle
+          layout="split"
+          href={postHref(featured.slug)}
+          title={featured.title}
+          excerpt={featured.summary ?? ""}
+          meta={[
+            "Im Fokus",
+            featured.categories[0]?.name,
+            featured.date && dateFormat.format(new Date(featured.date)),
+          ]
+            .filter(Boolean)
+            .join(" · ")}
+          src={featured.mainImage.src}
+          alt={featured.mainImage.alt}
+        />
+      </div>
+    </div>
   )
 }
 
 <Section rhythm={featured ? "trail" : "section"}>
+  {/* The grid's own header: where else to look, and how much there is. */}
+  <div class={styles.bar}>
+    <CategoryLinks items={categories} />
+    <p class={styles.count}>
+      {total} {total === 1 ? "Beitrag" : "Beiträge"}
+    </p>
+  </div>
+
   {/* Search results land here, above the grid they stand in for. */}
   <div id="blog-results"></div>
 

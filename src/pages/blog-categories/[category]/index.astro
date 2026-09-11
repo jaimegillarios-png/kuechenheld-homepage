@@ -46,6 +46,7 @@ const categories = await categoryLinks(category!);
       heading={name}
       posts={pageSlice(posts, 1)}
       categories={categories}
+      total={posts.length}
       page={1}
       totalPages={pageCount(posts.length)}
       hrefFor={pageHref(`/blog-categories/${category}`)}
