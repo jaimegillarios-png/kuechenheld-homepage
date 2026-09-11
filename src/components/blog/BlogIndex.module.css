@@ -33,9 +33,12 @@
      it has no reason to stop where the colour does. */
   inset: 0 0 calc(-1 * var(--space-10)) 0;
   background-image: url("/images/kueche-strichzeichnung.png");
-  background-size: cover;
-  /* The drawing's own left third is empty, which is where the title goes. */
-  background-position: center right;
+  /* Width only. `cover` sized it against the pinned viewport box, and on a
+     window taller than the drawing's 5:4 that meant scaling up until the
+     height was filled and cropping the sides off — the drawing read as
+     zoomed. Full width and its own height keeps it whole. */
+  background-size: 100% auto;
+  background-position: top center;
   background-repeat: no-repeat;
   /* Pinned to the viewport, so the content scrolls over a ground that stays
      put. Both this and the colour behind it are then sized against the
