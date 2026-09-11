@@ -14,7 +14,7 @@ const DIST = process.argv[2] ?? "dist";
 // to be unreferenced; they must not survive to a real deploy.
 const HARNESS = new Set([
   "capture.js", "compare.js", "motion.js", "render.js", "rendercap.js",
-  "rendercmp.js", "reveal.js", "runcmp.js", "settle.js",
+  "rendercmp.js", "reveal.js", "runcmp.js", "settle.js", "cls.js",
 ]);
 
 async function walk(dir) {
@@ -30,17 +30,24 @@ async function walk(dir) {
 const files = await walk(DIST);
 const js = files.filter((f) => f.endsWith(".js"));
 const html = files.filter((f) => f.endsWith(".html"));
-const text = (
-  await Promise.all([...html, ...js].map((f) => readFile(f, "utf8")))
-).join("\n");
+const contents = new Map(
+  await Promise.all(
+    [...html, ...js].map(async (f) => [f, await readFile(f, "utf8")]),
+  ),
+);
 
 const unreferenced = [];
 for (const f of js) {
   const base = path.basename(f);
-  const refs = text.split(base).length - 1;
-  // A file always matches itself once when it is one of the scanned chunks.
-  const selfRef = js.includes(f) ? 1 : 0;
-  if (refs - selfRef <= 0) {
+  // Search every other file, never the candidate itself — a chunk that names
+  // itself would otherwise look self-referencing, and one referenced exactly
+  // once would look unreferenced.
+  let refs = 0;
+  for (const [other, text] of contents) {
+    if (other === f) continue;
+    refs += text.split(base).length - 1;
+  }
+  if (refs === 0) {
     unreferenced.push({ file: path.relative(DIST, f), bytes: (await stat(f)).size, harness: HARNESS.has(base) });
   }
 }

@@ -26,5 +26,8 @@ const { title, description, index = false } = Astro.props;
   </head>
   <body>
     <slot />
+    <script>
+      import "../scripts/motion-entry";
+    </script>
   </body>
 </html>

@@ -27,6 +27,7 @@ next-env.d.ts
 /public/reveal.js
 /public/runcmp.js
 /public/settle.js
+/public/cls.js
 
 # Astro build output
 /dist

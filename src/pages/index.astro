@@ -1,73 +1,49 @@
 ---
-// Phase 1 scaffold. Proves the shell: real tokens, real globals, the font and
-// its metric-adjusted fallback, and a static React component from src/. The
-// homepage itself is ported in Phase 2.
 import Base from "../layouts/Base.astro";
-import SectionHeader from "../components/ui/SectionHeader";
-import Section from "../components/ui/Section";
+
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import TrustStrip from "../components/TrustStrip";
+import Questionnaire from "../components/Questionnaire";
+import HowItWorks from "../components/HowItWorks";
+import Values from "../components/Values";
+import Discover from "../components/Discover";
+import Reviews from "../components/Reviews";
+import CustomerStories from "../components/CustomerStories";
+import Locations from "../components/Locations";
+import OfferCompare from "../components/OfferCompare";
+import Blog from "../components/Blog";
+import Faq from "../components/Faq";
+import CtaBand from "../components/CtaBand";
+import Footer from "../components/Footer";
+import { trustStrip } from "../lib/content";
 ---
 
-<Base title="Küchenheld — Astro scaffold">
+<Base
+  title="Küchenheld — Küche kaufen von zuhause aus"
+  description="Küche online kaufen vom Sofa aus oder vor Ort in einem unserer 8 Showrooms deutschlandweit. Kostenloses, unverbindliches Angebot mit Preisindikation."
+>
+  <a href="#fragebogen" class="skipLink">Zum Fragebogen springen</a>
+
+  {/* Islands. Everything else renders to HTML and ships no JS. */}
+  <Header client:load />
+
   <main id="main">
-      <Section rhythm="section">
-        <SectionHeader
-          eyebrow="Unsere Werte"
-          heading="Ihre Vorteile auf einen Blick"
-          lede="Eine Zeile Fließtext, die den Abschnitt einleitet und lang genug ist, um über mehrere Zeilen zu laufen."
-          measure="full"
-          ledeMeasure="default"
-          gaps={{ eyebrow: 4, heading: 4, lede: 5 }}
-        />
-      </Section>
-      <Section rhythm="section">
-        <SectionHeader
-          eyebrow="Unsere Werte"
-          heading="Ihre Vorteile auf einen Blick"
-          lede="Eine Zeile Fließtext, die den Abschnitt einleitet und lang genug ist, um über mehrere Zeilen zu laufen."
-          measure="full"
-          ledeMeasure="default"
-          gaps={{ eyebrow: 4, heading: 4, lede: 5 }}
-        />
-      </Section>
-      <Section rhythm="section">
-        <SectionHeader
-          eyebrow="Unsere Werte"
-          heading="Ihre Vorteile auf einen Blick"
-          lede="Eine Zeile Fließtext, die den Abschnitt einleitet und lang genug ist, um über mehrere Zeilen zu laufen."
-          measure="full"
-          ledeMeasure="default"
-          gaps={{ eyebrow: 4, heading: 4, lede: 5 }}
-        />
-      </Section>
-      <Section rhythm="section">
-        <SectionHeader
-          eyebrow="Unsere Werte"
-          heading="Ihre Vorteile auf einen Blick"
-          lede="Eine Zeile Fließtext, die den Abschnitt einleitet und lang genug ist, um über mehrere Zeilen zu laufen."
-          measure="full"
-          ledeMeasure="default"
-          gaps={{ eyebrow: 4, heading: 4, lede: 5 }}
-        />
-      </Section>
-      <Section rhythm="section">
-        <SectionHeader
-          eyebrow="Unsere Werte"
-          heading="Ihre Vorteile auf einen Blick"
-          lede="Eine Zeile Fließtext, die den Abschnitt einleitet und lang genug ist, um über mehrere Zeilen zu laufen."
-          measure="full"
-          ledeMeasure="default"
-          gaps={{ eyebrow: 4, heading: 4, lede: 5 }}
-        />
-      </Section>
-      <Section rhythm="section">
-        <SectionHeader
-          eyebrow="Unsere Werte"
-          heading="Ihre Vorteile auf einen Blick"
-          lede="Eine Zeile Fließtext, die den Abschnitt einleitet und lang genug ist, um über mehrere Zeilen zu laufen."
-          measure="full"
-          ledeMeasure="default"
-          gaps={{ eyebrow: 4, heading: 4, lede: 5 }}
-        />
-      </Section>
+    <Hero client:load>
+      <TrustStrip items={trustStrip} />
+    </Hero>
+    <Questionnaire client:visible />
+    <HowItWorks />
+    <Values />
+    <Discover client:visible />
+    <Reviews client:visible />
+    <CustomerStories client:visible />
+    <Locations />
+    <OfferCompare />
+    <Blog />
+    <Faq />
+    <CtaBand />
   </main>
+
+  <Footer />
 </Base>
