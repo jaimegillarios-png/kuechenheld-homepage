@@ -31,6 +31,9 @@
   min-width: 0;
   flex-wrap: wrap;
   font-size: var(--font-size-label);
+  /* The same step the overlay's nav items take — at this size, under this
+     much tracking, regular reads thin against the wordmark. */
+  font-weight: var(--font-weight-heading);
   letter-spacing: var(--tracking-nav);
   text-transform: uppercase;
 }
