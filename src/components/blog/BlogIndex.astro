@@ -26,8 +26,10 @@ interface Props {
   lede?: string;
   /** The posts on this page, already sliced. */
   posts: PostSummary[];
-  /** Shown inside the masthead on the first page of /blog only. */
+  /** The lead story, on the first page of an index only. */
   featured?: PostSummary | null;
+  /** The word above it. "Beliebt" on /blog; the category, on a category. */
+  featuredLabel?: string;
   categories: CategoryLink[];
   /** Every post in scope, for the count beside the category row. */
   total: number;
@@ -44,6 +46,7 @@ const {
   lede,
   posts,
   featured = null,
+  featuredLabel = "Beliebt",
   categories,
   total,
   page,
@@ -112,9 +115,7 @@ const byline = (post: PostSummary) => ({
           href={postHref(featured.slug)}
           title={featured.title}
           excerpt={featured.summary ?? ""}
-          meta={["Im Fokus", featured.categories[0]?.name]
-            .filter(Boolean)
-            .join(" · ")}
+          meta={featuredLabel}
           src={featured.mainImage.src}
           alt={featured.mainImage.alt}
           {...byline(featured)}

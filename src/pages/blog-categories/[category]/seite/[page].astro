@@ -11,6 +11,7 @@ import {
   pageCount,
   pageHref,
   pageSlice,
+  pickFeatured,
 } from "../../../../lib/blog/pages";
 import { isIndexable } from "../../../../lib/site";
 
@@ -19,7 +20,8 @@ export async function getStaticPaths() {
   const paths = [];
   for (const c of categories) {
     const posts = await blog.getPostsByCategory(c.slug);
-    for (const page of extraPages(posts.length)) {
+    const lead = pickFeatured(posts);
+    for (const page of extraPages(posts.filter((p) => p.slug !== lead?.slug).length)) {
       paths.push({
         params: { category: c.slug, page },
         props: { name: c.name },
@@ -33,6 +35,10 @@ const { category, page: pageParam } = Astro.params;
 const { name } = Astro.props;
 const page = Number(pageParam);
 const posts = await blog.getPostsByCategory(category!);
+// The lead story is on page 1, but it is out of the grid on every page, so
+// the slicing has to agree with it.
+const featured = pickFeatured(posts);
+const rest = posts.filter((p) => p.slug !== featured?.slug);
 const categories = await categoryLinks(category!);
 ---
 
@@ -44,11 +50,11 @@ const categories = await categoryLinks(category!);
   <main id="main">
     <BlogIndex
       heading={name}
-      posts={pageSlice(posts, page)}
+      posts={pageSlice(rest, page)}
       categories={categories}
       total={posts.length}
       page={page}
-      totalPages={pageCount(posts.length)}
+      totalPages={pageCount(rest.length)}
       hrefFor={pageHref(`/blog-categories/${category}`)}
       scope={category}
       scopeName={name}

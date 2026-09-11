@@ -10,6 +10,7 @@ import {
   pageCount,
   pageHref,
   pageSlice,
+  pickFeatured,
 } from "../../../lib/blog/pages";
 import { isIndexable } from "../../../lib/site";
 
@@ -29,6 +30,10 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 const { name } = Astro.props;
 const posts = await blog.getPostsByCategory(category!);
+// Same rule as /blog, scoped: the category's own featured post if it has one,
+// else its newest. That is what the live Webflow category pages show.
+const featured = pickFeatured(posts);
+const rest = posts.filter((p) => p.slug !== featured?.slug);
 const categories = await categoryLinks(category!);
 ---
 
@@ -44,11 +49,13 @@ const categories = await categoryLinks(category!);
   <main id="main">
     <BlogIndex
       heading={name}
-      posts={pageSlice(posts, 1)}
+      posts={pageSlice(rest, 1)}
+      featured={featured}
+      featuredLabel={name}
       categories={categories}
       total={posts.length}
       page={1}
-      totalPages={pageCount(posts.length)}
+      totalPages={pageCount(rest.length)}
       hrefFor={pageHref(`/blog-categories/${category}`)}
       scope={category}
       scopeName={name}
