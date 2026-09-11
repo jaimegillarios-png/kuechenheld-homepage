@@ -1,4 +1,5 @@
 import MaybeLink from "../MaybeLink";
+import Byline, { type BylineAuthor } from "./Byline";
 import styles from "./PostCard.module.css";
 
 type Props = {
@@ -7,8 +8,8 @@ type Props = {
   src: string;
   alt: string;
   href?: string | null;
-  /** Absent on the one imported post with no author. */
-  author?: { name: string; avatar?: string } | null;
+  /** Absent on a post with no author recorded. */
+  author?: BylineAuthor | null;
   /** ISO date, already formatted for display by the caller. */
   date?: string | null;
   dateTime?: string | null;
@@ -62,27 +63,12 @@ export default function PostCard({
       <Title className={styles.title}>{title}</Title>
       {excerpt && <p className={styles.excerpt}>{excerpt}</p>}
 
-      {/* A post with no author keeps its date rather than showing a
-          placeholder portrait for someone who is not recorded. */}
-      <div className={styles.byline}>
-        {author?.avatar && (
-          <img
-            src={author.avatar}
-            alt=""
-            width={64}
-            height={64}
-            loading="lazy"
-            className={styles.avatar}
-          />
-        )}
-        {author?.name && <span className={styles.author}>{author.name}</span>}
-        {author?.name && date && <span className={styles.dot}>·</span>}
-        {date && (
-          <time dateTime={dateTime ?? undefined} className={styles.date}>
-            {date}
-          </time>
-        )}
-      </div>
+      <Byline
+        author={author}
+        date={date}
+        dateTime={dateTime}
+        className={styles.byline}
+      />
     </MaybeLink>
   );
 }

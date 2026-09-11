@@ -114,15 +114,12 @@ const byline = (post: PostSummary) => ({
           href={postHref(featured.slug)}
           title={featured.title}
           excerpt={featured.summary ?? ""}
-          meta={[
-            "Im Fokus",
-            featured.categories[0]?.name,
-            featured.date && dateFormat.format(new Date(featured.date)),
-          ]
+          meta={["Im Fokus", featured.categories[0]?.name]
             .filter(Boolean)
             .join(" · ")}
           src={featured.mainImage.src}
           alt={featured.mainImage.alt}
+          {...byline(featured)}
         />
       </div>
     </div>

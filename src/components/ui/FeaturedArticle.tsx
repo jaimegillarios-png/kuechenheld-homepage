@@ -1,4 +1,5 @@
 import MaybeLink from "../MaybeLink";
+import Byline, { type BylineAuthor } from "./Byline";
 import styles from "./FeaturedArticle.module.css";
 
 type Props = {
@@ -21,6 +22,13 @@ type Props = {
    * page's own `h1`.
    */
   as?: "h2" | "h3";
+  /**
+   * The attribution, when the caller has one. The homepage's blog band reads
+   * from static copy and passes none, so it renders as it always did.
+   */
+  author?: BylineAuthor | null;
+  date?: string | null;
+  dateTime?: string | null;
 };
 
 export default function FeaturedArticle({
@@ -32,6 +40,9 @@ export default function FeaturedArticle({
   href,
   layout = "stack",
   as: Title = "h3",
+  author,
+  date,
+  dateTime,
 }: Props) {
   return (
     <MaybeLink
@@ -54,6 +65,12 @@ export default function FeaturedArticle({
       <div className={styles.meta}>{meta}</div>
       <Title className={styles.title}>{title}</Title>
       <p className={styles.excerpt}>{excerpt}</p>
+      <Byline
+        author={author}
+        date={date}
+        dateTime={dateTime}
+        className={styles.byline}
+      />
     </MaybeLink>
   );
 }

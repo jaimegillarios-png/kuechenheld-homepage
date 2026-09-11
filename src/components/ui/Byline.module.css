@@ -1,0 +1,28 @@
+.byline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-label);
+  color: var(--color-text-meta);
+}
+
+.avatar {
+  width: var(--size-avatar-sm);
+  height: var(--size-avatar-sm);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  flex: none;
+}
+
+.author {
+  color: var(--color-text);
+}
+
+.dot {
+  color: var(--color-text-faint);
+}
+
+.date {
+  white-space: nowrap;
+}
