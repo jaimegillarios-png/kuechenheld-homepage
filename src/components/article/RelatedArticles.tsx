@@ -32,7 +32,7 @@ export default function RelatedArticles({
             key={post.slug}
             href={`/blog/${post.slug}`}
             title={post.title}
-            excerpt={post.summary}
+            excerpt={post.summary ?? ""}
             meta={[
               post.author?.name,
               post.date && dateFormat.format(new Date(post.date)),

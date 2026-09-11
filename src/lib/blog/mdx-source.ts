@@ -119,7 +119,13 @@ export const mdxSource: BlogSource = {
         mdxOptions: { remarkPlugins: [remarkGfm] },
       },
     });
-    return { ...toSummary(source), body: content } satisfies Post;
+    // `BlogSource` hands the body back as something the page calls, not as an
+    // already-rendered tree — the seam has to describe an Astro `Content` and
+    // a CMS's renderer just as well as it does an RSC element.
+    return {
+      ...toSummary(source),
+      body: { Content: () => content },
+    } satisfies Post;
   },
 
   async getAllPosts() {

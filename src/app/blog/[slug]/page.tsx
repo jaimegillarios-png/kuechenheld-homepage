@@ -1,3 +1,4 @@
+import type { ComponentType } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ArticleBody from "@/components/article/ArticleBody";
@@ -27,14 +28,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   // either way, the same as the homepage.
   const index = isIndexable && post.seo.index;
   return {
-    title: post.seo.title,
-    description: post.seo.description,
+    title: post.seo.title ?? post.title,
+    description: post.seo.description ?? undefined,
     robots: index ? undefined : { index: false, follow: false, nocache: true },
     openGraph: {
       type: "article",
       locale: "de_DE",
-      title: post.seo.title,
-      description: post.seo.description,
+      title: post.seo.title ?? post.title,
+      description: post.seo.description ?? undefined,
       publishedTime: post.date ?? undefined,
       modifiedTime: post.dateUpdated,
       images: [{ url: post.mainImage.src, alt: post.mainImage.alt }],
@@ -47,6 +48,9 @@ export default async function BlogPostPage({ params }: Params) {
   const post = await blog.getPost(slug);
   if (!post) notFound();
   const related = await blog.getRelatedPosts(slug);
+  // `RichText` names no framework — that is the point of the seam — so the
+  // React page narrows it here rather than the type reaching back into React.
+  const PostBody = post.body.Content as ComponentType;
 
   return (
     <>
@@ -66,7 +70,9 @@ export default async function BlogPostPage({ params }: Params) {
           </Section>
           <ArticleHeroImage image={post.mainImage} />
           <Section rhythm="trail">
-            <ArticleBody>{post.body}</ArticleBody>
+            <ArticleBody>
+              <PostBody />
+            </ArticleBody>
           </Section>
         </article>
 

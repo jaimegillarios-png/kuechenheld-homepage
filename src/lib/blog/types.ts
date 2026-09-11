@@ -4,7 +4,14 @@
  * and a CMS would be another. The template only ever sees these types.
  */
 
-import type { ReactNode } from "react";
+/**
+ * The source's rendered rich text. The template renders it and never inspects
+ * it; a CMS adapter would put its own renderer here. Described structurally so
+ * this file names no framework.
+ */
+export type RichText = {
+  Content: (props: Record<string, unknown>) => unknown;
+};
 
 export type Image = { src: string; alt: string };
 
@@ -25,8 +32,9 @@ export type Category = {
 export type Breadcrumb = { name: string; href: string | null };
 
 export type Seo = {
-  title: string;
-  description: string;
+  /** Null where the source has no override; the page falls back to the title. */
+  title: string | null;
+  description: string | null;
   /** False keeps the post out of search results — drafts, or thin pages. */
   index: boolean;
 };
@@ -38,7 +46,8 @@ export type Seo = {
 export type PostSource = {
   title: string;
   slug: string;
-  summary: string;
+  /** One imported post has no summary. Null rather than an invented one. */
+  summary: string | null;
   /** Raw rich text, in whatever the source speaks. MDX here. */
   body: string;
   author: string | null;
@@ -59,7 +68,7 @@ export type Post = Omit<
   PostSource,
   "body" | "author" | "categories" | "readingTime" | "breadcrumbs"
 > & {
-  body: ReactNode;
+  body: RichText;
   author: Author | null;
   categories: Category[];
   readingTime: number;

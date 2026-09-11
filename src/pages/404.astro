@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+---
+
+<Base title="Seite nicht gefunden — Küchenheld">
+  <Header client:load />
+
+  <main id="main" class="notFound">
+    <p class="code">404</p>
+    <h1 class="title">Diese Seite gibt es nicht</h1>
+    <p class="lede">
+      Der Link ist vielleicht veraltet oder die Seite ist umgezogen.
+    </p>
+    <a class="back" href="/">Zur Startseite</a>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .notFound {
+    display: grid;
+    justify-items: start;
+    align-content: center;
+    gap: var(--space-3);
+    /* The header is fixed; this clears it and still fills the viewport. */
+    min-height: 70vh;
+    padding: var(--space-10) var(--space-fluid-16-32);
+    max-width: var(--layout-content-max);
+    margin-inline: auto;
+  }
+
+  .code {
+    font-size: var(--font-size-eyebrow);
+    font-weight: var(--font-weight-strong);
+    letter-spacing: var(--tracking-4);
+    text-transform: uppercase;
+    color: var(--color-text-meta);
+  }
+
+  .title {
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-heading);
+    line-height: var(--leading-title);
+    color: var(--color-text);
+  }
+
+  .lede {
+    font-size: var(--font-size-body);
+    line-height: var(--leading-body);
+    color: var(--color-text-body);
+  }
+
+  .back {
+    margin-top: var(--space-2);
+    font-size: var(--font-size-label);
+    font-weight: var(--font-weight-strong);
+    color: var(--color-text);
+    text-decoration-color: var(--color-rule-link);
+    text-underline-offset: 0.25em;
+  }
+</style>

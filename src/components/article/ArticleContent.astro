@@ -1,0 +1,22 @@
+---
+import type { RichText } from "../../lib/blog/types";
+import ArticleBody from "./ArticleBody";
+import { mdxComponents } from "./mdxComponents";
+
+/**
+ * The one place a post body is bound to its component mapping. Everything a
+ * post can write that needs more than an element selector — the table's scroll
+ * wrapper, `CtaButton`, `Stat` — arrives through `mdxComponents`, and a body
+ * rendered without it loses them silently. Kept in a single component so the
+ * fixture probe exercises the same binding the real pages use.
+ */
+interface Props {
+  body: RichText;
+}
+
+const { Content } = Astro.props.body;
+---
+
+<ArticleBody>
+  <Content components={mdxComponents} />
+</ArticleBody>

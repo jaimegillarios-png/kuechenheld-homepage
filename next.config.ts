@@ -8,6 +8,10 @@ const basePath = process.env.BASE_PATH || "";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Astro's pages live in `src/pages`, which Next reads as a Pages Router.
+  // Narrowing the extension list to the one the App Router actually uses keeps
+  // Next out of them for the rest of the migration. Removed with Next itself.
+  pageExtensions: ["tsx"],
   ...(staticExport ? { output: "export" as const } : {}),
   ...(basePath ? { basePath, assetPrefix: basePath } : {}),
   // Exposed so `asset()` can prefix /public paths in the browser too.
