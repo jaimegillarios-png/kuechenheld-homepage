@@ -60,7 +60,13 @@ export type PostSource = {
   readingTime?: number;
   breadcrumbs?: Breadcrumb[];
   seo: Seo;
+  /** Editorial placement — where a post shows, not what it says. */
   featured: boolean;
+  showInHomeSlider: boolean;
+  showInUeberUns: boolean;
+  showOnKuechenplanung: boolean;
+  /** Orders a listing. Null only if the CMS never set one. */
+  priority: number | null;
 };
 
 /** What the page reads: the same post with its references joined. */

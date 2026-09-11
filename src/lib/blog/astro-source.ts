@@ -66,6 +66,10 @@ async function toSummary(entry: PostEntry): Promise<PostSummary> {
         ],
     seo: d.seo,
     featured: d.featured,
+    showInHomeSlider: d.showInHomeSlider,
+    showInUeberUns: d.showInUeberUns,
+    showOnKuechenplanung: d.showOnKuechenplanung,
+    priority: d.priority,
   };
 }
 

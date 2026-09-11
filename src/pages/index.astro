@@ -17,6 +17,40 @@ import Faq from "../components/Faq";
 import CtaBand from "../components/CtaBand";
 import Footer from "../components/Footer";
 import { trustStrip } from "../lib/content";
+import { blog } from "../lib/blog";
+import { asset } from "../lib/site";
+import type { PostSummary } from "../lib/blog";
+
+/**
+ * The blog band reads from the CMS now, not from the static mirror in
+ * `content.ts`. `showInHomeSlider` is the field the live site uses to decide
+ * what appears here; the lead is whichever of those is `featured`.
+ */
+const dateFormat = new Intl.DateTimeFormat("de-DE", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+});
+
+const toCard = (post: PostSummary) => ({
+  title: post.title,
+  excerpt: post.summary ?? "",
+  meta: [
+    post.author?.name,
+    post.date && dateFormat.format(new Date(post.date)),
+    `${post.readingTime} Min.`,
+  ]
+    .filter(Boolean)
+    .join(" · "),
+  src: post.thumbnailImage.src,
+  alt: post.thumbnailImage.alt,
+  href: asset(`/blog/${post.slug}`),
+});
+
+const slider = (await blog.getAllPosts()).filter((p) => p.showInHomeSlider);
+const homeFeatured = slider.find((p) => p.featured) ?? slider[0];
+// Newest first, the same order the rest of the blog uses.
+const homePosts = slider.filter((p) => p.slug !== homeFeatured?.slug).slice(0, 5);
 ---
 
 <Base
@@ -43,7 +77,10 @@ import { trustStrip } from "../lib/content";
     <CustomerStories client:visible />
     <Locations />
     <OfferCompare />
-    <Blog />
+    <Blog
+      featured={homeFeatured && toCard(homeFeatured)}
+      posts={homePosts.map(toCard)}
+    />
     <Faq client:visible />
     <CtaBand />
   </main>

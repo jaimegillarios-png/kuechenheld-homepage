@@ -50,7 +50,15 @@ const postSchema = z.object({
     description: z.string().nullable().default(null),
     index: z.boolean().default(true),
   }),
+  /* Editorial placement. None of these is derivable from a published page —
+     they decide where a post appears, not what it says — so they come from
+     the CMS and have to be carried explicitly. `priority` orders a listing;
+     Webflow has it set on every imported post, 89 to 300. */
   featured: z.boolean().default(false),
+  showInHomeSlider: z.boolean().default(false),
+  showInUeberUns: z.boolean().default(false),
+  showOnKuechenplanung: z.boolean().default(false),
+  priority: z.number().nullable().default(null),
 });
 
 const posts = defineCollection({
