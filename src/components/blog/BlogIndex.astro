@@ -69,7 +69,7 @@ const byline = (post: PostSummary) => ({
 });
 ---
 
-<Section rhythm="masthead" tone="warm">
+<Section tone="warm">
   <Eyebrow>Blog</Eyebrow>
 
   {/* The heading and the search share the band's top row, so the right half
@@ -102,12 +102,10 @@ const byline = (post: PostSummary) => ({
     }
   </div>
 
-</Section>
 
-{
-  featured && (
-    <div class={`${styles.featuredBand} ${styles.hideWhileSearching}`}>
-      <div class={styles.featuredInner}>
+  {
+    featured && (
+      <div class={`${styles.featured} ${styles.hideWhileSearching}`}>
         <FeaturedArticle
           as="h2"
           layout="split"
@@ -122,11 +120,11 @@ const byline = (post: PostSummary) => ({
           {...byline(featured)}
         />
       </div>
-    </div>
-  )
-}
+    )
+  }
+</Section>
 
-<Section rhythm={featured ? "trail" : "section"}>
+<Section>
   {/* The grid's own header: where else to look, and how much there is. */}
   <div class={styles.bar}>
     <CategoryLinks items={categories} />

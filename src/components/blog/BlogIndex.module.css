@@ -26,22 +26,12 @@
   margin-top: var(--space-4);
 }
 
-/* The lead story straddles the band's edge, the same device the article page
-   uses behind its hero: two stops of the same flat colour on either side of
-   one line, so the ground changes once partway down the story instead of
-   drifting. It ties the index to the article page and stops the band being a
-   plain rectangle the eye slides off. */
-.featuredBand {
-  padding: 0 var(--layout-gutter);
-  background: linear-gradient(
-    var(--color-surface-warm) var(--hero-band-stop),
-    var(--color-surface) var(--hero-band-stop)
-  );
-}
-
-.featuredInner {
-  composes: container from "../../styles/shared.module.css";
-  padding-bottom: var(--space-8);
+/* The lead story closes the warm band rather than straddling its edge: the
+   ground covers the whole top section and changes once, where the section
+   does. The gap above it is the head-to-body step, so the head and the story
+   read as one composition. */
+.featured {
+  margin-top: var(--gap-head-body);
 }
 
 /* The grid's header: categories at the left, the count at the right, and a
@@ -83,9 +73,6 @@
 }
 
 @media (max-width: 900px) {
-  .featuredInner {
-    padding-bottom: var(--space-7);
-  }
   /* Reading order on a narrow screen: title, lede, then the field. */
   .headRow {
     grid-template-columns: minmax(0, 1fr);
