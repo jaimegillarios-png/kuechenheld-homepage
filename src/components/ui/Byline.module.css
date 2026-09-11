@@ -6,6 +6,17 @@
   color: var(--color-text-meta);
 }
 
+.bylineInverse {
+  composes: byline;
+  color: var(--color-text-inverse-meta);
+}
+.bylineInverse .author {
+  color: var(--color-text-inverse);
+}
+.bylineInverse .dot {
+  color: var(--color-text-inverse-meta);
+}
+
 .avatar {
   width: var(--size-avatar-sm);
   height: var(--size-avatar-sm);

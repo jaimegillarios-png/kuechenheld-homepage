@@ -110,24 +110,29 @@ const byline = (post: PostSummary) => ({
   </div>
 
 
-  {
-    featured && (
-      <div class={`${styles.featured} ${styles.hideWhileSearching}`}>
-        <FeaturedArticle
-          as="h2"
-          layout="split"
-          href={postHref(featured.slug)}
-          title={featured.title}
-          excerpt={featured.summary ?? ""}
-          meta={featuredLabel}
-          src={featured.mainImage.src}
-          alt={featured.mainImage.alt}
-          {...byline(featured)}
-        />
-      </div>
-    )
-  }
 </Section>
+
+{
+  featured && (
+    <Section
+      rhythm="flush"
+      contained={false}
+      className={styles.hideWhileSearching}
+    >
+      <FeaturedArticle
+        as="h2"
+        layout="feature"
+        href={postHref(featured.slug)}
+        title={featured.title}
+        excerpt={featured.summary ?? ""}
+        meta={featuredLabel}
+        src={featured.mainImage.src}
+        alt={featured.mainImage.alt}
+        {...byline(featured)}
+      />
+    </Section>
+  )
+}
 
 <Section>
   {/* The grid's own header: where else to look, and how much there is. */}

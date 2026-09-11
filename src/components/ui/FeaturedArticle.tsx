@@ -12,10 +12,11 @@ type Props = {
   /**
    * `stack` puts the text under the image and is sized for a half-width
    * column — the homepage's blog band. `split` sets image and text side by
-   * side, for the blog index, where the stack at full content width would
-   * give one post a whole viewport.
+   * side. `feature` is the blog index's lead: a full-bleed band on the
+   * inverse ground, text held to the container at the left and the
+   * photograph running off the right edge. It needs its section uncontained.
    */
-  layout?: "stack" | "split";
+  layout?: "stack" | "split" | "feature";
   /**
    * The element, not the size. `h3` under a section heading on a page that
    * states its subject elsewhere; `h2` when this is the lead item under a
@@ -49,7 +50,13 @@ export default function FeaturedArticle({
       href={href}
       data-zoomparent
       data-reveal
-      className={layout === "split" ? styles.split : styles.featured}
+      className={
+        layout === "feature"
+          ? styles.feature
+          : layout === "split"
+            ? styles.split
+            : styles.featured
+      }
     >
       <div data-zoom className={styles.frame}>
         <img
@@ -65,12 +72,18 @@ export default function FeaturedArticle({
       <div className={styles.meta}>{meta}</div>
       <Title className={styles.title}>{title}</Title>
       <p className={styles.excerpt}>{excerpt}</p>
-      <Byline
-        author={author}
-        date={date}
-        dateTime={dateTime}
-        className={styles.byline}
-      />
+      <div className={styles.foot}>
+        <Byline
+          author={author}
+          date={date}
+          dateTime={dateTime}
+          tone={layout === "feature" ? "inverse" : "light"}
+          className={styles.byline}
+        />
+        {layout === "feature" && (
+          <span className={styles.cue}>Beitrag lesen &rarr;</span>
+        )}
+      </div>
     </MaybeLink>
   );
 }
