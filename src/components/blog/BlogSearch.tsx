@@ -179,6 +179,7 @@ export default function BlogSearch({
                 {results.map((entry) => (
                   <PostCard
                     key={entry.slug}
+                    as="h2"
                     href={`${postHrefBase}${entry.slug}`}
                     title={entry.title}
                     excerpt={entry.summary ?? ""}

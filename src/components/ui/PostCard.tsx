@@ -12,6 +12,11 @@ type Props = {
   /** ISO date, already formatted for display by the caller. */
   date?: string | null;
   dateTime?: string | null;
+  /**
+   * The element, not the size. `h3` under a section heading; `h2` in a grid
+   * that sits directly under a page's own `h1`.
+   */
+  as?: "h2" | "h3";
 };
 
 /**
@@ -33,6 +38,7 @@ export default function PostCard({
   author,
   date,
   dateTime,
+  as: Title = "h3",
 }: Props) {
   return (
     <MaybeLink
@@ -53,7 +59,7 @@ export default function PostCard({
         />
       </div>
 
-      <h3 className={styles.title}>{title}</h3>
+      <Title className={styles.title}>{title}</Title>
       {excerpt && <p className={styles.excerpt}>{excerpt}</p>}
 
       {/* A post with no author keeps its date rather than showing a

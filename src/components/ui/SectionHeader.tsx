@@ -64,16 +64,24 @@ export function Heading({
   /** `stack` when a lede follows; `none` when the heading ends the head. */
   gap = "stack",
   hyphenate,
+  /**
+   * The element, not the size — the size comes from the class either way.
+   * `h2` is right for a section inside a page that already states its subject
+   * somewhere else. A page whose own title this is passes `h1`; an index has
+   * no hero to supply one.
+   */
+  as: Tag = "h2",
   className,
 }: {
   children: ReactNode;
   measure?: HeadingMeasure;
   gap?: "stack" | "none";
   hyphenate?: boolean;
+  as?: "h1" | "h2";
   className?: string;
 }) {
   return (
-    <h2
+    <Tag
       className={cx(
         styles.heading,
         HEADING_MEASURE[measure],
@@ -84,7 +92,7 @@ export function Heading({
       data-reveal="mask"
     >
       {children}
-    </h2>
+    </Tag>
   );
 }
 

@@ -31,6 +31,11 @@ const rendered = await render(entry);
 
 <Base title={`Fixture — ${entry.data.title}`}>
   <main id="main">
+    {/* The fixture body starts at h2, as a post body does. The page needs a
+        subject of its own so the probe is not the one page without an h1. */}
+    <Section rhythm="masthead">
+      <h1>{entry.data.title}</h1>
+    </Section>
     <Section rhythm="trail">
       <ArticleContent body={{ Content: rendered.Content }} />
     </Section>

@@ -15,6 +15,12 @@ type Props = {
    * give one post a whole viewport.
    */
   layout?: "stack" | "split";
+  /**
+   * The element, not the size. `h3` under a section heading on a page that
+   * states its subject elsewhere; `h2` when this is the lead item under a
+   * page's own `h1`.
+   */
+  as?: "h2" | "h3";
 };
 
 export default function FeaturedArticle({
@@ -25,6 +31,7 @@ export default function FeaturedArticle({
   alt,
   href,
   layout = "stack",
+  as: Title = "h3",
 }: Props) {
   return (
     <MaybeLink
@@ -45,7 +52,7 @@ export default function FeaturedArticle({
         />
       </div>
       <div className={styles.meta}>{meta}</div>
-      <h3 className={styles.title}>{title}</h3>
+      <Title className={styles.title}>{title}</Title>
       <p className={styles.excerpt}>{excerpt}</p>
     </MaybeLink>
   );

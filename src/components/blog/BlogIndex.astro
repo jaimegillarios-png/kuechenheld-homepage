@@ -78,7 +78,8 @@ const byline = (post: PostSummary) => ({
       reading order, with the field last. */}
   <div class={styles.headRow}>
     <div class={styles.headHeading}>
-      <Heading measure="wide" gap="none">{heading}</Heading>
+      {/* The index states its own subject; there is no hero to do it. */}
+      <Heading as="h1" measure="wide" gap="none">{heading}</Heading>
     </div>
     <div class={styles.search}>
       <BlogSearch
@@ -105,6 +106,7 @@ const byline = (post: PostSummary) => ({
     <div class={`${styles.featuredBand} ${styles.hideWhileSearching}`}>
       <div class={styles.featuredInner}>
         <FeaturedArticle
+          as="h2"
           layout="split"
           href={postHref(featured.slug)}
           title={featured.title}
@@ -141,6 +143,7 @@ const byline = (post: PostSummary) => ({
       {
         posts.map((post) => (
           <PostCard
+            as="h2"
             href={postHref(post.slug)}
             title={post.title}
             excerpt={post.summary ?? ""}
