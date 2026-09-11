@@ -1,4 +1,3 @@
-import Image from "next/image";
 import MaybeLink from "../MaybeLink";
 import styles from "./ArticleRow.module.css";
 
@@ -30,7 +29,7 @@ export default function ArticleRow({
       className={first ? styles.first : styles.row}
     >
       <div data-zoom className={styles.thumbFrame}>
-        <Image
+        <img
           src={src}
           alt={alt}
           width={352}

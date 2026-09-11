@@ -29,22 +29,24 @@ jobs:
 
       - run: npm ci
 
-      - name: Build static export
+      - name: Build
         env:
-          # Project sites are served from /<repo>, and Pages has no image
-          # optimizer. SITE_INDEXABLE stays unset so the build keeps its
-          # noindex tag and `Disallow: /` robots.txt.
-          STATIC_EXPORT: "true"
+          # Project sites are served from /<repo>. SITE_INDEXABLE stays unset
+          # so the build keeps its noindex tag and `Disallow: /` robots.txt.
           BASE_PATH: /kuechenheld-homepage
         run: npm run build
 
-      # Stops Pages from treating _next/ as Jekyll source.
-      - run: touch out/.nojekyll
+      # An island's runtime shipping unreferenced is invisible in a deploy;
+      # the build is the only place it is cheap to catch.
+      - run: npm run check:shipped-js
+
+      # Stops Pages from treating _astro/ as Jekyll source.
+      - run: touch dist/.nojekyll
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: dist
 
   deploy:
     needs: build

@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import AnchorLink from "../AnchorLink";
 import MaybeLink from "../MaybeLink";
 import styles from "./Button.module.css";
 
@@ -47,13 +46,6 @@ export default function Button({
     .filter(Boolean)
     .join(" ");
 
-  if (href?.startsWith("#")) {
-    return (
-      <AnchorLink href={href} className={classes} onClick={onClick} {...rest}>
-        {children}
-      </AnchorLink>
-    );
-  }
   if (href !== undefined) {
     return (
       <MaybeLink href={href} className={classes} {...rest}>

@@ -1,0 +1,26 @@
+/**
+ * Figtree, and the metric-adjusted fallback that stands in until it loads.
+ *
+ * next/font generated that fallback automatically; nothing in Astro does, and
+ * without it the first paint is laid out in Arial's metrics and then reflows
+ * when the webfont arrives. The override values below are next/font's own
+ * computed output for this typeface, reproduced exactly so first paint is
+ * unchanged: Arial scaled to 100.72% matches Figtree's average character
+ * width, and the ascent and descent overrides match its vertical metrics.
+ *
+ * `--font-figtree` is declared here because next/font used to inject it onto
+ * <html>. tokens.css never defined it and still doesn't.
+ */
+
+@font-face {
+  font-family: "Figtree Fallback";
+  src: local("Arial");
+  ascent-override: 94.32%;
+  descent-override: 24.82%;
+  line-gap-override: 0%;
+  size-adjust: 100.72%;
+}
+
+:root {
+  --font-figtree: "Figtree Variable", "Figtree Fallback";
+}

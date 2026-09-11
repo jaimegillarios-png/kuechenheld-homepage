@@ -1,0 +1,54 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Section from "../../components/ui/Section";
+import ArticleHeader, {
+  ArticleHeroImage,
+} from "../../components/article/ArticleHeader";
+import ArticleContent from "../../components/article/ArticleContent.astro";
+import RelatedArticles from "../../components/article/RelatedArticles";
+import { allSlugs, blog } from "../../lib/blog";
+import { isIndexable } from "../../lib/site";
+import styles from "./_post.module.css";
+
+export async function getStaticPaths() {
+  const slugs = await allSlugs();
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const post = await blog.getPost(slug!);
+if (!post) return Astro.redirect("/404");
+const related = await blog.getRelatedPosts(slug!);
+
+// A post may ask not to be indexed; a non-indexable deployment overrules it
+// either way, the same as the homepage.
+const index = isIndexable && post.seo.index;
+---
+
+<Base
+  title={post.seo.title ?? post.title}
+  description={post.seo.description ?? undefined}
+  index={index}
+>
+  <a href="#main" class="skipLink">Zum Inhalt springen</a>
+
+  <Header client:load />
+
+  <main id="main">
+    <article class={styles.article}>
+      <Section rhythm="masthead" tone="warm">
+        <ArticleHeader post={post} client:visible />
+      </Section>
+      <ArticleHeroImage image={post.mainImage} />
+      <Section rhythm="trail">
+        <ArticleContent body={post.body} />
+      </Section>
+    </article>
+
+    <RelatedArticles posts={related} tone="warm" />
+  </main>
+
+  <Footer client:visible />
+</Base>

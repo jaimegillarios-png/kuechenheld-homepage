@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import AnchorLink from "./AnchorLink";
 import Button from "./ui/Button";
 import { heroSlides } from "@/lib/content";
 import { prefersReducedMotion } from "@/lib/motion";
@@ -133,9 +131,9 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
 
           <div className={styles.ctas}>
             <Button href="#fragebogen">Küchenwünsche angeben</Button>
-            <AnchorLink href="#standorte" data-ul2 className={styles.secondary}>
+            <a href="#standorte" data-ul2 className={styles.secondary}>
               Showrooms ansehen
-            </AnchorLink>
+            </a>
           </div>
         </div>
 
@@ -163,12 +161,11 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
                     : undefined
                 }
               >
-                <Image
+                <img
                   src={slide.src}
                   alt={slide.alt}
-                  fill
                   sizes="(max-width: 560px) 100vw, (max-width: 900px) 100vw, 50vw"
-                  priority={i === 0}
+                  loading={i === 0 ? "eager" : "lazy"}
                   className={styles.photo}
                 />
                 <div

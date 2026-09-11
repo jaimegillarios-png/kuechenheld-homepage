@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { steps } from "@/lib/content";
 import { asset } from "@/lib/site";
 import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
@@ -14,11 +13,11 @@ export default function HowItWorks() {
       mediaMinHeightNarrow={360}
       contentAlign="top"
       media={
-        <Image
+        <img
           src={asset("/images/planung-eiche-insel.png")}
           alt="Küche mit Eiche-Insel und hellen Fronten"
-          fill
           sizes="(max-width: 900px) 100vw, 50vw"
+          loading="lazy"
           data-parallax
           data-reveal="wipe"
           className={styles.photo}

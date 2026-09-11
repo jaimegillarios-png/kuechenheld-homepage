@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ctaBandImage } from "@/lib/content";
 import Button from "./ui/Button";
 import { Eyebrow, Heading, Lede } from "./ui/SectionHeader";
@@ -32,11 +31,11 @@ export default function CtaBand({
       mediaMinHeight={560}
       mediaMinHeightNarrow={320}
       media={
-        <Image
+        <img
           src={image.src}
           alt={image.alt}
-          fill
           sizes="(max-width: 900px) 100vw, 50vw"
+          loading="lazy"
           data-parallax
           data-reveal="wipe"
           className={styles.photo}

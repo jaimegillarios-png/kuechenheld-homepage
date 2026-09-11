@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Section from "../../components/ui/Section";
+import ArticleContent from "../../components/article/ArticleContent.astro";
+
+/**
+ * Renders the prose fixtures, and nothing else. The imported corpus contains
+ * no table, no `hr` and no `Stat`, so the only way to prove those still render
+ * is to render a body that uses them.
+ *
+ * Off by default so fixtures never reach a deployment: build with
+ * `BUILD_FIXTURES=true npx astro build` to get `/probe/<fixture>/`.
+ *
+ * `getCollection` is allowed here — this page is a probe of the content layer
+ * itself, not a consumer of the blog. Everything user-facing goes through
+ * `BlogSource`.
+ */
+export async function getStaticPaths() {
+  if (import.meta.env.BUILD_FIXTURES !== "true") return [];
+  const entries = await getCollection("fixtures");
+  return entries.map((entry) => ({
+    params: { fixture: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const rendered = await render(entry);
+---
+
+<Base title={`Fixture — ${entry.data.title}`}>
+  <main id="main">
+    <Section rhythm="trail">
+      <ArticleContent body={{ Content: rendered.Content }} />
+    </Section>
+  </main>
+</Base>

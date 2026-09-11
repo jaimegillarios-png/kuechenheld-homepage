@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import TrustStrip from "../components/TrustStrip";
+import Questionnaire from "../components/Questionnaire";
+import HowItWorks from "../components/HowItWorks";
+import Values from "../components/Values";
+import Discover from "../components/Discover";
+import Reviews from "../components/Reviews";
+import CustomerStories from "../components/CustomerStories";
+import Locations from "../components/Locations";
+import OfferCompare from "../components/OfferCompare";
+import Blog from "../components/Blog";
+import Faq from "../components/Faq";
+import CtaBand from "../components/CtaBand";
+import Footer from "../components/Footer";
+import { trustStrip } from "../lib/content";
+---
+
+<Base
+  title="Küchenheld — Küche kaufen von zuhause aus"
+  description="Küche online kaufen vom Sofa aus oder vor Ort in einem unserer 8 Showrooms deutschlandweit. Kostenloses, unverbindliches Angebot mit Preisindikation."
+>
+  <a href="#fragebogen" class="skipLink">Zum Fragebogen springen</a>
+
+  {/* Islands: the eight units that hold state. Faq and Footer are here for
+      one stateful child each — the accordion and the newsletter form — which
+      is the only boundary Astro can hydrate at without changing their props.
+      Everything else renders to HTML and ships no JS. */}
+  <Header client:load />
+
+  <main id="main">
+    <Hero client:load>
+      <TrustStrip items={trustStrip} />
+    </Hero>
+    <Questionnaire client:visible />
+    <HowItWorks />
+    <Values />
+    <Discover client:visible />
+    <Reviews client:visible />
+    <CustomerStories client:visible />
+    <Locations />
+    <OfferCompare />
+    <Blog />
+    <Faq client:visible />
+    <CtaBand />
+  </main>
+
+  <Footer client:visible />
+</Base>

@@ -1,5 +1,4 @@
 import { ChevronRight } from "lucide-react";
-import Image from "next/image";
 import MaybeLink from "../MaybeLink";
 import ShareLinks from "./ShareLinks";
 import type { Breadcrumb, PostSummary } from "@/lib/blog";
@@ -70,7 +69,7 @@ export default function ArticleHeader({ post }: { post: PostSummary }) {
         {post.author && (
           <div className={styles.author}>
             {post.author.avatar && (
-              <Image
+              <img
                 src={post.author.avatar}
                 alt=""
                 width={96}
@@ -126,13 +125,13 @@ export function ArticleHeroImage({
   return (
     <div className={styles.heroBand}>
       <div className={styles.heroInner}>
-        <Image
+        <img
           src={image.src}
           alt={image.alt}
           width={1600}
           height={900}
           sizes="(max-width: 900px) 100vw, 1240px"
-          priority
+          loading="eager"
           data-reveal="wipe"
           className={styles.photo}
         />

@@ -1,0 +1,5 @@
+/* The article's own wrapper. Kept alongside the route rather than in the
+   component tree, because it is a page concern, not a component's. */
+.article {
+  display: block;
+}

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { kitchenForms } from "@/lib/content";
 import Button from "./ui/Button";
@@ -46,7 +45,7 @@ export default function Questionnaire() {
                   </span>
                 </>
               )}
-              <Image
+              <img
                 src={form.icon}
                 alt=""
                 width={120}

@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import AnchorLink from "../AnchorLink";
 import MaybeLink from "../MaybeLink";
 import styles from "./TextLink.module.css";
 
@@ -24,13 +23,6 @@ export default function TextLink({
     .filter(Boolean)
     .join(" ");
 
-  if (href?.startsWith("#")) {
-    return (
-      <AnchorLink href={href} data-ul2 className={classes} {...rest}>
-        {children}
-      </AnchorLink>
-    );
-  }
   return (
     <MaybeLink href={href} data-ul2 className={classes} {...rest}>
       {children}
