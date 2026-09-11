@@ -1,62 +1,47 @@
-/* The band paints its own ground rather than taking `tone="warm"`: the tone
-   class and this one have equal specificity, so which of the two colours won
-   would rest on emit order. It is one declaration here, and it is a gradient —
-   the warm holds, then gives way to white before the band ends, so the seam
-   into the grid below is a fade rather than an edge.
+/* The page's ground: the warm fading to white, with the construction drawing
+   multiplied over it. Fixed and behind all content, so it holds still while
+   the page scrolls over it — the whole way down, not just under the band.
 
-   The drawing sits on that ground in multiply, so the white of the paper it
-   was drawn on leaves the ground untouched and only the linework darkens it.
-   Behind the content, never over it, and out of the way of pointer events. */
-.masthead {
-  position: relative;
-  isolation: isolate;
-  /* Pinned, so the gradient's box is the viewport and its stops no longer
-     resolve against the band. Percentages would then land wherever the
-     window's height put them — on a tall window the fade fell past the band
-     entirely and it rendered flat. Sized explicitly instead: the warm fades
-     out over the top 70% of the screen and white carries on below it, which
-     holds whatever the band's own height turns out to be. */
+   The gradient is sized in `vh` rather than in percentages. A pinned layer is
+   measured against the viewport, so percentages would put the fade wherever
+   the window's height happened to land it. */
+.ground {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--color-surface);
   background-image: linear-gradient(
     var(--color-surface-warm),
     var(--color-surface)
   );
-  background-color: var(--color-surface);
   background-size: 100% 70vh;
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
-.masthead::before {
+/* Multiply, so the white of the paper the drawing was made on leaves the
+   ground untouched and only the linework darkens it. */
+.ground::after {
   content: "";
   position: absolute;
-  /* Runs past the foot of the band. The drawing is a ground, not a panel, so
-     it has no reason to stop where the colour does. */
-  inset: 0 0 calc(-1 * var(--space-10)) 0;
+  inset: 0;
   background-image: url("/images/kueche-strichzeichnung.png");
-  /* Width only. `cover` sized it against the pinned viewport box, and on a
-     window taller than the drawing's 5:4 that meant scaling up until the
-     height was filled and cropping the sides off — the drawing read as
-     zoomed. Full width and its own height keeps it whole. */
+  /* Width only: its own height keeps the perspective whole rather than
+     scaling up to fill a tall window and cropping the sides away. */
   background-size: 100% auto;
   background-position: top center;
   background-repeat: no-repeat;
-  /* Pinned to the viewport, so the content scrolls over a ground that stays
-     put. Both this and the colour behind it are then sized against the
-     viewport rather than the band, which is what makes the two stay in step. */
-  background-attachment: fixed;
   mix-blend-mode: multiply;
   opacity: 0.1;
-  z-index: -1;
-  pointer-events: none;
 }
 
-/* A pinned ground reads as motion to anyone who has asked for less of it, and
-   the rest of this site takes that seriously. Both layers scroll normally
-   under the preference. */
+/* A ground that holds still reads as motion to anyone who has asked for less
+   of it. Let it scroll away with the page instead. */
 @media (prefers-reduced-motion: reduce) {
-  .masthead,
-  .masthead::before {
-    background-attachment: scroll;
+  .ground {
+    position: absolute;
+    height: 100vh;
+    inset: 0 0 auto 0;
   }
 }
 

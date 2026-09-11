@@ -75,7 +75,13 @@ const byline = (post: PostSummary) => ({
 });
 ---
 
-<Section rhythm="masthead" className={styles.masthead}>
+{/* The page's ground: pinned to the viewport and behind everything, so it
+    stays put as the content scrolls over it. It is not part of the masthead —
+    a band-scoped layer stops painting the moment the band scrolls away, which
+    is why the drawing vanished once the grid arrived. */}
+<div class={styles.ground} aria-hidden="true"></div>
+
+<Section rhythm="masthead">
   <Eyebrow>Blog</Eyebrow>
 
   {/* The heading and the search share the band's top row, so the right half
