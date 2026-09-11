@@ -16,6 +16,14 @@ const config = [
   },
   ...coreWebVitals,
   ...typescript,
+  {
+    rules: {
+      // The static export sets images.unoptimized, so next/image was already
+      // emitting a plain <img> with the raw src. The images are now plain
+      // <img> directly, which Astro can render and next/image cannot.
+      "@next/next/no-img-element": "off",
+    },
+  },
 ];
 
 export default config;

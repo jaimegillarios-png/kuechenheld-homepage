@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./MediaCard.module.css";
 
 type Props = {
@@ -23,7 +22,7 @@ export default function MediaCard({
   return (
     <article className={styles.card}>
       <div data-zoom className={styles.frame}>
-        <Image
+        <img
           src={src}
           alt={alt ?? title}
           width={width}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { routes, storySlides } from "@/lib/content";
 import { useRail } from "@/lib/useRail";
 import OverlayArrows from "./ui/OverlayArrows";
@@ -27,11 +26,11 @@ export default function CustomerStories() {
           <Rail railRef={railRef} filled>
             {storySlides.map((slide) => (
               <div key={slide.src} className={styles.slide}>
-                <Image
+                <img
                   src={slide.src}
                   alt={slide.alt}
-                  fill
                   sizes="(max-width: 900px) 100vw, 50vw"
+                  loading="lazy"
                   className={styles.photo}
                 />
                 <span className={styles.caption}>{slide.caption}</span>

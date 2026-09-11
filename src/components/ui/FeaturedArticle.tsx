@@ -1,4 +1,3 @@
-import Image from "next/image";
 import MaybeLink from "../MaybeLink";
 import styles from "./FeaturedArticle.module.css";
 
@@ -27,7 +26,7 @@ export default function FeaturedArticle({
       className={styles.featured}
     >
       <div data-zoom className={styles.frame}>
-        <Image
+        <img
           src={src}
           alt={alt}
           width={1200}

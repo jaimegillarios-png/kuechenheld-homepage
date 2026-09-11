@@ -1,4 +1,13 @@
 .photo {
+  /* next/image's `fill` used to inject these inline. Reproduced exactly:
+     position, inset, width, height and the transparent colour that hides alt
+     text while the image loads. Parallax overrides height and top inline at
+     runtime, which still wins over this. */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
   object-fit: cover;
 }
 

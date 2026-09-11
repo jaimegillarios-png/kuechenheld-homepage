@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import AnchorLink from "./AnchorLink";
 import Button from "./ui/Button";
@@ -163,12 +162,11 @@ export default function Hero({ children }: { children?: React.ReactNode }) {
                     : undefined
                 }
               >
-                <Image
+                <img
                   src={slide.src}
                   alt={slide.alt}
-                  fill
                   sizes="(max-width: 560px) 100vw, (max-width: 900px) 100vw, 50vw"
-                  priority={i === 0}
+                  loading={i === 0 ? "eager" : "lazy"}
                   className={styles.photo}
                 />
                 <div

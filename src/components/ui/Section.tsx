@@ -11,12 +11,7 @@ export type SectionTone =
  * `flush` is for sections that lay out edge to edge and pad their own columns.
  */
 export type SectionRhythm =
-  | "section"
-  | "tight"
-  | "masthead"
-  | "lead"
-  | "trail"
-  | "flush";
+  "section" | "tight" | "masthead" | "lead" | "trail" | "flush";
 
 type Props = {
   id?: string;
