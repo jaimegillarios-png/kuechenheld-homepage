@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import {
+  initAnchorScroll,
   initCounters,
   initParallax,
   initRules,
@@ -20,6 +21,7 @@ export default function MotionRuntime() {
       initParallax(),
       initCounters(),
       initRules(),
+      initAnchorScroll(),
     ];
     return () => teardowns.forEach((stop) => stop());
   }, []);

@@ -1,5 +1,4 @@
 import { ChevronRight } from "lucide-react";
-import AnchorLink from "../AnchorLink";
 import MaybeLink from "../MaybeLink";
 import styles from "./CtaButton.module.css";
 
@@ -27,15 +26,9 @@ export default function CtaButton({
 
   return (
     <div className={styles.wrap}>
-      {href.startsWith("#") ? (
-        <AnchorLink href={href} className={styles.button}>
-          {inner}
-        </AnchorLink>
-      ) : (
-        <MaybeLink href={href} className={styles.button}>
-          {inner}
-        </MaybeLink>
-      )}
+      <MaybeLink href={href} className={styles.button}>
+        {inner}
+      </MaybeLink>
     </div>
   );
 }

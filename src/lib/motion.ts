@@ -359,6 +359,30 @@ export function initRules(root: ParentNode = document): () => void {
 }
 
 /** Smooth-scrolls to a `#hash` target, 8px above its top edge. */
+/**
+ * Smooth-scrolls every in-page link on the document, once, by delegation.
+ *
+ * This used to be a React component wrapping each anchor. That made every
+ * component containing a link into a hydration island — a button, a text link,
+ * the hero's CTA — for the sake of one scroll handler. One listener on the
+ * document does the same job and leaves the markup static.
+ */
+export function initAnchorScroll(root: Document = document): () => void {
+  const onClick = (e: MouseEvent) => {
+    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) {
+      return;
+    }
+    const link = (e.target as Element | null)?.closest?.('a[href^="#"]');
+    if (!link) return;
+    const href = link.getAttribute("href");
+    if (!href || href === "#") return;
+    e.preventDefault();
+    scrollToHash(href);
+  };
+  root.addEventListener("click", onClick);
+  return () => root.removeEventListener("click", onClick);
+}
+
 export function scrollToHash(hash: string) {
   const el = document.getElementById(hash.replace("#", ""));
   if (!el) return;

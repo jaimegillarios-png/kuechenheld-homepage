@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import AnchorLink from "./AnchorLink";
 import MaybeLink from "./MaybeLink";
 import { navItems, routes } from "@/lib/content";
 import { prefersReducedMotion } from "@/lib/motion";
@@ -85,9 +84,9 @@ export default function Header({
 
         <nav className={styles.nav} aria-label="Hauptnavigation">
           {items.map((item) => (
-            <AnchorLink key={item.href} href={item.href} data-ul>
+            <a key={item.href} href={item.href} data-ul>
               {item.label}
-            </AnchorLink>
+            </a>
           ))}
         </nav>
 
@@ -95,13 +94,9 @@ export default function Header({
           <MaybeLink href={routes.login} data-ul className={styles.action}>
             Einloggen
           </MaybeLink>
-          <AnchorLink
-            href="#fragebogen"
-            data-ul2
-            className={styles.actionRuled}
-          >
+          <a href="#fragebogen" data-ul2 className={styles.actionRuled}>
             Termin buchen
-          </AnchorLink>
+          </a>
         </div>
 
         <button
@@ -138,25 +133,25 @@ export default function Header({
 
           <nav className={styles.overlayNav} aria-label="Hauptnavigation">
             {items.map((item) => (
-              <AnchorLink
+              <a
                 key={item.href}
                 href={item.href}
                 className={styles.overlayItem}
-                onNavigate={() => setNavOpen(false)}
+                onClick={() => setNavOpen(false)}
               >
                 {item.label}
-              </AnchorLink>
+              </a>
             ))}
           </nav>
 
           <div className={styles.overlayFoot}>
-            <AnchorLink
+            <a
               href="#fragebogen"
               className={styles.overlayCta}
-              onNavigate={() => setNavOpen(false)}
+              onClick={() => setNavOpen(false)}
             >
               Termin buchen
-            </AnchorLink>
+            </a>
             <MaybeLink href={routes.login} className={styles.overlayLogin}>
               Einloggen
             </MaybeLink>
