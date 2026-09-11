@@ -1,0 +1,51 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import CtaBand from "../../../components/CtaBand";
+import BlogIndex from "../../../components/blog/BlogIndex.astro";
+import { blog } from "../../../lib/blog";
+import {
+  HEADING,
+  categoryLinks,
+  extraPages,
+  pageCount,
+  pageHref,
+  pageSlice,
+  pickFeatured,
+} from "../../../lib/blog/pages";
+import { isIndexable } from "../../../lib/site";
+
+export async function getStaticPaths() {
+  const posts = await blog.getAllPosts();
+  const featured = pickFeatured(posts);
+  const rest = posts.filter((p) => p.slug !== featured?.slug);
+  return extraPages(rest.length).map((page) => ({ params: { page } }));
+}
+
+const page = Number(Astro.params.page);
+const posts = await blog.getAllPosts();
+const featured = pickFeatured(posts);
+const rest = posts.filter((p) => p.slug !== featured?.slug);
+const categories = await categoryLinks(null);
+---
+
+<Base title={`Blog, Seite ${page} — Küchenheld`} index={isIndexable}>
+  <a href="#main" class="skipLink">Zum Inhalt springen</a>
+
+  <Header client:load />
+
+  <main id="main">
+    <BlogIndex
+      heading={HEADING}
+      posts={pageSlice(rest, page)}
+      categories={categories}
+      page={page}
+      totalPages={pageCount(rest.length)}
+      hrefFor={pageHref("/blog")}
+    />
+    <CtaBand />
+  </main>
+
+  <Footer client:visible />
+</Base>

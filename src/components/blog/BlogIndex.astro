@@ -1,0 +1,127 @@
+---
+import Section from "../ui/Section";
+import { Eyebrow, Heading, Lede } from "../ui/SectionHeader";
+import FeaturedArticle from "../ui/FeaturedArticle";
+import PostCard from "../ui/PostCard";
+import CategoryLinks, { type CategoryLink } from "./CategoryLinks";
+import Pagination from "./Pagination";
+import BlogSearch from "./BlogSearch";
+import type { PostSummary } from "../../lib/blog";
+import { asset } from "../../lib/site";
+import styles from "./BlogIndex.module.css";
+
+/**
+ * The body of every index route: /blog, its numbered pages, and each
+ * category and its pages. The four route files differ only in which posts
+ * they hand over and how they build a page href.
+ */
+interface Props {
+  heading: string;
+  lede?: string;
+  /** The posts on this page, already sliced. */
+  posts: PostSummary[];
+  /** Shown above the grid on the first page of /blog only. */
+  featured?: PostSummary | null;
+  categories: CategoryLink[];
+  page: number;
+  totalPages: number;
+  hrefFor: (page: number) => string;
+  /** Category slug when this page is scoped to one. */
+  scope?: string | null;
+  scopeName?: string | null;
+}
+
+const {
+  heading,
+  lede,
+  posts,
+  featured = null,
+  categories,
+  page,
+  totalPages,
+  hrefFor,
+  scope = null,
+  scopeName = null,
+} = Astro.props;
+
+const dateFormat = new Intl.DateTimeFormat("de-DE", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+});
+
+const postHref = (slug: string) => asset(`/blog/${slug}`);
+const byline = (post: PostSummary) => ({
+  author: post.author
+    ? { name: post.author.name, avatar: post.author.avatar }
+    : null,
+  date: post.date ? dateFormat.format(new Date(post.date)) : null,
+  dateTime: post.date,
+});
+---
+
+<Section rhythm="masthead" tone="warm">
+  <Eyebrow>Blog</Eyebrow>
+  <Heading measure="wide" gap={lede ? "stack" : "none"}>{heading}</Heading>
+  {lede && <Lede measure="default">{lede}</Lede>}
+
+  <div class={styles.controls}>
+    <CategoryLinks items={categories} />
+    <div class={styles.search}>
+      <BlogSearch
+        client:idle
+        indexUrl={asset("/blog/search-index.json")}
+        postHrefBase={asset("/blog/")}
+        scope={scope}
+        scopeName={scopeName}
+      />
+    </div>
+  </div>
+</Section>
+
+{
+  featured && (
+    <Section rhythm="lead" className={styles.hideWhileSearching}>
+      <FeaturedArticle
+        layout="split"
+        href={postHref(featured.slug)}
+        title={featured.title}
+        excerpt={featured.summary ?? ""}
+        meta={[
+          featured.categories[0]?.name,
+          featured.date && dateFormat.format(new Date(featured.date)),
+        ]
+          .filter(Boolean)
+          .join(" · ")}
+        src={featured.mainImage.src}
+        alt={featured.mainImage.alt}
+      />
+    </Section>
+  )
+}
+
+<Section rhythm={featured ? "trail" : "section"}>
+  {/* Search results land here, above the grid they stand in for. */}
+  <div id="blog-results"></div>
+
+  <div class={styles.hideWhileSearching}>
+    <div class={styles.grid}>
+      {
+        posts.map((post) => (
+          <PostCard
+            href={postHref(post.slug)}
+            title={post.title}
+            excerpt={post.summary ?? ""}
+            src={post.thumbnailImage.src}
+            alt={post.thumbnailImage.alt}
+            {...byline(post)}
+          />
+        ))
+      }
+    </div>
+
+    <div class={styles.pagination}>
+      <Pagination current={page} total={totalPages} hrefFor={hrefFor} />
+    </div>
+  </div>
+</Section>

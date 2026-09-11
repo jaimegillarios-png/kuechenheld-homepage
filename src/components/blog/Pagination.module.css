@@ -1,0 +1,60 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-top: 1px solid var(--color-rule);
+  padding-top: var(--space-6);
+}
+
+.step {
+  font-size: var(--font-size-label);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+/* Holds the row's ends so the numbers stay centred on page 1 and the last. */
+.stepSpacer {
+  display: block;
+  min-width: var(--size-control);
+}
+
+.numbers {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Same chip as a category, at the control's minimum square. */
+.number {
+  display: grid;
+  place-items: center;
+  min-width: var(--size-control);
+  min-height: var(--size-control);
+  font-size: var(--font-size-label);
+  border: 1px solid var(--color-rule-strong);
+  color: var(--color-text);
+  transition:
+    background var(--duration-fast),
+    color var(--duration-fast);
+}
+.number:hover {
+  background: var(--color-action);
+  color: var(--color-text-inverse);
+}
+
+.current {
+  composes: number;
+  background: var(--color-action);
+  color: var(--color-text-inverse);
+  cursor: default;
+}
+
+@media (max-width: 560px) {
+  .nav {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .stepSpacer {
+    display: none;
+  }
+}

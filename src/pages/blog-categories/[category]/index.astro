@@ -1,0 +1,59 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import CtaBand from "../../../components/CtaBand";
+import BlogIndex from "../../../components/blog/BlogIndex.astro";
+import { blog } from "../../../lib/blog";
+import {
+  categoryLinks,
+  pageCount,
+  pageHref,
+  pageSlice,
+} from "../../../lib/blog/pages";
+import { isIndexable } from "../../../lib/site";
+
+/**
+ * `/blog-categories/<slug>` and not a tidier shape on purpose: every imported
+ * post already carries that href in its breadcrumb, so 107 links come alive
+ * with no content edits, and inbound links to the Webflow site still land.
+ */
+export async function getStaticPaths() {
+  const categories = await blog.getCategories();
+  return categories.map((c) => ({
+    params: { category: c.slug },
+    props: { name: c.name },
+  }));
+}
+
+const { category } = Astro.params;
+const { name } = Astro.props;
+const posts = await blog.getPostsByCategory(category!);
+const categories = await categoryLinks(category!);
+---
+
+<Base
+  title={`${name} — Blog — Küchenheld`}
+  description={`Beiträge aus der Kategorie ${name}.`}
+  index={isIndexable}
+>
+  <a href="#main" class="skipLink">Zum Inhalt springen</a>
+
+  <Header client:load />
+
+  <main id="main">
+    <BlogIndex
+      heading={name}
+      posts={pageSlice(posts, 1)}
+      categories={categories}
+      page={1}
+      totalPages={pageCount(posts.length)}
+      hrefFor={pageHref(`/blog-categories/${category}`)}
+      scope={category}
+      scopeName={name}
+    />
+    <CtaBand />
+  </main>
+
+  <Footer client:visible />
+</Base>

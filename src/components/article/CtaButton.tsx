@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import MaybeLink from "../MaybeLink";
+import { asset } from "@/lib/site";
 import styles from "./CtaButton.module.css";
 
 /** 221 of the 223 imported buttons pointed here. */
@@ -26,7 +27,7 @@ export default function CtaButton({
 
   return (
     <div className={styles.wrap}>
-      <MaybeLink href={href} className={styles.button}>
+      <MaybeLink href={asset(href)} className={styles.button}>
         {inner}
       </MaybeLink>
     </div>

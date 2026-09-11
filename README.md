@@ -39,12 +39,18 @@ src/
     index.astro       section composition, in design order
     404.astro
     robots.txt.ts     static endpoint, honours SITE_INDEXABLE
+    blog/index.astro  the blog index, page 1
+    blog/seite/[page].astro          its numbered pages
     blog/[slug].astro one page per post
+    blog/search-index.json.ts        the client-side search index
+    blog-categories/[category]/      one index per category, and its pages
     probe/            prose fixtures, only built with BUILD_FIXTURES=true
   layouts/Base.astro  document shell, fonts, stylesheet order, motion entry
   components/         one .tsx + .module.css per section
     article/          blog-only: header, body, related, MDX mapping
+    blog/             blog index: search, categories, pagination
     ui/               shared primitives
+  plugins/            build-time markdown plugins
   content/
     posts/            100 MDX posts
     authors.json  categories.json
@@ -86,6 +92,36 @@ below one of these grows state, check it actually runs.
 
 `check:shipped-js` walks the build and fails on any JavaScript nothing
 references, which is how an island's runtime shipping for nobody gets caught.
+
+## The blog index
+
+`/blog` holds a featured post, a category row, a search field, and a grid of
+vertical `PostCard`s. Categories are real routes rather than a client-side
+facet, so each is crawlable and linkable and search stays one mechanism.
+
+**Pagination is numbered**, 24 to a page. Load-more would leave every page
+after the first without a URL — nothing to crawl, link or come back to — on the
+one page whose job is finding things. Page 1 is the bare route and the rest
+hang off `/seite/<n>`; `lib/blog/pages.ts` owns the page size, the featured
+rule and the href shapes.
+
+**Categories live at `/blog-categories/<slug>`.** Not the tidiest shape, but
+every imported post already carries that href in its breadcrumb frontmatter, so
+107 links came alive with no content edits, and inbound links to the Webflow
+site still land.
+
+**Search is client-side** against `blog/search-index.json`, built at build time
+and fetched on the first keystroke, so a reader who never searches pays nothing
+for it. It folds case and the diacritics German actually uses, so `kuche` finds
+_Küche_ and `weiss` finds _weiß_. There is no search service and no Pagefind:
+100 posts is small enough for the browser to filter the whole corpus. While a
+query is live the results replace the grid, the featured band and the
+pagination — the island sets `body[data-blog-search]` and the page decides what
+that hides.
+
+**The featured post** is the first with `featured: true`, falling back to the
+newest dated post. All 100 imported posts carry `false` — the import had
+nothing to derive it from — so the fallback stands until an editor sets one.
 
 ## The CMS seam
 
@@ -165,6 +201,11 @@ GitHub Pages. A project site is served from a subpath, so the workflow sets
 known, and `lib/site.ts`'s `asset()` is what applies it to `/public` paths
 written as plain strings.
 
+Internal links carry the base path two ways. Anything a template renders goes
+through `asset()`. A post body is authored markdown, so its links never do —
+`plugins/hast-base-path.mjs` prefixes those at build time, as a Sätteri hast
+plugin on the markdown processor.
+
 `SITE_INDEXABLE` stays unset there, so the build keeps its `noindex` tag and a
 `Disallow: /` robots.txt. Set it to `"true"` only on the deployment that
 genuinely serves the site — otherwise an indexable copy competes with
@@ -192,18 +233,25 @@ and 1440px. Every section matches exactly, with one deliberate exception:
   design has no success or error state — agree on one before wiring it.
 - **Content.** `lib/content.ts` is static. Showrooms and reviews should come
   from the CMS; the blog already reads through the seam above.
-- **Blog index.** There is no `/blog` listing page yet, and `routes.blog` is
-  still `null`. Breadcrumbs and related cards already link to `/blog/<slug>`.
+- **`/questionnaire` is a dead route, by design.** The questionnaire is
+  becoming a modal with `/questionnaire` as a real route behind it. That work
+  lands next. Until it does, the in-article CTA buttons and 10 prose links
+  point at a path this build does not serve — anyone testing before then will
+  see 404s on them. They were deliberately left pointing there rather than
+  retargeted at `/#fragebogen`, so nothing needs undoing when the route ships.
+- **Restoring unwrapped links.** 380 links in post bodies pointed at pages the
+  rebuild does not have — 19 blog posts that were never imported, and route
+  families like `/kuechenstile` and `/hersteller` that are still to be built.
+  They were unwrapped to plain text, and every one is recorded in
+  `scripts/link-audit/report/unwrapped-links.json` with its target, its source
+  post and its link text. When a route ships, restore its links from there
+  rather than rediscovering them. `scripts/link-audit/unwrap-dead-links.mjs`
+  regenerates the report and is safe to re-run.
 - **Featured posts.** All 100 imported posts carry `featured: false`; the
   import had nothing to derive it from. One editorial pass sets them.
 - **Images.** Photography is still served from the Webflow CDN — 360 files,
   131.4 MB, none of it migrated. Post bodies reference absolute CDN URLs, so
   moving them means rewriting the MDX as well as copying the files.
-- **Subpath links.** Hand-written internal `href`s (breadcrumbs, related cards)
-  are absolute and are not rewritten by `BASE_PATH`, so they resolve to the
-  domain root on a project-site deployment. Unchanged from the Next build,
-  where `basePath` only rewrote `next/link`. Route them through `asset()` when
-  the site moves off a subpath deployment, or before one goes public.
 - **Routes.** Nothing links to a page that does not exist. Anything without a
   destination renders as inert styled text through `components/MaybeLink.tsx`.
   Fill in `routes` in `lib/content.ts` (`login`, `blog`, `testimonials`,

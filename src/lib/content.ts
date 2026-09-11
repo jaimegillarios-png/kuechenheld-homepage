@@ -23,7 +23,7 @@ export const routes: Record<
   string | null
 > = {
   login: null,
-  blog: null,
+  blog: asset("/blog"),
   testimonials: null,
   showrooms: null,
 };

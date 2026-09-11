@@ -8,6 +8,13 @@ type Props = {
   src: string;
   alt: string;
   href?: string | null;
+  /**
+   * `stack` puts the text under the image and is sized for a half-width
+   * column — the homepage's blog band. `split` sets image and text side by
+   * side, for the blog index, where the stack at full content width would
+   * give one post a whole viewport.
+   */
+  layout?: "stack" | "split";
 };
 
 export default function FeaturedArticle({
@@ -17,13 +24,14 @@ export default function FeaturedArticle({
   src,
   alt,
   href,
+  layout = "stack",
 }: Props) {
   return (
     <MaybeLink
       href={href}
       data-zoomparent
       data-reveal
-      className={styles.featured}
+      className={layout === "split" ? styles.split : styles.featured}
     >
       <div data-zoom className={styles.frame}>
         <img

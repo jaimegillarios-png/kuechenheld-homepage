@@ -52,11 +52,16 @@ async function toSummary(entry: PostEntry): Promise<PostSummary> {
     date: d.date,
     dateUpdated: d.dateUpdated ?? undefined,
     readingTime: d.readingTime ?? estimateReadingTime(entry.body ?? ""),
+    // Breadcrumb hrefs are authored absolute; a subpath deployment needs the
+    // base path on them the same as on any other internal link.
     breadcrumbs: d.breadcrumbs.length
-      ? d.breadcrumbs
+      ? d.breadcrumbs.map((c) => ({
+          ...c,
+          href: c.href ? asset(c.href) : c.href,
+        }))
       : [
-          { name: "Start", href: "/" },
-          { name: "Blog", href: "/blog" },
+          { name: "Start", href: asset("/") },
+          { name: "Blog", href: asset("/blog") },
           { name: d.title, href: null },
         ],
     seo: d.seo,
@@ -83,6 +88,28 @@ export const astroSource: BlogSource = {
     const posts = await Promise.all(entries.map(toSummary));
     // Undated posts sort last rather than throwing off the order.
     return posts.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  },
+
+  async getCategories() {
+    const rows = await getCollection("categories");
+    const posts = await this.getAllPosts();
+    const count = new Map<string, number>();
+    for (const post of posts) {
+      for (const c of post.categories) {
+        count.set(c.slug, (count.get(c.slug) ?? 0) + 1);
+      }
+    }
+    // Busiest first, so the row opens with the category most readers want.
+    // A category with no posts is not a page.
+    return rows
+      .map((r) => ({ name: r.data.name, slug: r.data.slug }))
+      .filter((c) => count.has(c.slug))
+      .sort((a, b) => count.get(b.slug)! - count.get(a.slug)!);
+  },
+
+  async getPostsByCategory(slug) {
+    const posts = await this.getAllPosts();
+    return posts.filter((p) => p.categories.some((c) => c.slug === slug));
   },
 
   async getRelatedPosts(slug, limit = 3) {

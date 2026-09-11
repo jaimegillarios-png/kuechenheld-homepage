@@ -8,6 +8,55 @@
   opacity: 0.86;
 }
 
+/* Side by side, for a lead story that owns the full content width — the stack
+   at 1240px would give one post a whole viewport.
+
+   No `composes: featured` here on purpose. That emits two classes of equal
+   specificity, so `display: grid` beating `display: block` would rest on emit
+   order; the shared three declarations are restated instead.
+
+   The image spans every row and sets the height. The two `1fr` rows above and
+   below the text absorb what is left, which centres the text block against the
+   image without the three text rows being stretched apart by the span. */
+.split {
+  cursor: pointer;
+  transition: opacity var(--duration-base) ease;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  grid-template-rows: 1fr min-content min-content min-content 1fr;
+  column-gap: var(--space-8);
+}
+.split:hover {
+  opacity: 0.86;
+}
+
+.split .frame {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  margin-bottom: 0;
+}
+.split .meta {
+  grid-column: 2;
+  grid-row: 2;
+}
+.split .title {
+  grid-column: 2;
+  grid-row: 3;
+}
+.split .excerpt {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+@media (max-width: 900px) {
+  .split {
+    display: block;
+  }
+  .split .frame {
+    margin-bottom: var(--space-5);
+  }
+}
+
 .frame {
   margin-bottom: var(--space-5);
 }

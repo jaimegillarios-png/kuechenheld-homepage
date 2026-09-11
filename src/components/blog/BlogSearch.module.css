@@ -1,0 +1,91 @@
+/* The field. A hairline box at the shared control height, on paper — the only
+   other input on the site sits on the inverse ground in the footer. */
+.field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--size-control);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--color-rule-control);
+  transition: border-color var(--duration-fast);
+}
+.field:focus-within {
+  border-color: var(--color-text);
+}
+
+.icon {
+  flex: none;
+  color: var(--color-text-meta);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: var(--font-size-label);
+  color: var(--color-text);
+}
+.input::placeholder {
+  color: var(--color-text-meta);
+}
+.input:focus {
+  outline: none;
+}
+/* The UA's own clear affordance would sit beside ours. */
+.input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.clear {
+  flex: none;
+  display: grid;
+  place-items: center;
+  color: var(--color-text-meta);
+  transition: color var(--duration-fast);
+}
+.clear:hover {
+  color: var(--color-text);
+}
+
+/* --- results, portalled above the grid ---------------------------------- */
+
+.count {
+  font-size: var(--font-size-label);
+  color: var(--color-text-meta);
+  margin-bottom: var(--space-7);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--space-8);
+  row-gap: var(--space-9);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-8);
+  }
+}
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-7);
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

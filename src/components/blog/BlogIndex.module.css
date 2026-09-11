@@ -1,0 +1,59 @@
+/* Categories and search are the two ways into the same set, so they share a
+   row. Both persist on every index page, which is why they live in the
+   masthead rather than beside the featured post — that band is only on the
+   first page of /blog. */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+}
+
+.search {
+  flex: none;
+  width: 22rem;
+  max-width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--space-8);
+  row-gap: var(--space-9);
+}
+
+.pagination {
+  margin-top: var(--space-9);
+}
+
+/* A live query replaces the grid, its pagination and the featured band. The
+   island sets the attribute; the page decides what it hides. */
+:global(body[data-blog-search="active"]) .hideWhileSearching {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+  }
+  .search {
+    width: 100%;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-8);
+  }
+  .pagination {
+    margin-top: var(--space-8);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-7);
+  }
+}

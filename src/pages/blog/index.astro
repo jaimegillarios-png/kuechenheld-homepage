@@ -1,0 +1,50 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import CtaBand from "../../components/CtaBand";
+import BlogIndex from "../../components/blog/BlogIndex.astro";
+import { blog } from "../../lib/blog";
+import {
+  HEADING,
+  LEDE,
+  categoryLinks,
+  pageCount,
+  pageHref,
+  pageSlice,
+  pickFeatured,
+} from "../../lib/blog/pages";
+import { isIndexable } from "../../lib/site";
+
+const posts = await blog.getAllPosts();
+// The lead story is not repeated in the grid below it.
+const featured = pickFeatured(posts);
+const rest = posts.filter((p) => p.slug !== featured?.slug);
+const categories = await categoryLinks(null);
+---
+
+<Base
+  title="Blog — Küchenheld"
+  description="Tipps, Trends und Ratgeber rund um Küchenplanung und Küchenkauf."
+  index={isIndexable}
+>
+  <a href="#main" class="skipLink">Zum Inhalt springen</a>
+
+  <Header client:load />
+
+  <main id="main">
+    <BlogIndex
+      heading={HEADING}
+      lede={LEDE}
+      posts={pageSlice(rest, 1)}
+      featured={featured}
+      categories={categories}
+      page={1}
+      totalPages={pageCount(rest.length)}
+      hrefFor={pageHref("/blog")}
+    />
+    <CtaBand />
+  </main>
+
+  <Footer client:visible />
+</Base>

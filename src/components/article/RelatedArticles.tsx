@@ -2,6 +2,7 @@ import ArticleRow from "../ui/ArticleRow";
 import Section, { type SectionTone } from "../ui/Section";
 import SectionHeader from "../ui/SectionHeader";
 import type { PostSummary } from "@/lib/blog";
+import { asset } from "@/lib/site";
 import styles from "./RelatedArticles.module.css";
 
 const dateFormat = new Intl.DateTimeFormat("de-DE", {
@@ -30,7 +31,7 @@ export default function RelatedArticles({
         {posts.map((post, i) => (
           <ArticleRow
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={asset(`/blog/${post.slug}`)}
             title={post.title}
             excerpt={post.summary ?? ""}
             meta={[

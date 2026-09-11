@@ -274,6 +274,8 @@
 
   /* An author portrait in a byline, and the share icons beside it. */
   --size-avatar: 56px;
+  /* The same portrait inside a card, where 56px would outweigh the title. */
+  --size-avatar-sm: 32px;
   --size-icon: 24px;
 
   /* Line measures. Nine section headers between them used seven different `ch`

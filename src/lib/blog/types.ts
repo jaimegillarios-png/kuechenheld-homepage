@@ -86,4 +86,9 @@ export type BlogSource = {
   getPost(slug: string): Promise<Post | null>;
   getAllPosts(): Promise<PostSummary[]>;
   getRelatedPosts(slug: string, limit?: number): Promise<PostSummary[]>;
+  /** Every category that has at least one post, in the order the source lists
+   *  them. The index needs these as routes, not as a facet of the posts. */
+  getCategories(): Promise<Category[]>;
+  /** Posts in one category, newest first. */
+  getPostsByCategory(slug: string): Promise<PostSummary[]>;
 };
