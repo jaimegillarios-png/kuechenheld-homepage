@@ -15,5 +15,7 @@ type Props = Omit<AnchorHTMLAttributes<HTMLElement>, "href"> & {
  */
 export default function MaybeLink({ href, ...rest }: Props) {
   if (!href) return <span {...rest} />;
+  // `children` arrives in `rest`, which the rule cannot see through a spread.
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
   return <a href={href} {...rest} />;
 }

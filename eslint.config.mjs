@@ -1,29 +1,41 @@
-import coreWebVitals from "eslint-config-next/core-web-vitals";
-import typescript from "eslint-config-next/typescript";
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
+import jsxA11y from "eslint-plugin-jsx-a11y";
+import astro from "eslint-plugin-astro";
 
-const config = [
+export default [
   {
     ignores: [
-      ".next/**",
       "node_modules/**",
       "_handoff/**",
-      // Astro build output and generated types — neither is ours to lint.
+      // Build output and generated types — neither is ours to lint.
       "dist/**",
       ".astro/**",
-      // Verification harness, served from public/ and never shipped.
-      "public/*.js",
     ],
   },
-  ...coreWebVitals,
-  ...typescript,
+  js.configs.recommended,
   {
+    // Config and build scripts run in Node, not the browser.
+    files: ["**/*.mjs", "scripts/**/*.js"],
+    languageOptions: { globals: globals.node },
+  },
+  ...tseslint.configs.recommended,
+  ...astro.configs.recommended,
+  {
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: { globals: { ...globals.browser, ...globals.node } },
+    plugins: { react, "react-hooks": reactHooks, "jsx-a11y": jsxA11y },
+    settings: { react: { version: "detect" } },
     rules: {
-      // The static export sets images.unoptimized, so next/image was already
-      // emitting a plain <img> with the raw src. The images are now plain
-      // <img> directly, which Astro can render and next/image cannot.
-      "@next/next/no-img-element": "off",
+      ...react.configs.flat.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      ...jsxA11y.flatConfigs.recommended.rules,
+      // Astro compiles JSX itself; React is never in scope as a name.
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
     },
   },
 ];
-
-export default config;

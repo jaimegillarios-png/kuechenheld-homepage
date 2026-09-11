@@ -25,7 +25,10 @@ import { trustStrip } from "../lib/content";
 >
   <a href="#fragebogen" class="skipLink">Zum Fragebogen springen</a>
 
-  {/* Islands. Everything else renders to HTML and ships no JS. */}
+  {/* Islands: the eight units that hold state. Faq and Footer are here for
+      one stateful child each — the accordion and the newsletter form — which
+      is the only boundary Astro can hydrate at without changing their props.
+      Everything else renders to HTML and ships no JS. */}
   <Header client:load />
 
   <main id="main">
@@ -41,9 +44,9 @@ import { trustStrip } from "../lib/content";
     <Locations />
     <OfferCompare />
     <Blog />
-    <Faq />
+    <Faq client:visible />
     <CtaBand />
   </main>
 
-  <Footer />
+  <Footer client:visible />
 </Base>

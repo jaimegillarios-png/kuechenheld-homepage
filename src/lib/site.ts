@@ -9,18 +9,19 @@
 /** Canonical origin. Share links need an absolute URL, and so does metadata. */
 export const siteUrl = "https://www.kuechenheld.de";
 
-export const isIndexable = process.env.SITE_INDEXABLE === "true";
+export const isIndexable = import.meta.env.SITE_INDEXABLE === "true";
 
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+/** Astro's `base`, without its trailing slash. "" when the site is at root. */
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 /**
- * Prefixes a `/public` asset with the deployment's basePath.
+ * Prefixes a `/public` asset with the deployment's base path.
  *
- * Next rewrites its own build output for `basePath`, but an `unoptimized`
- * `next/image` src is passed through untouched — so on a subpath deployment
- * (a GitHub Pages project site) `/images/x.jpg` would 404. Remote URLs are
- * returned unchanged.
+ * Astro rewrites the URLs it generates itself, but an `src` written as a plain
+ * string is passed through untouched — so on a subpath deployment (a GitHub
+ * Pages project site) `/images/x.jpg` would 404. Remote URLs are returned
+ * unchanged.
  */
 export function asset(path: string): string {
-  return path.startsWith("/") ? `${BASE_PATH}${path}` : path;
+  return path.startsWith("/") ? `${BASE}${path}` : path;
 }

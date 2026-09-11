@@ -1,8 +1,4 @@
 /node_modules
-/.next
-/out
-/build
-
 .DS_Store
 *.pem
 
@@ -14,20 +10,7 @@ yarn-error.log*
 .env*
 !.env.example
 
-next-env.d.ts
 *.tsbuildinfo
-
-# Verification harness, served from public/ during a migration and never shipped.
-/public/capture.js
-/public/compare.js
-/public/motion.js
-/public/render.js
-/public/rendercap.js
-/public/rendercmp.js
-/public/reveal.js
-/public/runcmp.js
-/public/settle.js
-/public/cls.js
 
 # Astro build output
 /dist

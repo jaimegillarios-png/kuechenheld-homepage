@@ -39,7 +39,7 @@ const index = isIndexable && post.seo.index;
   <main id="main">
     <article class={styles.article}>
       <Section rhythm="masthead" tone="warm">
-        <ArticleHeader post={post} />
+        <ArticleHeader post={post} client:visible />
       </Section>
       <ArticleHeroImage image={post.mainImage} />
       <Section rhythm="trail">
@@ -50,5 +50,5 @@ const index = isIndexable && post.seo.index;
     <RelatedArticles posts={related} tone="warm" />
   </main>
 
-  <Footer />
+  <Footer client:visible />
 </Base>

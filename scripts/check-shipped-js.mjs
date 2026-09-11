@@ -1,21 +1,19 @@
 /**
- * Fails if the Astro build emits JavaScript nothing references.
+ * Fails if the build emits JavaScript nothing references.
  *
  * The React integration emits its client runtime whether or not any island
  * uses it, so an unreferenced 190KB chunk can sit in the deploy unnoticed.
  * Walks every .js in dist/, and asserts each one is reachable from some HTML
  * file or from another referenced chunk.
+ *
+ * There is no allowlist. The one that used to be here covered the verification
+ * probes while they were served out of public/; they are served beside the
+ * build now, so anything unreferenced in dist/ is a real finding.
  */
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 
 const DIST = process.argv[2] ?? "dist";
-// Harness probes are copied into public/ during the migration and are expected
-// to be unreferenced; they must not survive to a real deploy.
-const HARNESS = new Set([
-  "capture.js", "compare.js", "motion.js", "render.js", "rendercap.js",
-  "rendercmp.js", "reveal.js", "runcmp.js", "settle.js", "cls.js",
-]);
 
 async function walk(dir) {
   const out = [];
@@ -48,19 +46,19 @@ for (const f of js) {
     refs += text.split(base).length - 1;
   }
   if (refs === 0) {
-    unreferenced.push({ file: path.relative(DIST, f), bytes: (await stat(f)).size, harness: HARNESS.has(base) });
+    unreferenced.push({
+      file: path.relative(DIST, f),
+      bytes: (await stat(f)).size,
+    });
   }
 }
 
-const real = unreferenced.filter((u) => !u.harness);
-const harness = unreferenced.filter((u) => u.harness);
-
 console.log(`js files: ${js.length}   html files: ${html.length}`);
-if (harness.length) console.log(`harness probes (expected, must not deploy): ${harness.length}`);
-if (real.length === 0) {
-  console.log("no unreferenced application JS");
+if (unreferenced.length === 0) {
+  console.log("no unreferenced JS");
   process.exit(0);
 }
-console.log("\nUNREFERENCED APPLICATION JS:");
-for (const u of real) console.log(`  ${u.file}  ${(u.bytes / 1024).toFixed(1)} KB`);
+console.log("\nUNREFERENCED JS:");
+for (const u of unreferenced)
+  console.log(`  ${u.file}  ${(u.bytes / 1024).toFixed(1)} KB`);
 process.exit(1);

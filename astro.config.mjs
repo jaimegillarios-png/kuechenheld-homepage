@@ -3,9 +3,14 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 
-// Coexists with the Next app during the migration: Next owns src/app, Astro
-// owns src/pages, and both read the same components and stylesheets.
+// A GitHub Pages project site is served from /<repo>; BASE_PATH sets that at
+// build time and is empty everywhere else, so `import.meta.env.BASE_URL` is
+// the one place the subpath is known.
+const base = process.env.BASE_PATH || undefined;
+
 export default defineConfig({
+  base,
+  site: "https://www.kuechenheld.de",
   integrations: [mdx(), react()],
   markdown: {
     // Astro turns on SmartyPants by default; Next's MDX pipeline did not, and
@@ -17,4 +22,8 @@ export default defineConfig({
   },
   server: { port: 4321 },
   build: { assets: "_astro" },
+  // `SITE_INDEXABLE` decides whether the build carries a noindex tag, and it
+  // is read from components as well as from pages, so it has to survive into
+  // the client bundle the way a PUBLIC_ variable would.
+  vite: { envPrefix: ["PUBLIC_", "SITE_"] },
 });
