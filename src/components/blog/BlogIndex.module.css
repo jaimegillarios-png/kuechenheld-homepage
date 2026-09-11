@@ -10,10 +10,19 @@
 .masthead {
   position: relative;
   isolation: isolate;
-  background: linear-gradient(
-    var(--color-surface-warm) 58%,
-    var(--color-surface) 100%
+  /* Pinned, so the gradient's box is the viewport and its stops no longer
+     resolve against the band. Percentages would then land wherever the
+     window's height put them — on a tall window the fade fell past the band
+     entirely and it rendered flat. Sized explicitly instead: the warm fades
+     out over the top 70% of the screen and white carries on below it, which
+     holds whatever the band's own height turns out to be. */
+  background-image: linear-gradient(
+    var(--color-surface-warm),
+    var(--color-surface)
   );
+  background-color: var(--color-surface);
+  background-size: 100% 70vh;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
