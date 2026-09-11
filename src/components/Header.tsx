@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import MaybeLink from "./MaybeLink";
 import { navItems, routes } from "@/lib/content";
+import { asset } from "@/lib/site";
 import { prefersReducedMotion } from "@/lib/motion";
 import styles from "./Header.module.css";
 
@@ -80,9 +81,14 @@ export default function Header({
   return (
     <>
       <header ref={headerRef} className={styles.header}>
-        <div className={styles.wordmark} data-enter="nav" data-enter-delay="1">
+        <a
+          href={asset("/")}
+          className={styles.wordmark}
+          data-enter="nav"
+          data-enter-delay="1"
+        >
           {wordmark}
-        </div>
+        </a>
 
         <nav
           className={styles.nav}
@@ -129,7 +135,9 @@ export default function Header({
           aria-modal="true"
         >
           <div className={styles.overlayTop}>
-            <div className={styles.overlayWordmark}>{wordmark}</div>
+            <a href={asset("/")} className={styles.overlayWordmark}>
+              {wordmark}
+            </a>
             <button
               type="button"
               className={styles.close}
