@@ -1,16 +1,27 @@
-/* The band keeps its warm ground; the drawing sits on top of it in multiply,
-   so the white of the paper it was drawn on leaves the ground untouched and
-   only the linework darkens it. Opacity then sets how present those lines
-   are. Behind the content, never over it. */
+/* The band paints its own ground rather than taking `tone="warm"`: the tone
+   class and this one have equal specificity, so which of the two colours won
+   would rest on emit order. It is one declaration here, and it is a gradient —
+   the warm holds, then gives way to white before the band ends, so the seam
+   into the grid below is a fade rather than an edge.
+
+   The drawing sits on that ground in multiply, so the white of the paper it
+   was drawn on leaves the ground untouched and only the linework darkens it.
+   Behind the content, never over it, and out of the way of pointer events. */
 .masthead {
   position: relative;
   isolation: isolate;
+  background: linear-gradient(
+    var(--color-surface-warm) 58%,
+    var(--color-surface) 100%
+  );
 }
 
 .masthead::before {
   content: "";
   position: absolute;
-  inset: 0;
+  /* Runs past the foot of the band. The drawing is a ground, not a panel, so
+     it has no reason to stop where the colour does. */
+  inset: 0 0 calc(-1 * var(--space-10)) 0;
   background-image: url("/images/kueche-strichzeichnung.png");
   background-size: cover;
   /* The drawing's own left third is empty, which is where the title goes. */
