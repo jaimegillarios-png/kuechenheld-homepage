@@ -19,7 +19,12 @@ const isCategory = (crumb: Breadcrumb) =>
 
 function Crumbs({ items, title }: { items: Breadcrumb[]; title: string }) {
   return (
-    <nav className={styles.breadcrumbs} aria-label="Brotkrümelnavigation">
+    <nav
+      className={styles.breadcrumbs}
+      aria-label="Brotkrümelnavigation"
+      data-enter="fade"
+      data-enter-delay="1"
+    >
       {items.map((crumb, i) => (
         <span key={`${crumb.name}-${i}`} className={styles.crumb}>
           {i > 0 && (
@@ -61,11 +66,16 @@ export default function ArticleHeader({ post }: { post: PostSummary }) {
     <header>
       <Crumbs items={post.breadcrumbs} title={post.title} />
 
-      <h1 className={styles.title} data-reveal="mask">
-        {post.title}
+      {/* The masthead is above the fold on every post, where the scroll
+          reveals deliberately do not reach — so the title rises out of its
+          mask in CSS, on the ladder shared with every other page. */}
+      <h1 className={styles.title} data-enter-clip>
+        <span data-enter="line" data-enter-delay="2">
+          {post.title}
+        </span>
       </h1>
 
-      <div className={styles.byline}>
+      <div className={styles.byline} data-enter="rise" data-enter-delay="3">
         {post.author && (
           <div className={styles.author}>
             {post.author.avatar && (
@@ -132,7 +142,8 @@ export function ArticleHeroImage({
           height={900}
           sizes="(max-width: 900px) 100vw, 1240px"
           loading="eager"
-          data-reveal="wipe"
+          data-enter="wipe"
+          data-enter-delay="4"
           className={styles.photo}
         />
       </div>

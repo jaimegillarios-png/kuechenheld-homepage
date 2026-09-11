@@ -1,5 +1,8 @@
 /**
- * Imperative scroll choreography.
+ * Imperative scroll choreography, below the fold.
+ *
+ * The entrance above the fold is CSS — see `data-enter` in globals.css. These
+ * routines start on `load` and so must not touch anything already on screen.
  *
  * The design reference discovered its targets by sweeping the DOM (every `h2`,
  * every `section img`, …). Here the sections opt in explicitly instead:
@@ -46,6 +49,12 @@ function collectRevealTargets(root: ParentNode): RevealTarget[] {
 
   const add = (el: HTMLElement, kind: RevealKind, delay: number) => {
     if (seen.has(el) || !isBelowFold(el)) return;
+    // The CSS entrance already owns the top of the page. Two animations over
+    // one piece of the page would fight: this one would hide something the
+    // entrance has just finished showing. `querySelector` as well as
+    // `closest`, because a title's mask is the heading and the entrance sits
+    // on the span inside it.
+    if (el.closest("[data-enter]") || el.querySelector("[data-enter]")) return;
     // A vertical reveal on something taller than the viewport looks broken —
     // it is still moving when it already fills the screen. The curtain wipes
     // horizontally, so height does not matter to it and full-bleed photography

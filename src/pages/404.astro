@@ -8,12 +8,16 @@ import Footer from "../components/Footer";
   <Header client:load />
 
   <main id="main" class="notFound">
-    <p class="code">404</p>
-    <h1 class="title">Diese Seite gibt es nicht</h1>
-    <p class="lede">
+    <p class="code" data-enter="fade" data-enter-delay="1">404</p>
+    <h1 class="title" data-enter-clip>
+      <span data-enter="line" data-enter-delay="2">Diese Seite gibt es nicht</span>
+    </h1>
+    <p class="lede" data-enter="rise" data-enter-delay="3">
       Der Link ist vielleicht veraltet oder die Seite ist umgezogen.
     </p>
-    <a class="back" href="/">Zur Startseite</a>
+    <a class="back" href="/" data-enter="rise" data-enter-delay="4">
+      Zur Startseite
+    </a>
   </main>
 
   <Footer client:visible />

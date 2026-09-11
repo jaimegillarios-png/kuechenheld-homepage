@@ -175,6 +175,92 @@ p {
 }
 
 /* ---------------------------------------------------------------------------
+   Entrance — the composition above the fold, on load.
+
+   The scroll reveals in lib/motion.ts deliberately leave anything above the
+   fold alone: they start on `load`, by which point the top of the page has
+   been readable for some time, and hiding something that has already been
+   read flashes. The entrance is CSS instead, so it is running at first paint.
+   `data-reveal` picks up from here, below the fold.
+
+       data-enter="fade" | "rise" | "nav" | "line" | "rule" | "wipe"
+       data-enter-delay="1".."7"        — its step in the cascade
+
+   The steps are one shared ladder rather than a literal per call site, so
+   every page enters on the same rhythm as the home hero. `line` rises out of
+   a mask and needs `data-enter-clip` on its parent — on the element that
+   carries the type size, because the descender allowance is in `em`.
+   --------------------------------------------------------------------------- */
+[data-enter-clip] {
+  display: block;
+  overflow: hidden;
+  /* Descenders sit below the baseline; without this the mask crops them. */
+  padding-bottom: var(--indent-004);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-enter] {
+    animation-duration: 1s;
+    animation-timing-function: var(--easing-standard);
+    animation-delay: var(--enter-delay, 0s);
+    animation-fill-mode: both;
+  }
+
+  [data-enter="fade"] {
+    animation-name: var(--kf-fade);
+    animation-timing-function: ease;
+  }
+  [data-enter="rise"] {
+    animation-name: var(--kf-rise);
+    animation-timing-function: ease;
+  }
+  /* Down from above, for the bar at the top of every page. */
+  [data-enter="nav"] {
+    animation-name: var(--kf-nav-in);
+    animation-duration: var(--duration-entrance);
+  }
+  [data-enter="line"] {
+    display: block;
+    animation-name: var(--kf-line-up);
+    animation-duration: 1.1s;
+  }
+  [data-enter="rule"] {
+    transform-origin: left;
+    animation-name: var(--kf-rule);
+    animation-duration: 1.2s;
+  }
+  /* The curtain, as the hero draws it: a photograph is uncovered rather than
+     faded, and takes longer than the text it sits beside. */
+  [data-enter="wipe"] {
+    animation-name: var(--kf-img-in);
+    animation-duration: 1.6s;
+    animation-timing-function: var(--easing-curtain);
+  }
+
+  [data-enter-delay="1"] {
+    --enter-delay: 0.06s;
+  }
+  [data-enter-delay="2"] {
+    --enter-delay: 0.14s;
+  }
+  [data-enter-delay="3"] {
+    --enter-delay: 0.24s;
+  }
+  [data-enter-delay="4"] {
+    --enter-delay: 0.34s;
+  }
+  [data-enter-delay="5"] {
+    --enter-delay: 0.46s;
+  }
+  [data-enter-delay="6"] {
+    --enter-delay: 0.6s;
+  }
+  [data-enter-delay="7"] {
+    --enter-delay: 0.76s;
+  }
+}
+
+/* ---------------------------------------------------------------------------
    Shared hover language — applied via data attributes so any element (link,
    button, span) can opt in without dragging a wrapper component along.
    --------------------------------------------------------------------------- */

@@ -60,6 +60,15 @@
   grid-row: 1;
 }
 
+/* The mask the title rises out of, on the heading rather than on the cell
+   around it: `data-enter-clip`'s descender allowance is in `em`, and one
+   level out that is `em` of a 16px div instead of the 55px title — two
+   pixels short, which is exactly the depth of a "p". */
+.headingMask {
+  overflow: hidden;
+  padding-bottom: var(--indent-004);
+}
+
 .search {
   grid-column: 2;
   grid-row: 1;
@@ -79,6 +88,17 @@
    read as one composition. */
 .featured {
   margin-top: var(--gap-head-body);
+}
+
+/* The one photograph the page opens with is uncovered rather than faded — the
+   curtain the home hero uses. `--enter-delay` is set by the block's rung on
+   the ladder and inherits down, so the two stay in step without repeating a
+   number here. */
+@media (prefers-reduced-motion: no-preference) {
+  .featured img {
+    animation: var(--kf-img-in) 1.6s var(--easing-curtain) var(--enter-delay, 0s)
+      both;
+  }
 }
 
 /* The grid's header: categories at the left, the count at the right, and a

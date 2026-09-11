@@ -80,9 +80,16 @@ export default function Header({
   return (
     <>
       <header ref={headerRef} className={styles.header}>
-        <div className={styles.wordmark}>{wordmark}</div>
+        <div className={styles.wordmark} data-enter="nav" data-enter-delay="1">
+          {wordmark}
+        </div>
 
-        <nav className={styles.nav} aria-label="Hauptnavigation">
+        <nav
+          className={styles.nav}
+          aria-label="Hauptnavigation"
+          data-enter="nav"
+          data-enter-delay="2"
+        >
           {items.map((item) => (
             <a key={item.href} href={item.href} data-ul>
               {item.label}
@@ -90,7 +97,7 @@ export default function Header({
           ))}
         </nav>
 
-        <div className={styles.actions}>
+        <div className={styles.actions} data-enter="nav" data-enter-delay="3">
           <MaybeLink href={routes.login} data-ul className={styles.action}>
             Einloggen
           </MaybeLink>
@@ -102,6 +109,8 @@ export default function Header({
         <button
           type="button"
           className={styles.burger}
+          data-enter="nav"
+          data-enter-delay="3"
           aria-label="Menü öffnen"
           aria-expanded={navOpen}
           aria-controls="mobile-nav"

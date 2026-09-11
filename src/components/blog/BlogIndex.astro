@@ -82,7 +82,10 @@ const byline = (post: PostSummary) => ({
 <div class={styles.ground} aria-hidden="true"></div>
 
 <Section rhythm="masthead">
-  <Eyebrow>Blog</Eyebrow>
+  {/* The masthead enters on the shared ladder in globals.css: the word, the
+      title out of its mask, the lede, the way in, then the lead story. The
+      scroll reveals below the fold pick up from there. */}
+  <div data-enter="fade" data-enter-delay="1"><Eyebrow>Blog</Eyebrow></div>
 
   {/* The heading and the search share the band's top row, so the right half
       carries the way in rather than sitting empty above a stranded field. The
@@ -94,9 +97,16 @@ const byline = (post: PostSummary) => ({
           `column` because the heading does share its row with a sibling — the
           search field — and because `wide` at 55px is broader than the column
           itself, so it never bit and the title ragged badly. */}
-      <Heading as="h1" measure="column" gap="none">{heading}</Heading>
+      <Heading
+        as="h1"
+        measure="column"
+        gap="none"
+        className={styles.headingMask}
+      >
+        <span data-enter="line" data-enter-delay="2">{heading}</span>
+      </Heading>
     </div>
-    <div class={styles.search}>
+    <div class={styles.search} data-enter="rise" data-enter-delay="4">
       <BlogSearch
         client:idle
         indexUrl={asset("/blog/search-index.json")}
@@ -108,7 +118,7 @@ const byline = (post: PostSummary) => ({
     </div>
     {
       lede && (
-        <div class={styles.headLede}>
+        <div class={styles.headLede} data-enter="rise" data-enter-delay="3">
           <Lede measure="default">{lede}</Lede>
         </div>
       )
@@ -118,7 +128,11 @@ const byline = (post: PostSummary) => ({
 
   {
     featured && (
-      <div class={`${styles.featured} ${styles.hideWhileSearching}`}>
+      <div
+        class={`${styles.featured} ${styles.hideWhileSearching}`}
+        data-enter="rise"
+        data-enter-delay="5"
+      >
         <FeaturedArticle
           as="h2"
           layout="split"
