@@ -65,10 +65,9 @@ export function Heading({
   gap = "stack",
   hyphenate,
   /**
-   * The element, not the size — the size comes from the class either way.
    * `h2` is right for a section inside a page that already states its subject
-   * somewhere else. A page whose own title this is passes `h1`; an index has
-   * no hero to supply one.
+   * somewhere else. A page whose own title this is passes `h1` — an index has
+   * no hero to supply one — and takes the page-title size with it.
    */
   as: Tag = "h2",
   className,
@@ -83,7 +82,7 @@ export function Heading({
   return (
     <Tag
       className={cx(
-        styles.heading,
+        Tag === "h1" ? styles.headingPage : styles.heading,
         HEADING_MEASURE[measure],
         hyphenate && styles.hyphenate,
         gap === "stack" && styles.gapStack,

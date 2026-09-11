@@ -61,6 +61,7 @@
   --text-xl: 28px;
   --text-2xl: 36px; /* 1.25 exact is 35.16; 36 is even and /4 for line boxes */
   --text-3xl: 44px;
+  --text-4xl: 55px; /* 1.25 exact from 44 */
   --text-display-hero: clamp(45px, 4.8vw, 90px);
   --text-display-hero-narrow: clamp(45px, 13.5vw, 68px);
 
@@ -219,6 +220,11 @@
      items, and the blog featured title. */
   --font-size-subheading: var(--text-2xl);
   --font-size-heading: var(--text-3xl); /* 40 and 48 merged onto 44 */
+  /* A page that states its own subject — an index, with no hero above it to
+     do the stating. One step over --font-size-heading, so a page title reads
+     above the section headings under it without reaching for the hero, which
+     is the homepage's brand moment and not a size to borrow. */
+  --font-size-page-title: var(--text-4xl);
   --font-size-hero: var(--text-display-hero);
   --font-size-hero-narrow: var(--text-display-hero-narrow);
 

@@ -24,6 +24,24 @@
   color: var(--color-text-inverse-meta);
 }
 
+/* A page's own title. Steps down onto the heading scale below 900 and again
+   below 560 — 55px on a phone would take four lines before it said anything. */
+.h1 {
+  font-size: var(--font-size-page-title);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--leading-tight);
+}
+@media (max-width: 900px) {
+  .h1 {
+    font-size: var(--font-size-heading);
+  }
+}
+@media (max-width: 560px) {
+  .h1 {
+    font-size: var(--font-size-subheading);
+  }
+}
+
 .h2 {
   font-size: var(--font-size-heading);
   font-weight: var(--font-weight-heading);

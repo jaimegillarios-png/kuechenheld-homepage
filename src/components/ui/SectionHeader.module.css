@@ -18,6 +18,12 @@
   composes: h2 from "../../styles/shared.module.css";
 }
 
+/* `as="h1"` changes the size as well as the element: a page title that looked
+   exactly like the section headings under it would not be one. */
+.headingPage {
+  composes: h1 from "../../styles/shared.module.css";
+}
+
 /* The measure is declared on the local class, not on the composed `h2`.
    `composes` gives both classes equal specificity, so a `max-width` declared in
    shared.module.css would win or lose on emit order alone. */
