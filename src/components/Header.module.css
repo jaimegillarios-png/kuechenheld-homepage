@@ -16,12 +16,18 @@
     box-shadow var(--duration-slow) ease;
 }
 
+/* The mark is sized off the type it replaced rather than a number of its own,
+   so changing `--font-size-wordmark` still moves it. The glyphs are all caps,
+   which makes the SVG's height cap height: 0.7em matched the lettering's cap
+   height exactly and read small, so it takes the full em and sits a little
+   above the type beside it — a mark, not a word in the nav. */
 .wordmark {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: var(--font-size-wordmark);
-  font-weight: var(--font-weight-regular);
-  letter-spacing: var(--tracking-wordmark);
-  text-transform: uppercase;
+}
+.wordmark svg {
+  display: block;
+  height: 1em;
+  width: auto;
 }
 
 .nav {
@@ -113,10 +119,12 @@
 }
 
 .overlayWordmark {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: var(--font-size-body);
-  letter-spacing: var(--tracking-wordmark);
-  text-transform: uppercase;
+}
+.overlayWordmark svg {
+  display: block;
+  height: 1em;
+  width: auto;
 }
 
 .close {

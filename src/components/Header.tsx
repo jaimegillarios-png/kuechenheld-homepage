@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import MaybeLink from "./MaybeLink";
+import Wordmark from "./ui/Wordmark";
 import { navItems, routes } from "@/lib/content";
 import { asset } from "@/lib/site";
 import { prefersReducedMotion } from "@/lib/motion";
@@ -87,7 +88,7 @@ export default function Header({
           data-enter="nav"
           data-enter-delay="1"
         >
-          {wordmark}
+          <Wordmark label={wordmark} />
         </a>
 
         <nav
@@ -136,7 +137,7 @@ export default function Header({
         >
           <div className={styles.overlayTop}>
             <a href={asset("/")} className={styles.overlayWordmark}>
-              {wordmark}
+              <Wordmark label={wordmark} />
             </a>
             <button
               type="button"
