@@ -121,8 +121,18 @@
   animation-delay: 0.38s;
 }
 
+/* Held to the lede's measure rather than to the column. At full width the
+   rule ran 91px past the end of the lede and lined up with nothing you can
+   see — the headline's longest line stops short of the column too. Sharing
+   the measure gives the head, the rule and the lede one right edge. */
 .rule {
   width: 100%;
+  max-width: var(--measure-prose-wide);
+  /* `ch` resolves against the element's own font size, and this one inherits
+     16px from the column while the lede sets 18px — so the same token was
+     capping the rule 48px shorter than the text it is supposed to line up
+     with. Matching the context is what makes the two measures equal. */
+  font-size: var(--font-size-body);
   height: 1px;
   background: var(--color-rule);
   margin: var(--space-8) 0 var(--space-5);
@@ -133,7 +143,10 @@
 .lead {
   font-size: var(--font-size-body);
   line-height: var(--leading-body);
-  max-width: 46ch;
+  /* Was a bare 46ch, which set three lines ending on a 119px runt — "bis
+     Ende 2026." alone under two full ones. The wide measure is the nearest
+     step on the scale and takes it to two. */
+  max-width: var(--measure-prose-wide);
   color: var(--color-text-body);
   animation: var(--kf-rise) 1s ease 0.72s both;
 }
