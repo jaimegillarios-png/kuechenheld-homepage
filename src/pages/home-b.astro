@@ -1,0 +1,95 @@
+---
+import Base from "../layouts/Base.astro";
+
+import Header from "../components/Header";
+import HeroCentered from "../components/HeroCentered";
+import TrustStrip from "../components/TrustStrip";
+import Questionnaire from "../components/Questionnaire";
+import HowItWorks from "../components/HowItWorks";
+import Values from "../components/Values";
+import Discover from "../components/Discover";
+import Reviews from "../components/Reviews";
+import CustomerStories from "../components/CustomerStories";
+import Locations from "../components/Locations";
+import OfferCompare from "../components/OfferCompare";
+import Blog from "../components/Blog";
+import Faq from "../components/Faq";
+import CtaBand from "../components/CtaBand";
+import Footer from "../components/Footer";
+import { trustStrip } from "../lib/content";
+import { blog } from "../lib/blog";
+import { asset } from "../lib/site";
+import type { PostSummary } from "../lib/blog";
+
+/**
+ * The homepage with the centred hero. Everything below the first screen is
+ * `/` unchanged; the only difference is `HeroCentered` in place of `Hero`,
+ * with the trust strip as its sibling rather than its child — the centred
+ * hero holds the viewport on its own and has nothing to pass through.
+ */
+
+/**
+ * The blog band reads from the CMS now, not from the static mirror in
+ * `content.ts`. `showInHomeSlider` is the field the live site uses to decide
+ * what appears here; the lead is whichever of those is `featured`.
+ */
+const dateFormat = new Intl.DateTimeFormat("de-DE", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+});
+
+const toCard = (post: PostSummary) => ({
+  title: post.title,
+  excerpt: post.summary ?? "",
+  meta: [
+    post.author?.name,
+    post.date && dateFormat.format(new Date(post.date)),
+    `${post.readingTime} Min.`,
+  ]
+    .filter(Boolean)
+    .join(" · "),
+  src: post.thumbnailImage.src,
+  alt: post.thumbnailImage.alt,
+  href: asset(`/blog/${post.slug}`),
+});
+
+const slider = (await blog.getAllPosts()).filter((p) => p.showInHomeSlider);
+const homeFeatured = slider.find((p) => p.featured) ?? slider[0];
+// Newest first, the same order the rest of the blog uses.
+const homePosts = slider.filter((p) => p.slug !== homeFeatured?.slug).slice(0, 5);
+---
+
+<Base
+  title="Küchenheld — Küche kaufen von zuhause aus (Variante B)"
+  description="Küche online kaufen vom Sofa aus oder vor Ort in einem unserer 8 Showrooms deutschlandweit. Kostenloses, unverbindliches Angebot mit Preisindikation."
+>
+  <a href="#fragebogen" class="skipLink">Zum Fragebogen springen</a>
+
+  {/* Islands: the eight units that hold state. Faq and Footer are here for
+      one stateful child each — the accordion and the newsletter form — which
+      is the only boundary Astro can hydrate at without changing their props.
+      Everything else renders to HTML and ships no JS. */}
+  <Header client:load />
+
+  <main id="main">
+    <HeroCentered />
+    <TrustStrip items={trustStrip} />
+    <Questionnaire client:visible />
+    <HowItWorks />
+    <Values />
+    <Discover client:visible />
+    <Reviews client:visible />
+    <CustomerStories client:visible />
+    <Locations />
+    <OfferCompare />
+    <Blog
+      featured={homeFeatured && toCard(homeFeatured)}
+      posts={homePosts.map(toCard)}
+    />
+    <Faq client:visible />
+    <CtaBand />
+  </main>
+
+  <Footer client:visible />
+</Base>

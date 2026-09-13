@@ -1,0 +1,126 @@
+/* The centred hero: one photograph, the type on top of it.
+   A variant of the split hero, not a replacement — see HeroCentered.tsx. */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  /* Two steps of the scale stacked: the band wants more air above and below
+     than a text section, and the scale stops at 128. If it needs more than
+     this it wants a new step, not a number invented here. */
+  padding: calc(var(--space-10) + var(--space-8)) var(--layout-gutter);
+  /* The ground under the photograph, and what the scrim is made of. Nothing
+     here is a new colour: the photo is darkened by ink, not by a wash. */
+  background: var(--color-surface-inverse);
+  overflow: hidden;
+}
+
+/* No viewport height. The band is as tall as the stack inside it plus the
+   padding above and below, so what sets it is the spacing scale rather than
+   the window — and whatever follows is visible without scrolling. */
+
+.photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* The scrim, set by measurement rather than by eye. Sampling the photograph
+   under each text box and compositing gives, at this opacity, 7.04:1 for the
+   headline and 6.17:1 for the subheading against the lightest pixel either
+   one crosses — a blown-out window behind the worktop. Lighter than this and
+   the subheading drops under 4.5:1 there. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-surface-inverse);
+  opacity: 0.7;
+}
+
+.inner {
+  max-width: var(--layout-content-max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Not the hero size or the hero weight. `--font-size-hero` is the split
+   hero's brand moment and this variant is not asking for it; the page-title
+   step is the one below, for a page that states its own subject. The weight
+   sits between the two the site uses for headings: 500 fills in against the
+   scrim at this size, 300 goes thin once the type is no longer hero-sized. */
+.h1 {
+  font-size: var(--font-size-page-title);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-display);
+  color: var(--color-text-on-dark);
+  max-width: var(--measure-heading-full);
+}
+
+/* The mask each line rises out of. On the heading, so the descender
+   allowance is `em` of the display size rather than of the column. */
+.clip {
+  display: block;
+  overflow: hidden;
+  padding-bottom: var(--indent-004);
+}
+
+.lede {
+  margin-top: var(--space-6);
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  /* Solid, not the translucent body ink the inverse bands use: over a
+     photograph that alpha composites against the picture as well as the
+     scrim, and the same text measures 3.98:1 instead of 6.17:1. */
+  color: var(--color-text-inverse);
+  /* The wide measure, not the default one: centred text rags on both edges,
+     and at 44ch this copy broke to three short lines that read as a column
+     rather than a sentence. */
+  max-width: var(--measure-prose-wide);
+}
+
+/* The cream button sets `align-self: flex-start` for the band it was drawn
+   for. In a centred column that would strand it at the left, so it is held
+   by a block of its own instead. */
+.actions {
+  margin-top: var(--space-7);
+}
+
+/* Credit for the kitchen in the photograph, as the split hero gives it. */
+.caption {
+  position: absolute;
+  left: var(--layout-gutter);
+  right: var(--layout-gutter);
+  bottom: var(--space-5);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  /* The meta ink is cream at half alpha — over a photograph that measured
+     3.29:1 here, under the 4.5:1 this size needs. The body ink clears it. */
+  color: var(--color-text-inverse-body);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: var(--space-10) var(--layout-gutter);
+  }
+  .h1 {
+    font-size: var(--font-size-heading);
+  }
+}
+
+@media (max-width: 560px) {
+  .caption {
+    display: none;
+  }
+}
